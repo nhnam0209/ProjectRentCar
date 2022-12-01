@@ -1,25 +1,21 @@
 <template>
-    <div>
-        <slot name="header">
-            <navigation-bar-desktop />
-        </slot>
-        <slot name="content">
-            <Nuxt />
-        </slot>
-        <slot name="footer">
-
-        </slot>
-    </div>
+  <div>
+    <slot name="header">
+      <navigation-bar-desktop />
+    </slot>
+    <slot name="content">
+      <Nuxt />
+    </slot>
+    <slot name="footer"> </slot>
+  </div>
 </template>
 <script lang="ts">
-import {Component,Vue} from 'nuxt-property-decorator'
-import VueScreen from 'vue-screen'
-Vue.use(VueScreen)
+import { Component, Vue } from "nuxt-property-decorator";
+import VueScreen from "vue-screen";
+Vue.use(VueScreen);
 
 @Component({
-    name: "RentCarLayout"
+  name: "RentCarLayout",
 })
-export default class extends Vue {
-
-}
+export default class extends Vue {}
 </script>

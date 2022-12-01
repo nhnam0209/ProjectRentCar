@@ -1,20 +1,17 @@
 <template>
   <Default>
     <template #content>
-      <Tutorial/>
+      <Tutorial />
     </template>
   </Default>
 </template>
 
 <script lang="ts">
-import {Component,Vue} from 'nuxt-property-decorator'
+import { Component, Vue } from "nuxt-property-decorator";
 
 @Component({
-
-  name: 'HomePage',
-  layout: 'rentcar-layout'
+  name: "HomePage",
+  layout: "rentcar-layout",
 })
-export default class extends Vue{
-
-}
+export default class extends Vue {}
 </script>
