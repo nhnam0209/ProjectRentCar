@@ -16,6 +16,8 @@ export default {
     ]
   },
 
+  ssr: false,
+
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
   ],
@@ -26,6 +28,15 @@ export default {
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
+  components: [
+    '../ProjectRentCar/components/atoms/',
+    '../ProjectRentCar/components/',
+    '../ProjectRentCar/components/logo/',
+    '../ProjectRentCar/components/molecules/',
+    '../ProjectRentCar/components/organisms/',
+    '../ProjectRentCar/layout/',
+
+  ],
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [

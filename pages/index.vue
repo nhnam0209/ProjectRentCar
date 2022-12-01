@@ -1,11 +1,20 @@
 <template>
-  <Tutorial/>
+  <Default>
+    <template #content>
+      <Tutorial/>
+    </template>
+  </Default>
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import {Component,Vue} from 'nuxt-property-decorator'
 
-export default Vue.extend({
-  name: 'IndexPage'
+@Component({
+
+  name: 'HomePage',
+  layout: 'rentcar-layout'
 })
+export default class extends Vue{
+
+}
 </script>
