@@ -5,7 +5,7 @@
       <div class=""><NuxtLink to="/aboutus">About Us</NuxtLink></div>
       <div class=""><NuxtLink to="/login">Login</NuxtLink></div>
       <div class=""><NuxtLink to="/register">Register</NuxtLink></div>
-
+      <div class=""><NuxtLink to="/register">Register</NuxtLink></div>
     </div>
   </nav>
 </template>
