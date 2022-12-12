@@ -1,7 +1,14 @@
 <template>
   <Default>
     <template #content>
-      <Tutorial />
+      <div class="">
+        <div>
+          <h1 class="uppercase text-center">Welcome to Rental Car</h1>
+        </div>
+        <div>
+          <login-form class="mx-auto "/>
+        </div>
+      </div>
     </template>
   </Default>
 </template>
