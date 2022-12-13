@@ -55,7 +55,7 @@ export default class extends Vue {
       try {
         const res = await axios.post("http://localhost:5000/register/add", data);
         this.isRegister = true
-        setTimeout(window.location.href = ('/login'),4000)
+        setTimeout(window.location.href = ('/login'),5000)
       }catch(err){
         console.error;
         console.log("Something's wrong!!!")
