@@ -1,5 +1,8 @@
 <template>
   <div class="border p-3 flex justify-center mx-auto w-fit">
+    <div v-if="isRegister">
+      <h1>The account was created!!!</h1>
+    </div>
     <div>
       <div class="flex space-x-1">
         <label for="">Fisrt Name:</label>
@@ -38,23 +41,24 @@ export default class extends Vue {
     email: String = ""
     username: String = ""
     password: String = ""
+    isRegister: Boolean = false
     
-
     async signupHandle() {
       const data = {
         'first_name': this.first_name,
         'last_name': this.last_name,
+        'full_name': this.first_name + ' ' +this.last_name,
         'email': this.email,
         'username': this.username,
         'password': this.password
       }
-      console.log(data)
       try {
         const res = await axios.post("http://localhost:5000/register/add", data);
-        console.log(res)
-
+        this.isRegister = true
+        setTimeout(window.location.href = ('/login'),4000)
       }catch(err){
         console.error;
+        console.log("Something's wrong!!!")
       }
 
     }
