@@ -3,60 +3,60 @@
     <div>
       <div class="flex space-x-1">
         <label for="">Fisrt Name:</label>
-        <input class="border border-gray-300" type="text" />
+        <input class="border border-gray-300" type="text" v-model="first_name"/>
       </div>
       <div class="flex space-x-5">
-        <label for="">Last Name</label>
-        <input class="border border-gray-300" type="text" />
-      </div>
-      <div>
-        <label for="">Gender</label>
-        <select  class="border border-gray-300" name="" id="">
-            <option value="">Male</option>
-            <option value="">Female</option>
-            <option value="">Others</option>
-        </select>
-      </div>
-      <div class="flex space-x-7">
-        <label for="">Birth of Date</label>
-        <input class="border border-gray-300" type="date" />
+        <label for="">Last Name:</label>
+        <input class="border border-gray-300" type="text" v-model="last_name"/>
       </div>
       <div class="flex space-x-5">
-        <label for="">Email</label>
-        <input class="border border-gray-300" type="email" />
+        <label for="">Email:</label>
+        <input class="border border-gray-300" type="email" v-model="email"/>
       </div>
       <div class="flex space-x-5">
-        <label for="">Username</label>
-        <input class="border border-gray-300" type="text" />
+        <label for="">Username:</label>
+        <input class="border border-gray-300" type="text" v-model="username"/>
       </div>
       <div class="flex space-x-5">
-        <label for="">Password</label>
-        <input class="border border-gray-300" type="password" />
+        <label for="">Password:</label>
+        <input class="border border-gray-300" type="password" v-model="password"/>
       </div>
-      <div class="flex space-x-5">
-        <label for="">ID Card Number</label>
-        <input class="border border-gray-300" type="text" />
-      </div>
-      <div class="flex space-x-5">
-        <label for="">Driven Car License</label>
-        <input class="border border-gray-300" type="text" />
-      </div>
-      <div class="flex space-x-5">
-        <label for="">Phone Number</label>
-        <input class="border border-gray-300" type="number" />
-      </div>
-
-      <button class="bg-blue-400 text-white p-2 rounded-lg">Submit</button>
+      <button class="bg-blue-400 text-white p-2 rounded-lg" @click="signupHandle()">Submit</button>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "nuxt-property-decorator";
+import axios from "axios";
 @Component({
-  name: "SearchBar",
+  name: "RegisterForm",
 })
 export default class extends Vue {
+    first_name:String = ""
+    last_name:String = ""
+    email: String = ""
+    username: String = ""
+    password: String = ""
+    
 
+    async signupHandle() {
+      const data = {
+        'first_name': this.first_name,
+        'last_name': this.last_name,
+        'email': this.email,
+        'username': this.username,
+        'password': this.password
+      }
+      console.log(data)
+      try {
+        const res = await axios.post("http://localhost:5000/register/add", data);
+        console.log(res)
+
+      }catch(err){
+        console.error;
+      }
+
+    }
 }
 </script>
