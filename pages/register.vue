@@ -1,7 +1,12 @@
 <template>
   <Default>
     <template #content>
-      <Tutorial />
+      <div class="">
+        <div>
+          <h1 class="uppercase text-center">Let's become a Rental Car Member</h1>
+        </div>
+        <register-form />
+      </div>
     </template>
   </Default>
 </template>

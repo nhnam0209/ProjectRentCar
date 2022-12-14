@@ -3,7 +3,7 @@
     <template #content>
       <div class="">
         <div>
-          <h1 class="uppercase text-center">Welcome to Rental Car</h1>
+          <h1 class="uppercase text-center">Welcome to Dashboard</h1>
         </div>
         <div>
           <search-form class="mx-auto "/>
@@ -17,7 +17,7 @@
 import { Component, Vue } from "nuxt-property-decorator";
 
 @Component({
-  name: "HomePage",
+  name: "Dashboard",
   layout: "rentcar-layout",
 })
 export default class extends Vue {}
