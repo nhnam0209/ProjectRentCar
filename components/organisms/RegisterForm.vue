@@ -53,7 +53,7 @@ export default class extends Vue {
         'password': this.password
       }
       try {
-        const res = await axios.post("http://localhost:5000/register/add", data);
+        const res = await axios.post("http://localhost:5000/api/register/", data);
         this.isRegister = true
         setTimeout(window.location.href = ('/login'),5000)
       }catch(err){
