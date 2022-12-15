@@ -5,15 +5,15 @@
         class="register fixed w-full min-h-screen flex justify-center items-center bg-gray-500/[0.6]"
       >
         <div
-          class="register-container width-form bg-white rounded-xl overflow-hidden relative flex"
+          class="register-container width-form rounded-xl overflow-hidden relative flex"
         >
           <div class="signup-content text-3xl font-bold text-white text-center">
             <span class="content-register absolute"
               >You have already signed up?
-              <NuxtLink to="/register" class="register-item">Sign In</NuxtLink>
+              <NuxtLink to="/register" class="register-item"><br>Sign In Now</NuxtLink>
             </span>
           </div>
-          <form action="" class="signup-form justify-center items-center flex">
+          <form action="" class="signup-form justify-center items-center flex bg-white">
             <div class="">
               <header class="title-signup text-3xl font-bold mt-7">
                 <span>Register Here!</span>
@@ -143,5 +143,26 @@ export default class extends Vue {}
     opacity: 1;
     transform: translateX(0%);
   }
+}
+
+@media (max-width:730px){
+.signup-content{
+  display: none;
+}
+
+.signup-form{
+  width: 70%;
+}
+.register-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+}
+
+@media (max-width: 820px){
+  .register-container{
+  width: 80%;
+}
 }
 </style>

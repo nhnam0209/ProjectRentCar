@@ -5,7 +5,6 @@
     </div>
     <div class="flex items-center space-x-10 text-2xl font-medium">
       <div class=""><NuxtLink to="/aboutus">About Us</NuxtLink></div>
-      <div class=""><NuxtLink to="/rentcar">Rent Car</NuxtLink></div>
       <button class= "nav-btn-login p-2"><NuxtLink class="" to="/login">Login</NuxtLink></button>
     </div>
   </nav>  
