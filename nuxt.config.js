@@ -44,8 +44,18 @@ export default {
     '@nuxt/typescript-build',
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/fontawesome',
   ],
+
+  fontawesome: {
+    component: 'fa',
+    icons: {
+      solid: true,
+      brands: true,
+      regular: true,
+    },
+},
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
@@ -54,6 +64,7 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    
   },
 
   publicRuntimeConfig:{
