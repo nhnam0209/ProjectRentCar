@@ -1,25 +1,31 @@
 <template>
-  <nav class="navbar flex justify-between items-center px-4">
+  <nav class="navbar flex justify-between overflow-hidden">
       <div class="logo">
       </div>
-      <div class="navbar-route flex justify-center items-center">
-        <div class="navbar-list">
+      <div class="navbar-icon-list flex justify-center items-center">
+        <fa class="navbar-icons" icon="fa-solid fa-house">
+          <NuxtLink class="navbar-items" to="/">Home</NuxtLink>
+        </fa>
+        <fa class="navbar-icons" icon="fa-solid fa-right-to-bracket">
+          <NuxtLink class="navbar-items" to="/login">Sign In</NuxtLink>
+        </fa>
+        <fa class="navbar-icons" icon="fa-regular fa-registered">
+          <NuxtLink class="navbar-items" to="/register">Sign Up</NuxtLink>
+        </fa>
+      </div>
+      <div class="navbar-list-items flex justify-center items-center">
+        <div class="">
           <NuxtLink class="navbar-items" to="/">Home</NuxtLink>
         </div>
-        <div class="navbar-list">
+        <div class="">
           <NuxtLink class="navbar-items" to="/aboutus">About Us</NuxtLink>
         </div>
-        <div class="navbar-list navbar-signin">
+        <button class="buttons  navbar-signin">
           <NuxtLink class="navbar-items" to="/login">Sign In</NuxtLink>
-        </div>
-        <div class="navbar-list">
+        </button>
+        <button class="buttons">
           <NuxtLink class="navbar-items" to="/register">Sign Up</NuxtLink>
-        </div>
-      </div>
-      <div class="navbar-list-icons flex items-center justify-center">
-        <fa class="navbar-icons" :icon="['fas', 'house']" />
-        <fa class="navbar-icons" :icon="['fas', 'right-to-bracket']" />
-        <fa class="navbar-icons" :icon="['fas', 'registered']" />
+        </button>
       </div>
     </nav>
 </template>
@@ -36,15 +42,17 @@ export default class extends Vue {}
   height: 60px;
 }
 
-.logo{
-  width: 100px;
-  height: 60px;
-  background: url(../../static/img/logo.png);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+.navbar-icon-list{
+  display: none;
 }
 
+.logo{
+  background: url(../../static/img/logo.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100px;
+}
 .navbar-signin{
   position: relative;
 }
@@ -52,23 +60,23 @@ export default class extends Vue {}
 .navbar-signin::before{
   content: "";
   position: absolute;
-  height: 100%;
+  border-right: 2px solid black;
   width: 100%;
+  height: 100%;
   top: 0;
   right: 0;
-  border-right: 2px solid black;
 }
 
 .navbar-items{
+  margin-left: 26px;
+  margin-right: 26px;
   font-size: 1.5rem;
-  line-height: 2rem;  
+  line-height: 2rem;
   position: relative;
-  padding-bottom: 4px;
-  margin: 0 30px;
 }
 
 .navbar-items::before{
-  content: "";
+  content: '';
   position: absolute;
   bottom: 0;
   left: 0;
@@ -76,31 +84,27 @@ export default class extends Vue {}
   width: 0%;
   background: #00a550;
   border-radius: 12px;
-  transition: all 0.5s ease;
+  transition: all 0.6s ease;
 }
 
 .navbar-items:hover::before{
   width: 100%;
 }
 
-.navbar-list-icons{
-  display: none;
-}
-
 .navbar-icons{
-  font-size: 30px;
+  height: 30px;
+  width: 30px;
   margin: 0 20px;
 }
 
 @media(max-width: 820px){
-.navbar-route{
-  display: none ;
-}
+ .navbar-list-items{
+  display: none;
+ }
 
-.navbar-list-icons{
+ .navbar-icon-list{
   display: flex;
-}
-
+ }
 }
 
 </style>

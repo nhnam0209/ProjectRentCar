@@ -45,18 +45,16 @@ export default {
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
     '@nuxtjs/axios',
-    '@nuxtjs/fontawesome',
+    '@nuxtjs/fontawesome'
   ],
-
   fontawesome: {
     component: 'fa',
     icons: {
       solid: true,
       brands: true,
       regular: true,
-    },
-},
-
+    }
+  },
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     '@nuxtjs/axios'
