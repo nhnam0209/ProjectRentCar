@@ -1,11 +1,82 @@
 <template>
   <Default>
     <template #content>
-      <div class="">
-        <div>
-          <h1 class="uppercase text-center">Let's become a Rental Car Member</h1>
+      <div
+        class="register fixed w-full min-h-screen flex justify-center items-center bg-gray-500/[0.6]"
+      >
+        <div
+          class="register-container width-form rounded-xl overflow-hidden relative flex"
+        >
+          <div class="signup-content text-3xl font-bold text-white text-center">
+            <span class="content-register absolute"
+              >You have already signed up?
+              <NuxtLink to="/register" class="register-item"><br>Sign In Now</NuxtLink>
+            </span>
+          </div>
+          <form action="" class="signup-form justify-center items-center flex bg-white">
+            <div class="">
+              <header class="title-signup text-3xl font-bold mt-7">
+                <span>Register Here!</span>
+              </header>
+              <div class="relative border-bottom my-7">
+                <input
+                  type="text"
+                  class="login-input w-full px-1.5 h-10 text-lg border-none outline-none bg-none"
+                  required
+                />
+                <label class="label-input top-2/4 absolute text-lg"
+                  >First name:</label
+                >
+              </div>
+              <div class="relative border-bottom my-7">
+                <input
+                  type="text"
+                  class="login-input w-full px-1.5 h-10 text-lg border-none outline-none bg-none"
+                  required
+                />
+                <label class="label-input top-2/4 absolute text-lg"
+                  >Last name:</label
+                >
+              </div>
+              <div class="relative border-bottom my-7">
+                <input
+                  type="email"
+                  class="login-input w-full px-1.5 h-10 text-lg border-none outline-none bg-none"
+                  required
+                />
+                <label class="label-input top-2/4 absolute text-lg"
+                  >Email:</label
+                >
+              </div>
+              <div class="relative border-bottom my-7">
+                <input
+                  type="text"
+                  class="login-input w-full px-1.5 h-10 text-lg border-none outline-none bg-none"
+                  required
+                />
+                <label class="label-input top-2/4 absolute text-lg"
+                  >Username:</label
+                >
+              </div>
+              <div class="relative border-bottom my-7">
+                <input
+                  type="password"
+                  class="login-input w-full px-1.5 h-10 text-lg border-none outline-none bg-none"
+                  required
+                />
+                <label class="label-input top-2/4 absolute text-lg"
+                  >Password:</label
+                >
+              </div>
+              <button
+                type="submit"
+                class="w-full btn text-lg text-white font-bold my-7"
+              >
+                Get Start
+              </button>
+            </div>
+          </form>
         </div>
-        <register-form />
       </div>
     </template>
   </Default>
@@ -20,3 +91,78 @@ import { Component, Vue } from "nuxt-property-decorator";
 })
 export default class extends Vue {}
 </script>
+
+<style>
+.width-form {
+  width: 1000px;
+}
+
+.register-container {
+  animation: slideleft-right 2s;
+}
+
+.signup-content {
+  background: url(../static/img/signup-cover1.jpg);
+  width: 500px;
+  z-index: 1;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+}
+
+.signup-content::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(54, 84, 99, 0.5);
+  z-index: -1;
+  display: block;
+  top: 0;
+  left: 0;
+}
+
+.content-register {
+  top: 0;
+  left: 0;
+  padding: 20px;
+}
+
+.signup-form {
+  width: 500px;
+}
+
+@keyframes slideleft-right {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
+
+@media (max-width:730px){
+.signup-content{
+  display: none;
+}
+
+.signup-form{
+  width: 70%;
+}
+.register-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+}
+
+@media (max-width: 820px){
+  .register-container{
+  width: 80%;
+}
+}
+</style>
