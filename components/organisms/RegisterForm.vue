@@ -1,30 +1,90 @@
 <template>
-  <div class="border p-3 flex justify-center mx-auto w-fit">
-    <div v-if="isRegister">
-      <h1>The account was created!!!</h1>
-    </div>
-    <div>
-      <div class="flex space-x-1">
-        <label for="">Fisrt Name:</label>
-        <input class="border border-gray-300" type="text" v-model="first_name"/>
+  <div
+    class="register fixed w-full min-h-screen flex justify-center items-center bg-gray-500/[0.6]"
+  >
+    <div
+      class="register-container width-form rounded-xl overflow-hidden relative flex"
+    >
+      <div v-if="isRegister">
+        <h1>The account was created!!!</h1>
       </div>
-      <div class="flex space-x-5">
-        <label for="">Last Name:</label>
-        <input class="border border-gray-300" type="text" v-model="last_name"/>
+      <div class="signup-content text-3xl font-bold text-white text-center">
+        <span class="content-register absolute"
+          >You have already signed up?
+          <a href="/login" class="register-item"
+            ><br />Sign In Now</a
+          >
+        </span>
       </div>
-      <div class="flex space-x-5">
-        <label for="">Email:</label>
-        <input class="border border-gray-300" type="email" v-model="email"/>
-      </div>
-      <div class="flex space-x-5">
-        <label for="">Username:</label>
-        <input class="border border-gray-300" type="text" v-model="username"/>
-      </div>
-      <div class="flex space-x-5">
-        <label for="">Password:</label>
-        <input class="border border-gray-300" type="password" v-model="password"/>
-      </div>
-      <button class="bg-blue-400 text-white p-2 rounded-lg" @click="signupHandle()">Submit</button>
+      <form
+        action=""
+        class="signup-form justify-center items-center flex bg-white"
+      >
+        <div class="">
+          <header class="title-signup text-3xl font-bold mt-7">
+            <span>Register Here!</span>
+          </header>
+          <div class="relative border-bottom my-7">
+            <input
+              type="text"
+              v-model="first_name"
+              class="login-input w-full px-1.5 h-10 text-lg border-none outline-none bg-none"
+              required
+            />
+            <label class="label-input top-2/4 absolute text-lg"
+              >First name:</label
+            >
+          </div>
+          <div class="relative border-bottom my-7">
+            <input
+              type="text"
+              v-model="last_name"
+              class="login-input w-full px-1.5 h-10 text-lg border-none outline-none bg-none"
+              required
+            />
+            <label class="label-input top-2/4 absolute text-lg"
+              >Last name:</label
+            >
+          </div>
+          <div class="relative border-bottom my-7">
+            <input
+              type="email"
+              v-model="email"
+              class="login-input w-full px-1.5 h-10 text-lg border-none outline-none bg-none"
+              required
+            />
+            <label class="label-input top-2/4 absolute text-lg">Email:</label>
+          </div>
+          <div class="relative border-bottom my-7">
+            <input
+              type="text"
+              v-model="username"
+              class="login-input w-full px-1.5 h-10 text-lg border-none outline-none bg-none"
+              required
+            />
+            <label class="label-input top-2/4 absolute text-lg"
+              >Username:</label
+            >
+          </div>
+          <div class="relative border-bottom my-7">
+            <input
+              type="password"
+              v-model="password"
+              class="login-input w-full px-1.5 h-10 text-lg border-none outline-none bg-none"
+              required
+            />
+            <label class="label-input top-2/4 absolute text-lg"
+              >Password:</label
+            >
+          </div>
+          <button
+            @click="signupHandle()"
+            class="w-full btn text-lg text-white font-bold my-7"
+          >
+            Get Start
+          </button>
+        </div>
+      </form>
     </div>
   </div>
 </template>
@@ -36,31 +96,105 @@ import axios from "axios";
   name: "RegisterForm",
 })
 export default class extends Vue {
-    first_name:String = ""
-    last_name:String = ""
-    email: String = ""
-    username: String = ""
-    password: String = ""
-    isRegister: Boolean = false
-    
-    async signupHandle() {
-      const data = {
-        'first_name': this.first_name,
-        'last_name': this.last_name,
-        'full_name': this.first_name + ' ' +this.last_name,
-        'email': this.email,
-        'username': this.username,
-        'password': this.password
-      }
-      try {
-        const res = await axios.post("http://localhost:5000/api/register/", data);
-        this.isRegister = true
-        setTimeout(window.location.href = ('/login'),5000)
-      }catch(err){
-        console.error;
-        console.log("Something's wrong!!!")
-      }
+  first_name: String = "";
+  last_name: String = "";
+  email: String = "";
+  username: String = "";
+  password: String = "";
+  isRegister: Boolean = false;
 
+  async signupHandle() {
+    const data = {
+      first_name: this.first_name,
+      last_name: this.last_name,
+      full_name: this.first_name + " " + this.last_name,
+      email: this.email,
+      username: this.username,
+      password: this.password,
+    };
+    try {
+      const res = await axios.post("http://localhost:5000/api/register/", data);
+      this.isRegister = true;
+      setTimeout((window.location.href = "/login"), 5000);
+    } catch (err) {
+      console.error;
+      console.log("Something's wrong!!!");
     }
+  }
 }
 </script>
+
+<style>
+.width-form {
+  width: 1000px;
+}
+
+.register-container {
+  animation: slideleft-right 2s;
+}
+
+.signup-content {
+  background: url(../../static/img/signup-cover1.jpg);
+  width: 500px;
+  z-index: 1;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+}
+
+.signup-content::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(54, 84, 99, 0.5);
+  z-index: -1;
+  display: block;
+  top: 0;
+  left: 0;
+}
+
+.content-register {
+  top: 0;
+  left: 0;
+  padding: 20px;
+}
+
+.signup-form {
+  width: 500px;
+}
+
+@keyframes slideleft-right {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
+
+@media (max-width:730px){
+.signup-content{
+  display: none;
+}
+
+.signup-form{
+  width: 70%;
+}
+.register-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+}
+
+@media (max-width: 820px){
+  .register-container{
+  width: 80%;
+}
+}
+</style>
