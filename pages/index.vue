@@ -13,6 +13,8 @@ import { Component, Vue } from "nuxt-property-decorator";
   name: "HomePage",
   layout: "rentcar-layout",
 })
-export default class extends Vue {}
+export default class extends Vue {
+
+}
 </script>
 

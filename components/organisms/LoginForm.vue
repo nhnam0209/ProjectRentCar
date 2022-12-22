@@ -1,5 +1,5 @@
 <template>
-      <div
+      <div 
         class="modal w-full min-h-screen flex justify-center items-center bg-gray-500/[0.6]"
       >
         <div
@@ -10,10 +10,10 @@
           >
             <span class="title-header-modal ppercase text-3xl font-bold">Sign In</span>
           </header>
-          <form class="login-form px-10 box-border">
+          <form class="login-form px-10 box-border" @submit.prevent="submitLogin()">
             <div class="relative border-bottom my-7">
               <input
-                type="text" v-model="username"
+                type="text" v-model="user.username"
                 class="login-input w-full px-1.5 h-10 text-lg border-none outline-none bg-none"
                 required
               />
@@ -24,7 +24,7 @@
 
             <div class="relative border-bottom my-7">
               <input
-                type="password" v-model="password"
+                type="password" v-model="user.password"
                 class="login-input w-full px-1.5 h-10 text-lg border-none outline-none bg-none"
                 required
               />
@@ -37,7 +37,7 @@
               Forgot Password?
             </div>
             <button
-              type="submit" @click="handleLogin()"
+              type="submit"
               class="w-full btn text-lg text-white font-bold"
             >
               Sign In
@@ -52,33 +52,29 @@
 </template>
 
 <script lang="ts">
-import axios from "axios";
 import { Component, Vue } from "nuxt-property-decorator";
 @Component({
   name: "LoginForm",
 })
 export default class extends Vue {
-    username: String = ""
-    password: String = ""
+    msg=''
     isLogin: Boolean = false
+  
+    get user() {
+      return this.$vxm.user.userLogin
+    }
 
-    async handleLogin() {
-      const data = {
-       'username': this.username,
-       'password': this.password,
-      }
+    set user(value:any) {
+      this.$vxm.user.setUserLogin(value)
+    }
+
+    async submitLogin() {
       try {
-        const res = await axios.post("http://localhost:5000/api/login/", data)
-        if(res.data.is_admin){
-          setTimeout(window.location.href = ('/dashboard'),5000)
-        } else {
-           setTimeout(window.location.href = ('/'),5000)
-        }
-        // this.isLogin = true
-        // setTimeout(window.location.href = ('/'),5000)
-      }catch(err) {
-        console.error;
-        console.log("Something's wrong!!!")
+        this.$vxm.user.handleLogin()
+        this.$router.push('/')
+        setTimeout("location.reload(true)",100)
+      } catch (error:any) {
+        this.msg = error
       }
     }
 }

@@ -24,6 +24,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    '~/plugins/store_proxy'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -31,7 +32,7 @@ export default {
   components: [
     '../ProjectRentCar/components/atoms/',
     '../ProjectRentCar/components/',
-    '../ProjectRentCar/components/logo/',
+    '../ProjectRentCar/components/logos/',
     '../ProjectRentCar/components/molecules/',
     '../ProjectRentCar/components/organisms/',
     '../ProjectRentCar/layout/',
