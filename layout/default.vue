@@ -6,7 +6,9 @@
     <slot name="content">
       <Nuxt />
     </slot>
-    <slot name="footer"> </slot>
+    <slot name="footer"> 
+      <Footer></Footer>
+    </slot>
   </div>
 </template>
 <script lang="ts">

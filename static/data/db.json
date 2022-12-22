@@ -1,0 +1,13 @@
+{
+    "usersinfo" :[
+       {"id":1,"first-name": "Daniel","last-name": "Atlas","email": "Daniel@123","password":"Daniel@123"}, 
+       {"id":2,"first-name": "Dylan","last-name": "Rhodes","email": "Dylan@123","password":"Dylan@123"},
+       {"id":3,"first-name": "Merritt","last-name": "McKinney","email": "Merritt@123","password":"Merritt@123"},
+       {"id":4,"first-name": "Jack","last-name": "Wilder","email": "Jack@123","password":"Jack@123"},
+       {"id":5,"first-name": "Henly","last-name": "Reeves","email": "Henly@123","password":"Henly@123"},
+       {"id":6,"first-name": "Arthur","last-name": "Tressler","email": "Arthur@123","password":"Arthur@123"},
+       {"id":7,"first-name": "Lula","last-name": "","email": "Lula@123","password":"Lula@123"}
+    ]
+}
+
+
