@@ -1,11 +1,13 @@
 <template>
-  <div class="nav-menu-content">
-    <div @mouseenter="handleHover()" @mouseleave="" class="cursor-pointer">
+  <div class="py-2 z-50">
+    <div @click="handleHover()" class="cursor-pointer">
       {{ username }}
     </div>
-    <div v-if="isHover" class="bg-green-300 container">
-      <div class="sub-menu-container">
-        <NuxtLink class="navbar-items" to="/">Profile</NuxtLink>
+    <div v-if="isHover" class="bg-green-300 absolute top-[50px] right-5">
+      <div class="py-2 rounded-md">
+        <NuxtLink class="navbar-items cursor-pointer z-50" to="/dashboard"
+          >Profile</NuxtLink
+        >
         <!-- <NuxtLink class="navbar-items" to="/">Home</NuxtLink> -->
         <div class="navbar-items cursor-pointer" @click="handleLogOut">
           Logout
@@ -22,8 +24,10 @@ import { EMPTY } from "~/utils/constant";
 })
 export default class extends Vue {
   @Prop({ type: Object }) userInfo!: any;
+  @Prop({ type: Boolean }) isAdmin!: Boolean;
   isHover: Boolean = false;
   username: String = EMPTY;
+  res: Object = {};
 
   mounted() {
     this.username = this.userInfo.username;
@@ -35,10 +39,20 @@ export default class extends Vue {
       this.isHover = false;
     }
   }
+  handleMouseLeave() {
+    if (this.isHover) {
+      this.isHover = false;
+    }
+  }
   handleLogOut() {
-    this.$vxm.user.handleLogOut();
-    window.location.reload()
-    this.$router.push("/");
+    try {
+      this.$vxm.user.handleLogOut();
+      this.$router.push("/");
+      setTimeout("location.reload(true)", 100);
+    } catch (error) {
+      this.$router.push("/");
+      setTimeout("location.reload(true)", 100);
+    }
   }
 }
 </script>
@@ -48,13 +62,13 @@ export default class extends Vue {
   position: relative;
 }
 
-div.submenu-container {
+.submenu-container {
   margin: 0 0 0 7px;
 }
 .nav-menu-content .container::after {
   content: "";
   position: absolute;
-  top: -40px;
+  top: 0;
   right: 0;
   left: 0;
   height: 80px;

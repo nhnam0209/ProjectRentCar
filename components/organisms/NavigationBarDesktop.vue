@@ -27,7 +27,7 @@
           <NuxtLink class="navbar-items" to="/register">Sign Up</NuxtLink>
         </button>
       </div>
-      <div v-else class="px-5 relative">
+      <div v-else class="px-5">
         <sub-navigation class="" :user-info="userInfo" />
       </div>
     </div>
@@ -35,7 +35,6 @@
 </template>
 <script lang="ts">
 import { Component, Vue } from "nuxt-property-decorator";
-import { EMPTY } from "~/utils/constant";
 import axios from "../../utils/myAxios";
 
 @Component({
@@ -43,22 +42,47 @@ import axios from "../../utils/myAxios";
 })
 export default class extends Vue {
   isLogin: Boolean = false;
-  userInfo: any = {}
+  userInfo: any = {};
+
+  get user() {
+    console.log();
+    return this.$vxm.user.userInfo;
+  }
+
+  set user(value: any) {
+    this.$vxm.user.setUserLogin(value);
+  }
+
+  get isAdmin() {
+    return this.$vxm.user.isAdmin;
+  }
 
   async created() {
     try {
       if (document.cookie) {
-        const res = await axios.get(
-          "http://localhost:5000/api/auth/verifylogin",
-          {
-            headers: {
-              Authorization: `${document.cookie}`,
-            },
-          }
-        );
-        this.isLogin = true;
-        this.userInfo = res.data.data;
-        console.log(res.data);
+        if (this.isAdmin) {
+          const res = await axios.get(
+            "http://localhost:5000/api/auth/verifyloginAdmin",
+            {
+              headers: {
+                Authorization: `${document.cookie}`,
+              },
+            }
+          );
+          this.isLogin = true;
+          this.userInfo = res.data.data;
+        } else {
+          const res = await axios.get(
+            "http://localhost:5000/api/auth/verifylogin",
+            {
+              headers: {
+                Authorization: `${document.cookie}`,
+              },
+            }
+          );
+          this.isLogin = true;
+          this.userInfo = res.data.data;
+        }
       }
     } catch (error) {
       this.isLogin = false;

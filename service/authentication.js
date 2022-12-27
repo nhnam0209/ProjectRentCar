@@ -1,7 +1,26 @@
-import axios from "axios";
+import axios from "~/utils/myAxios";
 
-const baseURL = 'http://localhost:5000/api/'
+const BASE_URL = "http://localhost:5000/api/";
 
 export default {
-    baseURL
-}
+  async checkAdmin(isLogin, userInfo) {
+    try {
+      if (document.cookie) {
+        const res = await axios.get(BASE_URL + "auth/verifyloginAdmin", {
+          headers: {
+            Authorization: `${document.cookie}`,
+          },
+        });
+        isLogin = true;
+        userInfo = res.data.data;
+      } else {
+        this.$router.push("/login");
+        setTimeout("location.reload(true)", 100);
+      }
+    } catch (error) {
+      isLogin = false;
+      this.$router.push("/login");
+      setTimeout("location.reload(true)", 100);
+    }
+  },
+};
