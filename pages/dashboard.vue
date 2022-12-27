@@ -1,24 +1,17 @@
 <template>
-  <Default>
-    <template #content>
-      <div class="">
-        <div>
-          <h1 class="uppercase text-center">Welcome to Dashboard</h1>
-        </div>
-        <div>
-          <search-form class="mx-auto "/>
-        </div>
-      </div>
-    </template>
-  </Default>
+  <dashboard-table>
+  </dashboard-table>
 </template>
 
 <script lang="ts">
+import { anyTypeAnnotation } from "@babel/types";
 import { Component, Vue } from "nuxt-property-decorator";
-
+import DashboardTable from "~/components/organisms/DashboardTable.vue";
 @Component({
+  components: { DashboardTable },
   name: "Dashboard",
   layout: "rentcar-layout",
 })
-export default class extends Vue {}
+export default class extends Vue {
+}
 </script>
