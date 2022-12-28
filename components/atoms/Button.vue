@@ -13,7 +13,6 @@ export default class extends Vue {
     @Prop({type: String}) nameBtn !:string
 
     @Emit()
-        
     btnClick(){
         return this.btnClick
     }

@@ -17,18 +17,18 @@
         </span>
       </div>
       <form
-        action=""
         class="signup-form justify-center items-center flex bg-white"
+        @submit.prevent="signupHandle()"
       >
         <div class="">
           <header class="title-signup text-3xl font-bold mt-7">
             <span>Register Here!</span>
           </header>
           <div class="relative border-bottom my-7">
-            <Input
-              typeInput="text"
-              v-model="first_name"
-              class="input-focus w-full px-1.5 h-10 text-lg border-none outline-none bg-none"
+            <input
+              type="text"
+              v-model="user.first_name"
+              class="login-input w-full px-1.5 h-10 text-lg border-none outline-none bg-none"
               required
             />
             <label class="label-input top-2/4 absolute text-lg"
@@ -36,10 +36,10 @@
             >
           </div>
           <div class="relative border-bottom my-7">
-            <Input
-              typeInput="text"
-              v-model="last_name"
-              class="input-focus w-full px-1.5 h-10 text-lg border-none outline-none bg-none"
+            <input
+              type="text"
+              v-model="user.last_name"
+              class="login-input w-full px-1.5 h-10 text-lg border-none outline-none bg-none"
               required
             />
             <label class="label-input top-2/4 absolute text-lg"
@@ -47,19 +47,19 @@
             >
           </div>
           <div class="relative border-bottom my-7">
-            <Input
-              typeInput="email"
-              v-model="email"
-              class="input-focus w-full px-1.5 h-10 text-lg border-none outline-none bg-none"
+            <input
+              type="email"
+              v-model="user.email"
+              class="login-input w-full px-1.5 h-10 text-lg border-none outline-none bg-none"
               required
             />
             <label class="label-input top-2/4 absolute text-lg">Email:</label>
           </div>
           <div class="relative border-bottom my-7">
-            <Input
-              typeInput="text"
-              v-model="username"
-              class="input-focus w-full px-1.5 h-10 text-lg border-none outline-none bg-none"
+            <input
+              type="text"
+              v-model="user.username"
+              class="login-input w-full px-1.5 h-10 text-lg border-none outline-none bg-none"
               required
             />
             <label class="label-input top-2/4 absolute text-lg"
@@ -67,19 +67,19 @@
             >
           </div>
           <div class="relative border-bottom my-7">
-            <Input
-              typeInput="password"
-              v-model="password"
-              class="input-focus w-full px-1.5 h-10 text-lg border-none outline-none bg-none"
+            <input
+              type="password"
+              v-model="user.password"
+              class="login-input w-full px-1.5 h-10 text-lg border-none outline-none bg-none"
               required
             />
             <label class="label-input top-2/4 absolute text-lg"
               >Password:</label
             >
           </div>
-          <Button
-            @btn-click="signupHandle()" nameBtn="Get Start"
-            class="btn-assent w-full"
+          <button
+            type="submit"
+            class="w-full btn text-lg text-white font-bold my-7"
           >
           </Button>
         </div>
@@ -90,36 +90,33 @@
 
 <script lang="ts">
 import { Component, Vue } from "nuxt-property-decorator";
-import axios from "axios";
 @Component({
   name: "RegisterForm",
 })
 export default class extends Vue {
-  first_name: String = "";
-  last_name: String = "";
-  email: String = "";
-  username: String = "";
-  password: String = "";
-  isRegister: Boolean = false;
+    isRegister: Boolean = false
+    msg = ""
 
-  async signupHandle() {
-    const data = {
-      first_name: this.first_name,
-      last_name: this.last_name,
-      full_name: this.first_name + " " + this.last_name,
-      email: this.email,
-      username: this.username,
-      password: this.password,
-    };
-    try {
-      const res = await axios.post("http://localhost:5000/api/register/", data);
-      this.isRegister = true;
-      setTimeout((window.location.href = "/login"), 5000);
-    } catch (err) {
-      console.error;
-      console.log("Something's wrong!!!");
+    get user() {
+      return this.$vxm.user.userInfo
     }
-  }
+
+    set user(value:any) {
+      this.$vxm.user.setUserInfo(value)
+    }
+
+    mounted(){
+      console.log(this.user)
+    }
+    
+    async signupHandle() {
+      try {
+        this.$vxm.user.handleRegister()
+        this.$router.push('/login')
+      } catch (error:any) {
+        this.msg = error
+      }
+    }
 }
 </script>
 
