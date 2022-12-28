@@ -7,13 +7,13 @@
             </div>
             <div class="button-group flex justify-between">
                 <div class="">
-                    <Button @btn-click="toogleIsActive()" class="btn-assent" nameBtn="Update">
-                    </Button>
+                    <RButton @btn-click="toogleIsActive()" class="btn-assent" nameBtn="Update">
+                    </RButton>
                     <ModalUpdate v-if="isActive" ></ModalUpdate>
                 </div>
                 <div class="">
-                    <Button @btn-click="toogleIsActiveDelete()" class="btn-close" nameBtn="Delete">
-                    </Button>
+                    <RButton @btn-click="toogleIsActiveDelete()" class="btn-close" nameBtn="Delete">
+                    </RButton>
                     <ModalAlert v-if="isActive_delete" ></ModalAlert>
                 </div>
             </div>

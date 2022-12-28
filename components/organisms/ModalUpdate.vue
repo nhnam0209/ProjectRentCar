@@ -42,8 +42,8 @@
         </div>
       </div>
       <div class="button-group flex justify-between w-full px-7">
-          <Button class="btn-assent" nameBtn="Update"></Button>
-          <Button class="btn-close" nameBtn="Close"></Button>
+          <RButton class="btn-assent" nameBtn="Update"></RButton>
+          <RButton class="btn-close" nameBtn="Close" @btn-click="toogleIsActive()"></RButton>
       </div>
     </form>
   </div>
@@ -56,7 +56,14 @@ import { Component, Vue } from "nuxt-property-decorator";
 })
 export default class extends Vue {
   isActive: Boolean = false;
-  
+  toogleIsActive(){
+        if(this.isActive == true) {
+            this.isActive = false
+        }
+        else {
+            this.isActive = true
+        }
+    };
 }
 </script>
 

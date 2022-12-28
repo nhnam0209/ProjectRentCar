@@ -7,13 +7,11 @@
 <script lang="ts">
 import {Component,Emit,Prop,Vue} from 'nuxt-property-decorator';
 @Component({
-    name: "Button"
+    name: "RButton"
 })
 export default class extends Vue {
     @Prop({type: String}) nameBtn !:string
-
-    @Emit()
-        
+    @Emit()   
     btnClick(){
         return this.btnClick
     }

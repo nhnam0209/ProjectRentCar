@@ -24,6 +24,8 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    '~/plugins/store_proxy',
+    '~/plugins/index'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -31,7 +33,7 @@ export default {
   components: [
     '../ProjectRentCar/components/atoms/',
     '../ProjectRentCar/components/',
-    '../ProjectRentCar/components/logo/',
+    '../ProjectRentCar/components/logos/',
     '../ProjectRentCar/components/molecules/',
     '../ProjectRentCar/components/organisms/',
     '../ProjectRentCar/layout/',
@@ -45,18 +47,16 @@ export default {
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
     '@nuxtjs/axios',
-    '@nuxtjs/fontawesome',
+    '@nuxtjs/fontawesome'
   ],
-
   fontawesome: {
     component: 'fa',
     icons: {
       solid: true,
       brands: true,
       regular: true,
-    },
-},
-
+    }
+  },
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     '@nuxtjs/axios'

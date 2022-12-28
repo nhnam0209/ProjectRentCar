@@ -6,7 +6,7 @@
     <slot name="content">
       <Nuxt />
     </slot>
-    <slot name="footer"> 
+    <slot name="footer">
       <Footer></Footer>
     </slot>
   </div>
