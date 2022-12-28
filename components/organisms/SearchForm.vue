@@ -35,7 +35,7 @@
                   <div class="icon-pickup-input flex justify-center items-center">
                     <fa class="icon-pickup" :icon="['fas', 'location-pin']" />
                   </div>
-                  <input type="text" class="label-input w-full " placeholder="Pick up & Return location">
+                  <Input typeInput="text" class="label-input" placeholderInput="Pick up & Return location"/>
                 </div>
               </div>
 
@@ -49,10 +49,10 @@
                       <fa class="icon-pickup" :icon="['fas', 'calendar']" />
                     </div>
                     <div class="input-date flex justify-center items-center">
-                      <input type="text" class="label-input label-input-date partition w-full" placeholder="Return date">
+                      <Input typeInput="text" class="label-input label-input-date partition w-full" placeholderInput="Return date"/>
                     </div>
                     <div class="input-time flex justify-center items-center">
-                      <input type="text" class=" label-input label-input-time w-full" placeholder="Time">
+                      <Input typeInput="text" class=" label-input label-input-time w-full" placeholderInput="Time"/>
                     </div>
                   </div>
                 </div>
@@ -66,10 +66,10 @@
                       <fa class="icon-pickup" :icon="['fas', 'calendar']" />
                     </div>
                     <div class="input-date flex justify-center items-center">
-                      <input type="text" class="label-input label-input-date partition w-full" placeholder="Return date">
+                      <Input typeInput="text" class="label-input label-input-date partition" placeholderInput="Return date"/>
                     </div>
                     <div class="input-time flex justify-center items-center">
-                      <input type="text" class="label-input label-input-time w-full" placeholder="Time">
+                      <Input typeInput="text" class="label-input label-input-time" placeholderInput="Time"/>
                     </div>
                   </div>
                 </div>
@@ -172,14 +172,6 @@ export default class extends Vue {
   padding-right: 15px;
 }
 
-.station-input-pickup:first-child{
-  margin-right: 20px;
-}
-
-.station-input-pickup:last-child{
-  margin-left: 20px;
-}
-
 .pickup-input{
   border: 1px solid rgb(107 114 128);
   border-radius: 12px;
@@ -191,21 +183,6 @@ export default class extends Vue {
   padding: 0 10px;
   font-size: 20px;
   color: #00a550;
-}
-
-.label-input{
-  height: 100%;
-  outline: none;
-  border: none;
-  z-index: 1;
-}
-
-.label-input-date{
-  border-right: 1px solid rgb(107 114 128);
-}
-
-.input-time{
-  padding-left: 6px;
 }
 
 .info-label{

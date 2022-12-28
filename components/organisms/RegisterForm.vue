@@ -25,10 +25,10 @@
             <span>Register Here!</span>
           </header>
           <div class="relative border-bottom my-7">
-            <input
-              type="text"
+            <Input
+              typeInput="text"
               v-model="first_name"
-              class="login-input w-full px-1.5 h-10 text-lg border-none outline-none bg-none"
+              class="input-focus w-full px-1.5 h-10 text-lg border-none outline-none bg-none"
               required
             />
             <label class="label-input top-2/4 absolute text-lg"
@@ -36,10 +36,10 @@
             >
           </div>
           <div class="relative border-bottom my-7">
-            <input
-              type="text"
+            <Input
+              typeInput="text"
               v-model="last_name"
-              class="login-input w-full px-1.5 h-10 text-lg border-none outline-none bg-none"
+              class="input-focus w-full px-1.5 h-10 text-lg border-none outline-none bg-none"
               required
             />
             <label class="label-input top-2/4 absolute text-lg"
@@ -47,19 +47,19 @@
             >
           </div>
           <div class="relative border-bottom my-7">
-            <input
-              type="email"
+            <Input
+              typeInput="email"
               v-model="email"
-              class="login-input w-full px-1.5 h-10 text-lg border-none outline-none bg-none"
+              class="input-focus w-full px-1.5 h-10 text-lg border-none outline-none bg-none"
               required
             />
             <label class="label-input top-2/4 absolute text-lg">Email:</label>
           </div>
           <div class="relative border-bottom my-7">
-            <input
-              type="text"
+            <Input
+              typeInput="text"
               v-model="username"
-              class="login-input w-full px-1.5 h-10 text-lg border-none outline-none bg-none"
+              class="input-focus w-full px-1.5 h-10 text-lg border-none outline-none bg-none"
               required
             />
             <label class="label-input top-2/4 absolute text-lg"
@@ -67,10 +67,10 @@
             >
           </div>
           <div class="relative border-bottom my-7">
-            <input
-              type="password"
+            <Input
+              typeInput="password"
               v-model="password"
-              class="login-input w-full px-1.5 h-10 text-lg border-none outline-none bg-none"
+              class="input-focus w-full px-1.5 h-10 text-lg border-none outline-none bg-none"
               required
             />
             <label class="label-input top-2/4 absolute text-lg"
@@ -79,7 +79,7 @@
           </div>
           <Button
             @btn-click="signupHandle()" nameBtn="Get Start"
-            class="w-full btn text-lg text-white font-bold my-7"
+            class="btn-assent w-full"
           >
           </Button>
         </div>
