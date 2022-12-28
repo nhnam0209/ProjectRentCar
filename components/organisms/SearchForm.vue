@@ -33,7 +33,7 @@
                 </div>
                 <div class="pickup-input flex ">
                   <div class="icon-pickup-input flex justify-center items-center">
-                    <fa class="icon-pickup" :icon="['fas', 'location-pin']" />
+                    <icon-location-pin class="icon-pickup"></icon-location-pin>
                   </div>
                   <Input typeInput="text" class="label-input" placeholderInput="Pick up & Return location"/>
                 </div>
@@ -46,7 +46,7 @@
                   </div>
                   <div class="pickup-input flex justify-center">
                     <div class="icon-pickup-input flex justify-center items-center">
-                      <fa class="icon-pickup" :icon="['fas', 'calendar']" />
+                      <icon-date-time class="icon-pickup"></icon-date-time>
                     </div>
                     <div class="input-date flex justify-center items-center">
                       <Input typeInput="text" class="label-input label-input-date partition w-full" placeholderInput="Return date"/>
@@ -63,7 +63,7 @@
                   </div>
                   <div class="pickup-input flex justify-center">
                     <div class="icon-pickup-input flex justify-center items-center">
-                      <fa class="icon-pickup" :icon="['fas', 'calendar']" />
+                      <icon-date-time class="icon-pickup"></icon-date-time>
                     </div>
                     <div class="input-date flex justify-center items-center">
                       <Input typeInput="text" class="label-input label-input-date partition" placeholderInput="Return date"/>
@@ -81,18 +81,18 @@
             <div class="info-customer-age-country">
               <div class="age-customer flex justify-center items-center">
                 <span class="info-label text-lg">I am</span>
-                <div class="select-age">
+                <div class="select-age flex">
                   <span class="age-label font-bold">26+</span>
-                  <fa class="icon-pickup" :icon="['fas', 'caret-down']" />
+                  <icon-caret-down class="icon-pickup"></icon-caret-down>
                 </div>
               </div>
             </div>
             <div class="info-customer-age-country">
               <div class="country-customer flex justify-center items-center">
                 <span class="info-label text-lg">I live in</span>
-                <div class="select-country">
+                <div class="select-country flex">
                   <span class="country-label font-bold"> Viet Nam</span>
-                  <fa class="icon-pickup" :icon="['fas', 'caret-down']" />
+                  <icon-caret-down class="icon-pickup"></icon-caret-down>
                 </div>
               </div>
             </div>
@@ -109,7 +109,11 @@
 
 <script lang="ts">
 import { Component, Vue } from "nuxt-property-decorator";
+import IconCaretDown from "../logos/iconCaretDown.vue";
+import IconDateTime from "../logos/iconDateTime.vue";
+import iconLocationPin from "../logos/iconLocationPin.vue";
 @Component({
+  components: { iconLocationPin, IconCaretDown, IconDateTime },
   name: "SearchBar",
 })
 export default class extends Vue {
@@ -192,6 +196,8 @@ export default class extends Vue {
 .icon-pickup{
   color: #00a550;
   cursor: pointer;
+  height: 16px;
+  width: 16px;
 }
 
 @keyframes slidein-Homepage {

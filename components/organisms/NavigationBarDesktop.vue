@@ -17,15 +17,19 @@
         </div>
       </div>
       <div class="navbar-list-icons flex items-center justify-center">
-        <fa class="navbar-icons" :icon="['fas', 'house']" />
-        <fa class="navbar-icons" :icon="['fas', 'right-to-bracket']" />
-        <fa class="navbar-icons" :icon="['fas', 'registered']" />
+        <icon-home class="navbar-icons"></icon-home>
+        <icon-login class="navbar-icons"></icon-login>
+        <icon-register class="navbar-icons"></icon-register>
       </div>
     </nav>
 </template>
 <script lang="ts">
 import { Component, Vue } from "nuxt-property-decorator";
+import iconHome from "../logos/iconHome.vue";
+import IconLogin from "../logos/iconLogin.vue";
+import IconRegister from "../logos/iconRegister.vue";
 @Component({
+  components: { iconHome, IconLogin, IconRegister },
   name: "NavigationBarDesktop",
 })
 export default class extends Vue {}
@@ -88,7 +92,8 @@ export default class extends Vue {}
 }
 
 .navbar-icons{
-  font-size: 30px;
+  height: 30px;
+  width: 30px;
   margin: 0 20px;
 }
 
