@@ -1,89 +1,95 @@
 <template>
-      <div
-        class="modal w-full min-h-screen flex justify-center items-center bg-gray-500/[0.6]"
+  <div
+    class="modal w-full min-h-screen flex justify-center items-center bg-gray-500/[0.6]"
+  >
+    <div class="modal-container bg-white rounded-xl overflow-hidden relative">
+      <header
+        class="modal-header bg-header-login bg-center bg-cover bg-no-repeat relative text-white flex items-center justify-center text-2xl"
       >
-        <div
-          class="modal-container bg-white rounded-xl overflow-hidden relative"
+        <span class="title-header-modal ppercase text-3xl font-bold"
+          >Sign In</span
         >
-          <header
-            class="modal-header bg-header-login bg-center bg-cover bg-no-repeat relative text-white flex items-center justify-center text-2xl"
-          >
-            <span class="title-header-modal ppercase text-3xl font-bold">Sign In</span>
-          </header>
-          <form class="login-form px-10 box-border">
-            <div class="relative border-bottom my-7">
-              <input
-                type="text" v-model="username"
-                class="login-input w-full px-1.5 h-10 text-lg border-none outline-none bg-none"
-                required
-              />
-              <label class="label-input top-2/4 absolute text-lg"
-                >Username:</label
-              >
-            </div>
-
-            <div class="relative border-bottom my-7">
-              <input
-                type="password" v-model="password"
-                class="login-input w-full px-1.5 h-10 text-lg border-none outline-none bg-none"
-                required
-              />
-              <label class="label-input top-2/4 absolute text-lg"
-                >Password:</label
-              >
-            </div>
-
-            <div class="forget-pass text-gray-400 cursor-pointer my-3">
-              Forgot Password?
-            </div>
-            <button
-              type="submit" @click="handleLogin()"
-              class="w-full btn text-lg text-white font-bold"
-            >
-              Sign In
-            </button>
-            <div class="register-link my-5 text-lg text-gray-500">
-              No account yet?
-              <a href="/register" class="register-item text-black">Sign Up</a>
-            </div>
-          </form>
+      </header>
+      <form class="login-form px-10 box-border" @submit.prevent="submitLogin()">
+        <div class="relative border-bottom my-7">
+          <input
+            type="text"
+            v-model="user.username"
+            class="login-input w-full px-1.5 h-10 text-lg border-none outline-none bg-none"
+            required
+          />
+          <label class="label-input top-2/4 absolute text-lg">Username:</label>
         </div>
-      </div>
+
+        <div class="relative border-bottom my-7">
+          <input
+            type="password"
+            v-model="user.password"
+            class="login-input w-full px-1.5 h-10 text-lg border-none outline-none bg-none"
+            required
+          />
+          <label class="label-input top-2/4 absolute text-lg">Password:</label>
+        </div>
+
+        <div class="forget-pass text-gray-400 cursor-pointer my-3">
+          Forgot Password?
+        </div>
+        <button type="submit" class="w-full btn text-lg text-white font-bold">
+          Sign In
+        </button>
+        <div class="register-link my-5 text-lg text-gray-500">
+          No account yet?
+          <a href="/register" class="register-item text-black">Sign Up</a>
+        </div>
+      </form>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
-import axios from "axios";
 import { Component, Vue } from "nuxt-property-decorator";
 @Component({
   name: "LoginForm",
 })
 export default class extends Vue {
-    username: String = ""
-    password: String = ""
-    isLogin: Boolean = false
+  msg = "";
+  isLogin: Boolean = false;
 
-    async handleLogin() {
-      const data = {
-       'username': this.username,
-       'password': this.password,
+  async submitLogin() {
+    try {
+      this.$vxm.user.handleLogin();
+      setTimeout("location.reload(true)", 100);
+      if (this.isAdmin || this.user.username == "admin") {
+        this.$router.push("/dashboardadmin");
+        setTimeout("location.reload(true)", 100);
+      } else {
+        this.$router.push("/");
+        setTimeout("location.reload(true)", 100);
       }
-      try {
-        const res = await axios.post("http://localhost:5000/api/login/", data)
-        if(res.data.is_admin){
-          setTimeout(window.location.href = ('/dashboard'),5000)
-        } else {
-           setTimeout(window.location.href = ('/'),5000)
-        }
-        // this.isLogin = true
-        // setTimeout(window.location.href = ('/'),5000)
-      }catch(err) {
-        console.error;
-        console.log("Something's wrong!!!")
-      }
+    } catch (error: any) {
+      this.msg = error;
+      console.log(this.msg);
     }
+  }
+
+  get user() {
+    return this.$vxm.user.userLogin;
+  }
+
+  set user(value: any) {
+    this.$vxm.user.setUserLogin(value);
+  }
+
+  get isAdmin() {
+    // console.log(this.$vxm.user.isAdmin);
+    return this.$vxm.user.isAdmin;
+  }
+
+  set isAdmin(value: any) {
+    this.$vxm.user.setIsAdmin(value);
+  }
 }
 </script>
-
 
 <style>
 .modal {
@@ -102,7 +108,7 @@ export default class extends Vue {
   z-index: 1;
 }
 
-.bg-header-login{
+.bg-header-login {
   background-image: url(../../static/img/login-cover.jpg);
   height: 200px;
 }
@@ -159,7 +165,7 @@ export default class extends Vue {
 
 .register-item:hover {
   text-decoration: underline;
-  color:#00a550;
+  color: #00a550;
 }
 
 @keyframes slidein {
@@ -174,31 +180,31 @@ export default class extends Vue {
   }
 }
 
-@media(max-width: 820px){
- .modal-container{
-  width: 70%;
- }
+@media (max-width: 820px) {
+  .modal-container {
+    width: 70%;
+  }
 }
 
-@media(max-width: 430px){
-  .modal-container{
-  height: 70%;
- }
-  
-  .bg-header-login{
+@media (max-width: 430px) {
+  .modal-container {
+    height: 70%;
+  }
+
+  .bg-header-login {
     background-color: #000;
     background: none;
   }
 
-  .title-header-modal{
+  .title-header-modal {
     font-size: 26px;
   }
 
-  .label-input{
+  .label-input {
     font-size: 18px;
   }
 
-  .register-link{
+  .register-link {
     font-size: 18px;
   }
 }
