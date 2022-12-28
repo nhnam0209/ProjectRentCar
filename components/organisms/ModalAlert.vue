@@ -1,5 +1,5 @@
 <template>
-    <div class="background-modal block" :class="{'background-modal-close': isActive}">
+    <div class="background-modal block" :class="{'modal-close': isActive}">
         <form class="alert_box flex justify-center items-center flex-col bg-white rounded-xl shadow-xl">
         <div class="icon">
             <fa class="" :icon="['fas', 'exclamation']" />
@@ -7,8 +7,8 @@
         <header class="font-bold text-xl py-4">Confirm</header>
         <p class="text-lg">Are you sure to  delete this User(Car)?</p>
         <div class="btns flex justify-between items-center p-4 w-full">
-          <Button class="btn-assent" nameBtn="Yes, Delete!"></Button>
-          <Button class="btn-close" @btn-click="toogleIsActive()" nameBtn="Cancel"></Button>
+          <RButton class="btn-assent" nameBtn="Yes, Delete!"></RButton>
+          <RButton class="btn-close" @btnClick="toogleIsActive()" nameBtn="Cancel"></RButton>
         </div>
       </form>
     </div>
@@ -45,6 +45,10 @@
     justify-content: center;
     display: flex;
     z-index: 2;
+  }
+
+  .modal-close{
+    display: none;
   }
 
   .alert_box{

@@ -6,35 +6,35 @@
           <span>Add More Users</span>
         </header>
         <div class="relative border-bottom my-7">
-          <Input
+          <RInput
             typeInput="text"
             class="input-focus"
           />
           <label class="label-input top-2/4 absolute text-lg">First name:</label>
         </div>
         <div class="relative border-bottom my-7">
-          <Input
+          <RInput
             typeInput="text"
             class="input-focus"
           />
           <label class="label-input top-2/4 absolute text-lg">Last name:</label>
         </div>
         <div class="relative border-bottom my-7">
-          <Input
+          <RInput
             typeInput="email"
             class="input-focus"
           />
           <label class="label-input top-2/4 absolute text-lg">Email:</label>
         </div>
         <div class="relative border-bottom my-7">
-          <Input
+          <RInput
             typeInput="text"
             class="input-focus"
           />
           <label class="label-input top-2/4 absolute text-lg">Username:</label>
         </div>
         <div class="relative border-bottom my-7">
-          <Input
+          <RInput
             typeInput="password"
             class="input-focus"
           />

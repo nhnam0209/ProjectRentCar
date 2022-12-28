@@ -5,7 +5,7 @@
 <script lang="ts">
 import {Component,Emit,Prop,Vue} from 'nuxt-property-decorator';
 @Component({
-    name: "Input"
+    name: "RInput"
 })
 export default class extends Vue {
     @Prop({type: String}) typeInput !:string
