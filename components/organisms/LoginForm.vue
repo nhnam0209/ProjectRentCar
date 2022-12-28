@@ -36,12 +36,11 @@
             <div class="forget-pass text-gray-400 cursor-pointer my-3">
               Forgot Password?
             </div>
-            <button
-              type="submit" @click="handleLogin()"
+            <Button
+              type="submit" @btn-click="handleLogin()" nameBtn = "Sign In"
               class="w-full btn text-lg text-white font-bold"
             >
-              Sign In
-            </button>
+            </Button>
             <div class="register-link my-5 text-lg text-gray-500">
               No account yet?
               <a href="/register" class="register-item text-black">Sign Up</a>
@@ -145,16 +144,6 @@ export default class extends Vue {
 
 .forget-pass:hover {
   text-decoration: underline;
-}
-
-.btn {
-  height: 50px;
-  background: #00a550;
-}
-
-.btn:hover {
-  background: #009548;
-  transition: 0.5s;
 }
 
 .register-item:hover {

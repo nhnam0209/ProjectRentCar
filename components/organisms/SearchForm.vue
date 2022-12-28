@@ -98,7 +98,7 @@
             </div>
             <div class="flex justify-center items-center">
               <div class="button-search flex justify-center items-center">
-                <button class="btn-search text-lg font-bold">Search</button>
+                <Button class="btn-search text-black" nameBtn="Search"></Button>
               </div>
             </div>
           </div>
@@ -217,19 +217,6 @@ export default class extends Vue {
   cursor: pointer;
 }
 
-.button-search{
-  width: 260px;
-  height: 50px;
-  background: #ffdc00;
-  border: 1px solid rgb(107 114 128);
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.btn-search{
-  width: 100%;
-  height: 100%;
-}
 @keyframes slidein-Homepage {
   from {
     transform: translateY(-100%);

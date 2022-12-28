@@ -5,17 +5,15 @@
                 <UsersTable></UsersTable>
                 <CarsTable></CarsTable>
             </div>
-            <div class="button flex">
+            <div class="button-group flex justify-between">
                 <div class="">
-                    <button @click="toogleIsActive()" class="btn  btn-update text-white m-6">
-                        Update
-                    </button>
+                    <Button @btn-click="toogleIsActive()" class="btn-assent" nameBtn="Update">
+                    </Button>
                     <ModalUpdate v-if="isActive" ></ModalUpdate>
                 </div>
                 <div class="">
-                    <button @click="toogleIsActiveDelete()" class="btn btn-close text-white m-6">
-                        Delete
-                    </button>
+                    <Button @btn-click="toogleIsActiveDelete()" class="btn-close" nameBtn="Delete">
+                    </Button>
                     <ModalAlert v-if="isActive_delete" ></ModalAlert>
                 </div>
             </div>

@@ -42,12 +42,8 @@
         </div>
       </div>
       <div class="button-group flex justify-between w-full px-7">
-          <button class="btn btn-update text-lg text-white font-bold my-7">
-            Update
-          </button>
-          <button class="btn btn-close text-lg text-white font-bold my-7">
-            Close
-          </button>
+          <Button class="btn-assent" nameBtn="Update"></Button>
+          <Button class="btn-close" nameBtn="Close"></Button>
       </div>
     </form>
   </div>
@@ -77,17 +73,4 @@ export default class extends Vue {
   display: flex;
   z-index: 2;
 }
-
-.btn-close{
-   background-color: crimson !important;
-}
-
-.btn-close,
-.btn-update,
-.btn{
-    border-radius: 12px;
-    padding: 0 10px;
-    color: white;
-}
-
 </style>

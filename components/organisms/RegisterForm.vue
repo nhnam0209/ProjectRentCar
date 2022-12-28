@@ -77,12 +77,11 @@
               >Password:</label
             >
           </div>
-          <button
-            @click="signupHandle()"
+          <Button
+            @btn-click="signupHandle()" nameBtn="Get Start"
             class="w-full btn text-lg text-white font-bold my-7"
           >
-            Get Start
-          </button>
+          </Button>
         </div>
       </form>
     </div>
