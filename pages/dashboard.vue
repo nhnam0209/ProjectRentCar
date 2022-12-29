@@ -11,8 +11,9 @@
 <script lang="ts">
 import axios from "../utils/myAxios";
 import { Component, Vue } from "nuxt-property-decorator";
-
+import DashboardTable from "~/components/organisms/DashboardTable.vue";
 @Component({
+  components: { DashboardTable },
   name: "Dashboard",
   layout: "rentcar-layout",
 })

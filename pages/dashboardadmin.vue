@@ -1,6 +1,8 @@
 <template>
   <Default>
-    <template #content> Here is admin DashboardAdmin </template>
+    <template #content> 
+      <DashboardTable></DashboardTable>
+    </template>
   </Default>
 </template>
 

@@ -1,13 +1,21 @@
 {
     "usersinfo" :[
-       {"id":1,"first-name": "Daniel","last-name": "Atlas","email": "Daniel@123","password":"Daniel@123"}, 
-       {"id":2,"first-name": "Dylan","last-name": "Rhodes","email": "Dylan@123","password":"Dylan@123"},
-       {"id":3,"first-name": "Merritt","last-name": "McKinney","email": "Merritt@123","password":"Merritt@123"},
-       {"id":4,"first-name": "Jack","last-name": "Wilder","email": "Jack@123","password":"Jack@123"},
-       {"id":5,"first-name": "Henly","last-name": "Reeves","email": "Henly@123","password":"Henly@123"},
-       {"id":6,"first-name": "Arthur","last-name": "Tressler","email": "Arthur@123","password":"Arthur@123"},
-       {"id":7,"first-name": "Lula","last-name": "","email": "Lula@123","password":"Lula@123"}
+        {"_id":1,"first_name": "Daniel","last_name": "Atlas","email": "Daniel@123","password":"Daniel@123"}, 
+        {"_id":2,"first_name": "Dylan","last_name": "Rhodes","email": "Dylan@123","password":"Dylan@123"},
+        {"_id":3,"first_name": "Merritt","last_name": "McKinney","email": "Merritt@123","password":"Merritt@123"},
+        {"_id":4,"first_name": "Jack","last_name": "Wilder","email": "Jack@123","password":"Jack@123"},
+        {"_id":5,"first_name": "Henly","last_name": "Reeves","email": "Henly@123","password":"Henly@123"},
+        {"_id":6,"first_name": "Arthur","last_name": "Tressler","email": "Arthur@123","password":"Arthur@123"},
+        {"_id":7,"first_name": "Lula","last_name": "Henny","email": "Lula@123","password":"Lula@123"}
+    ],
+    "Carsinfo" :[
+        {"_id":1,"name": "Teramont","auto_maker": "Volkswagen","type_car": "SUV","distance":"30.000"},
+        {"_id":2,"name": "Q7","auto_maker": "Audi","type_car": "SUV","distance":"23.756"},
+        {"_id":3,"name": "Camry","auto_maker": "Toyota","type_car": "Sedan","distance":"12.587"},
+        {"_id":4,"name": "Passat Bluemotion","auto_maker": "Volkswagen","type_car": "Sedan","distance":"41.634"},
+        {"_id":5,"name": "Vios","auto_maker": "Toyota","type_car": "Sedan","distance":"79.030"},
+        {"_id":6,"name": "A7","auto_maker": "Audi","type_car": "Sportback","distance":"30.000"},
+        {"_id":7,"name": "Sprinter","auto_maker": "Mercedes-Benz","type_car": "Van","distance":"284.785"}
     ]
 }
-
 
