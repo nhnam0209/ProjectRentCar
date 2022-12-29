@@ -66,11 +66,40 @@
           </div>
         </div>
       </div>
+      <div class="col">
+        <div class="topic">
+          <span class="">Action</span>
+        </div>
+        <div class="detail">
+          <div v-for="user in users" :key="user.id" class="info">
+            <div class="button flex">
+              <div class="">
+                <button
+                  @click="handleUpdate(user)"
+                  class="btn btn-update text-white m-6"
+                >
+                  Update
+                </button>
+                <ModalUpdate v-if="isActive"></ModalUpdate>
+              </div>
+              <div class="">
+                <button
+                  @click="handleDeleteUser(user)"
+                  class="btn btn-close text-white m-6"
+                >
+                  Delete
+                </button>
+                <ModalAlert v-if="isActive_delete"></ModalAlert>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import axios from "axios";
 import { Component, Vue } from "nuxt-property-decorator";
 
@@ -78,11 +107,9 @@ import { Component, Vue } from "nuxt-property-decorator";
   name: "UsersTable",
 })
 export default class extends Vue {
-  data() {
-    return {
-      users: [],
-    };
-  }
+  users: any = [];
+  isActive = false;
+  isActive_delete = false;
 
   async created() {
     try {
@@ -97,14 +124,20 @@ export default class extends Vue {
         );
         this.users = userRes.data.user;
       } else {
-        // this.$router.push("/login");
-        // setTimeout("location.reload(true)", 100);
+        this.$router.push("/login");
+        setTimeout("location.reload(true)", 100);
       }
     } catch (error) {
-      console.log(error);
-      //   this.$router.push("/");
-      //   setTimeout("location.reload(true)", 100);
+      this.$router.push("/dashboardadmin");
+      setTimeout("location.reload(true)", 100);
     }
+  }
+  async handleDeleteUser(user: any) {
+    this.$vxm.user.removeUser(user);
+  }
+
+  async handleUpdate(user: any) {
+    this.$vxm.user.updateUser(user);
   }
 }
 </script>

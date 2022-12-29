@@ -69,10 +69,10 @@ export class CarStore extends VuexModule {
   //     }else{
   //     }
   // }
-  @action async removeAllCart(car: any) {
-    location.reload();
-    this.clearCar(car);
-  }
+  //   @action async removeAllCart(car: any) {
+  //     location.reload();
+  //     this.clearCar(car);
+  //   }
   @action async removeCar(car: any) {
     //console.log(car.id)
     // const carData = this.car
@@ -100,6 +100,9 @@ export class CarStore extends VuexModule {
     //     carData.splice(indexOfData,1)
     //
     // this.setCar(carData)
+  }
+  @action async updateCar(car: any) {
+    console.log(car);
   }
   @action async fletchData() {
     //@ts-ignore

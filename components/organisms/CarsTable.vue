@@ -93,15 +93,15 @@
         <div class="detail">
           <div v-for="car in cars" :key="car.id" class="info">
             <div class="button flex">
-              <!-- <div class="">
+              <div class="">
                 <button
-                  @click="toogleIsActive()"
+                  @click="handleUpdate(car)"
                   class="btn btn-update text-white m-6"
                 >
                   Update
                 </button>
                 <ModalUpdate v-if="isActive"></ModalUpdate>
-              </div> -->
+              </div>
               <div class="">
                 <button
                   @click="handleDeleteCar(car)"
@@ -148,14 +148,17 @@ export default class extends Vue {
         setTimeout("location.reload(true)", 100);
       }
     } catch (error) {
-      this.$router.push("/");
+      this.$router.push("/dashboardadmin");
       setTimeout("location.reload(true)", 100);
     }
   }
 
   async handleDeleteCar(car: any) {
-    // console.log(car);
     this.$vxm.car.removeCar(car);
+  }
+
+  async handleUpdate(car: any) {
+    this.$vxm.car.updateCar(car);
   }
 }
 </script>

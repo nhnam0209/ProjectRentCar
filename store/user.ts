@@ -85,7 +85,7 @@ export class UserStore extends VuexModule {
       if (res.status === 200) {
         if (res.data.user.is_admin == 1) {
           this.setIsAdmin(true);
-          this.setUserInfo(res.data.user)
+          this.setUserInfo(res.data.user);
           this.setToken(res.data.token);
           const token = (axios.defaults.headers.common[
             "Authorization"
@@ -97,7 +97,7 @@ export class UserStore extends VuexModule {
             "Authorization"
           ] = `Bearer ${this.token}`);
           document.cookie = `Authorization = ${token}`;
-          this.setUserInfo(res.data.user)
+          this.setUserInfo(res.data.user);
           this.setIsAdmin(false);
         }
       } else {
@@ -121,7 +121,34 @@ export class UserStore extends VuexModule {
       console.error(error.message);
     }
   }
+  @action async removeUser(user: any) {
+    try {
+      await axios.delete("http://localhost:5000/api/user/deleteAdmin", {
+        headers: {
+          Authorization: `${document.cookie}`,
+        },
+        data: {
+          id: user.id,
+        },
+      });
+      alert(`The user ${user.full_name} with id: ${user.id} is deleted!!!`);
+      setTimeout("location.reload(true)", 100);
+    } catch (error) {
+      console.log(error);
+      alert("Something wrong");
+    }
 
+    // const indexOfData = userData.findIndex((object:any)=>{
+    //     return object.id === user.id
+    // })
+    // if(indexOfData !== -1){
+    //     userData.splice(indexOfData,1)
+    //
+    // this.setuser(userData)
+  }
+  @action async updateUser(user: any) {
+    console.log(user);
+  }
   get gotUserInfo() {
     return this.userInfo;
   }
