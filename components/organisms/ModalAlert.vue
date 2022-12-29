@@ -2,7 +2,7 @@
     <div class="background-modal block" :class="{'background-modal-close': isActive}">
         <form class="alert_box flex justify-center items-center flex-col bg-white rounded-xl shadow-xl">
         <div class="icon">
-            <fa class="" :icon="['fas', 'exclamation']" />
+            <icon-exclamation></icon-exclamation>
         </div>
         <header class="font-bold text-xl py-4">Confirm</header>
         <p class="text-lg">Are you sure to  delete this User(Car)?</p>
@@ -16,7 +16,9 @@
   
   <script lang="ts">
   import { Component, Vue } from "nuxt-property-decorator";
+import iconExclamation from "../logos/iconExclamation.vue";
   @Component({
+  components: { iconExclamation },
     name: "ModalAlert",
   })
   export default class extends Vue {

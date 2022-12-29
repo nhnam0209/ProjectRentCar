@@ -45,7 +45,7 @@
             </div>
             <div class="pickup-input flex">
               <div class="icon-pickup-input flex justify-center items-center">
-                <fa class="icon-pickup" :icon="['fas', 'location-pin']" />
+                <icon-location-pin class="icon-pickup"/>
               </div>
               <input
                 type="text"
@@ -64,7 +64,7 @@
               </div>
               <div class="pickup-input flex justify-center">
                 <div class="icon-pickup-input flex justify-center items-center">
-                  <fa class="icon-pickup" :icon="['fas', 'calendar']" />
+                  <icon-date-time class="icon-pickup"/>
                 </div>
                 <div class="input-date flex justify-center items-center">
                   <input
@@ -85,7 +85,7 @@
               </div>
               <div class="pickup-input flex justify-center">
                 <div class="icon-pickup-input flex justify-center items-center">
-                  <fa class="icon-pickup" :icon="['fas', 'calendar']" />
+                  <icon-date-time class="icon-pickup"/>
                 </div>
                 <div class="input-date flex justify-center items-center">
                   <input
@@ -112,7 +112,7 @@
             <span class="info-label text-lg">I am</span>
             <div class="select-age">
               <span class="age-label font-bold">26+</span>
-              <fa class="icon-pickup" :icon="['fas', 'caret-down']" />
+              <iconCaretDown class="icon-pickup"/>
             </div>
           </div>
         </div>
@@ -121,7 +121,7 @@
             <span class="info-label text-lg">I live in</span>
             <div class="select-country">
               <span class="country-label font-bold"> Viet Nam</span>
-              <fa class="icon-pickup" :icon="['fas', 'caret-down']" />
+              <iconCaretDown class="icon-pickup"/>
             </div>
           </div>
         </div> -->
