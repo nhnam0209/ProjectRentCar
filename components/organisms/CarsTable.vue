@@ -1,5 +1,5 @@
 <template>
-  <div class="table cars-table bg-white ">
+  <div class="table cars-table bg-white">
     <div class="table-header m-4">
       <span>Cars Detail</span>
     </div>
@@ -11,8 +11,8 @@
           <span class="">ID</span>
         </div>
         <div class="detail">
-          <div v-for="car in cars" :key="car._id" class="info">
-            {{ car._id }}
+          <div v-for="car in cars" :key="car.id" class="info">
+            {{ car.id }}
           </div>
         </div>
       </div>
@@ -21,18 +21,8 @@
           <span class="">Name</span>
         </div>
         <div class="detail">
-          <div v-for="car in cars" :key="car._id" class="info">
+          <div v-for="car in cars" :key="car.id" class="info">
             {{ car.name }}
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="topic">
-          <span class="">Auto Marker</span>
-        </div>
-        <div class="detail">
-          <div v-for="car in cars" :key="car._id" class="info">
-            {{ car.auto_maker }}
           </div>
         </div>
       </div>
@@ -41,8 +31,18 @@
           <span class="">Type Car</span>
         </div>
         <div class="detail">
-          <div v-for="car in cars" :key="car._id" class="info">
+          <div v-for="car in cars" :key="car.id" class="info">
             {{ car.type_car }}
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="topic">
+          <span class="">Car Model</span>
+        </div>
+        <div class="detail">
+          <div v-for="car in cars" :key="car.id" class="info">
+            {{ car.model }}
           </div>
         </div>
       </div>
@@ -51,8 +51,38 @@
           <span class="">Distance</span>
         </div>
         <div class="detail">
-          <div v-for="car in cars" :key="car._id" class="info">
+          <div v-for="car in cars" :key="car.id" class="info">
             {{ car.distance }}
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="topic">
+          <span class="">Price</span>
+        </div>
+        <div class="detail">
+          <div v-for="car in cars" :key="car.id" class="info">
+            {{ car.price }}
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="topic">
+          <span class="">Owner</span>
+        </div>
+        <div class="detail">
+          <div v-for="car in cars" :key="car.id" class="info">
+            {{ car.owner }}
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="topic">
+          <span class="">User ID</span>
+        </div>
+        <div class="detail">
+          <div v-for="car in cars" :key="car.id" class="info">
+            {{ car.user_id }}
           </div>
         </div>
       </div>
@@ -62,20 +92,37 @@
 
 <script>
 import { Component, Vue } from "nuxt-property-decorator";
+import axios from "axios";
 
 @Component({
   name: "CarsTable",
 })
 export default class extends Vue {
-    data() {
-      return {
-        cars: [],
-      }
+  data() {
+    return {
+      cars: [],
     };
-    async fetch() {
-      this.cars = await fetch(
-        'http://localhost:4000/Carsinfo'
-      ).then(res => res.json())
+  }
+  async created() {
+    try {
+      if (document.cookie) {
+        const carRes = await axios.get(
+          "http://localhost:5000/api/cars/findallAdmin",
+          {
+            headers: {
+              Authorization: `${document.cookie}`,
+            },
+          }
+        );
+        this.cars = carRes.data.cars;
+      } else {
+        this.$router.push("/login");
+        setTimeout("location.reload(true)", 100);
+      }
+    } catch (error) {
+      this.$router.push("/");
+      setTimeout("location.reload(true)", 100);
     }
+  }
 }
 </script>

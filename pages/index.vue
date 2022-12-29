@@ -1,7 +1,9 @@
 <template>
   <Default>
     <template #content>
-      <SearchForm />
+      <div class="h-full">
+        <SearchForm />
+      </div>
     </template>
   </Default>
 </template>

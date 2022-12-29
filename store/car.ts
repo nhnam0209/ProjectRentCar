@@ -1,13 +1,13 @@
 import axios  from 'axios';
 import { action, createModule, mutation } from 'vuex-class-component';
 const VuexModule = createModule({
-    namespaced: "productInfo",
+    namespaced: "carInfo",
     strict: false,
     target: "nuxt",
     enableLocalWatchers: true,
 })
-export class ProductStore extends VuexModule{
-    product: any= [{
+export class CarStore extends VuexModule{
+    car: any= [{
         id: '',
         title: '',
         price: '',
@@ -16,36 +16,36 @@ export class ProductStore extends VuexModule{
     }] || null
     order: any =[] || null
     loading: Boolean = false
-    @mutation setProduct(product: any){
-        this.product = product
+    @mutation setcar(car: any){
+        this.car = car
     }
     @mutation setOrder(order:any){
         this.order = order
     }
-    get getProducts(){
-        return this.product
+    get getCars(){
+        return this.car
     }
     get getOrder(){
         return this.order
     }
-    // @action async addtoCart(product:any){
+    // @action async addtoCart(car:any){
     //     this.loading =!false 
     //     setTimeout(()=>{this.loading=!true},2000)
-    //     this.setProduct(product)
+    //     this.setcar(car)
     //     const cartData = this.cart
     //     let index = cartData.findIndex((object:any)=>{
-    //         return object.id === product.id
+    //         return object.id === car.id
     //     });
-    //     if((product.quantity < product.storage)||(product.quantity == product.storage)){
+    //     if((car.quantity < car.storage)||(car.quantity == car.storage)){
     //         if (index == -1){ 
-    //             this.cart.push(product)
+    //             this.cart.push(car)
     //             this.setCart(this.cart)
     //         }else if(index != -1)
     //         {
-    //             if(product.id == cartData[index].id){
-    //                 if(product.quantity < cartData[index].storage){
+    //             if(car.id == cartData[index].id){
+    //                 if(car.quantity < cartData[index].storage){
     //                     const oldValue = cartData[index]
-    //                     const newValue = product.quantity + oldValue.quantity
+    //                     const newValue = car.quantity + oldValue.quantity
     //                     oldValue.quantity = newValue
     //                     this.setCart(cartData)
     //                 }
@@ -58,11 +58,11 @@ export class ProductStore extends VuexModule{
     //     location.reload();
     //     this.clearCart(cart)
     // }
-    // @action async removeProduct(product:any){
-    //     //console.log(product.id)
+    // @action async removecar(car:any){
+    //     //console.log(car.id)
     //     const cartData = this.cart
     //     const indexOfData = cartData.findIndex((object:any)=>{
-    //         return object.id === product.id
+    //         return object.id === car.id
     //     })
     //     if(indexOfData !== -1){
     //         cartData.splice(indexOfData,1)

@@ -1,7 +1,7 @@
 <template>
   <Default>
-    <template #content> 
-      <DashboardTable></DashboardTable>
+    <template #content>
+      <DashboardTable class="h-full"></DashboardTable>
     </template>
   </Default>
 </template>

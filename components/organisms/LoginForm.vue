@@ -81,7 +81,6 @@ export default class extends Vue {
   }
 
   get isAdmin() {
-    // console.log(this.$vxm.user.isAdmin);
     return this.$vxm.user.isAdmin;
   }
 

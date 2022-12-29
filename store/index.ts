@@ -1,5 +1,5 @@
 // import { GlobalCMS } from '~/store/globalCMS';
-import { ProductStore } from '~/store/product';
+import { CarStore } from '~/store/car';
 import { Store } from 'vuex';
 import { UserStore } from '~/store/user';
 import { extractVuexModule } from 'vuex-class-component';
@@ -9,7 +9,7 @@ export default function () {
   return new Store({
     modules: {
       ...extractVuexModule(UserStore),
-      ...extractVuexModule(ProductStore),
+      ...extractVuexModule(CarStore),
     //   ...extractVuexModule(GlobalCMS)
     }
   });
