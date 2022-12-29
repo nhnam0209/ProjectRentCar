@@ -86,11 +86,40 @@
           </div>
         </div>
       </div>
+      <div class="col">
+        <div class="topic">
+          <span class="">Action</span>
+        </div>
+        <div class="detail">
+          <div v-for="car in cars" :key="car.id" class="info">
+            <div class="button flex">
+              <!-- <div class="">
+                <button
+                  @click="toogleIsActive()"
+                  class="btn btn-update text-white m-6"
+                >
+                  Update
+                </button>
+                <ModalUpdate v-if="isActive"></ModalUpdate>
+              </div> -->
+              <div class="">
+                <button
+                  @click="handleDeleteCar(car)"
+                  class="btn btn-close text-white m-6"
+                >
+                  Delete
+                </button>
+                <ModalAlert v-if="isActive_delete"></ModalAlert>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { Component, Vue } from "nuxt-property-decorator";
 import axios from "axios";
 
@@ -98,11 +127,10 @@ import axios from "axios";
   name: "CarsTable",
 })
 export default class extends Vue {
-  data() {
-    return {
-      cars: [],
-    };
-  }
+  cars: any = [];
+  isActive = false;
+  isActive_delete = false;
+
   async created() {
     try {
       if (document.cookie) {
@@ -123,6 +151,11 @@ export default class extends Vue {
       this.$router.push("/");
       setTimeout("location.reload(true)", 100);
     }
+  }
+
+  async handleDeleteCar(car: any) {
+    // console.log(car);
+    this.$vxm.car.removeCar(car);
   }
 }
 </script>

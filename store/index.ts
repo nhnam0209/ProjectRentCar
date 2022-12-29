@@ -1,4 +1,3 @@
-// import { GlobalCMS } from '~/store/globalCMS';
 import { CarStore } from '~/store/car';
 import { Store } from 'vuex';
 import { UserStore } from '~/store/user';
@@ -10,7 +9,6 @@ export default function () {
     modules: {
       ...extractVuexModule(UserStore),
       ...extractVuexModule(CarStore),
-    //   ...extractVuexModule(GlobalCMS)
     }
   });
 }
