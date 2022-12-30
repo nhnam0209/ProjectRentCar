@@ -3,17 +3,13 @@
     class="dashboard w-full flex h-screen justify-center items-center bg-gray-500"
   >
     <div class="dashboard-table">
-      <div class="flex flex-col w-full">
-        <UsersTable></UsersTable>
-        <CarsTable></CarsTable>
-      </div>
       <div class="button flex">
         <div class="">
           <button
             @click="toogleIsActive()"
             class="btn btn-update text-white m-6"
           >
-            Update
+            Add
           </button>
           <ModalUpdate v-if="isActive"></ModalUpdate>
         </div>
@@ -27,17 +23,24 @@
           <ModalAlert v-if="isActive_delete"></ModalAlert>
         </div>
       </div>
+      <div class="flex flex-col w-full">
+        <UsersTable v-if="isManageUser"></UsersTable>
+        <CarsTable v-if="isManageCar"></CarsTable>
+      </div>
     </div>
   </div>
 </template>
 
-<script>
-import { Component, Vue } from "nuxt-property-decorator";
+<script lang="ts">
+import { Component, Prop, Vue } from "nuxt-property-decorator";
 
 @Component({
   name: "DashboardTable",
 })
 export default class extends Vue {
+  @Prop({ type: Boolean, default: false }) isManageUser!: Boolean;
+  @Prop({ type: Boolean, default: false }) isManageCar!: Boolean;
+
   isActive = false;
   isActive_delete = false;
   toogleIsActive() {

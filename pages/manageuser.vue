@@ -1,9 +1,10 @@
 <template>
   <Default>
     <template #content>
-      <div class="h-full">
-        <DashboardTable class="h-full"></DashboardTable>
-      </div>
+      <DashboardTable
+        class="h-full"
+        :is-manage-user="isManageUser"
+      ></DashboardTable>
     </template>
   </Default>
 </template>
@@ -20,6 +21,7 @@ import Auth from "../service/authentication";
 export default class extends Vue {
   isLogin: Boolean = false;
   userInfo: any = {};
+  isManageUser: Boolean = false;
 
   get user() {
     return this.$vxm.user.userInfo;
@@ -59,6 +61,7 @@ export default class extends Vue {
 
   mounted() {
     this.user = this.userInfo;
+    this.isManageUser = true;
   }
 }
 </script>

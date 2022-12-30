@@ -30,10 +30,10 @@
           />
           <label class="label-input top-2/4 absolute text-lg">Password:</label>
         </div>
-
+        <!-- 
         <div class="forget-pass text-gray-400 cursor-pointer my-3">
           Forgot Password?
-        </div>
+        </div> -->
         <button type="submit" class="w-full btn text-lg text-white font-bold">
           Sign In
         </button>
@@ -53,22 +53,14 @@ import { Component, Vue } from "nuxt-property-decorator";
 })
 export default class extends Vue {
   msg = "";
-  isLogin: Boolean = false;
 
   async submitLogin() {
     try {
       this.$vxm.user.handleLogin();
       setTimeout("location.reload(true)", 100);
-      if (this.isAdmin || this.user.username == "admin") {
-        this.$router.push("/dashboardadmin");
-        setTimeout("location.reload(true)", 100);
-      } else {
-        this.$router.push("/");
-        setTimeout("location.reload(true)", 100);
-      }
     } catch (error: any) {
       this.msg = error;
-      console.log(this.msg);
+      alert(this.msg);
     }
   }
 

@@ -13,11 +13,20 @@
       </fa>
     </div>
     <div class="navbar-list-items flex justify-center items-center">
-      <div class="">
-        <NuxtLink class="navbar-items" to="/">Home</NuxtLink>
+      <div v-if="isAdmin">
+        <div class="inline-flex">
+          <NuxtLink class="navbar-items" to="/dashboardadmin"
+            >Dashboard</NuxtLink
+          >
+          <NuxtLink class="navbar-items" to="/manageuser">Manage User</NuxtLink>
+          <NuxtLink class="navbar-items" to="/managecar">Manage Car</NuxtLink>
+        </div>
       </div>
-      <div class="">
-        <NuxtLink class="navbar-items" to="/aboutus">About Us</NuxtLink>
+      <div v-else>
+        <div class="inline-flex">
+          <NuxtLink class="navbar-items" to="/">Home</NuxtLink>
+          <NuxtLink class="navbar-items" to="/aboutus">About Us</NuxtLink>
+        </div>
       </div>
       <div v-if="!isLogin">
         <button class="buttons navbar-signin">
@@ -28,7 +37,7 @@
         </button>
       </div>
       <div v-else class="px-5">
-        <sub-navigation class="" :user-info="userInfo" />
+        <sub-navigation :user-info="userInfo" :is-admin="isAdmin" />
       </div>
     </div>
   </nav>
@@ -43,9 +52,7 @@ import axios from "../../utils/myAxios";
 export default class extends Vue {
   isLogin: Boolean = false;
   userInfo: any = {};
-
   get user() {
-    console.log();
     return this.$vxm.user.userInfo;
   }
 
@@ -57,11 +64,23 @@ export default class extends Vue {
     return this.$vxm.user.isAdmin;
   }
 
+  set isAdmin(value: any) {
+    this.$vxm.user.setIsAdmin(value);
+  }
+
   async created() {
     try {
       if (document.cookie) {
-        if (this.isAdmin) {
-          const res = await axios.get(
+        const res = await axios.get(
+          "http://localhost:5000/api/auth/verifylogin",
+          {
+            headers: {
+              Authorization: `${document.cookie}`,
+            },
+          }
+        );
+        if (res.data.isAdmin == 1) {
+          const resAdmin = await axios.get(
             "http://localhost:5000/api/auth/verifyloginAdmin",
             {
               headers: {
@@ -69,19 +88,12 @@ export default class extends Vue {
               },
             }
           );
+          this.userInfo = resAdmin.data.data;
+          this.isAdmin = true;
           this.isLogin = true;
-          this.userInfo = res.data.data;
         } else {
-          const res = await axios.get(
-            "http://localhost:5000/api/auth/verifylogin",
-            {
-              headers: {
-                Authorization: `${document.cookie}`,
-              },
-            }
-          );
-          this.isLogin = true;
           this.userInfo = res.data.data;
+          this.isLogin = true;
         }
       }
     } catch (error) {

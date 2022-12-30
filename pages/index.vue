@@ -21,7 +21,6 @@ export default class extends Vue {
   userInfo: any = {};
 
   get user() {
-    console.log();
     return this.$vxm.user.userInfo;
   }
 

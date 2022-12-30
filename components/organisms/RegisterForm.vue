@@ -11,9 +11,7 @@
       <div class="signup-content text-3xl font-bold text-white text-center">
         <span class="content-register absolute"
           >You have already signed up?
-          <a href="/login" class="register-item"
-            ><br />Sign In Now</a
-          >
+          <a href="/login" class="register-item"><br />Sign In Now</a>
         </span>
       </div>
       <form
@@ -95,29 +93,29 @@ import { Component, Vue } from "nuxt-property-decorator";
   name: "RegisterForm",
 })
 export default class extends Vue {
-    isRegister: Boolean = false
-    msg = ""
+  isRegister: Boolean = false;
+  msg = "";
 
-    get user() {
-      return this.$vxm.user.userInfo
-    }
+  get user() {
+    return this.$vxm.user.userInfo;
+  }
 
-    set user(value:any) {
-      this.$vxm.user.setUserInfo(value)
-    }
+  set user(value: any) {
+    this.$vxm.user.setUserInfo(value);
+  }
 
-    mounted(){
-      console.log(this.user)
+  // mounted(){
+  //   console.log(this.user)
+  // }
+
+  async signupHandle() {
+    try {
+      this.$vxm.user.handleRegister();
+      this.$router.push("/login");
+    } catch (error: any) {
+      this.msg = error;
     }
-    
-    async signupHandle() {
-      try {
-        this.$vxm.user.handleRegister()
-        this.$router.push('/login')
-      } catch (error:any) {
-        this.msg = error
-      }
-    }
+  }
 }
 </script>
 
@@ -174,24 +172,24 @@ export default class extends Vue {
   }
 }
 
-@media (max-width:730px){
-.signup-content{
-  display: none;
+@media (max-width: 730px) {
+  .signup-content {
+    display: none;
+  }
+
+  .signup-form {
+    width: 70%;
+  }
+  .register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
-.signup-form{
-  width: 70%;
-}
-.register-container{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-}
-
-@media (max-width: 820px){
-  .register-container{
-  width: 80%;
-}
+@media (max-width: 820px) {
+  .register-container {
+    width: 80%;
+  }
 }
 </style>
