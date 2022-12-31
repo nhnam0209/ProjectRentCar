@@ -3,7 +3,7 @@
     <div class="table-header m-4 text-xl font-bold">
       <span>User Detail</span>
     </div>
-    <div class="w-full text-center">
+    <table class="w-full text-center">
       <tr class="table-header">
         <th class="topic">ID</th>
         <th class="topic">Car Name</th>
@@ -13,6 +13,7 @@
         <th class="topic">Price</th>
         <th class="topic">Owner</th>
         <th class="topic">User ID</th>
+        <th class="topic">Action</th>
       </tr>
       <tr class="detail"  v-for="car in cars" :key="car.id">
         <td class="info">{{ car.id }}</td>
@@ -23,8 +24,15 @@
         <td class="info">{{ car.price }}</td>
         <td class="info">{{ car.owner }}</td>
         <td class="info">{{ car.user_id }}</td>
+        <td class="info">
+          <div class="icon-group flex">
+            <iconAdd class="icon-action" @click="handleUpdate(user)"></iconAdd>
+            <iconDelete class="icon-action" @click="handleDeleteUser(user)"></iconDelete>
+            <ModalAlert v-if="isActive_delete"></ModalAlert>
+          </div>
+        </td>
       </tr>
-    </div>
+    </table>
   </div>
 </template>
 <script lang="ts">

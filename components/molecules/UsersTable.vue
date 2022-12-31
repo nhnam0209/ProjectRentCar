@@ -3,7 +3,7 @@
     <div class="table-header m-4 text-xl font-bold">
       <span>User Detail</span>
     </div>
-    <div class="w-full text-center">
+    <table class="w-full text-center">
       <tr class="table-header w-full">
         <th class="topic">ID</th>
         <th class="topic">First Name</th>
@@ -13,7 +13,6 @@
         <th class="topic">Last Login</th>
         <th class="topic">Action</th>
       </tr>
-      <div class="table-body" >
         <tr class="detail" v-for="user in users" :key="user.id">
           <td class="info">{{ user.id }}</td>
           <td class="info">{{ user.first_name }}</td>
@@ -29,8 +28,7 @@
             </div>
           </td>
         </tr>
-      </div>
-    </div>
+    </table>
   </div>
 </template>
 
@@ -100,7 +98,8 @@ export default class extends Vue {
 }
 
 .icon-action{
-  height: 16px;
-  width: 16px;
+  height: 20px;
+  width: 20px;
+  padding: 0 5px;
 }
 </style>
