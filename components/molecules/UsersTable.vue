@@ -4,16 +4,17 @@
       <span>User Detail</span>
     </div>
     <div class="w-full text-center">
-      <tr class="table-header">
+      <tr class="table-header w-full">
         <th class="topic">ID</th>
         <th class="topic">First Name</th>
         <th class="topic">Last name</th>
         <th class="topic">Email</th>
         <th class="topic">Username</th>
         <th class="topic">Last Login</th>
+        <th class="topic">Action</th>
       </tr>
-      <div class="table-body" v-for="user in users" :key="user.id">
-        <tr class="detail">
+      <div class="table-body" >
+        <tr class="detail" v-for="user in users" :key="user.id">
           <td class="info">{{ user.id }}</td>
           <td class="info">{{ user.first_name }}</td>
           <td class="info">{{ user.last_name }}</td>
@@ -21,10 +22,13 @@
           <td class="info">{{ user.username }}</td>
           <td class="info">{{ user.last_login }}</td>
           <td class="info">
-            
+            <div class="icon-group flex">
+              <iconAdd class="icon-action" @click="handleUpdate(user)"></iconAdd>
+              <iconDelete class="icon-action" @click="handleDeleteUser(user)"></iconDelete>
+              <ModalAlert v-if="isActive_delete"></ModalAlert>
+            </div>
           </td>
         </tr>
-        
       </div>
     </div>
   </div>
@@ -92,6 +96,11 @@ export default class extends Vue {
 }
 
 .info {
-  padding: 5px;
+  padding: 10px;
+}
+
+.icon-action{
+  height: 16px;
+  width: 16px;
 }
 </style>

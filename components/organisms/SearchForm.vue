@@ -45,7 +45,7 @@
             </div>
             <div class="pickup-input flex">
               <div class="icon-pickup-input flex justify-center items-center">
-                <fa class="icon-pickup" :icon="['fas', 'location-pin']" />
+                <icon-location-pin class="icon-pickup"/>
               </div>
               <input
                 type="text"
@@ -64,7 +64,7 @@
               </div>
               <div class="pickup-input flex justify-center">
                 <div class="icon-pickup-input flex justify-center items-center">
-                  <fa class="icon-pickup" :icon="['fas', 'calendar']" />
+                  <icon-date-time class="icon-pickup"/>
                 </div>
                 <div class="input-date flex justify-center items-center">
                   <input
@@ -85,7 +85,7 @@
               </div>
               <div class="pickup-input flex justify-center">
                 <div class="icon-pickup-input flex justify-center items-center">
-                  <fa class="icon-pickup" :icon="['fas', 'calendar']" />
+                  <icon-date-time class="icon-pickup"/>
                 </div>
                 <div class="input-date flex justify-center items-center">
                   <input
@@ -112,7 +112,7 @@
             <span class="info-label text-lg">I am</span>
             <div class="select-age">
               <span class="age-label font-bold">26+</span>
-              <fa class="icon-pickup" :icon="['fas', 'caret-down']" />
+              <icon-caret-down class="icon-pickup" />
             </div>
           </div>
         </div>
@@ -121,7 +121,7 @@
             <span class="info-label text-lg">I live in</span>
             <div class="select-country">
               <span class="country-label font-bold"> Viet Nam</span>
-              <fa class="icon-pickup" :icon="['fas', 'caret-down']" />
+              <icon-caret-down class="icon-pickup" />
             </div>
           </div>
         </div> -->
@@ -137,7 +137,9 @@
 
 <script lang="ts">
 import { Component, Vue } from "nuxt-property-decorator";
+import iconLocationPin from "../logos/iconLocationPin.vue";
 @Component({
+  components: { iconLocationPin },
   name: "SearchBar",
 })
 export default class extends Vue {}
@@ -214,7 +216,7 @@ export default class extends Vue {}
 
 .icon-pickup-input {
   padding: 0 10px;
-  font-size: 20px;
+  
   color: #00a550;
 }
 
@@ -240,6 +242,8 @@ export default class extends Vue {}
 .icon-pickup {
   color: #00a550;
   cursor: pointer;
+  height: 20px;
+  width: 20px;
 }
 
 .button-search {
