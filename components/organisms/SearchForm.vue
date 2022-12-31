@@ -47,10 +47,10 @@
               <div class="icon-pickup-input flex justify-center items-center">
                 <icon-location-pin class="icon-pickup"/>
               </div>
-              <input
-                type="text"
+              <RInput
+                typeInput="text"
                 class="label-input w-full"
-                placeholder="Pick up & Return location"
+                placeholderInput="Pick up & Return location"
               />
             </div>
           </div>
@@ -67,14 +67,14 @@
                   <icon-date-time class="icon-pickup"/>
                 </div>
                 <div class="input-date flex justify-center items-center">
-                  <input
-                    type="date"
+                  <RInput
+                    typeInput="date"
                     class="label-input label-input-date partition w-full"
-                    placeholder="Return date"
+                    placeholderInput="Return date"
                   />
                 </div>
                 <!-- <div class="input-time flex justify-center items-center">
-                      <input type="text" class=" label-input label-input-time w-full" placeholder="Time">
+                      <RInput typeInput="text" class=" label-input label-input-time w-full" placeholderInput="Time">
                     </div> -->
               </div>
             </div>
@@ -88,17 +88,17 @@
                   <icon-date-time class="icon-pickup"/>
                 </div>
                 <div class="input-date flex justify-center items-center">
-                  <input
-                    type="date"
+                  <RInput
+                    typeInput="date"
                     class="label-input label-input-date partition w-full"
-                    placeholder="Return date"
+                    placeholderInput="Return date"
                   />
                 </div>
                 <!-- <div class="input-time flex justify-center items-center">
-                  <input
-                    type="text"
+                  <RInput
+                    typeInput="text"
                     class="label-input label-input-time w-full"
-                    placeholder="Time"
+                    placeholderInput="Time"
                   />
                 </div> -->
               </div>
@@ -127,7 +127,7 @@
         </div> -->
         <div class="flex justify-center items-center">
           <div class="button-search flex justify-center items-center">
-            <button class="btn-search text-lg font-bold">Search</button>
+            <RButton class="btn-search text-black" nameBtn="Search"></RButton>
           </div>
         </div>
       </div>
@@ -137,9 +137,7 @@
 
 <script lang="ts">
 import { Component, Vue } from "nuxt-property-decorator";
-import iconLocationPin from "../logos/iconLocationPin.vue";
 @Component({
-  components: { iconLocationPin },
   name: "SearchBar",
 })
 export default class extends Vue {}
@@ -199,14 +197,6 @@ export default class extends Vue {}
   padding-right: 15px;
 }
 
-.station-input-pickup:first-child {
-  margin-right: 20px;
-}
-
-.station-input-pickup:last-child {
-  margin-left: 20px;
-}
-
 .pickup-input {
   border: 1px solid rgb(107 114 128);
   border-radius: 12px;
@@ -216,23 +206,7 @@ export default class extends Vue {}
 
 .icon-pickup-input {
   padding: 0 10px;
-  
   color: #00a550;
-}
-
-.label-input {
-  height: 100%;
-  outline: none;
-  border: none;
-  z-index: 1;
-}
-
-.label-input-date {
-  border-right: 1px solid rgb(107 114 128);
-}
-
-.input-time {
-  padding-left: 6px;
 }
 
 .info-label {
@@ -246,19 +220,6 @@ export default class extends Vue {}
   width: 20px;
 }
 
-.button-search {
-  width: 260px;
-  height: 50px;
-  background: #ffdc00;
-  border: 1px solid rgb(107 114 128);
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.btn-search {
-  width: 100%;
-  height: 100%;
-}
 @keyframes slidein-Homepage {
   from {
     transform: translateY(-100%);

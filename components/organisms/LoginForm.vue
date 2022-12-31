@@ -12,20 +12,20 @@
       </header>
       <form class="login-form px-10 box-border" @submit.prevent="submitLogin()">
         <div class="relative border-bottom my-7">
-          <input
-            type="text"
+          <RInput
+            typeInput="text"
             v-model="user.username"
-            class="login-input w-full px-1.5 h-10 text-lg border-none outline-none bg-none"
+            class="input-focus"
             required
           />
           <label class="label-input top-2/4 absolute text-lg">Username:</label>
         </div>
 
         <div class="relative border-bottom my-7">
-          <input
-            type="password"
+          <RInput
+            typeInput="password"
             v-model="user.password"
-            class="login-input w-full px-1.5 h-10 text-lg border-none outline-none bg-none"
+            class="input-focus"
             required
           />
           <label class="label-input top-2/4 absolute text-lg">Password:</label>
@@ -34,9 +34,7 @@
         <div class="forget-pass text-gray-400 cursor-pointer my-3">
           Forgot Password?
         </div> -->
-        <button type="submit" class="w-full btn text-lg text-white font-bold">
-          Sign In
-        </button>
+        <RButton nameBtn="Sign In" class="btn-assent"></RButton>
         <div class="register-link my-5 text-lg text-gray-500">
           No account yet?
           <a href="/register" class="register-item text-black">Sign Up</a>
@@ -130,27 +128,12 @@ export default class extends Vue {
   color: #b2b2b2;
 }
 
-.login-input:focus ~ .label-input,
-.login-input:valid ~ .label-input {
-  top: -20px;
-  color: #00a550;
-}
-
 .forget-pass {
   width: 130px;
 }
 
 .forget-pass:hover {
   text-decoration: underline;
-}
-
-.btn {
-  background: #00a550;
-}
-
-.btn:hover {
-  background: #009548;
-  transition: 0.5s;
 }
 
 .register-item:hover {

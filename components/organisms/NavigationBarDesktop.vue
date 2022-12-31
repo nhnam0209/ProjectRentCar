@@ -45,10 +45,8 @@
 <script lang="ts">
 import { Component, Vue } from "nuxt-property-decorator";
 import axios from "../../utils/myAxios";
-import iconHome from "../logos/iconHome.vue";
 
 @Component({
-  components: { iconHome },
   name: "NavigationBarDesktop",
 })
 export default class extends Vue {

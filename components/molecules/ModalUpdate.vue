@@ -6,48 +6,44 @@
           <span>Add More Users</span>
         </header>
         <div class="relative border-bottom my-7">
-          <input
-            type="text"
-            class="login-input w-full px-1.5 h-10 text-lg border-none outline-none bg-none"
+          <RInput
+            typeInput="text"
+            class="input-focus"
           />
           <label class="label-input top-2/4 absolute text-lg">First name:</label>
         </div>
         <div class="relative border-bottom my-7">
-          <input
-            type="text"
-            class="login-input w-full px-1.5 h-10 text-lg border-none outline-none bg-none"
+          <RInput
+            typeInput="text"
+            class="input-focus"
           />
           <label class="label-input top-2/4 absolute text-lg">Last name:</label>
         </div>
         <div class="relative border-bottom my-7">
-          <input
-            type="email"
-            class="login-input w-full px-1.5 h-10 text-lg border-none outline-none bg-none"
+          <RInput
+            typeInput="email"
+            class="input-focus"
           />
           <label class="label-input top-2/4 absolute text-lg">Email:</label>
         </div>
         <div class="relative border-bottom my-7">
-          <input
-            type="text"
-            class="login-input w-full px-1.5 h-10 text-lg border-none outline-none bg-none"
+          <RInput
+            typeInput="text"
+            class="input-focus"
           />
           <label class="label-input top-2/4 absolute text-lg">Username:</label>
         </div>
         <div class="relative border-bottom my-7">
-          <input
-            type="password"
-            class="login-input w-full px-1.5 h-10 text-lg border-none outline-none bg-none"
+          <RInput
+            typeInput="password"
+            class="input-focus"
           />
           <label class="label-input top-2/4 absolute text-lg">Password:</label>
         </div>
       </div>
       <div class="button-group flex justify-between w-full px-7">
-          <button class="btn btn-update text-lg text-white font-bold my-7">
-            Update
-          </button>
-          <button class="btn btn-close text-lg text-white font-bold my-7">
-            Close
-          </button>
+          <RButton class="btn-assent" nameBtn="Update"></RButton>
+          <RButton class="btn-close" nameBtn="Close"></RButton>
       </div>
     </form>
   </div>
@@ -76,18 +72,6 @@ export default class extends Vue {
   justify-content: center;
   display: flex;
   z-index: 2;
-}
-
-.btn-close{
-   background-color: crimson !important;
-}
-
-.btn-close,
-.btn-update,
-.btn{
-    border-radius: 12px;
-    padding: 0 10px;
-    color: white;
 }
 
 </style>

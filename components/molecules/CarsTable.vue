@@ -26,8 +26,8 @@
         <td class="info">{{ car.user_id }}</td>
         <td class="info">
           <div class="icon-group flex">
-            <iconAdd class="icon-action" @click="handleUpdate(user)"></iconAdd>
-            <iconDelete class="icon-action" @click="handleDeleteUser(user)"></iconDelete>
+            <iconAdd class="icon-action" @click="handleUpdate(car)"></iconAdd>
+            <iconDelete class="icon-action" @click="handleDeleteCar(car)"></iconDelete>
             <ModalAlert v-if="isActive_delete"></ModalAlert>
           </div>
         </td>
