@@ -1,124 +1,32 @@
 <template>
-  <div class="table cars-table bg-white">
-    <div class="table-header m-4">
-      <span>Cars Detail</span>
+  <div class="table users-table w-full bg-white px-4 my-6">
+    <div class="table-header m-4 text-xl font-bold">
+      <span>User Detail</span>
     </div>
-    <div
-      class="table-detail flex w-full items-center justify-center text-center"
-    >
-      <div class="col text-center">
-        <div class="topic">
-          <span class="">ID</span>
-        </div>
-        <div class="detail">
-          <div v-for="car in cars" :key="car.id" class="info">
-            {{ car.id }}
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="topic">
-          <span class="">Name</span>
-        </div>
-        <div class="detail">
-          <div v-for="car in cars" :key="car.id" class="info">
-            {{ car.name }}
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="topic">
-          <span class="">Type Car</span>
-        </div>
-        <div class="detail">
-          <div v-for="car in cars" :key="car.id" class="info">
-            {{ car.type_car }}
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="topic">
-          <span class="">Car Model</span>
-        </div>
-        <div class="detail">
-          <div v-for="car in cars" :key="car.id" class="info">
-            {{ car.model }}
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="topic">
-          <span class="">Distance</span>
-        </div>
-        <div class="detail">
-          <div v-for="car in cars" :key="car.id" class="info">
-            {{ car.distance }}
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="topic">
-          <span class="">Price</span>
-        </div>
-        <div class="detail">
-          <div v-for="car in cars" :key="car.id" class="info">
-            {{ car.price }}
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="topic">
-          <span class="">Owner</span>
-        </div>
-        <div class="detail">
-          <div v-for="car in cars" :key="car.id" class="info">
-            {{ car.owner }}
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="topic">
-          <span class="">User ID</span>
-        </div>
-        <div class="detail">
-          <div v-for="car in cars" :key="car.id" class="info">
-            {{ car.user_id }}
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="topic">
-          <span class="">Action</span>
-        </div>
-        <div class="detail">
-          <div v-for="car in cars" :key="car.id" class="info">
-            <div class="button flex">
-              <div class="">
-                <button
-                  @click="handleUpdate(car)"
-                  class="btn btn-update text-white m-6"
-                >
-                  Update
-                </button>
-                <ModalUpdate v-if="isActive"></ModalUpdate>
-              </div>
-              <div class="">
-                <button
-                  @click="handleDeleteCar(car)"
-                  class="btn btn-close text-white m-6"
-                >
-                  Delete
-                </button>
-                <ModalAlert v-if="isActive_delete"></ModalAlert>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="w-full text-center">
+      <tr class="table-header">
+        <th class="topic">ID</th>
+        <th class="topic">Car Name</th>
+        <th class="topic">Type Car</th>
+        <th class="topic">Car Model</th>
+        <th class="topic">Distance</th>
+        <th class="topic">Price</th>
+        <th class="topic">Owner</th>
+        <th class="topic">User ID</th>
+      </tr>
+      <tr class="detail"  v-for="car in cars" :key="car.id">
+        <td class="info">{{ car.id }}</td>
+        <td class="info">{{ car.name }}</td>
+        <td class="info">{{ car.type_car }}</td>
+        <td class="info">{{ car.model }}</td>
+        <td class="info">{{ car.distance }}</td>
+        <td class="info">{{ car.price }}</td>
+        <td class="info">{{ car.owner }}</td>
+        <td class="info">{{ car.user_id }}</td>
+      </tr>
     </div>
   </div>
 </template>
-
 <script lang="ts">
 import { Component, Vue } from "nuxt-property-decorator";
 import axios from "axios";

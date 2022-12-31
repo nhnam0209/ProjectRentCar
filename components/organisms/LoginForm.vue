@@ -145,7 +145,6 @@ export default class extends Vue {
 }
 
 .btn {
-  height: 50px;
   background: #00a550;
 }
 
