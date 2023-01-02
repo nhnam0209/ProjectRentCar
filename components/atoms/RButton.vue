@@ -1,5 +1,5 @@
 <template>
-    <button @click="btnClick()" class="text-white text-lg font-bold my-7 rounded-xl p-3 text-center">
+    <button @click="btnClick()" class="text-white text-lg font-bold my-7 rounded-xl p-3 text-center" type="submit">
         {{ nameBtn }}
     </button>
 </template>

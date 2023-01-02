@@ -7,7 +7,7 @@
         <div class="">
           <RButton
           nameBtn="Add"
-            @click="toogleIsActive()"
+            @btn-click="toogleIsActive()"
             class="btn-assent m-6"
           >
           </RButton>
@@ -16,7 +16,7 @@
         <div class="">
           <RButton
           nameBtn="Delete"
-            @click="toogleIsActiveDelete()"
+            @btn-click="toogleIsActiveDelete()"
             class="btn-close m-6"
           >
           </RButton>

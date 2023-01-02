@@ -1,8 +1,8 @@
 <template>
     <div class="background-modal block">
         <form class="alert_box flex justify-center items-center flex-col bg-white rounded-xl shadow-xl" :class="{'modal-close': isActive}">
-        <div class="icon">
-            <IconExclamation</>
+        <div class="icon flex items-center justify-center">
+            <IconExlamation class="icon-alter"></IconExlamation>
         </div>
         <header class="font-bold text-xl py-4">Confirm</header>
         <p class="text-lg">Are you sure to  delete this User(Car)?</p>
@@ -63,8 +63,14 @@
   border: 3px solid #f23b26;
   border-radius: 50%;
   line-height: 97px;
-  font-size: 50px;
   text-align: center;
+}
+
+.icon .icon-alter{
+  height: 50px;
+  text-align: center;
+  width: 50px;
+  fill: red;
 }
   
   </style>

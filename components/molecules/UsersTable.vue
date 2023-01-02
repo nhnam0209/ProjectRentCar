@@ -22,8 +22,10 @@
           <td class="info">{{ user.last_login }}</td>
           <td class="info">
             <div class="icon-group flex">
-              <iconAdd class="icon-action" @click="handleUpdate(user)"></iconAdd>
-              <iconDelete class="icon-action" @click="handleDeleteUser(user)"></iconDelete>
+              <iconAdd class="icon-action" @icon-add-click="handleUpdate(user)">
+                <AddCarForm v-if="isActive"></AddCarForm>
+              </iconAdd>
+              <iconDelete class="icon-action" @icon-sdelete-click="handleDeleteUser(user)"></iconDelete>
               <ModalAlert v-if="isActive_delete"></ModalAlert>
             </div>
           </td>
@@ -98,8 +100,10 @@ export default class extends Vue {
 }
 
 .icon-action{
-  height: 20px;
-  width: 20px;
+  height: 24px;
+  width: 24px;
   padding: 0 5px;
+  margin: 0 5px;
+  cursor: pointer;
 }
 </style>
