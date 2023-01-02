@@ -10,35 +10,42 @@
               typeInput="text"
               class="input-focus"
             />
-            <label class="label-input top-2/4 absolute text-lg">First name:</label>
+            <label class="label-input top-2/4 absolute text-lg">Car name:</label>
           </div>
           <div class="relative border-bottom my-7">
             <RInput
               typeInput="text"
               class="input-focus"
             />
-            <label class="label-input top-2/4 absolute text-lg">Last name:</label>
+            <label class="label-input top-2/4 absolute text-lg">Type Car:</label>
           </div>
           <div class="relative border-bottom my-7">
             <RInput
               typeInput="email"
               class="input-focus"
             />
-            <label class="label-input top-2/4 absolute text-lg">Email:</label>
+            <label class="label-input top-2/4 absolute text-lg">Car Model:</label>
           </div>
           <div class="relative border-bottom my-7">
             <RInput
               typeInput="text"
               class="input-focus"
             />
-            <label class="label-input top-2/4 absolute text-lg">Username:</label>
+            <label class="label-input top-2/4 absolute text-lg">Distance:</label>
           </div>
           <div class="relative border-bottom my-7">
             <RInput
               typeInput="password"
               class="input-focus"
             />
-            <label class="label-input top-2/4 absolute text-lg">Password:</label>
+            <label class="label-input top-2/4 absolute text-lg">Price:</label>
+          </div>
+          <div class="relative border-bottom my-7">
+            <RInput
+              typeInput="password"
+              class="input-focus"
+            />
+            <label class="label-input top-2/4 absolute text-lg">Owner:</label>
           </div>
         </div>
         <div class="button-group flex justify-between w-full px-7">
