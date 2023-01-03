@@ -29,9 +29,7 @@
               class="input-focus"
               required
             />
-            <label class="label-input top-2/4 absolute text-lg"
-              >First name:</label
-            >
+            <RLabel nameLabel="First name:"></RLabel>
           </div>
           <div class="relative border-bottom my-7">
             <RInput
@@ -40,9 +38,7 @@
               class="input-focus"
               required
             />
-            <label class="label-input top-2/4 absolute text-lg"
-              >Last name:</label
-            >
+            <RLabel nameLabel="Last name:"></RLabel>
           </div>
           <div class="relative border-bottom my-7">
             <RInput
@@ -51,7 +47,7 @@
               class="input-focus"
               required
             />
-            <label class="label-input top-2/4 absolute text-lg">Email:</label>
+            <RLabel nameLabel="Email:"></RLabel>
           </div>
           <div class="relative border-bottom my-7">
             <RInput
@@ -60,9 +56,7 @@
               class="input-focus"
               required
             />
-            <label class="label-input top-2/4 absolute text-lg"
-              >Username:</label
-            >
+            <RLabel nameLabel="Username:"></RLabel>
           </div>
           <div class="relative border-bottom my-7">
             <RInput
@@ -71,15 +65,9 @@
               class="input-focus"
               required
             />
-            <label class="label-input top-2/4 absolute text-lg"
-              >Password:</label
-            >
+            <RLabel nameLabel="Password:"></RLabel>
           </div>
-          <RButton
-          nameBtn="Get Start"
-            class="w-full btn-assent"
-          >
-          </RButton>
+          <RButton nameBtn="Get Start" class="w-full btn-assent"> </RButton>
         </div>
       </form>
     </div>

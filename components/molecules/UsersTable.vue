@@ -13,22 +13,28 @@
         <th class="topic">Last Login</th>
         <th class="topic">Action</th>
       </tr>
-        <tr class="detail" v-for="user in users" :key="user.id">
-          <td class="info">{{ user.id }}</td>
-          <td class="info">{{ user.first_name }}</td>
-          <td class="info">{{ user.last_name }}</td>
-          <td class="info">{{ user.email }}</td>
-          <td class="info">{{ user.username }}</td>
-          <td class="info">{{ user.last_login }}</td>
-          <td class="info">
-            <div class="icon-group flex">
-              <iconAdd class="icon-action" @icon-add-click="toogleIsActive()"></iconAdd>
-              <AddUserForm v-if="isActive"></AddUserForm>
-              <iconDelete class="icon-action" @icon-delete-click="toogleIsActiveDelete()"></iconDelete>
-              <ModalAlert v-if="isActive_delete"></ModalAlert>
-            </div>
-          </td>
-        </tr>
+      <tr class="detail" v-for="user in users" :key="user.id">
+        <td class="info">{{ user.id }}</td>
+        <td class="info">{{ user.first_name }}</td>
+        <td class="info">{{ user.last_name }}</td>
+        <td class="info">{{ user.email }}</td>
+        <td class="info">{{ user.username }}</td>
+        <td class="info">{{ user.last_login }}</td>
+        <td class="info">
+          <div class="icon-group flex">
+            <iconAdd
+              class="icon-action"
+              @icon-add-click="toogleIsActive()"
+            ></iconAdd>
+            <ModalUpdate v-if="isActive"></ModalUpdate>
+            <iconDelete
+              class="icon-action"
+              @icon-delete-click="toogleIsActiveDelete()"
+            ></iconDelete>
+            <ModalAlert v-if="isActive_delete"></ModalAlert>
+          </div>
+        </td>
+      </tr>
     </table>
   </div>
 </template>
@@ -114,7 +120,7 @@ export default class extends Vue {
   padding: 10px;
 }
 
-.icon-action{
+.icon-action {
   height: 24px;
   width: 24px;
   padding: 0 5px;

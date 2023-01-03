@@ -15,7 +15,7 @@
         <th class="topic">User ID</th>
         <th class="topic">Action</th>
       </tr>
-      <tr class="detail"  v-for="car in cars" :key="car.id">
+      <tr class="detail" v-for="car in cars" :key="car.id">
         <td class="info">{{ car.id }}</td>
         <td class="info">{{ car.name }}</td>
         <td class="info">{{ car.type_car }}</td>
@@ -26,9 +26,15 @@
         <td class="info">{{ car.user_id }}</td>
         <td class="info">
           <div class="icon-group flex">
-            <iconAdd class="icon-action" @icon-add-click="toogleIsActive()"></iconAdd>
+            <iconAdd
+              class="icon-action"
+              @icon-add-click="toogleIsActive()"
+            ></iconAdd>
             <AddCarForm v-if="isActive"></AddCarForm>
-            <iconDelete class="icon-action" @icon-delete-click="toogleIsActiveDelete()"></iconDelete>
+            <iconDelete
+              class="icon-action"
+              @icon-delete-click="toogleIsActiveDelete()"
+            ></iconDelete>
             <ModalAlert v-if="isActive_delete"></ModalAlert>
           </div>
         </td>
@@ -84,14 +90,6 @@ export default class extends Vue {
       this.$router.push("/dashboardadmin");
       setTimeout("location.reload(true)", 100);
     }
-  }
-
-  async handleDeleteCar(car: any) {
-    this.$vxm.car.removeCar(car);
-  }
-
-  async handleUpdate(car: any) {
-    this.$vxm.car.updateCar(car);
   }
 }
 </script>

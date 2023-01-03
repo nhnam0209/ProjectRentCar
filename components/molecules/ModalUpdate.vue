@@ -67,7 +67,7 @@ export default class extends Vue {
   left: 0;
   top: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.2);
   align-items: center;
   justify-content: center;
   display: flex;

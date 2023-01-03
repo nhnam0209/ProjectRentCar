@@ -18,7 +18,7 @@
             class="input-focus"
             required
           />
-          <label class="label-input top-2/4 absolute text-lg">Username:</label>
+          <RLabel nameLabel="Username:"></RLabel>
         </div>
 
         <div class="relative border-bottom my-7">
@@ -28,7 +28,7 @@
             class="input-focus"
             required
           />
-          <label class="label-input top-2/4 absolute text-lg">Password:</label>
+          <RLabel nameLabel="Password:"></RLabel>
         </div>
         <!-- 
         <div class="forget-pass text-gray-400 cursor-pointer my-3">

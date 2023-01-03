@@ -10,35 +10,35 @@
             typeInput="text"
             class="input-focus"
           />
-         <RLabel nameLabel="First Name:"></RLabel>
+          <RLabel nameLabel="First Name:"></RLabel>
         </div>
         <div class="relative border-bottom my-7">
           <RInput
             typeInput="text"
             class="input-focus"
           />
-         <RLabel nameLabel="Last Name:"></RLabel>
+          <RLabel nameLabel="Last Name:"></RLabel>
         </div>
         <div class="relative border-bottom my-7">
           <RInput
             typeInput="text"
             class="input-focus"
           />
-         <RLabel nameLabel="Email"></RLabel>
+          <RLabel nameLabel="Email:"></RLabel>
         </div>
         <div class="relative border-bottom my-7">
           <RInput
             typeInput="text"
             class="input-focus"
           />
-         <RLabel nameLabel="Username:"></RLabel>
+          <RLabel nameLabel="Username:"></RLabel>
         </div>
         <div class="relative border-bottom my-7">
           <RInput
             typeInput="password"
             class="input-focus"
           />
-         <RLabel nameLabel="Password:"></RLabel>
+          <RLabel nameLabel="Password:"></RLabel>
         </div>
       </div>
       <div class="button-group flex justify-between w-full px-7">
@@ -52,7 +52,7 @@
 <script lang="ts">
 import { Component, Vue } from "nuxt-property-decorator";
 @Component({
-  name: "AddCarForm",
+  name: "AddUserForm",
 })
 export default class extends Vue {
   isActive: Boolean = false;
