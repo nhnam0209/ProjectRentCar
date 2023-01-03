@@ -26,8 +26,9 @@
         <td class="info">{{ car.user_id }}</td>
         <td class="info">
           <div class="icon-group flex">
-            <iconAdd class="icon-action" @click="handleUpdate(car)"></iconAdd>
-            <iconDelete class="icon-action" @click="handleDeleteCar(car)"></iconDelete>
+            <iconAdd class="icon-action" @icon-add-click="toogleIsActive()"></iconAdd>
+            <AddCarForm v-if="isActive"></AddCarForm>
+            <iconDelete class="icon-action" @icon-delete-click="toogleIsActiveDelete()"></iconDelete>
             <ModalAlert v-if="isActive_delete"></ModalAlert>
           </div>
         </td>
@@ -46,6 +47,22 @@ export default class extends Vue {
   cars: any = [];
   isActive = false;
   isActive_delete = false;
+
+  toogleIsActive() {
+    if (this.isActive == true) {
+      this.isActive = false;
+    } else {
+      this.isActive = true;
+    }
+  }
+
+  toogleIsActiveDelete() {
+    if (this.isActive_delete == true) {
+      this.isActive_delete = false;
+    } else {
+      this.isActive_delete = true;
+    }
+  }
 
   async created() {
     try {

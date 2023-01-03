@@ -22,10 +22,9 @@
           <td class="info">{{ user.last_login }}</td>
           <td class="info">
             <div class="icon-group flex">
-              <iconAdd class="icon-action" @icon-add-click="toogleIsActive()">
-                <AddUserForm v-if="isActive"></AddUserForm>
-              </iconAdd>
-              <iconDelete class="icon-action" @icon-sdelete-click="toogleIsActiveDelete()"></iconDelete>
+              <iconAdd class="icon-action" @icon-add-click="toogleIsActive()"></iconAdd>
+              <AddUserForm v-if="isActive"></AddUserForm>
+              <iconDelete class="icon-action" @icon-delete-click="toogleIsActiveDelete()"></iconDelete>
               <ModalAlert v-if="isActive_delete"></ModalAlert>
             </div>
           </td>
