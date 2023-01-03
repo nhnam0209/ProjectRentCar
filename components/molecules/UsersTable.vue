@@ -22,10 +22,10 @@
           <td class="info">{{ user.last_login }}</td>
           <td class="info">
             <div class="icon-group flex">
-              <iconAdd class="icon-action" @icon-add-click="handleUpdate(user)">
-                <AddCarForm v-if="isActive"></AddCarForm>
+              <iconAdd class="icon-action" @icon-add-click="toogleIsActive()">
+                <AddUserForm v-if="isActive"></AddUserForm>
               </iconAdd>
-              <iconDelete class="icon-action" @icon-sdelete-click="handleDeleteUser(user)"></iconDelete>
+              <iconDelete class="icon-action" @icon-sdelete-click="toogleIsActiveDelete()"></iconDelete>
               <ModalAlert v-if="isActive_delete"></ModalAlert>
             </div>
           </td>
@@ -45,6 +45,22 @@ export default class extends Vue {
   users: any = [];
   isActive = false;
   isActive_delete = false;
+
+  toogleIsActive() {
+    if (this.isActive == true) {
+      this.isActive = false;
+    } else {
+      this.isActive = true;
+    }
+  }
+
+  toogleIsActiveDelete() {
+    if (this.isActive_delete == true) {
+      this.isActive_delete = false;
+    } else {
+      this.isActive_delete = true;
+    }
+  }
 
   async created() {
     try {

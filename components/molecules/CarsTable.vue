@@ -1,7 +1,7 @@
 <template>
   <div class="table users-table w-full bg-white px-4 my-6">
     <div class="table-header m-4 text-xl font-bold">
-      <span>User Detail</span>
+      <span>Cars Detail</span>
     </div>
     <table class="w-full text-center">
       <tr class="table-header">
