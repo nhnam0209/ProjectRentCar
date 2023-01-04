@@ -23,64 +23,51 @@
             <span>Register Here!</span>
           </header>
           <div class="relative border-bottom my-7">
-            <input
-              type="text"
+            <RInput
+              typeInput="text"
               v-model="user.first_name"
-              class="login-input w-full px-1.5 h-10 text-lg border-none outline-none bg-none"
+              class="input-focus"
               required
             />
-            <label class="label-input top-2/4 absolute text-lg"
-              >First name:</label
-            >
+            <RLabel nameLabel="First name:"></RLabel>
           </div>
           <div class="relative border-bottom my-7">
-            <input
-              type="text"
+            <RInput
+              typeInput="text"
               v-model="user.last_name"
-              class="login-input w-full px-1.5 h-10 text-lg border-none outline-none bg-none"
+              class="input-focus"
               required
             />
-            <label class="label-input top-2/4 absolute text-lg"
-              >Last name:</label
-            >
+            <RLabel nameLabel="Last name:"></RLabel>
           </div>
           <div class="relative border-bottom my-7">
-            <input
-              type="email"
+            <RInput
+              typeInput="email"
               v-model="user.email"
-              class="login-input w-full px-1.5 h-10 text-lg border-none outline-none bg-none"
+              class="input-focus"
               required
             />
-            <label class="label-input top-2/4 absolute text-lg">Email:</label>
+            <RLabel nameLabel="Email:"></RLabel>
           </div>
           <div class="relative border-bottom my-7">
-            <input
-              type="text"
+            <RInput
+              typeInput="text"
               v-model="user.username"
-              class="login-input w-full px-1.5 h-10 text-lg border-none outline-none bg-none"
+              class="input-focus"
               required
             />
-            <label class="label-input top-2/4 absolute text-lg"
-              >Username:</label
-            >
+            <RLabel nameLabel="Username:"></RLabel>
           </div>
           <div class="relative border-bottom my-7">
-            <input
-              type="password"
+            <RInput
+              typeInput="password"
               v-model="user.password"
-              class="login-input w-full px-1.5 h-10 text-lg border-none outline-none bg-none"
+              class="input-focus"
               required
             />
-            <label class="label-input top-2/4 absolute text-lg"
-              >Password:</label
-            >
+            <RLabel nameLabel="Password:"></RLabel>
           </div>
-          <button
-            type="submit"
-            class="w-full btn text-lg text-white font-bold my-7"
-          >
-            Get Start
-          </button>
+          <RButton nameBtn="Get Start" class="w-full btn-assent"> </RButton>
         </div>
       </form>
     </div>

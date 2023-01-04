@@ -45,12 +45,12 @@
             </div>
             <div class="pickup-input flex">
               <div class="icon-pickup-input flex justify-center items-center">
-                <fa class="icon-pickup" :icon="['fas', 'location-pin']" />
+                <icon-location-pin class="icon-pickup"/>
               </div>
-              <input
-                type="text"
+              <RInput
+                typeInput="text"
                 class="label-input w-full"
-                placeholder="Pick up & Return location"
+                placeholderInput="Pick up & Return location"
               />
             </div>
           </div>
@@ -64,17 +64,17 @@
               </div>
               <div class="pickup-input flex justify-center">
                 <div class="icon-pickup-input flex justify-center items-center">
-                  <fa class="icon-pickup" :icon="['fas', 'calendar']" />
+                  <icon-date-time class="icon-pickup"/>
                 </div>
                 <div class="input-date flex justify-center items-center">
-                  <input
-                    type="date"
+                  <RInput
+                    typeInput="date"
                     class="label-input label-input-date partition w-full"
-                    placeholder="Return date"
+                    placeholderInput="Return date"
                   />
                 </div>
                 <!-- <div class="input-time flex justify-center items-center">
-                      <input type="text" class=" label-input label-input-time w-full" placeholder="Time">
+                      <RInput typeInput="text" class=" label-input label-input-time w-full" placeholderInput="Time">
                     </div> -->
               </div>
             </div>
@@ -85,20 +85,20 @@
               </div>
               <div class="pickup-input flex justify-center">
                 <div class="icon-pickup-input flex justify-center items-center">
-                  <fa class="icon-pickup" :icon="['fas', 'calendar']" />
+                  <icon-date-time class="icon-pickup"/>
                 </div>
                 <div class="input-date flex justify-center items-center">
-                  <input
-                    type="date"
+                  <RInput
+                    typeInput="date"
                     class="label-input label-input-date partition w-full"
-                    placeholder="Return date"
+                    placeholderInput="Return date"
                   />
                 </div>
                 <!-- <div class="input-time flex justify-center items-center">
-                  <input
-                    type="text"
+                  <RInput
+                    typeInput="text"
                     class="label-input label-input-time w-full"
-                    placeholder="Time"
+                    placeholderInput="Time"
                   />
                 </div> -->
               </div>
@@ -112,7 +112,7 @@
             <span class="info-label text-lg">I am</span>
             <div class="select-age">
               <span class="age-label font-bold">26+</span>
-              <fa class="icon-pickup" :icon="['fas', 'caret-down']" />
+              <icon-caret-down class="icon-pickup" />
             </div>
           </div>
         </div>
@@ -121,13 +121,13 @@
             <span class="info-label text-lg">I live in</span>
             <div class="select-country">
               <span class="country-label font-bold"> Viet Nam</span>
-              <fa class="icon-pickup" :icon="['fas', 'caret-down']" />
+              <icon-caret-down class="icon-pickup" />
             </div>
           </div>
         </div> -->
         <div class="flex justify-center items-center">
           <div class="button-search flex justify-center items-center">
-            <button class="btn-search text-lg font-bold">Search</button>
+            <RButton class="btn-search text-black" nameBtn="Search"></RButton>
           </div>
         </div>
       </div>
@@ -197,14 +197,6 @@ export default class extends Vue {}
   padding-right: 15px;
 }
 
-.station-input-pickup:first-child {
-  margin-right: 20px;
-}
-
-.station-input-pickup:last-child {
-  margin-left: 20px;
-}
-
 .pickup-input {
   border: 1px solid rgb(107 114 128);
   border-radius: 12px;
@@ -214,23 +206,7 @@ export default class extends Vue {}
 
 .icon-pickup-input {
   padding: 0 10px;
-  font-size: 20px;
   color: #00a550;
-}
-
-.label-input {
-  height: 100%;
-  outline: none;
-  border: none;
-  z-index: 1;
-}
-
-.label-input-date {
-  border-right: 1px solid rgb(107 114 128);
-}
-
-.input-time {
-  padding-left: 6px;
 }
 
 .info-label {
@@ -240,21 +216,10 @@ export default class extends Vue {}
 .icon-pickup {
   color: #00a550;
   cursor: pointer;
+  height: 20px;
+  width: 20px;
 }
 
-.button-search {
-  width: 260px;
-  height: 50px;
-  background: #ffdc00;
-  border: 1px solid rgb(107 114 128);
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.btn-search {
-  width: 100%;
-  height: 100%;
-}
 @keyframes slidein-Homepage {
   from {
     transform: translateY(-100%);

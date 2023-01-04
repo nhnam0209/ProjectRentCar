@@ -5,21 +5,21 @@
     <div class="dashboard-table">
       <div class="button flex">
         <div class="">
-          <button
-            @click="toogleIsActive()"
-            class="btn btn-update text-white m-6"
+          <RButton
+          nameBtn="Add"
+            @btn-click="toogleIsActive()"
+            class="btn-assent m-6"
           >
-            Add
-          </button>
+          </RButton>
           <ModalUpdate v-if="isActive"></ModalUpdate>
         </div>
         <div class="">
-          <button
-            @click="toogleIsActiveDelete()"
-            class="btn btn-close text-white m-6"
+          <RButton
+          nameBtn="Delete"
+            @btn-click="toogleIsActiveDelete()"
+            class="btn-close m-6"
           >
-            Delete
-          </button>
+          </RButton>
           <ModalAlert v-if="isActive_delete"></ModalAlert>
         </div>
       </div>

@@ -2,15 +2,15 @@
   <nav class="navbar flex justify-between overflow-hidden">
     <div class="logo"></div>
     <div class="navbar-icon-list flex justify-center items-center">
-      <fa class="navbar-icons" icon="fa-solid fa-house">
+      <icon-home class="navbar-icons">
         <NuxtLink class="navbar-items" to="/">Home</NuxtLink>
-      </fa>
-      <fa class="navbar-icons" icon="fa-solid fa-right-to-bracket">
+      </icon-home>
+      <icon-login class="navbar-icons">
         <NuxtLink class="navbar-items" to="/login">Sign In</NuxtLink>
-      </fa>
-      <fa class="navbar-icons" icon="fa-regular fa-registered">
+      </icon-login>
+      <icon-register class="navbar-icons">
         <NuxtLink class="navbar-items" to="/register">Sign Up</NuxtLink>
-      </fa>
+      </icon-register>
     </div>
     <div class="navbar-list-items flex justify-center items-center">
       <div v-if="isAdmin">
