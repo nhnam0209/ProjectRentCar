@@ -18,5 +18,10 @@ export default class extends Vue {
   left: 0px;
   color: #b2b2b2;
 }
+
+.sidebar-label{
+    position: initial!important;
+    color: black !important;
+}
 </style>
 

@@ -1,5 +1,5 @@
 <template>
-    <input :type="typeInput" class="w-full h-full text-lg border-none outline-none bg-none" :placeholder="placeholderInput">
+    <input :type="typeInput" class="h-full text-lg border-none outline-none bg-none" :placeholder="placeholderInput" :name="nameInput" >
 </template>
 
 <script lang="ts">
@@ -10,6 +10,7 @@ import {Component,Emit,Prop,Vue} from 'nuxt-property-decorator';
 export default class extends Vue {
   @Prop({type: String}) typeInput !:string
   @Prop({type: String}) placeholderInput !: string
+  @Prop({type: String}) nameInput !: string
 }
 </script>
 

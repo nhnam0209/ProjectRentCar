@@ -174,6 +174,7 @@ export default class extends Vue {}
   position: relative;
   z-index: 1;
   height: 100%;
+  width: 100%;
 }
 
 .vihecle-type::before {
