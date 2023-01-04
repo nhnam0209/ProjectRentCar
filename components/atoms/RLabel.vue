@@ -14,7 +14,7 @@ export default class extends Vue {
 
 <style>
 .label-input {
-  top: 0px;
+  top: -10px;
   left: 0px;
   color: #b2b2b2;
 }

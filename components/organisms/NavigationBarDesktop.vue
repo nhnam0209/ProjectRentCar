@@ -5,6 +5,9 @@
       <icon-home class="navbar-icons">
         <NuxtLink class="navbar-items" to="/">Home</NuxtLink>
       </icon-home>
+      <icon-car class="navbar-icons">
+        <NuxtLink class="navbar-items" to="/rentcar">Rent Car</NuxtLink>
+      </icon-car>
       <icon-login class="navbar-icons">
         <NuxtLink class="navbar-items" to="/login">Sign In</NuxtLink>
       </icon-login>
@@ -26,6 +29,7 @@
         <div class="inline-flex">
           <NuxtLink class="navbar-items" to="/">Home</NuxtLink>
           <NuxtLink class="navbar-items" to="/aboutus">About Us</NuxtLink>
+          <NuxtLink class="navbar-items" to="/rentcar">Rent Car</NuxtLink>
         </div>
       </div>
       <div v-if="!isLogin">

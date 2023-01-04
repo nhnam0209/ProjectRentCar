@@ -1,5 +1,5 @@
 <template>
-  <input :type="typeInput" class="w-full px-1.5 h-10 text-lg border-none outline-none bg-none" :placeholder="placeholderInput" required>
+    <input :type="typeInput" class="w-full h-full text-lg border-none outline-none bg-none" :placeholder="placeholderInput">
 </template>
 
 <script lang="ts">
@@ -14,6 +14,12 @@ export default class extends Vue {
 </script>
 
 <style>
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+}
+
 .input-focus:focus ~ .label-input,
 .input-focus:valid ~ .label-input {
 top: -20px;

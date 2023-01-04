@@ -1,7 +1,7 @@
 <template>
   <Default>
     <template #content>
-      <Tutorial />
+      <Product></Product>
     </template>
   </Default>
 </template>
