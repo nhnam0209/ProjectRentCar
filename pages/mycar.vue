@@ -1,9 +1,10 @@
 <template>
   <Default>
     <template #content>
-      <div class="h-full">
-        <DashboardTable class="h-full"></DashboardTable>
-      </div>
+      <!-- <DashboardTable
+        class="h-full"
+        :is-manage-car="isManageCar"
+      ></DashboardTable> -->
     </template>
   </Default>
 </template>
@@ -11,15 +12,15 @@
 <script lang="ts">
 import { Component, Vue } from "nuxt-property-decorator";
 import axios from "~/utils/myAxios";
-import Auth from "../service/authentication";
 
 @Component({
-  name: "DashboardAdmin",
+  name: "MyCarPage",
   layout: "rentcar-layout",
 })
 export default class extends Vue {
   isLogin: Boolean = false;
   userInfo: any = {};
+  isManageCar: Boolean = false;
 
   get user() {
     return this.$vxm.user.userInfo;
@@ -34,10 +35,9 @@ export default class extends Vue {
   }
   async created() {
     try {
-      // Auth.checkAdmin(this.isLogin, this.userInfo);
       if (document.cookie) {
         const res = await axios.get(
-          "http://localhost:5000/api/auth/verifyloginAdmin",
+          "http://localhost:5000/api/auth/verifylogin",
           {
             headers: {
               Authorization: `${document.cookie}`,
@@ -59,6 +59,7 @@ export default class extends Vue {
 
   mounted() {
     this.user = this.userInfo;
+    this.isManageCar = true;
   }
 }
 </script>

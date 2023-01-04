@@ -5,10 +5,12 @@
     </slot>
     <div>
       <div class="">
-        <h1 v-if="statusCode() === 404"></h1>
+        <h1 ></h1>
       </div>
     </div>
-    <slot name="footer"> </slot>
+    <slot name="footer">
+      <footer></footer>
+    </slot>
   </div>
 </template>
 <script lang="ts">
@@ -21,9 +23,5 @@ Vue.use(VueScreen);
 })
 export default class extends Vue {
   @Prop({ type: Object, default: null }) error!: Object;
-
-  statusCode(){
-    return(this.error && this.error.statusCode)
-  }
 }
 </script> -->

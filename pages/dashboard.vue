@@ -2,7 +2,12 @@
   <Default>
     <template #content>
       <div>
-        <client-dashboard :user-info="userInfo" />
+        <client-dashboard
+          :user-info="userInfo"
+          :created-at="createdAt"
+          :birth-of-date="birthOfDate"
+        />
+        <modal-update-first-time v-if="isEdit" :user-info="userInfo" />
       </div>
     </template>
   </Default>
@@ -12,13 +17,18 @@
 import axios from "../utils/myAxios";
 import { Component, Vue } from "nuxt-property-decorator";
 import DashboardTable from "~/components/organisms/DashboardTable.vue";
+import { EMPTY } from "~/utils/constant";
 @Component({
   components: { DashboardTable },
   name: "Dashboard",
   layout: "rentcar-layout",
 })
 export default class extends Vue {
-  userInfo: any = {};
+  userInfo: any = [];
+  createdAt: any = EMPTY;
+  birthOfDate: any = EMPTY;
+  isEdit: any = EMPTY;
+
   async created() {
     try {
       if (document.cookie) {
@@ -30,12 +40,24 @@ export default class extends Vue {
             },
           }
         );
-        this.userInfo = res.data.data;
+        this.userInfo = res.data[0];
+        const created_at = this.userInfo.created_at.split("T");
+        const birth_of_date = this.userInfo.birth_of_date.split("T");
+        this.birthOfDate = birth_of_date[0];
+        this.createdAt = created_at[0];
+        if (this.userInfo.id_card == "") {
+          this.isEdit = true;
+        } else {
+          this.isEdit = false;
+        }
+      } else {
+        this.$router.push("/login");
       }
     } catch (error) {
       this.$router.push("/");
     }
   }
+
   // get user() {
   //   return this.$vxm.user.userInfo;
   // }

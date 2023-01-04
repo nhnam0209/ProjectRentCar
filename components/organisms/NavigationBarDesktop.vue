@@ -79,7 +79,7 @@ export default class extends Vue {
             },
           }
         );
-        if (res.data.isAdmin == 1) {
+        if (res.data[0].is_admin == 1) {
           const resAdmin = await axios.get(
             "http://localhost:5000/api/auth/verifyloginAdmin",
             {
@@ -88,11 +88,11 @@ export default class extends Vue {
               },
             }
           );
-          this.userInfo = resAdmin.data.data;
+          this.userInfo = resAdmin.data[0];
           this.isAdmin = true;
           this.isLogin = true;
         } else {
-          this.userInfo = res.data.data;
+          this.userInfo = res.data[0];
           this.isLogin = true;
         }
       }

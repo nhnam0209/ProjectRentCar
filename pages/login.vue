@@ -29,7 +29,7 @@ export default class extends Vue {
           }
         );
         if (res.status == 200) {
-          if (res.data.isAdmin == 1) {
+          if (res.data[0].is_admin == 1) {
             this.$router.push("/dashboardadmin");
             this.isLogin = true;
           } else {

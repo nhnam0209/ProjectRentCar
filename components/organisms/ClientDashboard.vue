@@ -20,14 +20,14 @@
           <div class="md:col-span-2 py-4 md:py-6">
             <div class="font-bold text-xl leading-5 flex md:text-3xl">
               {{ userInfo.full_name }}
-              <div>
+              <div class="flex self-center">
                 <icon-edit
                   class="w-3 h-3 ml-2 cursor-pointer md:w-5 md:h-5 md:ml-4"
                 />
               </div>
             </div>
             <div class="mt-4 flex text-sm md:text-lg">
-              Created At: {{ userInfo.created_at }}
+              Created At: {{ createdAt }}
               <!-- <div class="w-4 flex justify-center mr-8 md:mr-0">-</div> -->
               <!-- <div class="font-semibold text-sm md:text-lg">Chưa có chuyến</div> -->
             </div>
@@ -41,7 +41,7 @@
                   Birth of Date
                 </div>
                 <div class="flex justify-center font-normal text-black">
-                  {{ userInfo.birth_of_date }}
+                  {{ birthOfDate }}
                 </div>
               </div>
               <div
@@ -96,7 +96,7 @@
                 <div
                   class="mt-3 font-medium text-center text-neutral-500 flex text-xs"
                 >
-                  CHƯA XÁC THỰC GPLX
+                  Not Verify
                 </div>
               </div>
             </div>
@@ -120,6 +120,7 @@
               </div>
               <div class="ml-3 mt-2 text-xs sm:text-sm">
                 {{ userInfo.email }}
+                {{ user }}
               </div>
             </div>
           </div>
@@ -131,14 +132,18 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from "nuxt-property-decorator";
-import { EMPTY } from "~/utils/constant";
 import axios from "~/utils/myAxios";
 @Component({
   name: "ClientDashboard",
 })
 export default class extends Vue {
-  @Prop({ type: Object }) userInfo!: any;
+  @Prop() userInfo!: any;
+  @Prop({ type: String }) createdAt!: any;
+  @Prop({ type: String }) birthOfDate!: any;
 
-  computed() {}
+  get user() {
+    console.log(this.userInfo);
+    return this.userInfo;
+  }
 }
 </script>

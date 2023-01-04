@@ -1,7 +1,6 @@
 import { EMPTY } from "./../utils/constant";
 import axios from "axios";
 import { action, createModule, mutation } from "vuex-class-component";
-import AuthService from "../service/authentication";
 
 const VuexModule = createModule({
   namespaced: "userInfo",
@@ -12,12 +11,18 @@ const VuexModule = createModule({
 export class UserStore extends VuexModule {
   userInfo: any =
     {
+      id: EMPTY,
       first_name: EMPTY,
       last_name: EMPTY,
       full_name: EMPTY,
       email: EMPTY,
       username: EMPTY,
       password: EMPTY,
+      gender: EMPTY,
+      id_card: EMPTY,
+      birth_of_date: Date,
+      phone_number: EMPTY,
+      driven_license: EMPTY,
     } || null;
   token: any = EMPTY;
   message: any = EMPTY;
@@ -32,6 +37,9 @@ export class UserStore extends VuexModule {
     (this.userInfo.full_name =
       this.userInfo.first_name + " " + this.userInfo.last_name),
       (this.userInfo = userInfo);
+  }
+  @mutation setUser(userInfo: any) {
+    this.userInfo = userInfo;
   }
   @mutation setMessage(message: any) {
     this.message = message;
@@ -70,7 +78,8 @@ export class UserStore extends VuexModule {
         this.userInfo
       );
     } catch (error: any) {
-      console.error(error.message);
+      const errMessage = JSON.stringify(error.response.data.msg);
+      alert(errMessage);
     }
   }
 
@@ -80,7 +89,7 @@ export class UserStore extends VuexModule {
         "http://localhost:5000/api/auth/login",
         this.userLogin
       );
-      console.log(res);
+      // console.log(res);
       alert(res.data.msg);
       if (res.status === 200) {
         if (res.data.user.is_admin == 1) {
@@ -100,11 +109,13 @@ export class UserStore extends VuexModule {
           this.setUserInfo(res.data.user);
           this.setIsAdmin(false);
         }
+        setTimeout("location.reload(true)", 100);
       } else {
         this.setMessage(res.data.message);
       }
     } catch (error: any) {
-      console.log(error);
+      const errMessage = JSON.stringify(error.response.data.msg);
+      alert(errMessage);
     }
   }
 
@@ -118,7 +129,8 @@ export class UserStore extends VuexModule {
       document.cookie = `Authorization = ${token}`;
       this.setIsAdmin(false);
     } catch (error: any) {
-      console.error(error.message);
+      const errMessage = JSON.stringify(error.response.data.msg);
+      alert(errMessage);
     }
   }
   @action async removeUser(user: any) {
@@ -133,21 +145,40 @@ export class UserStore extends VuexModule {
       });
       alert(`The user ${user.full_name} with id: ${user.id} is deleted!!!`);
       setTimeout("location.reload(true)", 100);
-    } catch (error) {
-      console.log(error);
-      alert("Something wrong");
+    } catch (error: any) {
+      const errMessage = JSON.stringify(error.response.data.msg);
+      alert(errMessage);
     }
-
-    // const indexOfData = userData.findIndex((object:any)=>{
-    //     return object.id === user.id
-    // })
-    // if(indexOfData !== -1){
-    //     userData.splice(indexOfData,1)
-    //
-    // this.setuser(userData)
   }
   @action async updateUser(user: any) {
-    console.log(user);
+    try {
+      await axios.put(
+        "http://localhost:5000/api/user/updateUser",
+        {
+          id: this.userInfo.id,
+          first_name: this.userInfo.first_name,
+          last_name: this.userInfo.last_name,
+          full_name: this.userInfo.full_name,
+          email: this.userInfo.email,
+          gender: user.gender,
+          id_card: user.id_card,
+          phone_number: user.phone_number,
+          birth_of_date: user.birth_of_date,
+          driven_license: user.driven_license,
+        },
+        {
+          headers: {
+            Authorization: `${document.cookie}`,
+          },
+        }
+      );
+      alert(`Your information is updated!!!`);
+      setTimeout("location.reload(true)", 100);
+    } catch (error: any) {
+      console.log(error);
+      const errMessage = JSON.stringify(error.response.data.msg);
+      alert(errMessage);
+    }
   }
   get gotUserInfo() {
     return this.userInfo;

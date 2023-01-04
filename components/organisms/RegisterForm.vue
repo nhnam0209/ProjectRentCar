@@ -91,10 +91,6 @@ export default class extends Vue {
     this.$vxm.user.setUserInfo(value);
   }
 
-  // mounted(){
-  //   console.log(this.user)
-  // }
-
   async signupHandle() {
     try {
       this.$vxm.user.handleRegister();

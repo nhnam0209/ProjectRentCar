@@ -34,7 +34,10 @@
         <div class="forget-pass text-gray-400 cursor-pointer my-3">
           Forgot Password?
         </div> -->
-        <button type="submit" class="w-full btn text-lg text-white font-bold my-7 rounded-xl p-3">
+        <button
+          type="submit"
+          class="w-full btn text-lg text-white font-bold my-7 rounded-xl p-3"
+        >
           Sign In
         </button>
         <div class="register-link my-5 text-lg text-gray-500">
@@ -57,9 +60,9 @@ export default class extends Vue {
   async submitLogin() {
     try {
       this.$vxm.user.handleLogin();
-      //setTimeout("location.reload(true)", 100);
     } catch (error: any) {
       this.msg = error;
+      console.log(this.msg);
       alert(this.msg);
     }
   }

@@ -88,9 +88,9 @@ export class CarStore extends VuexModule {
       });
       alert(`The car ${car.name} with id: ${car.id} is deleted!!!`);
       setTimeout("location.reload(true)", 100);
-    } catch (error) {
-      console.log(error);
-      alert("Something wrong");
+    } catch (error: any) {
+      const errMessage = JSON.stringify(error.response.data.msg);
+      alert(errMessage);
     }
 
     // const indexOfData = carData.findIndex((object:any)=>{
@@ -103,14 +103,6 @@ export class CarStore extends VuexModule {
   }
   @action async updateCar(car: any) {
     console.log(car);
-  }
-  @action async fletchData() {
-    //@ts-ignore
-    document.getElementById("popupForm")?.style.display = "block";
-  }
-  @action async Close() {
-    //@ts-ignore
-    document.getElementById("popupForm")?.style.display = "none";
   }
   // @action async checkOut(){
   //     this.loading =!false

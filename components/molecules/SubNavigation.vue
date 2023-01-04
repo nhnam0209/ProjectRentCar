@@ -15,10 +15,10 @@
           <NuxtLink class="navbar-items cursor-pointer z-50" to="/wallet"
             >My Wallet</NuxtLink
           >
-          <NuxtLink class="navbar-items cursor-pointer z-50" to="/wallet"
+          <!-- <NuxtLink class="navbar-items cursor-pointer z-50" to="/wallet"
             >My Order</NuxtLink
-          >
-          <NuxtLink class="navbar-items cursor-pointer z-50" to="/wallet"
+          > -->
+          <NuxtLink class="navbar-items cursor-pointer z-50" to="/mycar"
             >My Car</NuxtLink
           >
         </div>
@@ -37,7 +37,7 @@ import { EMPTY } from "~/utils/constant";
   name: "SubNavigation",
 })
 export default class extends Vue {
-  @Prop({ type: Object }) userInfo!: any;
+  @Prop() userInfo!: any;
   @Prop({ type: Boolean }) isAdmin!: Boolean;
   isHover: Boolean = false;
   username: String = EMPTY;
