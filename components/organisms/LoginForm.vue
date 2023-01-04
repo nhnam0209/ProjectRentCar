@@ -34,7 +34,9 @@
         <div class="forget-pass text-gray-400 cursor-pointer my-3">
           Forgot Password?
         </div> -->
-        <RButton nameBtn="Sign In" class="btn-assent w-full"></RButton>
+        <button type="submit" class="w-full btn text-lg text-white font-bold my-7 rounded-xl p-3">
+          Sign In
+        </button>
         <div class="register-link my-5 text-lg text-gray-500">
           No account yet?
           <a href="/register" class="register-item text-black">Sign Up</a>
