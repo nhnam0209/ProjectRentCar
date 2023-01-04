@@ -89,7 +89,6 @@ export class UserStore extends VuexModule {
         "http://localhost:5000/api/auth/login",
         this.userLogin
       );
-      // console.log(res);
       alert(res.data.msg);
       if (res.status === 200) {
         if (res.data.user.is_admin == 1) {
@@ -152,6 +151,13 @@ export class UserStore extends VuexModule {
   }
   @action async updateUser(user: any) {
     try {
+      var newDate = user.birth_of_date;
+      const date = Date.parse(newDate) || 0;
+      if (date == 0) {
+        newDate = this.userInfo.birth_of_date;
+      } else {
+        newDate = user.birth_of_date;
+      }
       await axios.put(
         "http://localhost:5000/api/user/updateUser",
         {
@@ -163,7 +169,7 @@ export class UserStore extends VuexModule {
           gender: user.gender,
           id_card: user.id_card,
           phone_number: user.phone_number,
-          birth_of_date: user.birth_of_date,
+          birth_of_date: newDate,
           driven_license: user.driven_license,
         },
         {

@@ -1,6 +1,6 @@
 <template>
   <div class="background-home flex justify-center items-center flexed h-screen">
-    <form action="" class="booking-form">
+    <form action="" class="booking-form" @submit.prevent="handleSearchCar()">
       <div class="type-car flex justify-between items-center">
         <!-- <div class="vihecle">
           <div class="vihecle-filter">
@@ -45,12 +45,13 @@
             </div>
             <div class="pickup-input flex">
               <div class="icon-pickup-input flex justify-center items-center">
-                <icon-location-pin class="icon-pickup"/>
+                <icon-location-pin class="icon-pickup" />
               </div>
-              <RInput
-                typeInput="text"
+              <input
+                type="text"
                 class="label-input w-full"
-                placeholderInput="Pick up & Return location"
+                placeholder="Pick up & Return location"
+                v-model="car.location"
               />
             </div>
           </div>
@@ -64,13 +65,14 @@
               </div>
               <div class="pickup-input flex justify-center">
                 <div class="icon-pickup-input flex justify-center items-center">
-                  <icon-date-time class="icon-pickup"/>
+                  <icon-date-time class="icon-pickup" />
                 </div>
                 <div class="input-date flex justify-center items-center">
-                  <RInput
-                    typeInput="date"
+                  <input
+                    type="date"
                     class="label-input label-input-date partition w-full"
-                    placeholderInput="Return date"
+                    placeholder="Return date"
+                    v-model="car.pickupDate"
                   />
                 </div>
                 <!-- <div class="input-time flex justify-center items-center">
@@ -85,13 +87,14 @@
               </div>
               <div class="pickup-input flex justify-center">
                 <div class="icon-pickup-input flex justify-center items-center">
-                  <icon-date-time class="icon-pickup"/>
+                  <icon-date-time class="icon-pickup" />
                 </div>
                 <div class="input-date flex justify-center items-center">
-                  <RInput
-                    typeInput="date"
+                  <input
+                    type="date"
                     class="label-input label-input-date partition w-full"
-                    placeholderInput="Return date"
+                    placeholder="Return date"
+                    v-model="car.returnDate"
                   />
                 </div>
                 <!-- <div class="input-time flex justify-center items-center">
@@ -140,7 +143,19 @@ import { Component, Vue } from "nuxt-property-decorator";
 @Component({
   name: "SearchBar",
 })
-export default class extends Vue {}
+export default class extends Vue {
+  handleSearchCar() {
+    try {
+      this.$vxm.car.handleSearchCar(this.car);
+    } catch (error) {
+      alert("Please try again!!");
+    }
+  }
+
+  get car() {
+    return this.$vxm.car.searchingCar;
+  }
+}
 </script>
 
 <style>

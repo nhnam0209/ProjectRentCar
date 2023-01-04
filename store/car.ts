@@ -1,3 +1,4 @@
+import { EMPTY } from "./../utils/constant";
 import axios from "axios";
 import { action, createModule, mutation } from "vuex-class-component";
 const VuexModule = createModule({
@@ -26,13 +27,21 @@ export class CarStore extends VuexModule {
         user_id: "",
       },
     ] || null;
-  order: any = [] || null;
   loading: Boolean = false;
+  searchingCar: any = {
+    location: EMPTY,
+    pickupDate: Date,
+    returnDate: Date,
+  };
+  result: any = [] || null;
   @mutation setCar(car: any) {
     this.car = car;
   }
-  @mutation setOrder(order: any) {
-    this.order = order;
+  @mutation setSearchingCar(searchingCar: any) {
+    this.searchingCar = searchingCar;
+  }
+  @mutation setResult(result: any) {
+    this.result = result;
   }
   @mutation clearCar(car: any) {
     this.car = car;
@@ -40,42 +49,18 @@ export class CarStore extends VuexModule {
   get getCars() {
     return this.car;
   }
-  get getOrder() {
-    return this.order;
+
+  @action async handleSearchCar(car: any) {
+    try {
+      const req = await axios.post("http://localhost:5000/api/cars/find", car);
+      this.result.append(req);
+      console.log(this.result);
+    } catch (error: any) {
+      const errMessage = JSON.stringify(error.response.data.msg);
+      alert(errMessage);
+    }
   }
-  // @action async addtoCart(car:any){
-  //     this.loading =!false
-  //     setTimeout(()=>{this.loading=!true},2000)
-  //     this.setcar(car)
-  //     const cartData = this.cart
-  //     let index = cartData.findIndex((object:any)=>{
-  //         return object.id === car.id
-  //     });
-  //     if((car.quantity < car.storage)||(car.quantity == car.storage)){
-  //         if (index == -1){
-  //             this.cart.push(car)
-  //             this.setCart(this.cart)
-  //         }else if(index != -1)
-  //         {
-  //             if(car.id == cartData[index].id){
-  //                 if(car.quantity < cartData[index].storage){
-  //                     const oldValue = cartData[index]
-  //                     const newValue = car.quantity + oldValue.quantity
-  //                     oldValue.quantity = newValue
-  //                     this.setCart(cartData)
-  //                 }
-  //             }
-  //         }
-  //     }else{
-  //     }
-  // }
-  //   @action async removeAllCart(car: any) {
-  //     location.reload();
-  //     this.clearCar(car);
-  //   }
   @action async removeCar(car: any) {
-    //console.log(car.id)
-    // const carData = this.car
     try {
       await axios.delete("http://localhost:5000/api/cars/deleteAdmin", {
         headers: {
@@ -92,37 +77,8 @@ export class CarStore extends VuexModule {
       const errMessage = JSON.stringify(error.response.data.msg);
       alert(errMessage);
     }
-
-    // const indexOfData = carData.findIndex((object:any)=>{
-    //     return object.id === car.id
-    // })
-    // if(indexOfData !== -1){
-    //     carData.splice(indexOfData,1)
-    //
-    // this.setCar(carData)
   }
   @action async updateCar(car: any) {
     console.log(car);
   }
-  // @action async checkOut(){
-  //     this.loading =!false
-  //     setTimeout(()=>{this.loading=!true},1000)
-  //     this.order.push(this.cart)
-  //     const user = this.userInfo
-  //     const userModify = JSON.stringify(user)
-  //     this.order.push(userModify)
-  //     const order = this.order
-  //     try{
-  //         const userOrder = await axios.post('http://localhost:3000/api/cart/order',order);
-  //         this.setOrder(order)
-  //         this.cart = []
-  //         this.order = []
-  //         this.setCart(this.cart)
-  //         this.setOrder(this.order)
-  //         location.reload();
-  //         alert("Thanks for choosing us")
-  //     }catch(error:any){
-  //         console.error(error.message);
-  //     }
-  // }
 }

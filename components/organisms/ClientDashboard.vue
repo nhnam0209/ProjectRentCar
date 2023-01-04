@@ -20,9 +20,9 @@
           <div class="md:col-span-2 py-4 md:py-6">
             <div class="font-bold text-xl leading-5 flex md:text-3xl">
               {{ userInfo.full_name }}
-              <div class="flex self-center">
+              <div class="flex justify-center" @click="handleEdit()">
                 <icon-edit
-                  class="w-3 h-3 ml-2 cursor-pointer md:w-5 md:h-5 md:ml-4"
+                  class="w-3 h-3 ml-2 cursor-pointer self-center md:w-5 md:h-5 md:ml-4"
                 />
               </div>
             </div>
@@ -40,8 +40,23 @@
                 >
                   Birth of Date
                 </div>
-                <div class="flex justify-center font-normal text-black">
+                <div
+                  v-if="user.birth_of_date"
+                  class="flex justify-center font-normal text-black"
+                >
                   {{ birthOfDate }}
+                </div>
+                <div v-else class="flex justify-center">
+                  <div class="flex-col self-center">
+                    <icon-warning
+                      class="w-3 h-3 mt-2 ml-2 flex self-center cursor-pointer md:w-5 md:h-5 md:ml-3"
+                    />
+                    <div
+                      class="mt-3 font-medium text-center text-neutral-500 flex text-xs"
+                    >
+                      Not Verify yet
+                    </div>
+                  </div>
                 </div>
               </div>
               <div
@@ -49,8 +64,23 @@
               >
                 <div class="mt-1 font-bold text-neutral-500">
                   Gender
-                  <div class="flex justify-center font-normal text-black">
+                  <div
+                    v-if="user.gender"
+                    class="flex justify-center font-normal text-black"
+                  >
                     {{ userInfo.gender }}
+                  </div>
+                  <div v-else class="flex justify-center">
+                    <div class="flex-col self-center">
+                      <icon-warning
+                        class="w-3 h-3 mt-2 ml-2 flex self-center cursor-pointer md:w-5 md:h-5 md:ml-3"
+                      />
+                      <div
+                        class="mt-3 font-medium text-center text-neutral-500 flex text-xs"
+                      >
+                        Not Verify yet
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -64,39 +94,28 @@
             <div class="flex justify-center">
               <div class="mt-1 font-bold inline-flex text-xs sm:text-base">
                 <p>Phone Number</p>
-                <icon-edit
-                  class="w-3 h-3 ml-2 cursor-pointer md:w-5 md:h-5 md:ml-4"
-                />
+                <div @click="handleEdit()">
+                  <icon-edit
+                    class="w-3 h-3 ml-2 cursor-pointer self-center md:w-5 md:h-5 md:ml-4"
+                  />
+                </div>
               </div>
             </div>
-
-            <div class="flex justify-center mt-2">
+            <div v-if="user.phone_number" class="flex justify-center mt-2">
               {{ userInfo.phone_number }}
               <icon-success
                 class="w-3 h-3 ml-2 cursor-pointer md:w-5 md:h-5 md:ml-4"
               />
             </div>
-          </div>
-          <div
-            class="w-full h-16 justify-center mt-5 rounded-lg ml-5 text-sm md:text-lg"
-          >
-            <div class="flex justify-center">
-              <div class="mt-1 font-bold inline-flex text-xs sm:text-base">
-                <p>Driving License</p>
-                <icon-edit
-                  class="w-3 h-3 ml-2 cursor-pointer md:w-5 md:h-5 md:ml-4"
-                />
-              </div>
-            </div>
-            <div class="flex justify-center">
-              <div class="flex-col">
+            <div v-else class="flex justify-center">
+              <div class="flex-col self-center">
                 <icon-warning
                   class="w-3 h-3 mt-2 ml-2 flex self-center cursor-pointer md:w-5 md:h-5 md:ml-3"
                 />
                 <div
                   class="mt-3 font-medium text-center text-neutral-500 flex text-xs"
                 >
-                  Not Verify
+                  Not Verify yet
                 </div>
               </div>
             </div>
@@ -106,27 +125,64 @@
           >
             <div class="flex justify-center">
               <div class="mt-1 font-bold inline-flex text-xs sm:text-base">
-                <p>Email</p>
-                <icon-edit
-                  class="w-3 h-3 ml-2 cursor-pointer md:w-5 md:h-5 md:ml-4"
-                />
+                <p>Driving License</p>
+                <div @click="handleEdit()">
+                  <icon-edit
+                    class="w-3 h-3 ml-2 cursor-pointer self-center md:w-5 md:h-5 md:ml-4"
+                  />
+                </div>
               </div>
             </div>
-            <div class="flex justify-center">
-              <div class="mt-2 -ml-16">
-                <icon-success
-                  class="w-3 h-3 ml-2 cursor-pointer md:w-5 md:h-5 md:ml-4"
+            <div v-if="user.driven_license" class="flex justify-center mt-2">
+              {{ user.driven_license }}
+              <icon-success
+                class="w-3 h-3 ml-2 cursor-pointer self-center md:w-5 md:h-5 md:ml-4"
+              />
+            </div>
+            <div v-else class="flex justify-center">
+              <div class="flex-col self-center">
+                <icon-warning
+                  class="w-3 h-3 mt-2 ml-2 flex self-center cursor-pointer md:w-5 md:h-5 md:ml-3"
                 />
+                <div
+                  class="mt-3 font-medium text-center text-neutral-500 flex text-xs"
+                >
+                  Not Verify yet
+                </div>
               </div>
-              <div class="ml-3 mt-2 text-xs sm:text-sm">
-                {{ userInfo.email }}
-                {{ user }}
+            </div>
+          </div>
+          <div
+            class="w-full h-16 justify-center mt-5 rounded-lg ml-5 text-sm md:text-lg"
+          >
+            <div class="flex justify-center">
+              <div
+                class="mt-1 font-bold inline-flex text-xs sm:text-base"
+                @click="handleEdit()"
+              >
+                <p>Email</p>
+                <div @click="handleEdit()">
+                  <icon-edit
+                    class="w-3 h-3 ml-2 cursor-pointer self-center md:w-5 md:h-5 md:ml-4"
+                  />
+                </div>
               </div>
+            </div>
+            <div class="flex justify-center mt-2">
+              {{ user.email }}
+              <icon-success
+                class="w-3 h-3 ml-2 cursor-pointer self-center md:w-5 md:h-5 md:ml-4"
+              />
             </div>
           </div>
         </div>
       </div>
     </div>
+    <modal-update-profile
+      v-if="isActive"
+      :user-info="user"
+      :is-close="isActive"
+    />
   </div>
 </template>
 
@@ -140,9 +196,13 @@ export default class extends Vue {
   @Prop() userInfo!: any;
   @Prop({ type: String }) createdAt!: any;
   @Prop({ type: String }) birthOfDate!: any;
+  isActive: Boolean = false;
+
+  handleEdit() {
+    this.isActive ? (this.isActive = false) : (this.isActive = true);
+  }
 
   get user() {
-    console.log(this.userInfo);
     return this.userInfo;
   }
 }
