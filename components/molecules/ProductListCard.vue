@@ -1,17 +1,21 @@
 <template>
   <div class="listcard-container ml-1 w-full">
     <div class="grid gap-4 grid-cols-3 m-4">
-      <div class="product-card p-4 bg-white rounded-xl">
+      <div class="product-card p-4 bg-white rounded-xl" @click="toogleIsActive()">
         <div class="main-images">
           <img
-            src="../../static/img/product/vios-15g-cvt-44451619164281.jpg"
+            src="../../static/img/product/vios/vios-15g-cvt-44451619164281.jpg"
             alt=""
             class="img-car"
           />
         </div>
         <div class="cars-details product-card-items">
             <div class="pb-4 flex justify-between">
-            <span class="car-name text-2xl font-bold">Toyota Vios</span>
+              <div class="">
+                <span class="car-name text-2xl font-bold">Toyota Vios</span>
+                <br/>
+                <span class="price-car text-xl font-bold text-green-500">$52.88 / day</span>
+              </div>
             <div class="rating flex">
                 <IconStar class="icon-rating icon-details"></IconStar>
                 <IconStar class="icon-rating icon-details"></IconStar>
@@ -74,14 +78,15 @@
           </div>
         </div>
         <div class="button product-card-items flex items-center justify-center">
-          <RButton class="btn-assent" nameBtn="$52.88 / day"></RButton>
+          <RButton class="btn-assent" nameBtn="Select"></RButton>
         </div>
       </div>
+      <ModalDetailCar v-if="isActive"></ModalDetailCar>
 
       <div class="product-card p-4 bg-white rounded-xl">
         <div class="main-images">
           <img
-            src="../../static/img/product/F4.png"
+            src="../../static/img/product/honda/F4.png"
             alt=""
             class="img-car"
           />
@@ -163,7 +168,17 @@ import { Component, Vue } from "nuxt-property-decorator";
 @Component({
   name: "ProductListCard",
 })
-export default class extends Vue {}
+export default class extends Vue {
+  isActive: boolean = false;
+
+    toogleIsActive() {
+    if (this.isActive == true) {
+      this.isActive = false;
+    } else {
+      this.isActive = true;
+    }
+  }
+}
 </script>
 
 <style>
