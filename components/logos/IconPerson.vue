@@ -1,17 +1,10 @@
 <template>
-  <Default>
-    <template #content>
-      <Product></Product>
-    </template>
-  </Default>
+  <img src="../../static/icon/noun-person-124296.svg" alt="">
 </template>
-
 <script lang="ts">
 import { Component, Vue } from "nuxt-property-decorator";
-
 @Component({
-  name: "RentCarPage",
-  layout: "rentcar-layout",
+  name: "IconPerson",
 })
 export default class extends Vue {}
 </script>

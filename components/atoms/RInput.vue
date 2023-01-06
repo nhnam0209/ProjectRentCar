@@ -1,5 +1,5 @@
 <template>
-  <input :type="typeInput" class="w-full px-1.5 h-10 text-lg border-none outline-none bg-none" :placeholder="placeholderInput" required>
+    <input :type="typeInput" class="h-full text-lg border-none outline-none bg-none" :placeholder="placeholderInput" :name="nameInput" >
 </template>
 
 <script lang="ts">
@@ -10,10 +10,17 @@ import {Component,Emit,Prop,Vue} from 'nuxt-property-decorator';
 export default class extends Vue {
   @Prop({type: String}) typeInput !:string
   @Prop({type: String}) placeholderInput !: string
+  @Prop({type: String}) nameInput !: string
 }
 </script>
 
 <style>
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+}
+
 .input-focus:focus ~ .label-input,
 .input-focus:valid ~ .label-input {
 top: -20px;

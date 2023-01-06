@@ -189,6 +189,7 @@ export default class extends Vue {
   position: relative;
   z-index: 1;
   height: 100%;
+  width: 100%;
 }
 
 .vihecle-type::before {
@@ -214,14 +215,14 @@ export default class extends Vue {
 
 .pickup-input {
   border: 1px solid rgb(107 114 128);
-  border-radius: 12px;
+  border-radius: 10px;
   overflow: hidden;
   height: 50px;
 }
 
 .icon-pickup-input {
   padding: 0 10px;
-  color: #00a550;
+  fill: #00a550;
 }
 
 .info-label {
@@ -229,7 +230,7 @@ export default class extends Vue {
 }
 
 .icon-pickup {
-  color: #00a550;
+  fill: #00a550;
   cursor: pointer;
   height: 20px;
   width: 20px;

@@ -1,7 +1,8 @@
 <template>
   <div>
     <slot name="header">
-      <navigation-bar-desktop />
+      <navigation-bar-desktop v-if="!isMobile" />
+      <navigation-bar-mobile v-else/>
     </slot>
     <slot name="content">
       <Nuxt />
@@ -19,5 +20,9 @@ Vue.use(VueScreen);
 @Component({
   name: "RentCarLayout",
 })
-export default class extends Vue {}
+export default class extends Vue {
+  get isMobile() {
+      return this.$screen.width < 1024;
+    }
+}
 </script>

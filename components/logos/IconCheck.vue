@@ -1,17 +1,17 @@
 <template>
-  <Default>
-    <template #content>
-      <Product></Product>
-    </template>
-  </Default>
+  <img src="../../static/icon/noun-check-1521191.svg" alt="" />
 </template>
-
 <script lang="ts">
 import { Component, Vue } from "nuxt-property-decorator";
-
 @Component({
-  name: "RentCarPage",
-  layout: "rentcar-layout",
+  name: "IconCheck",
 })
 export default class extends Vue {}
 </script>
+
+<style>
+.icon-check{
+    fill: #00a550;
+}
+</style>
+
