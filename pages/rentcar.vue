@@ -1,7 +1,7 @@
 <template>
   <Default>
     <template #content>
-      <Product></Product>
+      <product-list></product-list>
     </template>
   </Default>
 </template>

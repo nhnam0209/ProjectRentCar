@@ -2,7 +2,7 @@
   <Default>
     <template #content>
       <div class="h-full">
-        <SearchForm />
+        <welcome-board />
       </div>
     </template>
   </Default>

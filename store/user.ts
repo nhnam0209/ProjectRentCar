@@ -33,10 +33,11 @@ export class UserStore extends VuexModule {
       password: EMPTY,
     } || null;
   loading: boolean = false;
+  @mutation setFullName(fullName: any) {
+    this.userInfo.full_name = fullName;
+  }
   @mutation setUserInfo(userInfo: any) {
-    (this.userInfo.full_name =
-      this.userInfo.first_name + " " + this.userInfo.last_name),
-      (this.userInfo = userInfo);
+    this.userInfo = userInfo;
   }
   @mutation setUser(userInfo: any) {
     this.userInfo = userInfo;
@@ -62,21 +63,26 @@ export class UserStore extends VuexModule {
   }
 
   @action async handleRegister() {
-    function completed() {
-      alert("Your profile was registed!!");
-    }
-    const TIME_OUT_SUBMIT = 1000;
-    this.loading = !false;
-    setTimeout(() => {
-      this.loading = !true;
-    }, TIME_OUT_SUBMIT);
-    setTimeout(completed, TIME_OUT_SUBMIT);
-    this.setUserInfo(this.userInfo);
+    // function completed() {
+    //   alert("Your profile was registed!!");
+    // }
+    // const TIME_OUT_SUBMIT = 1000;
+    // this.loading = !false;
+    // setTimeout(() => {
+    //   this.loading = !true;
+    // }, TIME_OUT_SUBMIT);
+    // setTimeout(completed, TIME_OUT_SUBMIT);
+    // this.setUserInfo(this.userInfo);
     try {
-      await axios.post(
+      this.setFullName(
+        this.userInfo.first_name + " " + this.userInfo.last_name
+      );
+      const res = await axios.post(
         "http://localhost:5000/api/auth/register",
         this.userInfo
       );
+      alert(res.data.msg);
+      window.location.href = "/login";
     } catch (error: any) {
       const errMessage = JSON.stringify(error.response.data.msg);
       alert(errMessage);

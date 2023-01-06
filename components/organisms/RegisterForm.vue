@@ -23,51 +23,86 @@
             <span>Register Here!</span>
           </header>
           <div class="relative border-bottom my-7">
-            <RInput
+            <!-- <r-input
               typeInput="text"
-              v-model="user.first_name"
+              :VModel="user.first_name"
               class="input-focus"
+              required
+            /> -->
+            <input
+              type="text"
+              v-model="user.first_name"
+              class="input-focus w-full px-1.5 h-10 text-lg border-none outline-none bg-none"
               required
             />
             <RLabel nameLabel="First name:"></RLabel>
           </div>
           <div class="relative border-bottom my-7">
-            <RInput
+            <!-- <r-input
               typeInput="text"
-              v-model="user.last_name"
+              :VModel="user.last_name"
               class="input-focus"
+              required
+            /> -->
+            <input
+              type="text"
+              v-model="user.last_name"
+              class="input-focus w-full px-1.5 h-10 text-lg border-none outline-none bg-none"
               required
             />
             <RLabel nameLabel="Last name:"></RLabel>
           </div>
           <div class="relative border-bottom my-7">
-            <RInput
+            <!-- <r-input
               typeInput="email"
-              v-model="user.email"
+              :VModel="user.email"
               class="input-focus"
+              required
+            /> -->
+            <input
+              type="text"
+              v-model="user.email"
+              class="input-focus w-full px-1.5 h-10 text-lg border-none outline-none bg-none"
               required
             />
             <RLabel nameLabel="Email:"></RLabel>
           </div>
           <div class="relative border-bottom my-7">
-            <RInput
+            <!-- <r-input
               typeInput="text"
-              v-model="user.username"
+              :VModel="user.username"
               class="input-focus"
+              required
+            /> -->
+            <input
+              type="text"
+              v-model="user.username"
+              class="input-focus w-full px-1.5 h-10 text-lg border-none outline-none bg-none"
               required
             />
             <RLabel nameLabel="Username:"></RLabel>
           </div>
           <div class="relative border-bottom my-7">
-            <RInput
+            <!-- <r-input
               typeInput="password"
-              v-model="user.password"
+              :VModel="user.password"
               class="input-focus"
+              required
+            /> -->
+            <input
+              type="password"
+              v-model="user.password"
+              class="input-focus w-full px-1.5 h-10 text-lg border-none outline-none bg-none"
               required
             />
             <RLabel nameLabel="Password:"></RLabel>
           </div>
-          <RButton nameBtn="Get Start" class="w-full btn-assent"> </RButton>
+          <button
+            type="submit"
+            class="w-full btn-assent text-white text-lg font-bold my-7 rounded-xl p-3 text-center"
+          >
+            Get Start
+          </button>
         </div>
       </form>
     </div>
@@ -94,9 +129,9 @@ export default class extends Vue {
   async signupHandle() {
     try {
       this.$vxm.user.handleRegister();
-      this.$router.push("/login");
     } catch (error: any) {
       this.msg = error;
+      alert(this.msg);
     }
   }
 }
@@ -174,5 +209,34 @@ export default class extends Vue {
   .register-container {
     width: 80%;
   }
+}
+
+.input-focus:focus ~ .label-input,
+.input-focus:valid ~ .label-input {
+  top: -20px;
+  color: #00a550;
+}
+
+.station-input-pickup:first-child {
+  margin-right: 20px;
+}
+
+.station-input-pickup:last-child {
+  margin-left: 20px;
+}
+
+.label-input {
+  height: 100%;
+  outline: none;
+  border: none;
+  z-index: 1;
+}
+
+.label-input-date {
+  border-right: 1px solid rgb(107 114 128);
+}
+
+.input-time {
+  padding-left: 6px;
 }
 </style>

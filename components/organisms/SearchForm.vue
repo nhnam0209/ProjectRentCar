@@ -2,7 +2,7 @@
   <div class="background-home flex justify-center items-center flexed h-screen">
     <form action="" class="booking-form" @submit.prevent="handleSearchCar()">
       <div class="type-car flex justify-between items-center">
-        <!-- <div class="vihecle">
+        <div class="vihecle">
           <div class="vihecle-filter">
             <div class="title-vihecle-filter py-2">
               <span class="font-bold text-lg">What type of vihecle?</span>
@@ -34,7 +34,7 @@
               </div>
             </div>
           </div>
-        </div> -->
+        </div>
         <div class=""></div>
       </div>
       <div class="info-hire-car my-4">
@@ -75,9 +75,13 @@
                     v-model="car.pickupDate"
                   />
                 </div>
-                <!-- <div class="input-time flex justify-center items-center">
-                      <RInput typeInput="text" class=" label-input label-input-time w-full" placeholderInput="Time">
-                    </div> -->
+                <div class="input-time flex justify-center items-center">
+                  <RInput
+                    typeInput="text"
+                    class="label-input label-input-time w-full"
+                    placeholderInput="Time"
+                  />
+                </div>
               </div>
             </div>
 
@@ -92,25 +96,25 @@
                 <div class="input-date flex justify-center items-center">
                   <input
                     type="date"
-                    class="label-input label-input-date partition w-full"
+                    class="label-input label-input-date w-full"
                     placeholder="Return date"
                     v-model="car.returnDate"
                   />
                 </div>
-                <!-- <div class="input-time flex justify-center items-center">
+                <div class="input-time flex justify-center items-center">
                   <RInput
                     typeInput="text"
                     class="label-input label-input-time w-full"
                     placeholderInput="Time"
                   />
-                </div> -->
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
       <div class="info-customer flex justify-between items-center">
-        <!-- <div class="info-customer-age-country">
+        <div class="info-customer-age-country">
           <div class="age-customer flex justify-center items-center">
             <span class="info-label text-lg">I am</span>
             <div class="select-age">
@@ -127,7 +131,7 @@
               <icon-caret-down class="icon-pickup" />
             </div>
           </div>
-        </div> -->
+        </div>
         <div class="flex justify-center items-center">
           <div class="button-search flex justify-center items-center">
             <RButton class="btn-search text-black" nameBtn="Search"></RButton>
