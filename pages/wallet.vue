@@ -1,19 +1,18 @@
 <template>
   <Default>
     <template #content>
-      <!-- <DashboardTable
-        class="h-full"
-        :is-manage-car="isManageCar"
-      ></DashboardTable> -->
+     <list-credit-card></list-credit-card>
     </template>
   </Default>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "nuxt-property-decorator";
+import ListCreditCard from "~/components/molecules/ListCreditCard.vue";
 import axios from "~/utils/myAxios";
 
 @Component({
+  components: { ListCreditCard },
   name: "MyCarPage",
   layout: "rentcar-layout",
 })

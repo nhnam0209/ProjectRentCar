@@ -1,7 +1,7 @@
 <template>
   <div class="sidebar-container">
-    <div class="sidebar bg-white">
-      <div class="sidebar-filter sidebar-items pt-8">
+    <div class="p-12 pb-5 bg-white">
+      <div class="sidebar-items pt-8">
         <div class="title-sidebar text-2xl font-bold">Filter</div>
         <select class="filter text-lg">
           <option value="LowerPrice">Lower Price</option>
@@ -11,28 +11,28 @@
         </select>
       </div>
 
-      <div class="sidebar-typecar sidebar-items">
+      <div class="sidebar-items">
         <div class="title-sidebar text-2xl font-bold">Type Car</div>
-        <div class="vihecle-option flex justify-center items-center">
-          <div class="vihecle-type flex justify-center items-center">
+        <div class="vihecle-option flex justify-center items-center rounded-xl overflow-hidden h-12 border-solid border-neutral-500 border">
+          <div class="vihecle-type flex justify-center items-center py-1 px-5 cursor-pointer relative h-full w-full z-10">
             <img
               src="../../static/img/type-car/prestige-filter.94613cf.png"
               alt=""
-              class="type-car-img"
+              class="h-5 pr-4"
             />
           </div>
-          <div class="vihecle-type flex justify-center items-center">
+          <div class="vihecle-type flex justify-center items-center py-1 px-5 cursor-pointer relative h-full w-full z-10">
             <img
               src="../../static/img/type-car/cars-filter.bdb1eda.png"
               alt=""
-              class="type-car-img"
+              class="h-5 pr-4"
             />
           </div>
-          <div class="vihecle-type flex justify-center items-center">
+          <div class="vihecle-type flex justify-center items-center py-1 px-5 cursor-pointer relative h-full w-full z-10">
             <img
               src="../../static/img/type-car/vans-trucks-filter.2319eb0.png"
               alt=""
-              class="type-car-img"
+              class="h-5 pr-4"
             />
           </div>
         </div>
@@ -55,31 +55,19 @@
         <div class="combo-checkbox">
           <div class="flex">
             <div class="mr-2">
-              <RInput
-                typeInput="radio"
-                class="sidebar-checkbox"
-                nameInput="transition"
-              ></RInput>
+              <input type="radio" name="transition" class="" checked>
             </div>
             <RLabel nameLabel="Both" class="sidebar-label"></RLabel>
           </div>
           <div class="flex">
             <div class="mr-2">
-              <RInput
-                typeInput="radio"
-                class="sidebar-checkbox"
-                nameInput="transition"
-              ></RInput>
+              <input type="radio" name="transition" class="">
             </div>
             <RLabel nameLabel="Automatic" class="sidebar-label"></RLabel>
           </div>
           <div class="flex">
             <div class="mr-2">
-              <RInput
-                typeInput="radio"
-                class="sidebar-checkbox"
-                nameInput="transition"
-              ></RInput>
+              <input type="radio" name="transition" class="">
             </div>
             <RLabel nameLabel="Manual" class="sidebar-label"></RLabel>
           </div>
@@ -105,10 +93,6 @@ export default class extends Vue {}
 .sidebar-container {
   min-width: 450px;
   border: 1px solid rgb(107 114 128);
-}
-
-.sidebar {
-  padding: 0 50px 20px;
 }
 
 .sidebar-items {

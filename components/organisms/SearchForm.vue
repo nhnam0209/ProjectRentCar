@@ -1,18 +1,18 @@
 <template>
-  <div class="background-home flex justify-center items-center flexed h-screen">
-    <form action="" class="booking-form" @submit.prevent="handleSearchCar()">
+  <div class="background-home flex justify-center items-center flexed h-screen bg-center bg-cover bg-no-repeat">
+    <form action="" class="booking-form bg-white p-10 rounded-xl overflow-hidden opacity-90 w" @submit.prevent="handleSearchCar()">
       <div class="type-car flex justify-between items-center">
         <div class="vihecle">
           <div class="vihecle-filter">
             <div class="title-vihecle-filter py-2">
               <span class="font-bold text-lg">What type of vihecle?</span>
             </div>
-            <div class="vihecle-option flex justify-center items-center">
-              <div class="vihecle-type flex justify-center items-center">
+            <div class="vihecle-option flex justify-center items-center rounded-xl overflow-hidden h-12 border-solid border-neutral-500 border">
+              <div class="vihecle-type flex justify-center items-center py-1 px-5 cursor-pointer relative h-full w-full z-10">
                 <img
                   src="../../static/img/type-car/cars-filter.bdb1eda.png"
                   alt=""
-                  class="type-car-img"
+                  class="h-5 pr-4"
                 />
                 <p class="type-car-label">Car</p>
               </div>
@@ -20,7 +20,7 @@
                 <img
                   src="../../static/img/type-car/vans-trucks-filter.2319eb0.png"
                   alt=""
-                  class="type-car-img"
+                  class="h-5 pr-4"
                 />
                 <p class="type-car-label">Van & Trucks</p>
               </div>
@@ -28,7 +28,7 @@
                 <img
                   src="../../static/img/type-car/prestige-filter.94613cf.png"
                   alt=""
-                  class="type-car-img"
+                  class="h-5 pr-4"
                 />
                 <p class="type-car-label">Prestisge</p>
               </div>
@@ -43,9 +43,9 @@
             <div class="title-pickup-input py-2">
               <span class="font-bold text-lg">Pick up & Return location</span>
             </div>
-            <div class="pickup-input flex">
-              <div class="icon-pickup-input flex justify-center items-center">
-                <icon-location-pin class="icon-pickup" />
+            <div class="rounded-xl overflow-hidden border border-solid border-neutral-500 h-12 flex">
+              <div class=" px-3 flex justify-center items-center">
+                <icon-location-pin class="icon-fill cursor-pointer h-5 w-5" />
               </div>
               <input
                 type="text"
@@ -63,9 +63,9 @@
               <div class="title-pickup-input py-2">
                 <span class="font-bold text-lg">Pick up date & time</span>
               </div>
-              <div class="pickup-input flex justify-center">
-                <div class="icon-pickup-input flex justify-center items-center">
-                  <icon-date-time class="icon-pickup" />
+              <div class="rounded-xl overflow-hidden border border-solid border-neutral-500 h-12 flex justify-center">
+                <div class="px-3 flex justify-center items-center">
+                  <icon-date-time class="icon-fill cursor-pointer h-5 w-5" />
                 </div>
                 <div class="input-date flex justify-center items-center">
                   <input
@@ -89,9 +89,9 @@
               <div class="title-pickup-input py-2">
                 <span class="font-bold text-lg">Return date & time</span>
               </div>
-              <div class="pickup-input flex justify-center">
-                <div class="icon-pickup-input flex justify-center items-center">
-                  <icon-date-time class="icon-pickup" />
+              <div class="rounded-xl overflow-hidden border border-solid border-neutral-500 h-12 flex justify-center">
+                <div class="px-3 flex justify-center items-center">
+                  <icon-date-time class="icon-fill cursor-pointer h-5 w-5" />
                 </div>
                 <div class="input-date flex justify-center items-center">
                   <input
@@ -116,19 +116,19 @@
       <div class="info-customer flex justify-between items-center">
         <div class="info-customer-age-country">
           <div class="age-customer flex justify-center items-center">
-            <span class="info-label text-lg">I am</span>
+            <span class="px-1 text-lg">I am</span>
             <div class="select-age">
               <span class="age-label font-bold">26+</span>
-              <icon-caret-down class="icon-pickup" />
+              <icon-caret-down class="icon-fill cursor-pointer" />
             </div>
           </div>
         </div>
         <div class="info-customer-age-country">
           <div class="country-customer flex justify-center items-center">
-            <span class="info-label text-lg">I live in</span>
+            <span class="px-1 text-lg">I live in</span>
             <div class="select-country">
-              <span class="country-label font-bold"> Viet Nam</span>
-              <icon-caret-down class="icon-pickup" />
+              <span class="font-bold"> Viet Nam</span>
+              <icon-caret-down class="icon-fill cursor-pointer" />
             </div>
           </div>
         </div>
@@ -165,35 +165,11 @@ export default class extends Vue {
 <style>
 .background-home {
   background-image: url(../../static/img/home-page.jpg);
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
 }
 
 .booking-form {
-  background-color: white;
-  padding: 40px;
-  border-radius: 10px;
-  overflow: hidden;
   animation: slidein-Homepage 2s ease;
-  opacity: 0.9;
   width: 1000px;
-}
-
-.vihecle-option {
-  border: 1px solid rgb(107 114 128);
-  border-radius: 12px;
-  overflow: hidden;
-  height: 50px;
-}
-
-.vihecle-type {
-  padding: 5px 20px;
-  cursor: pointer;
-  position: relative;
-  z-index: 1;
-  height: 100%;
-  width: 100%;
 }
 
 .vihecle-type::before {
@@ -212,32 +188,8 @@ export default class extends Vue {
   width: 100%;
 }
 
-.type-car-img {
-  height: 21px;
-  padding-right: 15px;
-}
-
-.pickup-input {
-  border: 1px solid rgb(107 114 128);
-  border-radius: 10px;
-  overflow: hidden;
-  height: 50px;
-}
-
-.icon-pickup-input {
-  padding: 0 10px;
+.icon-fill {
   fill: #00a550;
-}
-
-.info-label {
-  padding: 0 6px;
-}
-
-.icon-pickup {
-  fill: #00a550;
-  cursor: pointer;
-  height: 20px;
-  width: 20px;
 }
 
 @keyframes slidein-Homepage {
@@ -256,19 +208,13 @@ export default class extends Vue {
   .booking-form {
     width: 50%;
   }
-  .dateime-pickup-car {
+  .dateime-pickup-car,
+  .input-datetime-pickup-and-return,
+  .info-customer{
     display: block;
   }
   .station-input-pickup:last-child {
     margin-left: 0;
-  }
-
-  .info-customer {
-    display: block;
-  }
-
-  .input-datetime-pickup-and-return {
-    display: block;
   }
 }
 
