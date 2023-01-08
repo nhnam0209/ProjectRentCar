@@ -1,6 +1,6 @@
 <template>
   <div class="background-modal block">
-    <form action="" class="signup-form justify-center items-center bg-white rounded-xl shadow-xl" :class="{'modal-close': isActive}">
+    <form action="" class="signup-form justify-center items-center bg-white rounded-xl shadow" :class="{'modal-close': isActive}">
       <div class="p-6">
         <header class="title-signup text-3xl font-bold mt-7">
           <span>Add More Users</span>
@@ -67,7 +67,7 @@ export default class extends Vue {
   left: 0;
   top: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.9);
   align-items: center;
   justify-content: center;
   display: flex;

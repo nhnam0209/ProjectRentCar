@@ -1,6 +1,8 @@
 <template>
-  <nav class="navbar flex justify-between overflow-hidden">
-    <div class="logo"></div>
+  <nav class="h-16 flex justify-between overflow-hidden">
+    <div class="bg-no-repeat bg-cover bg-center w-24 h-full">
+      <img src="../../static/img/logo.jpg" alt="">
+    </div>
     <div class="navbar-list-items flex justify-center items-center">
       <div v-if="isAdmin">
         <div class="inline-flex">
@@ -19,7 +21,7 @@
         </div>
       </div>
       <div v-if="!isLogin">
-        <button class="buttons navbar-signin">
+        <button class="buttons navbar-signin relative">
           <NuxtLink class="navbar-items" to="/login">Sign In</NuxtLink>
         </button>
         <button class="buttons">
@@ -94,24 +96,8 @@ export default class extends Vue {
 </script>
 
 <style>
-.navbar {
-  height: 60px;
-}
-
 .navbar-icon-list {
   display: none;
-}
-
-.logo {
-  background: url(../../static/img/logo.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  width: 100px;
-}
-
-.navbar-signin {
-  position: relative;
 }
 
 .navbar-signin::before {
@@ -148,19 +134,9 @@ export default class extends Vue {
   width: 100%;
 }
 
-.navbar-icons {
-  height: 30px;
-  width: 30px;
-  margin: 0 20px;
-}
-
-@media (max-width: 820px) {
+@media (max-width: 1024px) {
   .navbar-list-items {
     display: none;
-  }
-
-  .navbar-icon-list {
-    display: flex;
   }
 }
 </style>

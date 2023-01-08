@@ -1,8 +1,8 @@
 <template>
     <div class="background-modal block">
-        <form class="alert_box flex justify-center items-center flex-col bg-white rounded-xl shadow-xl" :class="{'modal-close': isActive}">
-        <div class="icon flex items-center justify-center">
-            <IconExlamation class="icon-alter"></IconExlamation>
+        <form class="alert_box p-8 flex justify-center items-center flex-col bg-white rounded-xl shadow-xl" :class="{'modal-close': isActive}">
+        <div class="icon h-24 w-24 border-4 border-solid border-red-500 flex items-center justify-center">
+            <IconExlamation class="icon-alter h-12 w-12 text-center"></IconExlamation>
         </div>
         <header class="font-bold text-xl py-4">Confirm</header>
         <p class="text-lg">Are you sure to  delete this User(Car)?</p>
@@ -34,42 +34,20 @@
   </script>
   
   <style>
-  .background-modal{
-    position: fixed;
-    right: 0;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.4);
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    z-index: 2;
-  }
-
   .modal-close{
-    display: none;
+    display: none !important;
   }
 
   .alert_box{
     width: 400px;
-    padding: 30px;
   }
 
   .alert_box .icon{
-  height: 100px;
-  width: 100px;
-  color: #f23b26;
-  border: 3px solid #f23b26;
   border-radius: 50%;
   line-height: 97px;
-  text-align: center;
 }
 
 .icon .icon-alter{
-  height: 50px;
-  text-align: center;
-  width: 50px;
   fill: red;
 }
   

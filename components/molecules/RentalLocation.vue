@@ -1,9 +1,9 @@
 <template>
   <div
-    class="rentalLocation-container flex justify-center items-center py-4 my-1 bg-white border-solid border-b border-neutral-500"
+    class="flex justify-center items-center py-4 my-1 bg-white border-solid border-b border-neutral-500"
   >
-    <div class="dateime-pickup-car flex border-solid border border-neutral-900 rounded-xl">
-      <div class="station-input-return flex w-96 border-r border-solid border-neutral-900">
+    <div class="flex border-solid border border-neutral-900 rounded-xl">
+      <div class="flex w-96 border-r border-solid border-neutral-900">
         <div class="flex items-center justify-center px-1">
           <icon-location-pin class="icon-fill cursor-pointer h-5 w-5" />
         </div>
@@ -18,7 +18,7 @@
           </div>
         </div>
       </div>
-      <div class="datetime-pickup-return flex">
+      <div class="flex">
         <div class="w-full flex border-r border-solid border-neutral-900 h-full">
           <div class="flex items-center justify-center px-1">
             <IconDateTime class="icon-fill cursor-pointer h-5 w-5" />

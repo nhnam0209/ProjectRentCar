@@ -1,6 +1,6 @@
 <template>
   <input
-    class="h-full text-lg border-none outline-none bg-none"
+    class="h-full text-lg outline-none bg-none"
     :placeholder="placeholderInput"
     :name="nameInput"
   />
@@ -38,18 +38,4 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   margin-left: 20px;
 }
 
-.label-input {
-  height: 100%;
-  outline: none;
-  border: none;
-  z-index: 1;
-}
-
-.label-input-date {
-  border-right: 1px solid rgb(107 114 128);
-}
-
-.input-time {
-  padding-left: 6px;
-}
 </style>

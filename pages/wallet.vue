@@ -1,10 +1,8 @@
 <template>
   <Default>
     <template #content>
-      <div class="bg-gray-200">
         <list-credit-card></list-credit-card>
-        <stat-box></stat-box>
-      </div>
+        <wallet-activities></wallet-activities>
     </template>
   </Default>
 </template>

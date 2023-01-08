@@ -1,48 +1,51 @@
 <template>
-  <div class="background-modal justify-center items-center">
-    <div class="bg-white modal-detail rounded-xl overflow-hidden flex">
-      <div class="content-left px-4">
-        <div class="image-box">
-          <div class="img-car-detail bg-cover bg-no-repeat"></div>
+  <div class="background-modal justify-center items-center" :class="{'modal-close': isActive}">
+    <div class="bg-white modal-detail rounded-xl overflow-hidden flex relative" >
+      <div class="">
+        <icon-x  class="absolute w-6 h-6 fill-black top-0 right-0 m-4 cursor-pointer" @icon-x-click="toogleIsActive()"></icon-x>
+      </div>
+      <div class="content-left px-4 border border-solid border-neutral-500">
+        <div class="">
+          <div class="img-car-detail bg-cover bg-no-repeat w-full"></div>
           <div class="info">
             <div class="cars-details product-card-items">
               <div class="pb-4 flex justify-between">
                 <span class="car-name text-2xl font-bold">Toyota Vios</span>
                 <div class="rating flex">
-                  <IconStar class="icon-rating icon-details"></IconStar>
-                  <IconStar class="icon-rating icon-details"></IconStar>
-                  <IconStar class="icon-rating icon-details"></IconStar>
-                  <IconStar class="icon-rating icon-details"></IconStar>
-                  <IconStar class="icon-rating icon-details"></IconStar>
+                  <IconStar class="icon-rating w-8 h-8"></IconStar>
+                  <IconStar class="icon-rating w-8 h-8"></IconStar>
+                  <IconStar class="icon-rating w-8 h-8"></IconStar>
+                  <IconStar class="icon-rating w-8 h-8"></IconStar>
+                  <IconStar class="icon-rating w-8 h-8"></IconStar>
                 </div>
               </div>
               <div class="text-2xl font-bold">
                 <div class="title-detail mb-4">Full vehicle details</div>
                 <div class="details flex items-center justify-between mb-4">
                   <div class="flex text-xl justify-center items-center">
-                    <IconPerson class="icon-details"></IconPerson>
+                    <IconPerson class="w-8 h-8"></IconPerson>
                     4
                   </div>
                   <div class="flex text-xl justify-center items-center">
-                    <IconDoor class="icon-details"></IconDoor>
+                    <IconDoor class="w-8 h-8"></IconDoor>
                     5
                   </div>
                   <div class="flex text-xl justify-center items-center">
-                    <IconEngine class="icon-details"></IconEngine>
+                    <IconEngine class="w-8 h-8"></IconEngine>
                     A
                   </div>
                   <div class="flex text-xl justify-center items-center">
-                    <IconFuel class="icon-details"></IconFuel>
+                    <IconFuel class="w-8 h-8"></IconFuel>
                     Diesel
                   </div>
                   <div class="flex text-xl justify-between items-center">
-                    <IconTank class="icon-details"></IconTank>
+                    <IconTank class="w-8 h-8"></IconTank>
                     60l
                   </div>
                 </div>
               </div>
               <div class="desc">
-                <div class="title-detail mb-4 text-2xl font-bold">
+                <div class="title-detail mb-2 text-2xl font-bold">
                   Description
                 </div>
                 <p class="text-xl">
@@ -59,7 +62,7 @@
           </div>
         </div>
       </div>
-      <div class="content-right">
+      <div class="border border-solid border-neutral-500 overflow-hidden content-right">
         <div class="booking-form-modal p-14">
           <div
             class="booking-price text-4xl font-bold text-green-500 text-center my-5"
@@ -74,7 +77,7 @@
             <div class="pt-2">
               <RInput
                 typeInput="date"
-                class="w-full booking-input rounded-xl"
+                class="w-full border border-solid border-neutral-500 py-1 rounded-xl px-2"
               ></RInput>
             </div>
           </div>
@@ -84,7 +87,7 @@
             <div class="pt-2">
               <RInput
                 typeInput="date"
-                class="w-full booking-input rounded-xl"
+                class="w-full border border-solid border-neutral-500 py-1 rounded-xl px-2"
               ></RInput>
             </div>
           </div>
@@ -94,7 +97,7 @@
               >Place of receipt</span
             >
             <div class="flex items-center pt-2">
-              <icon-location-pin class="icon-pickup" />
+              <icon-location-pin class="w-6 h-6 icon-fill" />
               <RInput
                 typeInput="text"
                 class="w-full text-xl py-2"
@@ -131,28 +134,29 @@ import { Component, Vue } from "nuxt-property-decorator";
 @Component({
   name: "ModalDetailCar",
 })
-export default class extends Vue {}
+export default class extends Vue {
+  isActive: Boolean = false;
+  toogleIsActive(){
+        if(this.isActive == true) {
+            this.isActive = false
+        }
+        else {
+            this.isActive = true
+        }
+    };
+}
 </script>
 
 <style>
 .content-left {
   width: 800px;
-  border: 1px solid rgb(107 114 128);
 }
 .content-right {
   width: 400px;
-  border: 1px solid rgb(107 114 128);
-  overflow: hidden;
-}
-
-.booking-input {
-  border: 1px solid rgb(107 114 128);
-  padding: 5px 0;
 }
 
 .img-car-detail {
-  width: 100%;
-  height: 400px;
+  height: 350px;
   background-image: url(../../static/img/product/vios/vios-15g-cvt-44451619164281.jpg);
 }
 

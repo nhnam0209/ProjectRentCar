@@ -1,34 +1,34 @@
 <template>
-  <div class="table users-table w-full bg-white px-4 my-6">
-    <div class="table-header m-4 text-xl font-bold">
+  <div class="shadow-xl rounded-xl z-10 pb-4 w-full bg-white px-4 my-6">
+    <div class="m-4 text-xl font-bold">
       <span>User Detail</span>
     </div>
     <table class="w-full text-center">
-      <tr class="table-header w-full">
-        <th class="topic">ID</th>
-        <th class="topic">First Name</th>
-        <th class="topic">Last name</th>
-        <th class="topic">Email</th>
-        <th class="topic">Username</th>
-        <th class="topic">Last Login</th>
-        <th class="topic">Action</th>
+      <tr class="w-full">
+        <th class="bg-green-500 text-white py-2 px-3">ID</th>
+        <th class="bg-green-500 text-white py-2 px-3">First Name</th>
+        <th class="bg-green-500 text-white py-2 px-3">Last name</th>
+        <th class="bg-green-500 text-white py-2 px-3">Email</th>
+        <th class="bg-green-500 text-white py-2 px-3">Username</th>
+        <th class="bg-green-500 text-white py-2 px-3">Last Login</th>
+        <th class="bg-green-500 text-white py-2 px-3">Action</th>
       </tr>
-      <tr class="detail" v-for="user in users" :key="user.id">
-        <td class="info">{{ user.id }}</td>
-        <td class="info">{{ user.first_name }}</td>
-        <td class="info">{{ user.last_name }}</td>
-        <td class="info">{{ user.email }}</td>
-        <td class="info">{{ user.username }}</td>
-        <td class="info">{{ user.last_login }}</td>
-        <td class="info">
+      <tr class="" v-for="user in users" :key="user.id">
+        <td class="p-2">{{ user.id }}</td>
+        <td class="p-2">{{ user.first_name }}</td>
+        <td class="p-2">{{ user.last_name }}</td>
+        <td class="p-2">{{ user.email }}</td>
+        <td class="p-2">{{ user.username }}</td>
+        <td class="p-2">{{ user.last_login }}</td>
+        <td class="p-2">
           <div class="icon-group flex">
             <iconAdd
-              class="icon-action"
+              class="h-6 w-6 px-1 mx-1 cursor-pointer"
               @icon-add-click="toogleIsActive()"
             ></iconAdd>
             <ModalUpdate v-if="isActive"></ModalUpdate>
             <iconDelete
-              class="icon-action"
+              class="h-6 w-6 px-1 mx-1 cursor-pointer"
               @icon-delete-click="toogleIsActiveDelete()"
             ></iconDelete>
             <ModalAlert v-if="isActive_delete"></ModalAlert>
@@ -97,34 +97,3 @@ export default class extends Vue {
   }
 }
 </script>
-
-<style>
-.dashboard {
-  background: #f5f5f5;
-}
-
-.table {
-  z-index: 1;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-  border-radius: 12px;
-  padding-bottom: 16px;
-}
-
-.topic {
-  background-color: #00a550;
-  color: white;
-  padding: 8px 12px;
-}
-
-.info {
-  padding: 10px;
-}
-
-.icon-action {
-  height: 24px;
-  width: 24px;
-  padding: 0 5px;
-  margin: 0 5px;
-  cursor: pointer;
-}
-</style>

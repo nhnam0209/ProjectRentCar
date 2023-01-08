@@ -1,11 +1,12 @@
 <template>
-  <div class="m-4">
-    <div class="px-4">
-      <span class="font-bold text-2xl">My Card</span>
+  <div class="p-4 border-t border-b border-black">
+    <div class="px-4 flex items-center">
+      <span class="font-bold text-2xl mr-5">My Card</span>
+      <IconAdd class="w-5 h-5 cursor-pointer" @icon-add-click="toogleIsActive()"></IconAdd>
     </div>
     <div class="mx-2 flex items-center">
         <div class="m-4">
-          <div class="text-white relative rounded-xl bg-gray-400 shadow h-64 w-96">
+          <div class="text-white relative rounded-xl bg-gray-400 shadow-md h-64 w-96 cursor-pointer">
             <div class="absolute rounded-xl left-0 right-0 top-0 bottom-0 flex items-end py-5 px-6">
               <div class="absolute right-4 top-4">
                 <button
@@ -40,7 +41,7 @@
         </div>
 
         <div class="m-4">
-          <div class="text-white relative rounded-xl bg-zinc-600 shadow h-64 w-96">
+          <div class="text-white relative rounded-xl bg-zinc-600 shadow-md h-64 w-96 cursor-pointer">
             <div class="absolute rounded-xl left-0 right-0 top-0 bottom-0 flex items-end py-5 px-6">
               <div class="absolute right-4 top-4">
                 <button
@@ -75,7 +76,7 @@
         </div>
 
         <div class="m-4">
-          <div class="text-white relative rounded-xl bg-purple-400 shadow h-64 w-96">
+          <div class="text-white relative rounded-xl bg-purple-400 shadow-md h-64 w-96 cursor-pointer">
             <div class="absolute rounded-xl left-0 right-0 top-0 bottom-0 flex items-end py-5 px-6">
               <div class="absolute right-4 top-4">
                 <button
@@ -119,5 +120,15 @@ import { Component, Vue } from "nuxt-property-decorator";
 @Component({
   name: "ListCreditCard",
 })
-export default class extends Vue {}
+export default class extends Vue {
+  isActive:boolean = false;
+
+  toogleIsActive() {
+    if (this.isActive == true) {
+      this.isActive = false;
+    } else {
+      this.isActive = true;
+    }
+  }
+}
 </script>

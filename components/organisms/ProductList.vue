@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-product">
+  <div class="bg-gray-200">
       <RentalLocation></RentalLocation>
       <div class="flex">
         <RentCarSideBar></RentCarSideBar>
@@ -18,9 +18,3 @@ export default class extends Vue {
   
 }
 </script>
-
-<style>
-.bg-product{
-  background: #E8EAEF;
-}
-</style>

@@ -8,8 +8,8 @@
       <div v-if="isRegister">
         <h1>The account was created!!!</h1>
       </div>
-      <div class="signup-content text-3xl font-bold text-white text-center">
-        <span class="content-register absolute"
+      <div class="signup-content text-3xl font-bold text-white text-center bg-cover bg-no-repeat bg-center relative z-10">
+        <span class="top-0 left-0 p-5 absolute"
           >You have already signed up?
           <a href="/login" class="register-item"><br />Sign In Now</a>
         </span>
@@ -149,11 +149,7 @@ export default class extends Vue {
 .signup-content {
   background: url(../../static/img/signup-cover1.jpg);
   width: 500px;
-  z-index: 1;
   background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  position: relative;
 }
 
 .signup-content::before {
@@ -167,13 +163,6 @@ export default class extends Vue {
   top: 0;
   left: 0;
 }
-
-.content-register {
-  top: 0;
-  left: 0;
-  padding: 20px;
-}
-
 .signup-form {
   width: 500px;
 }
@@ -223,20 +212,5 @@ export default class extends Vue {
 
 .station-input-pickup:last-child {
   margin-left: 20px;
-}
-
-.label-input {
-  height: 100%;
-  outline: none;
-  border: none;
-  z-index: 1;
-}
-
-.label-input-date {
-  border-right: 1px solid rgb(107 114 128);
-}
-
-.input-time {
-  padding-left: 6px;
 }
 </style>
