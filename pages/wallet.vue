@@ -1,18 +1,19 @@
 <template>
   <Default>
     <template #content>
-     <list-credit-card></list-credit-card>
+      <div class="bg-gray-200">
+        <list-credit-card></list-credit-card>
+        <stat-box></stat-box>
+      </div>
     </template>
   </Default>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "nuxt-property-decorator";
-import ListCreditCard from "~/components/molecules/ListCreditCard.vue";
 import axios from "~/utils/myAxios";
 
 @Component({
-  components: { ListCreditCard },
   name: "MyCarPage",
   layout: "rentcar-layout",
 })
