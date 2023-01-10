@@ -14,7 +14,7 @@
           <div class="h-6">
             <input
               type="text"
-              class="w-full"
+              class="w-full outline-none"
               placeholder="Pick up location"
               v-model="car.location"
               required
@@ -32,7 +32,7 @@
             <div class="h-6">
               <input
                 type="date"
-                class="w-full"
+                class="w-full outline-none"
                 placeholder="Pick up time"
                 v-model="car.pickupDate"
                 required
@@ -50,7 +50,7 @@
             <div class="h-6">
               <input
                 type="date"
-                class="w-full"
+                class="w-full outline-none"
                 placeholder="Return Time"
                 v-model="car.returnDate"
                 required

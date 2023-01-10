@@ -1,5 +1,5 @@
 <template>
-  <div class="listcard-container ml-1 w-full">
+  <div class="border border-solid border-neutral-500 ml-1 w-full">
     <div
       class="grid gap-4 grid-cols-2 m-4"
       v-for="cars in carResult"
@@ -8,14 +8,14 @@
       <div
         v-for="car in cars"
         :key="car.id"
-        class="cursor-pointer p-4 bg-white rounded-xl"
+        class="cursor-pointer p-4 bg-white rounded-xl border border-solid border-neutral-500"
         @click="toogleIsActive(car)"
       >
-        <div class="main-images">
+        <div class="flex justify-center">
           <img
             src="../../static/img/product/vios/vios-15g-cvt-44451619164281.jpg"
             alt=""
-            class="img-car"
+            class="w-3/4 h-3/4"
           />
         </div>
         <div class="cars-details mb-2">
