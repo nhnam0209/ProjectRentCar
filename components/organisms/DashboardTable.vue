@@ -1,6 +1,6 @@
 <template>
   <div
-    class="dashboard w-full flex h-screen justify-center items-center bg-gray-500"
+    class="w-full flex h-screen justify-center items-center bg-gray-200"
   >
     <div class="dashboard-table">
       <div class="button flex">

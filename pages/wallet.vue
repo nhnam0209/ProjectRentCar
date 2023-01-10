@@ -1,10 +1,8 @@
 <template>
   <Default>
     <template #content>
-      <!-- <DashboardTable
-        class="h-full"
-        :is-manage-car="isManageCar"
-      ></DashboardTable> -->
+        <list-credit-card></list-credit-card>
+        <wallet-activities></wallet-activities>
     </template>
   </Default>
 </template>

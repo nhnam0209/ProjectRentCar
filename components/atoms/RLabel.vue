@@ -1,5 +1,5 @@
 <template>
-    <label class="label-input top-2/4 absolute text-lg">{{ nameLabel }}</label>
+    <label class="label-input top-2/4 absolute text-lg outline-none h-full">{{ nameLabel }}</label>
 </template>
   
 <script lang="ts">

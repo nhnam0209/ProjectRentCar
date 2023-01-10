@@ -1,9 +1,12 @@
 <template>
   <div class="background-modal justify-center items-center">
-    <div class="bg-white modal-detail rounded-xl overflow-hidden flex">
-      <div class="content-left px-4">
-        <div class="image-box">
-          <div class="img-car-detail bg-cover bg-no-repeat"></div>
+    <div class="bg-white modal-detail rounded-xl overflow-hidden flex relative" >
+      <div class="">
+        <icon-x  class="absolute w-6 h-6 fill-black top-0 right-0 m-4 cursor-pointer"></icon-x>
+      </div>
+      <div class="content-left px-4 border border-solid border-neutral-500">
+        <div class="">
+          <div class="img-car-detail bg-cover bg-no-repeat w-full"></div>
           <div class="info">
             <div class="cars-details product-card-items">
               <div class="pb-4 flex justify-between">
@@ -11,11 +14,11 @@
                   carDetail.name
                 }}</span>
                 <div class="rating flex">
-                  <IconStar class="icon-rating icon-details"></IconStar>
-                  <IconStar class="icon-rating icon-details"></IconStar>
-                  <IconStar class="icon-rating icon-details"></IconStar>
-                  <IconStar class="icon-rating icon-details"></IconStar>
-                  <IconStar class="icon-rating icon-details"></IconStar>
+                  <IconStar class="icon-rating w-8 h-8"></IconStar>
+                  <IconStar class="icon-rating w-8 h-8"></IconStar>
+                  <IconStar class="icon-rating w-8 h-8"></IconStar>
+                  <IconStar class="icon-rating w-8 h-8"></IconStar>
+                  <IconStar class="icon-rating w-8 h-8"></IconStar>
                 </div>
               </div>
               <div class="text-2xl font-bold">
@@ -90,7 +93,7 @@
           </div>
         </div>
       </div>
-      <div class="content-right">
+      <div class="border border-solid border-neutral-500 overflow-hidden content-right">
         <div class="booking-form-modal p-14">
           <div
             class="booking-price text-4xl font-bold text-green-500 text-center my-5"
@@ -119,9 +122,9 @@
               >Place of receipt</span
             >
             <div class="flex items-center pt-2">
-              <icon-location-pin class="icon-pickup" />
-              <input
-                type="text"
+              <icon-location-pin class="w-6 h-6 icon-fill" />
+              <RInput
+                typeInput="text"
                 class="w-full text-xl py-2"
                 placeholder="Place of receipt"
               />
@@ -200,22 +203,13 @@ export default class extends Vue {
 <style>
 .content-left {
   width: 800px;
-  border: 1px solid rgb(107 114 128);
 }
 .content-right {
   width: 400px;
-  border: 1px solid rgb(107 114 128);
-  overflow: hidden;
-}
-
-.booking-input {
-  border: 1px solid rgb(107 114 128);
-  padding: 5px 0;
 }
 
 .img-car-detail {
-  width: 100%;
-  height: 400px;
+  height: 350px;
   background-image: url(../../static/img/product/vios/vios-15g-cvt-44451619164281.jpg);
 }
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-product">
+  <div class="bg-white">
     <RentalLocation></RentalLocation>
     <div class="flex h-full" v-if="searchResult.length > 0">
       <RentCarSideBar></RentCarSideBar>
@@ -22,9 +22,3 @@ export default class extends Vue {
   }
 }
 </script>
-
-<style>
-.bg-product {
-  background: #e8eaef;
-}
-</style>

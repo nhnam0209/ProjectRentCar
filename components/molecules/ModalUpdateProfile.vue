@@ -105,11 +105,11 @@
       <div class="button-group flex justify-between w-full px-7">
         <button
           type="submit"
-          class="btn btn-update text-lg text-white font-bold my-7"
+          class="rounded-xl py-2 text-lg text-white font-bold my-7"
         >
           Update
         </button>
-        <button class="btn btn-close text-lg text-white font-bold my-7">
+        <button class="rounded-xl py-2 btn-close text-lg text-white font-bold my-7">
           Close
         </button>
       </div>
@@ -170,30 +170,3 @@ export default class extends Vue {
   }
 }
 </script>
-
-<style>
-.background-modal {
-  position: fixed;
-  right: 0;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.4);
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  z-index: 2;
-}
-
-.btn-close {
-  background-color: crimson !important;
-}
-
-.btn-close,
-.btn-update,
-.btn {
-  border-radius: 12px;
-  padding: 0 10px;
-  color: white;
-}
-</style>

@@ -1,38 +1,38 @@
 <template>
-  <div class="table users-table w-full bg-white px-4 my-6">
-    <div class="table-header m-4 text-xl font-bold">
+  <div class="shadow-xl rounded-xl z-10 pb-4 w-full bg-white px-4 my-6">
+    <div class="m-4 text-xl font-bold">
       <span>Cars Detail</span>
     </div>
     <table class="w-full text-center">
       <tr class="table-header">
-        <th class="topic">ID</th>
-        <th class="topic">Car Name</th>
-        <th class="topic">Type Car</th>
-        <th class="topic">Car Model</th>
-        <th class="topic">Distance</th>
-        <th class="topic">Price</th>
-        <th class="topic">Owner</th>
-        <th class="topic">User ID</th>
-        <th class="topic">Action</th>
+        <th class="bg-green-500 text-white py-2 px-3">ID</th>
+        <th class="bg-green-500 text-white py-2 px-3">Car Name</th>
+        <th class="bg-green-500 text-white py-2 px-3">Type Car</th>
+        <th class="bg-green-500 text-white py-2 px-3">Car Model</th>
+        <th class="bg-green-500 text-white py-2 px-3">Distance</th>
+        <th class="bg-green-500 text-white py-2 px-3">Price</th>
+        <th class="bg-green-500 text-white py-2 px-3">Owner</th>
+        <th class="bg-green-500 text-white py-2 px-3">User ID</th>
+        <th class="bg-green-500 text-white py-2 px-3">Action</th>
       </tr>
-      <tr class="detail" v-for="car in cars" :key="car.id">
-        <td class="info">{{ car.id }}</td>
-        <td class="info">{{ car.name }}</td>
-        <td class="info">{{ car.type_car }}</td>
-        <td class="info">{{ car.model }}</td>
-        <td class="info">{{ car.distance }}</td>
-        <td class="info">{{ car.price }}</td>
-        <td class="info">{{ car.owner }}</td>
-        <td class="info">{{ car.user_id }}</td>
-        <td class="info">
+      <tr class="" v-for="car in cars" :key="car.id">
+        <td class="p-2">{{ car.id }}</td>
+        <td class="p-2">{{ car.name }}</td>
+        <td class="p-2">{{ car.type_car }}</td>
+        <td class="p-2">{{ car.model }}</td>
+        <td class="p-2">{{ car.distance }}</td>
+        <td class="p-2">{{ car.price }}</td>
+        <td class="p-2">{{ car.owner }}</td>
+        <td class="p-2">{{ car.user_id }}</td>
+        <td class="p-2">
           <div class="icon-group flex">
             <iconAdd
-              class="icon-action"
+              class="h-6 w-6 px-1 mx-1 cursor-pointer"
               @icon-add-click="toogleIsActive()"
             ></iconAdd>
             <AddCarForm v-if="isActive"></AddCarForm>
             <iconDelete
-              class="icon-action"
+              class="h-6 w-6 px-1 mx-1 cursor-pointer"
               @icon-delete-click="toogleIsActiveDelete()"
             ></iconDelete>
             <ModalAlert v-if="isActive_delete"></ModalAlert>
