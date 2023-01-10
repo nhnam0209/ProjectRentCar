@@ -1,6 +1,6 @@
 <template>
   <input
-    class="h-full text-lg border-none outline-none bg-none"
+    class="h-full text-lg outline-none bg-none"
     :placeholder="placeholderInput"
     :name="nameInput"
   />
