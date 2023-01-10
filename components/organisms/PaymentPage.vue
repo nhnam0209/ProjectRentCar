@@ -99,7 +99,7 @@
           </div>
         </div>
         <div class="">
-          <RButton class="btn-assent w-full flex items-center justify-center " nameBtn="Purchase">
+          <RButton class="btn-assent w-full flex items-center justify-center btn-purchase" nameBtn="Purchase">
             <IconArrowRight class="h-6 w-6 fill-white pl-2 move-arrow-right"></IconArrowRight>
           </RButton>
         </div>
@@ -117,7 +117,7 @@ export default class extends Vue {}
 </script>
 
 <style>
-.move-arrow-right:hover{
+.btn-purchase:hover .move-arrow-right{
   animation: leftToRight 1.5s ease;
 }
 
