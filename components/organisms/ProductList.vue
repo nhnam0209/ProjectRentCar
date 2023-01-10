@@ -1,13 +1,15 @@
 <template>
-  <div class="bg-gray-200">
-      <RentalLocation></RentalLocation>
-      <div class="flex">
-        <RentCarSideBar></RentCarSideBar>
-        <ProductListCard></ProductListCard>
-      </div>
+  <div class="bg-white">
+    <RentalLocation></RentalLocation>
+    <div class="flex h-full" v-if="searchResult.length > 0">
+      <RentCarSideBar></RentCarSideBar>
+      <ProductListCard :car-result="searchResult"></ProductListCard>
     </div>
+    <div v-else class="h-[700px]">
+      <div>Please enter the search box to have the car for rent</div>
+    </div>
+  </div>
 </template>
-  
 
 <script lang="ts">
 import { Component, Vue } from "nuxt-property-decorator";
@@ -15,6 +17,8 @@ import { Component, Vue } from "nuxt-property-decorator";
   name: "Product",
 })
 export default class extends Vue {
-  
+  get searchResult() {
+    return this.$vxm.car.result;
+  }
 }
 </script>

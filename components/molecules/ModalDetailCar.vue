@@ -1,8 +1,8 @@
 <template>
-  <div class="background-modal justify-center items-center" :class="{'modal-close': isActive}">
+  <div class="background-modal justify-center items-center">
     <div class="bg-white modal-detail rounded-xl overflow-hidden flex relative" >
       <div class="">
-        <icon-x  class="absolute w-6 h-6 fill-black top-0 right-0 m-4 cursor-pointer" @icon-x-click="toogleIsActive()"></icon-x>
+        <icon-x  class="absolute w-6 h-6 fill-black top-0 right-0 m-4 cursor-pointer"></icon-x>
       </div>
       <div class="content-left px-4 border border-solid border-neutral-500">
         <div class="">
@@ -10,7 +10,9 @@
           <div class="info">
             <div class="cars-details product-card-items">
               <div class="pb-4 flex justify-between">
-                <span class="car-name text-2xl font-bold">Toyota Vios</span>
+                <span class="car-name text-2xl font-bold">{{
+                  carDetail.name
+                }}</span>
                 <div class="rating flex">
                   <IconStar class="icon-rating w-8 h-8"></IconStar>
                   <IconStar class="icon-rating w-8 h-8"></IconStar>
@@ -21,41 +23,70 @@
               </div>
               <div class="text-2xl font-bold">
                 <div class="title-detail mb-4">Full vehicle details</div>
-                <div class="details flex items-center justify-between mb-4">
-                  <div class="flex text-xl justify-center items-center">
-                    <IconPerson class="w-8 h-8"></IconPerson>
-                    4
+                <div class="details grid grid-cols-2">
+                  <div class="flex text-xl">
+                    <IconPerson class="icon-details"></IconPerson>
+                    Seat:
+                    <span class="font-normal ml-1">
+                      {{ carDetail.seat }}
+                    </span>
                   </div>
-                  <div class="flex text-xl justify-center items-center">
-                    <IconDoor class="w-8 h-8"></IconDoor>
-                    5
+                  <div class="flex text-xl">
+                    <IconDoor class="icon-details"></IconDoor>
+                    Model:
+                    <span class="font-normal ml-1">
+                      {{ carDetail.model }}
+                    </span>
                   </div>
-                  <div class="flex text-xl justify-center items-center">
-                    <IconEngine class="w-8 h-8"></IconEngine>
-                    A
+                  <div class="flex text-xl">
+                    <IconEngine class="icon-details"></IconEngine>
+                    Transmission:
+                    <span class="font-normal ml-1">
+                      {{ carDetail.transmission }}
+                    </span>
                   </div>
-                  <div class="flex text-xl justify-center items-center">
-                    <IconFuel class="w-8 h-8"></IconFuel>
-                    Diesel
+                  <div class="flex text-xl">
+                    <IconFuel class="icon-details"></IconFuel>
+                    Fuel Type:
+                    <span class="font-normal ml-1">
+                      {{ carDetail.fuel_type }}
+                    </span>
                   </div>
-                  <div class="flex text-xl justify-between items-center">
-                    <IconTank class="w-8 h-8"></IconTank>
-                    60l
+                  <div class="flex text-xl">
+                    <IconTank class="icon-details"></IconTank>
+                    Fuel Tank:
+                    <span class="font-normal ml-1">
+                      {{ carDetail.fuel }}
+                    </span>
+                  </div>
+                  <div class="flex text-xl">
+                    <IconTank class="icon-details"></IconTank>
+                    Owner:
+                    <span class="font-normal ml-1">
+                      {{ carDetail.owner }}
+                    </span>
+                  </div>
+                  <div class="flex text-xl col-span-2">
+                    <IconTank class="icon-details"></IconTank>
+                    Fuel Consumption:
+                    <span class="font-normal ml-1">
+                      {{ carDetail.fuel_consumption }} / 100km
+                    </span>
                   </div>
                 </div>
               </div>
-              <div class="desc">
-                <div class="title-detail mb-2 text-2xl font-bold">
+              <div class="desc mt-10">
+                <div class="title-detail mb-4 text-2xl font-bold">Feature</div>
+                <p class="text-xl">
+                  {{ carDetail.feature }}
+                </p>
+              </div>
+              <div class="desc mt-10">
+                <div class="title-detail mb-4 text-2xl font-bold">
                   Description
                 </div>
                 <p class="text-xl">
-                  This is it. Several weeks after Toyota launched a teaser for
-                  the next-generation Vios, the world’s largest automaker has
-                  pulled the covers off its newest subcompact sedan in Thailand,
-                  where the model is known as the Yaris Ativ. The next-gen Vios
-                  boasts an all-new exterior and interior, as well as a platform
-                  set to underpin more Toyota models for the Asia-Pacific
-                  region.
+                  {{ carDetail.description }}
                 </p>
               </div>
             </div>
@@ -67,7 +98,7 @@
           <div
             class="booking-price text-4xl font-bold text-green-500 text-center my-5"
           >
-            $52.88 / day
+            ${{ carDetail.price }} / day
           </div>
 
           <div class="booking-pick-up-date my-4">
@@ -75,20 +106,14 @@
               >Pick up date</span
             >
             <div class="pt-2">
-              <RInput
-                typeInput="date"
-                class="w-full border border-solid border-neutral-500 py-1 rounded-xl px-2"
-              ></RInput>
+              <input type="date" class="w-full booking-input rounded-xl" />
             </div>
           </div>
 
           <div class="booking-return-date my-4">
             <span class="booking-title text-2xl font-bold">Return date</span>
             <div class="pt-2">
-              <RInput
-                typeInput="date"
-                class="w-full border border-solid border-neutral-500 py-1 rounded-xl px-2"
-              ></RInput>
+              <input type="date" class="w-full booking-input rounded-xl" />
             </div>
           </div>
 
@@ -101,7 +126,7 @@
               <RInput
                 typeInput="text"
                 class="w-full text-xl py-2"
-                placeholderInput="Place of receipt"
+                placeholder="Place of receipt"
               />
             </div>
           </div>
@@ -117,10 +142,27 @@
 
           <div class="total-price">
             <div class="title-sidebar text-2xl font-bold">Total Price</div>
+            <div>
+              <span>SubTotal: </span>
+              <span>{{ carDetail.price }}$ / day</span>
+            </div>
+            <div>
+              <span>Service Fee: </span>
+              <span>2$</span>
+            </div>
+            <div>
+              <span>Protection Plan: </span>
+              <span>2$</span>
+            </div>
+            <div>
+              <span>Total: </span>
+              <span>{{ total() }}$</span>
+            </div>
           </div>
 
           <div class="button flex items-center justify-center">
             <RButton nameBtn="Rent Now" class="btn-assent"></RButton>
+            <RButton class="btn-close" @click="handleCancel">Cancel</RButton>
           </div>
         </div>
       </div>
@@ -129,21 +171,32 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "nuxt-property-decorator";
+import { Component, Emit, Prop, Vue } from "nuxt-property-decorator";
 
 @Component({
   name: "ModalDetailCar",
 })
 export default class extends Vue {
-  isActive: Boolean = false;
-  toogleIsActive(){
-        if(this.isActive == true) {
-            this.isActive = false
-        }
-        else {
-            this.isActive = true
-        }
-    };
+  @Prop({ type: Object }) carDetail!: any;
+  @Prop({ type: Boolean }) isModalUp!: any;
+  isClose: Boolean;
+  totalPrice: any = 0;
+
+  // mounted() {
+  //   console.log(this.carDetail);
+  //   console.log(this.isModalUp);
+  // }
+
+  total() {
+    return (this.totalPrice = this.carDetail.price + 2);
+  }
+
+  @Emit()
+  handleCancel() {
+    if (this.isModalUp) {
+      this.$emit("isModalUp", false);
+    }
+  }
 }
 </script>
 

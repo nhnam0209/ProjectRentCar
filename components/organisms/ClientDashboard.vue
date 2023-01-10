@@ -12,8 +12,11 @@
         <div class="grid grid-cols-2 md:grid-cols-3">
           <div class="flex justify-center drop-shadow-2xl -mt-6">
             <div
-              class="bg-fuchsia-500 text-white rounded-full text-center flex flex-col justify-center text-3xl w-20 h-20 md:text-7xl md:w-40 md:h-40 sm:text-3xl sm:w-28 sm:h-28"
+              class="bg-fuchsia-500 text-white rounded-full text-center flex flex-col justify-center text-3xl w-20 h-20 md:text-7xl md:w-40 md:h-40 sm:text-3xl sm:w-28 sm:h-28 relative"
             >
+            <div class="absolute w-10 h-10 bottom-1 right-1 rounded-full bg-gray-300/80 cursor-pointer">
+              <IconCamera class="w-6 h-6 absolute bottom-2 right-2"></IconCamera>
+            </div>
               A
             </div>
           </div>
