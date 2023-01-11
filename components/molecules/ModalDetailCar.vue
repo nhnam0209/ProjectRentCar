@@ -1,9 +1,6 @@
 <template>
   <div class="background-modal justify-center items-center">
-    <div class="bg-white modal-detail rounded-xl overflow-hidden flex relative" >
-      <div class="">
-        <icon-x  class="absolute w-6 h-6 fill-black top-0 right-0 m-4 cursor-pointer"></icon-x>
-      </div>
+    <div class="bg-white modal-detail rounded-xl overflow-hidden flex" >
       <div class="content-left px-4 border border-solid border-neutral-500">
         <div class="">
           <div class="img-car-detail bg-cover bg-no-repeat w-full"></div>
@@ -25,49 +22,49 @@
                 <div class="title-detail mb-4">Full vehicle details</div>
                 <div class="details grid grid-cols-2">
                   <div class="flex text-xl">
-                    <IconPerson class="icon-details"></IconPerson>
+                    <IconPerson class="w-8 h-8"></IconPerson>
                     Seat:
                     <span class="font-normal ml-1">
                       {{ carDetail.seat }}
                     </span>
                   </div>
                   <div class="flex text-xl">
-                    <IconDoor class="icon-details"></IconDoor>
+                    <IconDoor class="w-8 h-8"></IconDoor>
                     Model:
                     <span class="font-normal ml-1">
                       {{ carDetail.model }}
                     </span>
                   </div>
                   <div class="flex text-xl">
-                    <IconEngine class="icon-details"></IconEngine>
+                    <IconEngine class="w-8 h-8"></IconEngine>
                     Transmission:
                     <span class="font-normal ml-1">
                       {{ carDetail.transmission }}
                     </span>
                   </div>
                   <div class="flex text-xl">
-                    <IconFuel class="icon-details"></IconFuel>
+                    <IconFuel class="w-8 h-8"></IconFuel>
                     Fuel Type:
                     <span class="font-normal ml-1">
                       {{ carDetail.fuel_type }}
                     </span>
                   </div>
                   <div class="flex text-xl">
-                    <IconTank class="icon-details"></IconTank>
+                    <IconTank class="w-8 h-8"></IconTank>
                     Fuel Tank:
                     <span class="font-normal ml-1">
                       {{ carDetail.fuel }}
                     </span>
                   </div>
                   <div class="flex text-xl">
-                    <IconTank class="icon-details"></IconTank>
+                    <IconTank class="w-8 h-8"></IconTank>
                     Owner:
                     <span class="font-normal ml-1">
                       {{ carDetail.owner }}
                     </span>
                   </div>
                   <div class="flex text-xl col-span-2">
-                    <IconTank class="icon-details"></IconTank>
+                    <IconTank class="w-8 h-8"></IconTank>
                     Fuel Consumption:
                     <span class="font-normal ml-1">
                       {{ carDetail.fuel_consumption }} / 100km
@@ -106,14 +103,14 @@
               >Pick up date</span
             >
             <div class="pt-2">
-              <input type="date" class="w-full booking-input rounded-xl" />
+              <input type="date" class="w-full booking-input rounded-xl border border-solid p-2 border-neutral-500 outline-none" />
             </div>
           </div>
 
           <div class="booking-return-date my-4">
             <span class="booking-title text-2xl font-bold">Return date</span>
             <div class="pt-2">
-              <input type="date" class="w-full booking-input rounded-xl" />
+              <input type="date" class="w-full booking-input rounded-xl border border-solid p-2 border-neutral-500 outline-none" />
             </div>
           </div>
 
@@ -123,9 +120,9 @@
             >
             <div class="flex items-center pt-2">
               <icon-location-pin class="w-6 h-6 icon-fill" />
-              <RInput
+              <input
                 typeInput="text"
-                class="w-full text-xl py-2"
+                class="w-full text-xl py-2 outline-none"
                 placeholder="Place of receipt"
               />
             </div>
@@ -133,7 +130,7 @@
 
           <div class="protection-plans my-4">
             <div class="title-sidebar text-2xl font-bold">Protection plans</div>
-            <select class="filter text-lg">
+            <select class="filter text-lg border border-solid p-2 border-neutral-500 outline-none text-center rounded-xl w-full mt-2">
               <option value="BasicProtection">Basic $0.00</option>
               <option value="MediumProtection">Medium $23.20/day</option>
               <option value="PremiumProtection">Premium $32.68/day</option>
@@ -161,7 +158,7 @@
           </div>
 
           <div class="button flex items-center justify-center">
-            <RButton nameBtn="Rent Now" class="btn-assent"></RButton>
+            <RButton nameBtn="Rent Now" class="btn-assent m-4"></RButton>
             <RButton class="btn-close" @click="handleCancel">Cancel</RButton>
           </div>
         </div>
