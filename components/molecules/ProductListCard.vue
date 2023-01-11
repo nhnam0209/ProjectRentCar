@@ -104,6 +104,7 @@
         v-if="isActive"
         :car-detail="carDetail"
         :is-modal-up="isActive"
+        :is-login="isLogin"
         @isModalUp="getIsActive"
       />
 
@@ -199,6 +200,8 @@ export default class extends Vue {
   isActive: boolean = false;
   carDetail: any;
   @Prop() carResult!: any;
+  @Prop({ type: Boolean }) isLogin!: boolean;
+
   mounted() {
     console.log(this.carResult);
   }
@@ -219,12 +222,12 @@ export default class extends Vue {
 </script>
 
 <style>
-.img-car{
-    width: 445px;
-    height: 266px;
+.img-car {
+  width: 445px;
+  height: 266px;
 }
 
-.icon-rating{
-    fill: rgb(241, 241, 24);
+.icon-rating {
+  fill: rgb(241, 241, 24);
 }
 </style>

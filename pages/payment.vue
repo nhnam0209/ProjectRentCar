@@ -1,9 +1,9 @@
 <template>
-    <default>
-        <template #content>
-            <PaymentPage></PaymentPage>
-        </template>
-    </default>
+  <Default>
+    <template #content>
+      <PaymentPage></PaymentPage>
+    </template>
+  </Default>
 </template>
 
 <script lang="ts">
@@ -12,7 +12,7 @@ import Default from "~/layout/default.vue";
 
 @Component({
   name: "Payment",
-  layout:"rentcar-layout",
+  layout: "rentcar-layout",
 })
 export default class extends Vue {}
 </script>

@@ -29,6 +29,7 @@ export default class extends Vue {
 }
 .btn-close {
   background-color: rgb(212, 41, 76) !important;
+  padding: 12px;
 }
 .btn-close:hover {
   background-color: rgb(238, 8, 54);

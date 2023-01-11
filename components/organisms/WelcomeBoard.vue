@@ -1,9 +1,9 @@
 <template>
   <div class="background-home flex justify-center items-center flexed h-screen">
-    <div class="booking-form">
-      <div class="info-hire-car my-4">
+    <div class="booking-form bg-white rounded-md">
+      <div class="info-hire-car my-4 flex justify-center">
         <div class="dateime-pickup-car inline-block">
-          <div class="station-input-pickup w-full">
+          <div class="station-input-pickup w-full flex justify-center">
             <div class="title-pickup-input py-2 flex flex-col justify-center">
               <span class="font-bold text-center text-5xl uppercase"
                 >Welcome to Rental Car Service</span
@@ -38,3 +38,73 @@ export default class extends Vue {
   }
 }
 </script>
+
+<style>
+.background-home {
+  background-image: url(../../static/img/home-page.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.booking-form {
+  animation: slidein-Homepage 2s ease;
+  width: 1000px;
+}
+
+.vihecle-type::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  background: #00a550;
+  opacity: 0.9;
+  transition: all 0.5s ease;
+  z-index: -1;
+}
+
+.vihecle-type:hover::before {
+  width: 100%;
+}
+
+.icon-fill {
+  fill: #00a550;
+}
+
+@keyframes slidein-Homepage {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+
+  to {
+    opacity: 0.9;
+    transform: translateY(0%);
+  }
+}
+
+@media (max-width: 1190px) {
+  .booking-form {
+    width: 50%;
+  }
+  .dateime-pickup-car,
+  .input-datetime-pickup-and-return,
+  .info-customer {
+    display: block;
+  }
+  .station-input-pickup:last-child {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 920px) {
+  .vihecle-option {
+    display: block;
+    height: 100%;
+  }
+
+  .vihecle-type {
+    padding: 10px 0;
+  }
+}
+</style>

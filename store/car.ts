@@ -33,6 +33,7 @@ export class CarStore extends VuexModule {
     pickupDate: Date,
     returnDate: Date,
   };
+  carPricing: any = {};
   result: any = [] || null;
   @mutation setCar(car: any) {
     this.car = car;

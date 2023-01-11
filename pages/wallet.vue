@@ -1,8 +1,11 @@
 <template>
   <Default>
     <template #content>
-        <list-credit-card></list-credit-card>
-        <wallet-activities></wallet-activities>
+      <list-credit-card></list-credit-card>
+      <wallet-activities
+        :wallet-info="walletInfo"
+        :wallet-transactions="walletTransactions"
+      ></wallet-activities>
     </template>
   </Default>
 </template>
@@ -12,12 +15,14 @@ import { Component, Vue } from "nuxt-property-decorator";
 import axios from "~/utils/myAxios";
 
 @Component({
-  name: "MyCarPage",
+  name: "MyWalletPage",
   layout: "rentcar-layout",
 })
 export default class extends Vue {
   isLogin: Boolean = false;
   userInfo: any = {};
+  walletInfo: any = {};
+  walletTransactions: any = [];
   isManageCar: Boolean = false;
 
   get user() {
@@ -28,9 +33,18 @@ export default class extends Vue {
     this.$vxm.user.setUserLogin(value);
   }
 
+  get wallet() {
+    return this.$vxm.user.userInfo;
+  }
+
+  set wallet(value: any) {
+    this.$vxm.user.setWallet(value);
+  }
+
   get isAdmin() {
     return this.$vxm.user.isAdmin;
   }
+
   async created() {
     try {
       if (document.cookie) {
@@ -43,7 +57,33 @@ export default class extends Vue {
           }
         );
         this.isLogin = true;
-        this.userInfo = res.data.data;
+        this.userInfo = res.data[0];
+        const resWallet = await axios.post(
+          "http://localhost:5000/api/wallet/find",
+          {
+            user_id: this.userInfo.id,
+          },
+          {
+            headers: {
+              Authorization: `${document.cookie}`,
+            },
+          }
+        );
+        this.walletInfo = resWallet.data.wallet;
+
+        const resWalletTransaction = await axios.post(
+          "http://localhost:5000/api/wallet/findTransaction",
+          {
+            user_id: this.userInfo.id,
+            wallet_id: this.walletInfo.id,
+          },
+          {
+            headers: {
+              Authorization: `${document.cookie}`,
+            },
+          }
+        );
+        this.walletTransactions = resWalletTransaction.data.walletTransaction;
       } else {
         this.$router.push("/login");
         setTimeout("location.reload(true)", 100);

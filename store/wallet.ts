@@ -8,47 +8,54 @@ const VuexModule = createModule({
   enableLocalWatchers: true,
 });
 export class WalletStore extends VuexModule {
-  car: any =
+  wallet: any =
     [
       {
-        id: "",
-        name: "",
-        seat: "",
-        fuel: "",
-        fuel_consumption: "",
-        transmission: "",
-        distance: "",
-        description: "",
-        feature: "",
-        price: "",
-        type_car: "",
-        model: "",
-        owner: "",
-        user_id: "",
+        id: EMPTY,
+        user_id: EMPTY,
+        balance: EMPTY,
+        status: EMPTY,
       },
     ] || null;
   loading: Boolean = false;
-  searchingCar: any = {
-    location: EMPTY,
-    pickupDate: Date,
-    returnDate: Date,
+  walletTransactions: any = {
+    user_id: EMPTY,
+    wallet_id: EMPTY,
+    adding: EMPTY,
+    subtract: EMPTY,
+    status: EMPTY,
+    created_at: EMPTY,
   };
   result: any = [] || null;
-  @mutation setCar(car: any) {
-    this.car = car;
+
+  @mutation setWallet(wallet: any) {
+    this.wallet = wallet;
   }
-  @mutation setSearchingCar(searchingCar: any) {
-    this.searchingCar = searchingCar;
+  @mutation setWalletTransaction(wallet_transactions: any) {
+    this.walletTransactions = wallet_transactions;
   }
   @mutation setResult(result: any) {
     this.result = result;
   }
-  @mutation clearCar(car: any) {
-    this.car = car;
-  }
-  get getCars() {
-    return this.car;
-  }
+
+  // @action async removeCar(car: any) {
+  //   try {
+  //     await axios.delete("http://localhost:5000/api/cars/deleteAdmin", {
+  //       headers: {
+  //         Authorization: `${document.cookie}`,
+  //       },
+  //       data: {
+  //         id: car.id,
+  //         userId: car.user_id,
+  //       },
+  //     });
+  //     alert(`The car ${car.name} with id: ${car.id} is deleted!!!`);
+  //     setTimeout("location.reload(true)", 100);
+  //   } catch (error: any) {
+  //     const errMessage = JSON.stringify(error.response.data.msg);
+  //     alert(errMessage);
+  //   }
+  // }
 
   @action async handleSearchCar(car: any) {
     try {

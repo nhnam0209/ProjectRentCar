@@ -1,6 +1,6 @@
 <template>
   <div class="background-modal justify-center items-center">
-    <div class="bg-white modal-detail rounded-xl overflow-hidden flex" >
+    <div class="bg-white modal-detail rounded-xl overflow-hidden flex">
       <div class="content-left px-4 border border-solid border-neutral-500">
         <div class="">
           <div class="img-car-detail bg-cover bg-no-repeat w-full"></div>
@@ -90,7 +90,9 @@
           </div>
         </div>
       </div>
-      <div class="border border-solid border-neutral-500 overflow-hidden content-right">
+      <div
+        class="border border-solid border-neutral-500 overflow-hidden content-right"
+      >
         <div class="booking-form-modal p-14">
           <div
             class="booking-price text-4xl font-bold text-green-500 text-center my-5"
@@ -103,14 +105,20 @@
               >Pick up date</span
             >
             <div class="pt-2">
-              <input type="date" class="w-full booking-input rounded-xl border border-solid p-2 border-neutral-500 outline-none" />
+              <input
+                type="date"
+                class="w-full booking-input rounded-xl border border-solid p-2 border-neutral-500 outline-none"
+              />
             </div>
           </div>
 
           <div class="booking-return-date my-4">
             <span class="booking-title text-2xl font-bold">Return date</span>
             <div class="pt-2">
-              <input type="date" class="w-full booking-input rounded-xl border border-solid p-2 border-neutral-500 outline-none" />
+              <input
+                type="date"
+                class="w-full booking-input rounded-xl border border-solid p-2 border-neutral-500 outline-none"
+              />
             </div>
           </div>
 
@@ -130,10 +138,17 @@
 
           <div class="protection-plans my-4">
             <div class="title-sidebar text-2xl font-bold">Protection plans</div>
-            <select class="filter text-lg border border-solid p-2 border-neutral-500 outline-none text-center rounded-xl w-full mt-2">
-              <option value="BasicProtection">Basic $0.00</option>
-              <option value="MediumProtection">Medium $23.20/day</option>
-              <option value="PremiumProtection">Premium $32.68/day</option>
+            <select
+              class="filter text-lg border border-solid p-2 border-neutral-500 outline-none text-center rounded-xl w-full mt-2"
+              v-model="protectedPlan"
+            >
+              <option
+                v-for="item in protectionPlan"
+                :key="item.id"
+                :value="item.value"
+              >
+                {{ item.name }}
+              </option>
             </select>
           </div>
 
@@ -149,7 +164,7 @@
             </div>
             <div>
               <span>Protection Plan: </span>
-              <span>2$</span>
+              <span>{{ insurancePlan() }}$</span>
             </div>
             <div>
               <span>Total: </span>
@@ -158,7 +173,11 @@
           </div>
 
           <div class="button flex items-center justify-center">
-            <RButton nameBtn="Rent Now" class="btn-assent m-4"></RButton>
+            <RButton
+              nameBtn="Rent Now"
+              class="btn-assent m-4"
+              @click="handleRentCarPage"
+            ></RButton>
             <RButton class="btn-close" @click="handleCancel">Cancel</RButton>
           </div>
         </div>
@@ -175,23 +194,54 @@ import { Component, Emit, Prop, Vue } from "nuxt-property-decorator";
 })
 export default class extends Vue {
   @Prop({ type: Object }) carDetail!: any;
+  @Prop({}) userInfo: any;
+  @Prop({ type: Boolean }) isLogin: any;
   @Prop({ type: Boolean }) isModalUp!: any;
   isClose: Boolean;
   totalPrice: any = 0;
-
+  protectedPlan: any = 0;
   // mounted() {
   //   console.log(this.carDetail);
   //   console.log(this.isModalUp);
   // }
+  protectionPlan = [
+    {
+      id: 1,
+      name: "Basic 0.00$",
+      value: 0,
+    },
+    {
+      id: 2,
+      name: "Medium 23.20$",
+      value: 23.2,
+    },
+    {
+      id: 3,
+      name: "Premium 32.68$",
+      value: 32.68,
+    },
+  ];
 
   total() {
-    return (this.totalPrice = this.carDetail.price + 2);
+    return (this.totalPrice = this.carDetail.price + 2 + this.insurancePlan());
+  }
+
+  insurancePlan() {
+    return this.protectedPlan;
   }
 
   @Emit()
   handleCancel() {
     if (this.isModalUp) {
       this.$emit("isModalUp", false);
+    }
+  }
+
+  handleRentCarPage() {
+    if (this.isLogin) {
+      console.log("ok");
+    } else {
+      this.$router.push("/login");
     }
   }
 }
