@@ -73,5 +73,4 @@ export default class extends Vue {
   display: flex;
   z-index: 2;
 }
-
 </style>
