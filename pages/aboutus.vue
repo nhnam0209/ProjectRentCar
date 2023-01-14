@@ -1,7 +1,6 @@
 <template>
   <Default>
     <template #content>
-      <AddBankAccount></AddBankAccount>
     </template>
   </Default>
 </template>

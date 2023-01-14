@@ -15,10 +15,13 @@
           <div
             class="absolute rounded-xl left-0 right-0 top-0 bottom-0 flex items-end py-5 px-6"
           >
-            <div class="absolute right-4 top-4">
+            <div class="absolute right-4 top-4 icon-card">
               <button type="button" class="bg-transparent">
                 <icon-ellipsis class="fill-white h-6 w-6"></icon-ellipsis>
               </button>
+                <div class="subnav-removecard absolute top-6 right-0 text-black bg-gray-200 px-2">
+                  Remove
+                </div>
             </div>
             <div class="absolute left-6 top-6">
               <span class="text-lg opacity-50 mb-1 uppercase block font-medium"
@@ -78,3 +81,11 @@ export default class extends Vue {
   }
 }
 </script>
+<style>
+.subnav-removecard{
+  display: none;
+}
+.icon-card:hover .subnav-removecard{
+  display: flex !important;
+}
+</style>
