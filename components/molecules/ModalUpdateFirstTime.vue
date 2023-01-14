@@ -123,17 +123,6 @@ export default class extends Vue {
 </script>
 
 <style>
-.background-modal {
-  position: fixed;
-  right: 0;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  z-index: 2;
-}
 
 .btn-close {
   background-color: crimson !important;
