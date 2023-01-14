@@ -22,16 +22,20 @@
         <td class="p-2">{{ user.last_login }}</td>
         <td class="p-2">
           <div class="icon-group flex">
-            <iconAdd
-              class="h-6 w-6 px-1 mx-1 cursor-pointer"
-              @icon-add-click="toogleIsActive()"
-            ></iconAdd>
-            <ModalUpdate v-if="isActive"></ModalUpdate>
-            <iconDelete
-              class="h-6 w-6 px-1 mx-1 cursor-pointer"
-              @icon-delete-click="toogleIsActiveDelete()"
-            ></iconDelete>
-            <ModalAlert v-if="isActive_delete"></ModalAlert>
+            <div @click="handleUpdate(user)">
+              <iconAdd
+                class="h-6 w-6 px-1 mx-1 cursor-pointer"
+                @icon-add-click="toogleIsActive()"
+              ></iconAdd>
+            </div>
+            <ModalUpdate v-if="isActive" :user-info="userInfo"></ModalUpdate>
+            <div @click="handleDeleteUser(user)">
+              <iconDelete
+                class="h-6 w-6 px-1 mx-1 cursor-pointer"
+                @icon-delete-click="toogleIsActiveDelete()"
+              >
+              </iconDelete>
+            </div>
           </div>
         </td>
       </tr>
@@ -48,6 +52,7 @@ import { Component, Vue } from "nuxt-property-decorator";
 })
 export default class extends Vue {
   users: any = [];
+  userInfo: any = {};
   isActive = false;
   isActive_delete = false;
 
@@ -93,7 +98,10 @@ export default class extends Vue {
   }
 
   async handleUpdate(user: any) {
-    this.$vxm.user.updateUser(user);
+    this.userInfo = user;
+    console.log(this.userInfo);
+
+    // this.$vxm.user.updateUser(user);
   }
 }
 </script>

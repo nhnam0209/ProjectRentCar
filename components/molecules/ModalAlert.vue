@@ -1,55 +1,70 @@
 <template>
-    <div class="background-modal block">
-        <form class="alert_box p-8 flex justify-center items-center flex-col bg-white rounded-xl shadow-xl" :class="{'modal-close': isActive}">
-        <div class="icon h-24 w-24 border-4 border-solid border-red-500 flex items-center justify-center">
-            <IconExlamation class="icon-alter h-12 w-12 text-center"></IconExlamation>
-        </div>
-        <header class="font-bold text-xl py-4">Confirm</header>
-        <p class="text-lg">Are you sure to  delete this User(Car)?</p>
-        <div class="btns flex justify-between items-center p-4 w-full">
-          <RButton class="btn-assent" nameBtn="Yes, Delete!"></RButton>
-          <RButton class="btn-close" @click="toogleIsActive()" nameBtn="Cancel"></RButton>
-        </div>
-      </form>
-    </div>
-  </template>
-  
-  <script lang="ts">
-  import { Component, Vue } from "nuxt-property-decorator";
-  @Component({
-    name: "ModalAlert",
-  })
-  export default class extends Vue {
+  <div class="background-modal block">
+    <form
+      class="alert_box p-8 flex justify-center items-center flex-col bg-white rounded-xl shadow-xl"
+      :class="{ 'modal-close': isActive }"
+    >
+      <div
+        class="icon h-24 w-24 border-4 border-solid border-red-500 flex items-center justify-center"
+      >
+        <IconExlamation
+          class="icon-alter h-12 w-12 text-center"
+        ></IconExlamation>
+      </div>
+      <header class="font-bold text-xl py-4">Confirm</header>
+      <p class="text-lg">Are you sure to delete this User(Car)?</p>
+      <div class="btns flex justify-between items-center p-4 w-full">
+        <RButton
+          class="btn-assent"
+          nameBtn="Yes, Delete!"
+          @click="handleDelete($event)"
+        ></RButton>
+        <RButton
+          class="btn-close"
+          @click="toogleIsActive()"
+          nameBtn="Cancel"
+        ></RButton>
+      </div>
+    </form>
+  </div>
+</template>
+
+<script lang="ts">
+import { Component, Emit, Vue } from "nuxt-property-decorator";
+@Component({
+  name: "ModalAlert",
+})
+export default class extends Vue {
   isActive: Boolean = false;
-  toogleIsActive(){
-        if(this.isActive == true) {
-            this.isActive = false
-        }
-        else {
-            this.isActive = true
-        }
-    };
-
+  toogleIsActive() {
+    if (this.isActive == true) {
+      this.isActive = false;
+    } else {
+      this.isActive = true;
+    }
   }
-  </script>
-  
-  <style>
-  .modal-close{
-    display: none !important;
+  @Emit()
+  handleDelete(e: any) {
+    return this.$emit("click", e);
   }
+}
+</script>
 
-  .alert_box{
-    width: 400px;
-  }
+<style>
+.modal-close {
+  display: none !important;
+}
 
-  .alert_box .icon{
+.alert_box {
+  width: 400px;
+}
+
+.alert_box .icon {
   border-radius: 50%;
   line-height: 97px;
 }
 
-.icon .icon-alter{
+.icon .icon-alter {
   fill: red;
 }
-  
-  </style>
-  
+</style>

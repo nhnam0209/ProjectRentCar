@@ -89,6 +89,33 @@ export class UserStore extends VuexModule {
     }
   }
 
+  @action async handleAddUser() {
+    // function completed() {
+    //   alert("Your profile was registed!!");
+    // }
+    // const TIME_OUT_SUBMIT = 1000;
+    // this.loading = !false;
+    // setTimeout(() => {
+    //   this.loading = !true;
+    // }, TIME_OUT_SUBMIT);
+    // setTimeout(completed, TIME_OUT_SUBMIT);
+    // this.setUserInfo(this.userInfo);
+    try {
+      this.setFullName(
+        this.userInfo.first_name + " " + this.userInfo.last_name
+      );
+      const res = await axios.post(
+        "http://localhost:5000/api/auth/register",
+        this.userInfo
+      );
+      alert(res.data.msg);
+      window.location.href = "/login";
+    } catch (error: any) {
+      const errMessage = JSON.stringify(error.response.data.msg);
+      alert(errMessage);
+    }
+  }
+
   @action async handleLogin() {
     try {
       const res = await axios.post(
@@ -151,6 +178,44 @@ export class UserStore extends VuexModule {
       alert(`The user ${user.full_name} with id: ${user.id} is deleted!!!`);
       setTimeout("location.reload(true)", 100);
     } catch (error: any) {
+      const errMessage = JSON.stringify(error.response.data.msg);
+      alert(errMessage);
+    }
+  }
+
+  @action async updateUserAdmin(user: any) {
+    try {
+      var newDate = user.birth_of_date;
+      const date = Date.parse(newDate) || 0;
+      if (date == 0) {
+        newDate = this.userInfo.birth_of_date;
+      } else {
+        newDate = user.birth_of_date;
+      }
+      await axios.put(
+        "http://localhost:5000/api/user/updateUserAdmin",
+        {
+          id: this.userInfo.id,
+          first_name: user.first_name,
+          last_name: user.last_name,
+          full_name: this.userInfo.full_name,
+          email: user.email,
+          gender: user.gender,
+          id_card: user.id_card,
+          phone_number: user.phone_number,
+          birth_of_date: newDate,
+          driven_license: user.driven_license,
+        },
+        {
+          headers: {
+            Authorization: `${document.cookie}`,
+          },
+        }
+      );
+      alert(`Your information is updated!!!`);
+      setTimeout("location.reload(true)", 100);
+    } catch (error: any) {
+      console.log(error);
       const errMessage = JSON.stringify(error.response.data.msg);
       alert(errMessage);
     }
