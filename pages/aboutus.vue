@@ -1,7 +1,6 @@
 <template>
   <Default>
     <template #content>
-      <Tutorial />
     </template>
   </Default>
 </template>
