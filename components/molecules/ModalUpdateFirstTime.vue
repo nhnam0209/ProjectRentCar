@@ -121,18 +121,3 @@ export default class extends Vue {
   }
 }
 </script>
-
-<style>
-
-.btn-close {
-  background-color: crimson !important;
-}
-
-.btn-close,
-.btn-update,
-.btn {
-  border-radius: 12px;
-  padding: 0 10px;
-  color: white;
-}
-</style>
