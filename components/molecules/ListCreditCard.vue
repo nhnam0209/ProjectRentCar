@@ -57,6 +57,7 @@
         </div>
       </div>
     </div>
+    <AddBankAccount v-if="isActive"></AddBankAccount>
   </div>
 </template>
 <script lang="ts">

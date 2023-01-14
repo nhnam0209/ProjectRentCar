@@ -1,5 +1,5 @@
 <template>
-  <div class="background-modal block">
+  <div class="background-modal block z-10">
     <form
       action=""
       class="signup-form justify-center items-center bg-white rounded-xl shadow"
@@ -162,6 +162,6 @@ export default class extends Vue {
   align-items: center;
   justify-content: center;
   display: flex;
-  z-index: 2;
+  z-index: 10;
 }
 </style>
