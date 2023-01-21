@@ -1,10 +1,8 @@
 <template>
   <Default>
     <template #content>
-      <!-- <DashboardTable
-        class="h-full"
-        :is-manage-car="isManageCar"
-      ></DashboardTable> -->
+      <NavigationBarMyCar></NavigationBarMyCar>
+      <ListCars class="bg-gray-200"></ListCars>
     </template>
   </Default>
 </template>
