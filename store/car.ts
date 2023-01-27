@@ -61,6 +61,7 @@ export class CarStore extends VuexModule {
         this.result.push(req.data.cars);
         if (this.result.length > 1) {
           this.result.shift();
+          localStorage.setItem('car_result', JSON.stringify(this.result))
         }
       } else {
         alert("Please enter location, pickup date and return date!!!");

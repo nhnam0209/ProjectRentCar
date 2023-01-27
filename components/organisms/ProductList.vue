@@ -9,7 +9,13 @@
       ></ProductListCard>
     </div>
     <div v-else class="h-[700px]">
-      <div>Please enter the search box to have the car for rent</div>
+      <div
+        class="text-center text-xl md:text-5xl flex justify-center items-center"
+      >
+        <p class="self-center">
+          Please enter the search box to have the car for rent
+        </p>
+      </div>
     </div>
   </div>
 </template>
@@ -23,8 +29,13 @@ import axios from "~/utils/myAxios";
 export default class extends Vue {
   isLogin: Boolean = false;
   userInfo: any;
+  result: any;
   get searchResult() {
     return this.$vxm.car.result;
+  }
+
+  set searchResult(value: any) {
+    this.$vxm.car.result = value;
   }
 
   async created() {
@@ -41,13 +52,17 @@ export default class extends Vue {
         this.isLogin = true;
         this.userInfo = res.data[0];
       } else {
-        this.$router.push("/login");
-        setTimeout("location.reload(true)", 100);
+        this.isLogin = false;
+        // this.$router.push("/login");
+        // setTimeout("location.reload(true)", 100);
+      }
+      if (localStorage.getItem("car_result")) {
+        this.searchResult = JSON.parse(localStorage.car_result);
       }
     } catch (error) {
       this.isLogin = false;
-      this.$router.push("/login");
-      setTimeout("location.reload(true)", 100);
+      // this.$router.push("/login");
+      // setTimeout("location.reload(true)", 100);
     }
   }
 }
