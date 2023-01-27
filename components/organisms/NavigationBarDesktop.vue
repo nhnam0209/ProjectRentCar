@@ -21,7 +21,7 @@
         </div>
       </div>
       <div v-if="!isLogin">
-        <button class="buttons navbar-signin relative">
+        <button class="buttons split-bar relative">
           <NuxtLink class="navbar-items" to="/login">Sign In</NuxtLink>
         </button>
         <button class="buttons">
@@ -100,7 +100,7 @@ export default class extends Vue {
   display: none;
 }
 
-.navbar-signin::before {
+.split-bar::before {
   content: "";
   position: absolute;
   border-right: 2px solid black;
