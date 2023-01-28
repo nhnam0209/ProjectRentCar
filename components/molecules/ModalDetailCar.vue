@@ -127,10 +127,10 @@
               >Place of receipt</span
             >
             <div class="flex items-center pt-2">
-              <icon-location-pin class="w-6 h-6 icon-fill" />
+              <icon-location-pin class="w-6 h-6 icon-fill pr-2" />
               <input
                 typeInput="text"
-                class="w-full text-xl py-2 outline-none"
+                class="w-full text-xl py-2 outline-none border-b border-gray-400"
                 placeholder="Place of receipt"
               />
             </div>
