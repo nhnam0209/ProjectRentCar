@@ -90,26 +90,20 @@ export class UserStore extends VuexModule {
   }
 
   @action async handleAddUser() {
-    // function completed() {
-    //   alert("Your profile was registed!!");
-    // }
-    // const TIME_OUT_SUBMIT = 1000;
-    // this.loading = !false;
-    // setTimeout(() => {
-    //   this.loading = !true;
-    // }, TIME_OUT_SUBMIT);
-    // setTimeout(completed, TIME_OUT_SUBMIT);
-    // this.setUserInfo(this.userInfo);
     try {
       this.setFullName(
         this.userInfo.first_name + " " + this.userInfo.last_name
       );
       const res = await axios.post(
-        "http://localhost:5000/api/auth/register",
-        this.userInfo
+        "http://localhost:5000/api/user/addUser",
+        this.userInfo,
+        {
+          headers: {
+            Authorization: `${document.cookie}`,
+          },
+        }
       );
       alert(res.data.msg);
-      window.location.href = "/login";
     } catch (error: any) {
       const errMessage = JSON.stringify(error.response.data.msg);
       alert(errMessage);

@@ -36,22 +36,22 @@ export default class extends Vue {
   }
   async created() {
     try {
-      Auth.checkAdmin(this.isLogin, this.userInfo);
-      //   if (document.cookie) {
-      //     const res = await axios.get(
-      //       "http://localhost:5000/api/auth/verifyloginAdmin",
-      //       {
-      //         headers: {
-      //           Authorization: `${document.cookie}`,
-      //         },
-      //       }
-      //     );
-      //     this.isLogin = true;
-      //     this.userInfo = res.data.data;
-      //   } else {
-      //     this.$router.push("/login");
-      //     setTimeout("location.reload(true)", 100);
-      //   }
+      // Auth.checkAdmin(this.isLogin, this.userInfo);
+      if (document.cookie) {
+        const res = await axios.get(
+          "http://localhost:5000/api/auth/verifyloginAdmin",
+          {
+            headers: {
+              Authorization: `${document.cookie}`,
+            },
+          }
+        );
+        this.isLogin = true;
+        this.userInfo = res.data[0];
+      } else {
+        this.$router.push("/login");
+        setTimeout("location.reload(true)", 100);
+      }
     } catch (error) {
       this.isLogin = false;
       this.$router.push("/login");

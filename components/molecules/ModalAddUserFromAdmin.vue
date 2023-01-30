@@ -71,7 +71,11 @@
         </div>
       </div>
       <div class="button-group flex justify-between w-full px-7">
-        <RButton class="btn-assent" nameBtn="Add"></RButton>
+        <RButton
+          class="btn-assent"
+          nameBtn="Add"
+          @click="handleAddUserAdmin()"
+        ></RButton>
         <RButton class="btn-close" nameBtn="Close"></RButton>
       </div>
     </form>
@@ -102,6 +106,11 @@ export default class extends Vue {
       value: "Others",
     },
   ];
+
+  handleAddUserAdmin() {
+    this.$vxm.user.handleAddUser();
+  }
+
   get user() {
     return this.$vxm.user.userInfo;
   }

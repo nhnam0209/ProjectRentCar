@@ -16,6 +16,7 @@
           <modal-add-car-from-admin
             class="z-50"
             v-if="isActive && isManageCar"
+            :user-info="userInfo"
           ></modal-add-car-from-admin>
         </div>
         <!-- <div class="">
@@ -51,6 +52,7 @@ import { Component, Prop, Vue } from "nuxt-property-decorator";
 export default class extends Vue {
   @Prop({ type: Boolean, default: false }) isManageUser!: Boolean;
   @Prop({ type: Boolean, default: false }) isManageCar!: Boolean;
+  @Prop() userInfo!: any;
 
   isActive = false;
   isActive_delete = false;

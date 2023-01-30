@@ -8,25 +8,26 @@ const VuexModule = createModule({
   enableLocalWatchers: true,
 });
 export class CarStore extends VuexModule {
-  car: any =
-    [
-      {
-        id: "",
-        name: "",
-        seat: "",
-        fuel: "",
-        fuel_consumption: "",
-        transmission: "",
-        distance: "",
-        description: "",
-        feature: "",
-        price: "",
-        type_car: "",
-        model: "",
-        owner: "",
-        user_id: "",
-      },
-    ] || null;
+  car: any = {
+    id: "",
+    img: "",
+    name: "",
+    seat: "",
+    fuel: "",
+    fuel_consumption: "",
+    transmission: "",
+    distance: "",
+    description: "",
+    feature: "",
+    price: "",
+    type_car: "",
+    model: "",
+    owner: "",
+    user_id: "",
+    province: "",
+    plate_number: "",
+    available_date: Date,
+  };
   loading: Boolean = false;
   searchingCar: any = {
     location: EMPTY,
@@ -37,6 +38,15 @@ export class CarStore extends VuexModule {
   result: any = [] || null;
   @mutation setCar(car: any) {
     this.car = car;
+  }
+  @mutation setImgCar(img: any) {
+    this.car.img = img;
+  }
+  @mutation setCarOwner(owner: any) {
+    this.car.owner = owner;
+  }
+  @mutation setCarUserId(user_id: any) {
+    this.car.user_id = user_id;
   }
   @mutation setSearchingCar(searchingCar: any) {
     this.searchingCar = searchingCar;
@@ -61,7 +71,7 @@ export class CarStore extends VuexModule {
         this.result.push(req.data.cars);
         if (this.result.length > 1) {
           this.result.shift();
-          localStorage.setItem('car_result', JSON.stringify(this.result))
+          localStorage.setItem("car_result", JSON.stringify(this.result));
         }
       } else {
         alert("Please enter location, pickup date and return date!!!");
@@ -91,5 +101,20 @@ export class CarStore extends VuexModule {
   }
   @action async updateCar(car: any) {
     console.log(car);
+  }
+
+  @action async addCarAdmin() {
+    try {
+      await axios.post("http://localhost:5000/api/cars/addCarAdmin", this.car, {
+        headers: {
+          Authorization: `${document.cookie}`,
+        },
+      });
+      alert(`The Car ${this.car.name} is added`);
+      // alert(JSON.stringify(this.car));
+    } catch (error: any) {
+      const errMessage = JSON.stringify(error.response.data.msg);
+      alert(errMessage);
+    }
   }
 }
