@@ -2,7 +2,7 @@
     <Default>
       <template #content>
         <NavigationBarMyCar></NavigationBarMyCar>
-        <ListCars class="bg-gray-200"></ListCars>
+        <ListCars></ListCars>
       </template>
     </Default>
   </template>

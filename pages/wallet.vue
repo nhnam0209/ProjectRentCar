@@ -70,6 +70,7 @@ export default class extends Vue {
           }
         );
         this.walletInfo = resWallet.data.wallet;
+        console.log(resWallet.data)
 
         const resWalletTransaction = await axios.post(
           "http://localhost:5000/api/wallet/findTransaction",
@@ -85,13 +86,13 @@ export default class extends Vue {
         );
         this.walletTransactions = resWalletTransaction.data.walletTransaction;
       } else {
-        this.$router.push("/login");
-        setTimeout("location.reload(true)", 100);
+        //this.$router.push("/login");
+        //setTimeout("location.reload(true)", 100);
       }
     } catch (error) {
       this.isLogin = false;
-      this.$router.push("/login");
-      setTimeout("location.reload(true)", 100);
+      //this.$router.push("/login");
+      //setTimeout("location.reload(true)", 100);
     }
   }
 

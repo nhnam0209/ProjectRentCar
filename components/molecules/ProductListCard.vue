@@ -1,7 +1,7 @@
 <template>
-  <div class="border border-solid border-neutral-500 ml-1 w-full">
+  <div class="ml-1 w-full">
     <div
-      class="grid gap-4 grid-cols-2 m-4"
+      class="grid gap-4 grid-cols-2 m-4 max-md:grid-cols-1"
       v-for="cars in carResult"
       :key="cars.id"
     >
@@ -25,31 +25,31 @@
             </div>
           </div>
           <div class="details grid grid-cols-2">
-            <div class="flex text-xl">
-              <IconPerson class="w-8 h-8"></IconPerson>
+            <div class="flex text-xl max-lg:col-span-2 max-lg:text-lg">
+              <IconPerson class="w-8 h-8 max-lg:w-6 max-lg:h-6"></IconPerson>
               Seat:
               {{ car.seat }}
             </div>
             <!-- <div class="flex text-xl justify-center items-center">
               <IconDoor class="w-8 h-8"></IconDoor>
             </div> -->
-            <div class="flex text-xl">
-              <IconEngine class="w-8 h-8"></IconEngine>
+            <div class="flex text-xl max-lg:col-span-2 max-lg:text-lg">
+              <IconEngine class="w-8 h-8 max-lg:w-6 max-lg:h-6"></IconEngine>
               Transmission:
               {{ car.transmission }}
             </div>
-            <div class="flex text-xl">
-              <IconFuel class="w-8 h-8"></IconFuel>
+            <div class="flex text-xl max-lg:col-span-2 max-lg:text-lg">
+              <IconFuel class="w-8 h-8 max-lg:w-6 max-lg:h-6"></IconFuel>
               Fuel Type:
               {{ car.fuel_type }}
             </div>
-            <div class="flex text-xl">
-              <IconTank class="w-8 h-8"></IconTank>
+            <div class="flex text-xl max-lg:col-span-2 max-lg:text-lg">
+              <IconTank class="w-8 h-8 max-lg:w-6 max-lg:h-6"></IconTank>
               Fuel Tank:
               {{ car.fuel }}
             </div>
-            <div class="flex text-xl col-span-2">
-              <IconTank class="w-8 h-8"></IconTank>
+            <div class="flex text-xl col-span-2 max-lg:text-lg">
+              <IconTank class="w-8 h-8 max-lg:w-6 max-lg:h-6"></IconTank>
               Fuel Consumption:
               {{ car.fuel_consumption }} / 100km
             </div>
@@ -86,7 +86,7 @@
           </div>
         </div>
         <div class="mb-2 flex items-center justify-center">
-          <RButton class="btn-assent" nameBtn="Select"></RButton>
+          <RButton class="btn-assent w-1/2" nameBtn="Select"></RButton>
         </div>
       </div>
       <ModalDetailCar

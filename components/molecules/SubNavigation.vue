@@ -22,6 +22,21 @@
             >My Car</NuxtLink
           >
         </div>
+
+        <div class="flex-col hidden max-lg:flex" v-else>
+          <NuxtLink class="navbar-items cursor-pointer z-50" to="/dashboardadmin"
+            >Dashboard</NuxtLink
+          >
+          <NuxtLink class="navbar-items cursor-pointer z-50" to="/manageuser"
+            >Manage User</NuxtLink
+          >
+          <!-- <NuxtLink class="navbar-items cursor-pointer z-50" to="/wallet"
+            >My Order</NuxtLink
+          > -->
+          <NuxtLink class="navbar-items cursor-pointer z-50" to="/managecar"
+            >Manage Car</NuxtLink
+          >
+        </div>
         <!-- <NuxtLink class="navbar-items" to="/">Home</NuxtLink> -->
         <div class="mt-3 navbar-items cursor-pointer" @click="handleLogOut">
           Logout

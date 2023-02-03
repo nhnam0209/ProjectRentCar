@@ -2,7 +2,7 @@
   <div class="bg-white">
     <RentalLocation></RentalLocation>
     <div class="flex h-full" v-if="searchResult.length > 0">
-      <RentCarSideBar></RentCarSideBar>
+      <RentCarSideBar class="max-sm:hidden"></RentCarSideBar>
       <ProductListCard
         :car-result="searchResult"
         :is-login="isLogin"

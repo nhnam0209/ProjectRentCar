@@ -1,5 +1,5 @@
 <template>
-  <div class="background-home flex justify-center items-center flexed h-screen bg-center bg-cover bg-no-repeat">
+  <div class="background-home flex justify-center items-center h-screen bg-center bg-cover bg-no-repeat">
     <form action="" class="booking-form bg-white p-10 rounded-xl overflow-hidden opacity-90 w" @submit.prevent="handleSearchCar()">
       <div class="type-car flex justify-between items-center">
         <div class="vihecle">

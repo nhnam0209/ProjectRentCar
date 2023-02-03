@@ -1,7 +1,7 @@
 <template>
-  <div class="flex p-10">
-    <div class="w-1/4">
-      <div class="bg-white p-10 shadow w-2/3">
+  <div class="flex p-10 max-xl:block overflow-auto bg-white">
+    <div class="w-1/4 max-xl:w-full">
+      <div class="bg-white p-10 w-2/3">
         <div class="font-medium text-xl">Status</div>
         <div class="">
           <select
@@ -16,27 +16,27 @@
         </div>
       </div>
     </div>
-    <div class="w-3/4">
+    <div class="w-3/4 max-xl:w-full">
       <div class="bg-white">
         <div class="">
           <table class="w-full border border-solid text-center">
             <tr class="bg-green-500 text-xl text-white">
-              <th class="py-2 px-4">ID</th>
-              <th class="py-2 px-4">Model</th>
-              <th class="py-2 px-4">Seat</th>
-              <th class="py-2 px-4">Transition</th>
-              <th class="py-2 px-4">Types of fuels</th>
-              <th class="py-2 px-4">Number plate</th>
-              <th class="py-2 px-4">Status</th>
+              <th class="py-2 px-4 max-lg:px-2">ID</th>
+              <th class="py-2 px-4 max-lg:px-2">Model</th>
+              <th class="py-2 px-4 max-lg:px-2">Seat</th>
+              <th class="py-2 px-4 max-lg:px-2">Transition</th>
+              <th class="py-2 px-4 max-lg:px-2">Types of fuels</th>
+              <th class="py-2 px-4 max-lg:px-2">Number plate</th>
+              <th class="py-2 px-4 max-lg:px-2">Status</th>
             </tr>
             <tr class="text-lg">
-              <td class="py-2 px-4">1</td>
-              <td class="py-2 px-4">Toyota Vios</td>
-              <td class="py-2 px-4">4</td>
-              <td class="py-2 px-4">Manual</td>
-              <td class="py-2 px-4">Diesel</td>
-              <td class="py-2 px-4">51F73912</td>
-              <td class="py-2 px-4">Available</td>
+              <td class="py-2 px-4 max-lg:px-2">1</td>
+              <td class="py-2 px-4 max-lg:px-2">Toyota Vios</td>
+              <td class="py-2 px-4 max-lg:px-2">4</td>
+              <td class="py-2 px-4 max-lg:px-2">Manual</td>
+              <td class="py-2 px-4 max-lg:px-2">Diesel</td>
+              <td class="py-2 px-4 max-lg:px-2">51F73912</td>
+              <td class="py-2 px-4 max-lg:px-2">Available</td>
             </tr>
           </table>
         </div>
