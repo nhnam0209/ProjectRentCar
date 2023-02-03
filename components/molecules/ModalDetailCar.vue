@@ -3,10 +3,13 @@
     <div class="bg-white w-2/3 rounded-xl flex max-xl:block max-md:w-full h-full my-4 overflow-hidden">
       <div class="content-left px-4 border border-solid border-neutral-500 max-xl:border-none max-xl:w-full w-2/3 overflow-auto bg-white">
         <div class="">
-          <div class="h-1/3 w-full">
-            <img src="../../static/img/product/vios/vios-15g-cvt-44451619164281.jpg" alt="" class="w-full h-full">
-          </div>
-          <div class="w-full">
+          <!-- <div class="img-car-detail bg-cover bg-no-repeat w-full"></div> -->
+          <img
+            :src="carDetail.img"
+            alt=""
+            class="bg-cover bg-no-repeat w-full"
+          />
+          <div class="info">
             <div class="cars-details product-card-items">
               <div class="pb-4 flex justify-between">
                 <span class="car-name text-3xl font-bold">{{

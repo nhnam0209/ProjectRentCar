@@ -26,16 +26,23 @@
         <td class="p-2">{{ car.user_id }}</td>
         <td class="p-2">
           <div class="icon-group flex">
-            <iconAdd
-              class="h-6 w-6 px-1 mx-1 cursor-pointer"
-              @icon-add-click="toogleIsActive()"
-            ></iconAdd>
-            <AddCarForm v-if="isActive"></AddCarForm>
-            <iconDelete
-              class="h-6 w-6 px-1 mx-1 cursor-pointer"
-              @icon-delete-click="toogleIsActiveDelete()"
-            ></iconDelete>
-            <ModalAlert v-if="isActive_delete"></ModalAlert>
+            <div @click="handleUpdate(car)">
+              <iconAdd
+                class="h-6 w-6 px-1 mx-1 cursor-pointer"
+                @icon-add-click="toogleIsActive()"
+              ></iconAdd>
+            </div>
+            <ModalUpdateCar
+              v-if="isActive"
+              :car-info="carInfo"
+            ></ModalUpdateCar>
+            <div @click="handleDeleteCar(car)">
+              <iconDelete
+                class="h-6 w-6 px-1 mx-1 cursor-pointer"
+                @icon-delete-click="toogleIsActiveDelete()"
+              >
+              </iconDelete>
+            </div>
           </div>
         </td>
       </tr>
@@ -51,24 +58,9 @@ import axios from "axios";
 })
 export default class extends Vue {
   cars: any = [];
+  carInfo: any = {};
   isActive = false;
   isActive_delete = false;
-
-  toogleIsActive() {
-    if (this.isActive == true) {
-      this.isActive = false;
-    } else {
-      this.isActive = true;
-    }
-  }
-
-  toogleIsActiveDelete() {
-    if (this.isActive_delete == true) {
-      this.isActive_delete = false;
-    } else {
-      this.isActive_delete = true;
-    }
-  }
 
   async created() {
     try {
@@ -90,6 +82,30 @@ export default class extends Vue {
       this.$router.push("/dashboardadmin");
       setTimeout("location.reload(true)", 100);
     }
+  }
+
+  toogleIsActive() {
+    if (this.isActive == true) {
+      this.isActive = false;
+    } else {
+      this.isActive = true;
+    }
+  }
+
+  toogleIsActiveDelete() {
+    if (this.isActive_delete == true) {
+      this.isActive_delete = false;
+    } else {
+      this.isActive_delete = true;
+    }
+  }
+
+  async handleDeleteCar(car: any) {
+    this.$vxm.car.removeCar(car);
+  }
+
+  async handleUpdate(car: any) {
+    this.carInfo = car;
   }
 }
 </script>
