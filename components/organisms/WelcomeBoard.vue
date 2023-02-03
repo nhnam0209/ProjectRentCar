@@ -1,11 +1,11 @@
 <template>
-  <div class="background-home flex justify-center items-center flexed h-screen">
+  <div class="background-home flex justify-center items-center h-screen">
     <div class="booking-form bg-white rounded-md">
       <div class="info-hire-car my-4 flex justify-center">
         <div class="dateime-pickup-car inline-block">
           <div class="station-input-pickup w-full flex justify-center">
             <div class="title-pickup-input py-2 flex flex-col justify-center">
-              <span class="font-bold text-center text-5xl uppercase"
+              <span class="font-bold text-center text-5xl uppercase max-md:text-3xl"
                 >Welcome to Rental Car Service</span
               >
               <span class="font-bold text-xl text-center mt-2"

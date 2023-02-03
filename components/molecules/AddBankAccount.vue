@@ -3,7 +3,7 @@
     class="fixed top-0 bottom-0 right-0 left-0 items-center flex justify-center h-screen z-10 bg-black/70"
     :class="{'modal-close': isActive}"
   >
-    <div class="flex justify-center items-center bg-white w-1/3 rounded-lg shadow overflow-hidden relative">
+    <div class="flex justify-center items-center bg-white w-1/3 rounded-lg shadow overflow-hidden relative max-lg:w-1/2 max-md:w-2/3 max-sm:w-full max-sm:h-full">
       <div class="w-full">
         <div class="text-2xl text-center p-8 font-bold">Bank Account</div>
         <div class="">

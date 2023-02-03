@@ -1,9 +1,13 @@
 <template>
   <div
-    class="flex justify-center items-center py-4 my-1 bg-white border-solid border-b border-neutral-500"
+    class="flex justify-center items-center py-4 my-1 bg-white border-solid border-b border-neutral-500 max-lg:block max-lg:mx-4"
   >
-    <div class="flex border-solid border border-neutral-900 rounded-xl">
-      <div class="flex w-96 border-r border-solid border-neutral-900">
+    <div
+      class="flex border-solid border border-neutral-900 rounded-xl w-1/2 max-lg:w-full max-sm:block max-sm:border-none"
+    >
+      <div
+        class="flex w-1/2 max-lg:w-3/4 border-r border-solid border-neutral-900 max-sm:border max-sm:border-solid max-sm:border-neutral-900 max-sm:w-full max-sm:rounded-xl max-sm:mb-3"
+      >
         <div class="flex items-center justify-center px-1">
           <icon-location-pin class="icon-fill cursor-pointer h-5 w-5" />
         </div>
@@ -22,8 +26,12 @@
           </div>
         </div>
       </div>
-      <div class="flex">
-        <div class="w-full flex border-r border-solid border-neutral-900 h-full">
+      <div
+        class="flex w-1/2 max-sm:border max-sm:border-solid max-sm:border-neutral-900 max-sm:w-full max-sm:rounded-xl"
+      >
+        <div
+          class="w-full flex border-r border-solid border-neutral-900 h-full"
+        >
           <div class="flex items-center justify-center px-1">
             <IconDateTime class="icon-fill cursor-pointer h-5 w-5" />
           </div>
@@ -60,13 +68,23 @@
         </div>
       </div>
     </div>
-    <div class="flex justify-center items-center ml-5">
+    <div class="flex justify-around items-center ml-5 max-lg:mt-4">
+      <div class="hidden max-sm:block">
+        <IconFilter
+          class="w-6 h-6 cursor-pointer"
+          @icon-filter-click="toogleIsActive()"
+        ></IconFilter>
+      </div>
       <div class="button-search flex justify-center items-center">
         <RButton class="btn-search text-black" @click="handleSearchCar()"
           >Search</RButton
         >
       </div>
     </div>
+    <RentCarSideBar
+      :class="{ block: isActive }"
+      v-if="isActive"
+    ></RentCarSideBar>
   </div>
 </template>
 
@@ -76,11 +94,21 @@ import { Component, Vue } from "nuxt-property-decorator";
   name: "RentalLocation",
 })
 export default class extends Vue {
+  isActive: boolean = false;
+
   handleSearchCar() {
     try {
       this.$vxm.car.handleSearchCar(this.car);
     } catch (error) {
       alert("Please try again!!");
+    }
+  }
+
+  toogleIsActive() {
+    if (this.isActive == true) {
+      this.isActive = false;
+    } else {
+      this.isActive = true;
     }
   }
 

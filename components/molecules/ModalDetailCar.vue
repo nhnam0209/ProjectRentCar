@@ -1,69 +1,67 @@
 <template>
-  <div class="background-modal justify-center items-center">
-    <div class="bg-white modal-detail rounded-xl overflow-hidden flex">
-      <div class="content-left px-4 border border-solid border-neutral-500">
+  <div class="background-modal justify-center items-center max-xl:overflow-auto py-5">
+    <div class="bg-white w-2/3 rounded-xl flex max-xl:block max-md:w-full h-full my-4 overflow-hidden">
+      <div class="content-left px-4 border border-solid border-neutral-500 max-xl:border-none max-xl:w-full w-2/3 overflow-auto bg-white">
         <div class="">
-          <div class="img-car-detail bg-cover bg-no-repeat w-full"></div>
-          <div class="info">
+          <div class="h-1/3 w-full">
+            <img src="../../static/img/product/vios/vios-15g-cvt-44451619164281.jpg" alt="" class="w-full h-full">
+          </div>
+          <div class="w-full">
             <div class="cars-details product-card-items">
               <div class="pb-4 flex justify-between">
-                <span class="car-name text-2xl font-bold">{{
+                <span class="car-name text-3xl font-bold">{{
                   carDetail.name
                 }}</span>
-                <div class="rating flex">
-                  <IconStar class="icon-rating w-8 h-8"></IconStar>
-                  <IconStar class="icon-rating w-8 h-8"></IconStar>
-                  <IconStar class="icon-rating w-8 h-8"></IconStar>
-                  <IconStar class="icon-rating w-8 h-8"></IconStar>
-                  <IconStar class="icon-rating w-8 h-8"></IconStar>
-                </div>
+                 <span class="car-name text-2xl font-bold hidden max-md:block text-green-500">${{
+                  carDetail.price
+                }} / day</span>
               </div>
-              <div class="text-2xl font-bold">
-                <div class="title-detail mb-4">Full vehicle details</div>
-                <div class="details grid grid-cols-2">
-                  <div class="flex text-xl">
+              <div class="">
+                <div class="title-detail mb-4 text-2xl max-xl:text-xl font-bold ">Full vehicle details</div>
+                <div class="details grid grid-cols-2 font-medium">
+                  <div class="flex text-xl max-xl:text-lg">
                     <IconPerson class="w-8 h-8"></IconPerson>
                     Seat:
                     <span class="font-normal ml-1">
                       {{ carDetail.seat }}
                     </span>
                   </div>
-                  <div class="flex text-xl">
+                  <div class="flex text-xl max-xl:text-lg">
                     <IconDoor class="w-8 h-8"></IconDoor>
                     Model:
                     <span class="font-normal ml-1">
                       {{ carDetail.model }}
                     </span>
                   </div>
-                  <div class="flex text-xl">
+                  <div class="flex text-xl max-xl:text-lg">
                     <IconEngine class="w-8 h-8"></IconEngine>
                     Transmission:
                     <span class="font-normal ml-1">
                       {{ carDetail.transmission }}
                     </span>
                   </div>
-                  <div class="flex text-xl">
+                  <div class="flex text-xl max-xl:text-lg">
                     <IconFuel class="w-8 h-8"></IconFuel>
                     Fuel Type:
                     <span class="font-normal ml-1">
                       {{ carDetail.fuel_type }}
                     </span>
                   </div>
-                  <div class="flex text-xl">
+                  <div class="flex text-xl max-xl:text-lg">
                     <IconTank class="w-8 h-8"></IconTank>
                     Fuel Tank:
                     <span class="font-normal ml-1">
                       {{ carDetail.fuel }}
                     </span>
                   </div>
-                  <div class="flex text-xl">
+                  <div class="flex text-xl max-xl:text-lg">
                     <IconTank class="w-8 h-8"></IconTank>
                     Owner:
                     <span class="font-normal ml-1">
                       {{ carDetail.owner }}
                     </span>
                   </div>
-                  <div class="flex text-xl col-span-2">
+                  <div class="flex text-xl max-xl:text-lg col-span-2">
                     <IconTank class="w-8 h-8"></IconTank>
                     Fuel Consumption:
                     <span class="font-normal ml-1">
@@ -72,17 +70,17 @@
                   </div>
                 </div>
               </div>
-              <div class="desc mt-10">
-                <div class="title-detail mb-4 text-2xl font-bold">Feature</div>
-                <p class="text-xl">
+              <div class="desc mt-4">
+                <div class="title-detail mb-4 text-2xl font-bold max-xl:text-xl">Feature</div>
+                <p class="text-xl max-xl:text-lg">
                   {{ carDetail.feature }}
                 </p>
               </div>
-              <div class="desc mt-10">
-                <div class="title-detail mb-4 text-2xl font-bold">
+              <div class="desc mt-4">
+                <div class="title-detail mb-4 text-2xl font-bold max-xl:text-xl">
                   Description
                 </div>
-                <p class="text-xl">
+                <p class="text-xl max-xl:text-lg">
                   {{ carDetail.description }}
                 </p>
               </div>
@@ -91,17 +89,17 @@
         </div>
       </div>
       <div
-        class="border border-solid border-neutral-500 overflow-hidden content-right"
+        class="border border-solid border-neutral-500 overflow-hidden content-right max-xl:border-none w-1/3 max-xl:w-full bg-white" 
       >
-        <div class="booking-form-modal p-14">
+        <div class="booking-form-modal px-12 pb-3 max-md:py-4 max-md:px-4">
           <div
-            class="booking-price text-4xl font-bold text-green-500 text-center my-5"
+            class="booking-price text-4xl font-bold text-green-500 text-center my-5 max-md:hidden"
           >
             ${{ carDetail.price }} / day
           </div>
 
           <div class="booking-pick-up-date my-4">
-            <span class="booking-title text-2xl font-bold pb-2"
+            <span class="booking-title text-2xl max-xl:text-xl font-bold pb-2"
               >Pick up date</span
             >
             <div class="pt-2">
@@ -113,7 +111,7 @@
           </div>
 
           <div class="booking-return-date my-4">
-            <span class="booking-title text-2xl font-bold">Return date</span>
+            <span class="booking-title text-2xl max-xl:text-xl font-bold">Return date</span>
             <div class="pt-2">
               <input
                 type="date"
@@ -123,7 +121,7 @@
           </div>
 
           <div class="place-of-receipt my-4">
-            <span class="booking-title text-2xl font-bold"
+            <span class="booking-title text-2xl max-xl:text-xl font-bold"
               >Place of receipt</span
             >
             <div class="flex items-center pt-2">
@@ -137,7 +135,7 @@
           </div>
 
           <div class="protection-plans my-4">
-            <div class="title-sidebar text-2xl font-bold">Protection plans</div>
+            <div class="title-sidebar text-2xl max-xl:text-xl font-bold">Protection plans</div>
             <select
               class="filter text-lg border border-solid p-2 border-neutral-500 outline-none text-center rounded-xl w-full mt-2"
               v-model="protectedPlan"
@@ -153,29 +151,29 @@
           </div>
 
           <div class="total-price">
-            <div class="title-sidebar text-2xl font-bold">Total Price</div>
-            <div>
+            <div class="title-sidebar text-2xl max-xl:text-xl font-bold">Total Price</div>
+            <div class="font-medium text-lg">
               <span>SubTotal: </span>
-              <span>{{ carDetail.price }}$ / day</span>
+              <span class="font-bold text-lg">{{ carDetail.price }}$ / day</span>
             </div>
-            <div>
+            <div class="font-medium text-lg">
               <span>Service Fee: </span>
-              <span>2$</span>
+              <span class="font-bold">2$</span>
             </div>
-            <div>
+            <div class="font-medium text-lg">
               <span>Protection Plan: </span>
-              <span>{{ insurancePlan() }}$</span>
+              <span class="font-bold">{{ insurancePlan() }}$</span>
             </div>
-            <div>
+            <div class="font-medium text-lg">
               <span>Total: </span>
-              <span>{{ total() }}$</span>
+              <span class="font-bold">{{ total() }}$</span>
             </div>
           </div>
 
-          <div class="button flex items-center justify-center">
+          <div class="button flex items-center justify-around">
             <RButton
               nameBtn="Rent Now"
-              class="btn-assent m-4"
+              class="btn-assent"
               @click="handleRentCarPage"
             ></RButton>
             <RButton class="btn-close" @click="handleCancel">Cancel</RButton>
@@ -246,21 +244,3 @@ export default class extends Vue {
   }
 }
 </script>
-
-<style>
-.content-left {
-  width: 800px;
-}
-.content-right {
-  width: 400px;
-}
-
-.img-car-detail {
-  height: 350px;
-  background-image: url(../../static/img/product/vios/vios-15g-cvt-44451619164281.jpg);
-}
-
-.modal-detail {
-  width: 1200px;
-}
-</style>
