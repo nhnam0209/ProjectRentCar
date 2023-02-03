@@ -2,12 +2,12 @@
   <div class="background-modal block">
     <form
       action=""
-      class="signup-form justify-center items-center bg-white rounded-xl shadow"
+      class="signup-form justify-center items-center bg-white rounded-xl shadow-xl"
       :class="{ 'modal-close': isActive }"
     >
       <div class="p-10">
         <header class="title-signup text-3xl font-bold mt-7">
-          <span>Add Car</span>
+          <span>Update Car Information</span>
         </header>
         <div class="grid grid-cols-2 gap-8 w-full">
           <div>
@@ -27,7 +27,7 @@
                 type="text"
                 class="input-focus"
                 v-model="car.name"
-                placeholder="Toyota 2022"
+                :placeholder="carInfo.name"
               />
               <label class="label-input top-2/4 absolute text-lg">Name:</label>
             </div>
@@ -36,7 +36,7 @@
                 type="text"
                 class="input-focus"
                 v-model="car.seat"
-                placeholder="4"
+                :placeholder="carInfo.seat"
               />
               <label class="label-input top-2/4 absolute text-lg">Seat:</label>
             </div>
@@ -45,7 +45,7 @@
                 type="text"
                 class="input-focus"
                 v-model="car.fuel"
-                placeholder="5"
+                :placeholder="carInfo.fuel"
               />
               <label class="label-input top-2/4 absolute text-lg"
                 >Fuel (Litre):</label
@@ -56,7 +56,7 @@
                 type="text"
                 class="input-focus"
                 v-model="car.fuel_type"
-                placeholder="Diesel"
+                :placeholder="carInfo.fuel_type"
               />
               <label class="label-input top-2/4 absolute text-lg"
                 >Fuel Type:</label
@@ -66,7 +66,7 @@
               <input
                 type="text"
                 class="input-focus"
-                placeholder="4"
+                :placeholder="carInfo.fuel_consumption"
                 v-model="car.fuel_consumption"
               />
               <label class="label-input top-2/4 absolute text-lg"
@@ -77,7 +77,7 @@
               <input
                 type="text"
                 class="input-focus"
-                placeholder="Automation"
+                :placeholder="carInfo.transmission"
                 v-model="car.transmission"
               />
               <label class="label-input top-2/4 absolute text-lg"
@@ -89,7 +89,7 @@
                 type="text"
                 class="input-focus"
                 v-model="car.distance"
-                placeholder="500"
+                :placeholder="carInfo.distance"
               />
               <label class="label-input top-2/4 absolute text-lg"
                 >Distance:</label
@@ -99,6 +99,7 @@
               <input
                 type="text"
                 class="input-focus"
+                :placeholder="carInfo.description"
                 v-model="car.description"
               />
               <label class="label-input top-2/4 absolute text-lg"
@@ -106,31 +107,56 @@
               >
             </div>
             <div class="relative border-bottom my-7">
-              <input type="text" class="input-focus" v-model="car.feature" />
+              <input
+                type="text"
+                class="input-focus"
+                v-model="car.feature"
+                :placeholder="carInfo.feature"
+              />
               <label class="label-input top-2/4 absolute text-lg"
                 >Feature:</label
               >
             </div>
             <div class="relative border-bottom my-7">
-              <input type="text" class="input-focus" v-model="car.price" />
+              <input
+                type="text"
+                class="input-focus"
+                v-model="car.price"
+                :placeholder="carInfo.price"
+              />
               <label class="label-input top-2/4 absolute text-lg"
                 >Price per day:</label
               >
             </div>
             <div class="relative border-bottom my-7">
-              <input type="text" class="input-focus" v-model="car.type_car" />
+              <input
+                type="text"
+                class="input-focus"
+                v-model="car.type_car"
+                :placeholder="carInfo.type_car"
+              />
               <label class="label-input top-2/4 absolute text-lg"
                 >Type Car:</label
               >
             </div>
             <div class="relative border-bottom my-7">
-              <input type="text" class="input-focus" v-model="car.model" />
+              <input
+                type="text"
+                class="input-focus"
+                v-model="car.model"
+                :placeholder="carInfo.model"
+              />
               <label class="label-input top-2/4 absolute text-lg">Model:</label>
             </div>
           </div>
           <div>
             <div class="relative border-bottom my-7">
-              <input type="text" class="input-focus" v-model="car.province" />
+              <input
+                type="text"
+                class="input-focus"
+                v-model="car.province"
+                :placeholder="carInfo.province"
+              />
               <label class="label-input top-2/4 absolute text-lg"
                 >Province:</label
               >
@@ -140,6 +166,7 @@
                 type="text"
                 class="input-focus"
                 v-model="car.plate_number"
+                :placeholder="carInfo.plate_number"
               />
               <label class="label-input top-2/4 absolute text-lg"
                 >Plate Number:</label
@@ -162,7 +189,7 @@
             <RButton
               class="btn-assent"
               nameBtn="Add"
-              @click="handleAddCar()"
+              @click="handleUpdate(car)"
             ></RButton>
             <RButton class="btn-close" nameBtn="Close"></RButton>
           </div>
@@ -176,19 +203,21 @@
 import { Component, Prop, Vue } from "nuxt-property-decorator";
 import { EMPTY } from "~/utils/constant";
 @Component({
-  name: "ModalUpdate",
+  name: "ModalUpdateCar",
 })
 export default class extends Vue {
-  @Prop() userInfo!: any;
+  @Prop({}) carInfo!: any;
   isActive: Boolean = false;
+  cars: any = [];
   image: any = EMPTY;
 
-  handleAddCar() {
-    this.userInfo.fullname == " " || this.userInfo.fullname == undefined
-      ? (this.carOwner = "admin")
-      : (this.carOwner = this.userInfo.fullname);
-    this.carUserId = this.userInfo.id;
-    this.$vxm.car.addCarAdmin();
+  async handleUpdate(car: any) {
+    this.car.id = this.carInfo.id;
+    this.car.user_id = this.carInfo.user_id;
+    if (car.available_date == "0000-00-00") {
+      this.car.available_date = this.carInfo.available_date;
+    }
+    this.$vxm.car.updateCarAdmin(car);
   }
 
   async convertBase64(file: any) {
@@ -225,36 +254,5 @@ export default class extends Vue {
   set car(value: any) {
     this.$vxm.car.setCar(value);
   }
-
-  get carOwner() {
-    return this.car.owner;
-  }
-
-  set carOwner(value: any) {
-    this.$vxm.car.setCarOwner(value);
-  }
-
-  get carUserId() {
-    return this.car.user_id;
-  }
-
-  set carUserId(value: any) {
-    this.$vxm.car.setCarUserId(value);
-  }
 }
 </script>
-
-<style>
-.background-modal {
-  position: fixed;
-  right: 0;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.9);
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  z-index: 2;
-}
-</style>

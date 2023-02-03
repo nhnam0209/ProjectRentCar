@@ -14,6 +14,7 @@ export class CarStore extends VuexModule {
     name: "",
     seat: "",
     fuel: "",
+    fuel_type: "",
     fuel_consumption: "",
     transmission: "",
     distance: "",
@@ -69,7 +70,9 @@ export class CarStore extends VuexModule {
           car
         );
         this.result.push(req.data.cars);
-        if (this.result.length > 1) {
+        if (this.result.length === 1) {
+          localStorage.setItem("car_result", JSON.stringify(this.result));
+        } else {
           this.result.shift();
           localStorage.setItem("car_result", JSON.stringify(this.result));
         }
@@ -99,8 +102,49 @@ export class CarStore extends VuexModule {
       alert(errMessage);
     }
   }
-  @action async updateCar(car: any) {
-    console.log(car);
+  @action async updateCarAdmin(car: any) {
+    var newDate = car.available_date;
+    const date = Date.parse(newDate) || 0;
+    if (date === 0) {
+      newDate = this.car.available_date;
+    } else {
+      newDate = car.available_date;
+    }
+    try {
+      await axios.put(
+        "http://localhost:5000/api/cars/updateCarAdmin",
+        {
+          id: this.car.id,
+          img: car.img,
+          name: car.name,
+          seat: car.seat,
+          fuel: car.fuel,
+          fuel_type: car.fuel_type,
+          fuel_consumption: car.fuel_consumption,
+          transmission: car.transmission,
+          distance: car.distance,
+          description: car.description,
+          feature: car.feature,
+          price: car.price,
+          type_car: car.type_car,
+          model: car.model,
+          province: car.province,
+          plate_number: car.plate_number,
+          available_date: newDate,
+          user_id: this.car.user_id,
+        },
+        {
+          headers: {
+            Authorization: `${document.cookie}`,
+          },
+        }
+      );
+      alert(`The Car ${this.car.name} is updated`);
+      // alert(JSON.stringify(this.car));
+    } catch (error: any) {
+      const errMessage = JSON.stringify(error.response.data.msg);
+      alert(errMessage);
+    }
   }
 
   @action async addCarAdmin() {

@@ -62,11 +62,11 @@
           >
         </div>
         <div class="relative border-bottom my-7">
-          <input type="text" class="input-focus" />
+          <input type="text" class="input-focus" v-model="user.username" />
           <label class="label-input top-2/4 absolute text-lg">Username:</label>
         </div>
         <div class="relative border-bottom my-7">
-          <input type="password" class="input-focus" />
+          <input type="password" class="input-focus" v-model="user.password" />
           <label class="label-input top-2/4 absolute text-lg">Password:</label>
         </div>
       </div>

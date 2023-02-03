@@ -30,6 +30,7 @@ export default class extends Vue {
   isLogin: Boolean = false;
   userInfo: any;
   result: any;
+
   get searchResult() {
     return this.$vxm.car.result;
   }
@@ -51,18 +52,20 @@ export default class extends Vue {
         );
         this.isLogin = true;
         this.userInfo = res.data[0];
+        if (localStorage.getItem("car_result")) {
+          this.searchResult = JSON.parse(localStorage.car_result);
+        }
       } else {
         this.isLogin = false;
-        // this.$router.push("/login");
-        // setTimeout("location.reload(true)", 100);
-      }
-      if (localStorage.getItem("car_result")) {
-        this.searchResult = JSON.parse(localStorage.car_result);
+        if (localStorage.getItem("car_result")) {
+          this.searchResult = JSON.parse(localStorage.car_result);
+        }
       }
     } catch (error) {
       this.isLogin = false;
-      // this.$router.push("/login");
-      // setTimeout("location.reload(true)", 100);
+      if (localStorage.getItem("car_result")) {
+        this.searchResult = JSON.parse(localStorage.car_result);
+      }
     }
   }
 }

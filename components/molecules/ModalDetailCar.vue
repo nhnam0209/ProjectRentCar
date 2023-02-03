@@ -3,20 +3,25 @@
     <div class="bg-white modal-detail rounded-xl overflow-hidden flex">
       <div class="content-left px-4 border border-solid border-neutral-500">
         <div class="">
-          <div class="img-car-detail bg-cover bg-no-repeat w-full"></div>
+          <!-- <div class="img-car-detail bg-cover bg-no-repeat w-full"></div> -->
+          <img
+            :src="carDetail.img"
+            alt=""
+            class="bg-cover bg-no-repeat w-full"
+          />
           <div class="info">
             <div class="cars-details product-card-items">
               <div class="pb-4 flex justify-between">
                 <span class="car-name text-2xl font-bold">{{
                   carDetail.name
                 }}</span>
-                <div class="rating flex">
+                <!-- <div class="rating flex">
                   <IconStar class="icon-rating w-8 h-8"></IconStar>
                   <IconStar class="icon-rating w-8 h-8"></IconStar>
                   <IconStar class="icon-rating w-8 h-8"></IconStar>
                   <IconStar class="icon-rating w-8 h-8"></IconStar>
                   <IconStar class="icon-rating w-8 h-8"></IconStar>
-                </div>
+                </div> -->
               </div>
               <div class="text-2xl font-bold">
                 <div class="title-detail mb-4">Full vehicle details</div>
