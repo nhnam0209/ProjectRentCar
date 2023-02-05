@@ -2,7 +2,7 @@
   <Default>
     <template #content>
       <NavigationBarMyCar></NavigationBarMyCar>
-      <ListCars></ListCars>
+      <ListCars :my-cars="myCars"></ListCars>
     </template>
   </Default>
 </template>
@@ -19,6 +19,7 @@ export default class extends Vue {
   isLogin: Boolean = false;
   userInfo: any = {};
   isManageCar: Boolean = false;
+  myCars: any = [];
 
   get user() {
     return this.$vxm.user.userInfo;
@@ -44,6 +45,16 @@ export default class extends Vue {
         );
         this.isLogin = true;
         this.userInfo = res.data.data;
+
+        const myCarsRes = await axios.get(
+          "http://localhost:5000/api/cars/findbyId",
+          {
+            headers: {
+              Authorization: `${document.cookie}`,
+            },
+          }
+        );
+        this.myCars = myCarsRes.data.myCar;
       } else {
         this.$router.push("/login");
         setTimeout("location.reload(true)", 100);

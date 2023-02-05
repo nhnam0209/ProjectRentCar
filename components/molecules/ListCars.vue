@@ -24,31 +24,38 @@
               <th class="py-2 px-4 max-lg:px-2">ID</th>
               <th class="py-2 px-4 max-lg:px-2">Model</th>
               <th class="py-2 px-4 max-lg:px-2">Seat</th>
-              <th class="py-2 px-4 max-lg:px-2">Transition</th>
+              <th class="py-2 px-4 max-lg:px-2">Transmission</th>
               <th class="py-2 px-4 max-lg:px-2">Types of fuels</th>
               <th class="py-2 px-4 max-lg:px-2">Number plate</th>
               <th class="py-2 px-4 max-lg:px-2">Status</th>
             </tr>
-            <tr class="text-lg">
-              <td class="py-2 px-4 max-lg:px-2">1</td>
-              <td class="py-2 px-4 max-lg:px-2">Toyota Vios</td>
-              <td class="py-2 px-4 max-lg:px-2">4</td>
-              <td class="py-2 px-4 max-lg:px-2">Manual</td>
-              <td class="py-2 px-4 max-lg:px-2">Diesel</td>
-              <td class="py-2 px-4 max-lg:px-2">51F73912</td>
-              <td class="py-2 px-4 max-lg:px-2">Available</td>
+            <tr class="text-lg" v-for="myCar in myCars" :key="myCar.id">
+              <td class="py-2 px-4 max-lg:px-2">{{ myCar.id }}</td>
+              <td class="py-2 px-4 max-lg:px-2">{{ myCar.type_car}}</td>
+              <td class="py-2 px-4 max-lg:px-2">{{ myCar.seat}}</td>
+              <td class="py-2 px-4 max-lg:px-2">{{ myCar.transmission}}</td>
+              <td class="py-2 px-4 max-lg:px-2">{{ myCar.fuel_type}}</td>
+              <td class="py-2 px-4 max-lg:px-2">{{ myCar.plate_number}}</td>
+              <td class="py-2 px-4 max-lg:px-2">{{ myCar.status}}</td>
             </tr>
           </table>
         </div>
+        <button class="btn-assent" @click="testValue()">Test</button>
       </div>
     </div>
   </div>
 </template>
 <script lang="ts">
-import { Component, Vue } from "nuxt-property-decorator";
+import { Component,Prop, Vue } from "nuxt-property-decorator";
 
 @Component({
   name: "ListCar",
 })
-export default class extends Vue {}
+export default class extends Vue {
+  @Prop({}) myCars: any;
+
+  testValue(){
+    console.log(this.myCars)
+  }
+}
 </script>

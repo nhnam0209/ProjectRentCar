@@ -40,22 +40,9 @@
               </div>
             </div>
           </div>
-          <div class="m-4 flex justify-between items-center">
-            <RButton
-              class="bg-gray-400 w-full mr-4"
-              nameBtn="Return"
-              @btn-click="toogleIsActiveReturn()"
-            ></RButton>
-            <RButton
-              class="btn-assent w-full"
-              nameBtn="Complete"
-              @btn-click="toogleIsActive()"
-            ></RButton>
-          </div>
         </div>
       </div>
     </div>
-    <RentalCarForm v-if="isActiveReturn"></RentalCarForm>
   </div>
 </template>
 <script lang="ts">

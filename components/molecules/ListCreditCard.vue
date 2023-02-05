@@ -25,10 +25,10 @@
             </div>
             <div class="absolute left-6 top-6">
               <span class="text-lg opacity-50 mb-1 uppercase block font-medium"
-                >Card Name</span
+                >Card Holder Name</span
               >
               <h1 class="title font-bold text-white text-xl mt-2">
-                ${{walletInfo.balance}}
+                
               </h1>
             </div>
             <div class="">
@@ -73,6 +73,7 @@ export default class extends Vue {
   isActive: boolean = false;
   @Prop({}) walletInfo!: any;
   @Prop({}) userInfo!: any;
+  @Prop({}) bankAccounts!: any;
 
   toogleIsActive() {
     if (this.isActive == true) {
