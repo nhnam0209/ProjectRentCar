@@ -28,7 +28,7 @@
                 >Card Name</span
               >
               <h1 class="title font-bold text-white text-xl mt-2">
-                $ 1,256,90
+                ${{walletInfo.balance}}
               </h1>
             </div>
             <div class="">
@@ -60,17 +60,19 @@
         </div>
       </div>
     </div>
-    <AddBankAccount v-if="isActive"></AddBankAccount>
+    <AddBankAccount v-if="isActive" :user-info="userInfo"></AddBankAccount>
   </div>
 </template>
 <script lang="ts">
-import { Component, Vue } from "nuxt-property-decorator";
+import { Component,Prop, Vue } from "nuxt-property-decorator";
 
 @Component({
   name: "ListCreditCard",
 })
 export default class extends Vue {
   isActive: boolean = false;
+  @Prop({}) walletInfo!: any;
+  @Prop({}) userInfo!: any;
 
   toogleIsActive() {
     if (this.isActive == true) {

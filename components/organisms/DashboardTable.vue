@@ -1,6 +1,25 @@
 <template>
   <div class="w-full flex h-screen justify-center items-center bg-gray-200">
     <div class="dashboard-table">
+      <div class="flex flex-col">
+        <div class="m-4">
+          <wallet-transaction-table :wallet-transactions="walletTransactions"></wallet-transaction-table>
+        </div>
+
+        <div class="m-4">
+          <WalletTable :wallet-infos="walletInfos"></WalletTable>
+        </div>
+
+        <div class="m-4">
+          <CarTransactionTable :cars-transactions="carsTransactions"></CarTransactionTable>
+        </div>
+
+        <div class="m-4">
+          <BankAccountTable :bank-accounts="bankAccounts"></BankAccountTable>
+        </div>
+
+      </div>
+
       <div class="button flex">
         <div class="">
           <RButton
@@ -28,16 +47,16 @@
           </RButton>
           <ModalAlert v-if="isActive_delete"></ModalAlert>
         </div> -->
-      </div>
-      <div class="flex flex-col w-full">
-        <UsersTable
-          v-if="isManageUser"
-          :class="isActive ? 'z-0' : 'z-auto'"
-        ></UsersTable>
-        <CarsTable
-          v-if="isManageCar"
-          :class="isActive ? 'z-0' : 'z-auto'"
-        ></CarsTable>
+        <div class="flex flex-col w-full">
+          <UsersTable
+            v-if="isManageUser"
+            :class="isActive ? 'z-0' : 'z-auto'"
+          ></UsersTable>
+          <CarsTable
+            v-if="isManageCar"
+            :class="isActive ? 'z-0' : 'z-auto'"
+          ></CarsTable>
+        </div>
       </div>
     </div>
   </div>
@@ -45,6 +64,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from "nuxt-property-decorator";
+import axios from "axios";
 
 @Component({
   name: "DashboardTable",
@@ -53,9 +73,65 @@ export default class extends Vue {
   @Prop({ type: Boolean, default: false }) isManageUser!: Boolean;
   @Prop({ type: Boolean, default: false }) isManageCar!: Boolean;
   @Prop() userInfo!: any;
+  bankAccounts:any = []
+  walletTransactions:any = []
+  walletInfos: any = []
+  carsTransactions: any = []
 
   isActive = false;
   isActive_delete = false;
+
+
+  async created() {
+    try {
+      if (document.cookie) {
+        const bankAccountRes = await axios.get(
+          "http://localhost:5000/api/bankaccount/findall",
+          {
+            headers: {
+              Authorization: `${document.cookie}`,
+            },
+          }
+        );
+        this.bankAccounts = bankAccountRes.data.bankAccount;
+
+        const walletRes = await axios.get("http://localhost:5000/api/wallet/findall",
+        {
+            headers: {
+              Authorization: `${document.cookie}`,
+            },
+          }
+        );
+        this.walletInfos = walletRes.data.wallet
+
+        const walletTransactionRes = await axios.get("http://localhost:5000/api/wallet/findallTransaction",
+        {
+            headers: {
+              Authorization: `${document.cookie}`,
+            },
+          }
+        );
+        this.walletTransactions = walletTransactionRes.data.walletTransaction
+
+        const carsTransactionRes = await axios.get("http://localhost:5000/api/car/findallTransaction",
+        {
+            headers: {
+              Authorization: `${document.cookie}`,
+            },
+          }
+        );
+        this.carsTransactions = carsTransactionRes.data.carTransaction
+
+      } else {
+        this.$router.push("/login");
+        setTimeout("location.reload(true)", 100);
+      }
+    } catch (error) {
+      this.$router.push("/dashboardadmin");
+      setTimeout("location.reload(true)", 100);
+    }
+  }
+
   toogleIsActive() {
     if (this.isActive == true) {
       this.isActive = false;

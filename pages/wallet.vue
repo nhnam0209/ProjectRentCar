@@ -1,10 +1,11 @@
 <template>
   <Default>
     <template #content>
-      <list-credit-card></list-credit-card>
+      <list-credit-card :user-info="userInfo" :wallet-info="walletInfo" :bank-account-info="bankAccountInfo"></list-credit-card>
       <wallet-activities
         :wallet-info="walletInfo"
         :wallet-transactions="walletTransactions"
+        :user-info="userInfo"
       ></wallet-activities>
     </template>
   </Default>
@@ -23,7 +24,17 @@ export default class extends Vue {
   userInfo: any = {};
   walletInfo: any = {};
   walletTransactions: any = [];
+  bankAccountInfo: any = {};
+
   isManageCar: Boolean = false;
+
+  get bankAccount(){
+    return this.$vxm.bankaccount.bankAccountInfo;
+  }
+
+  set bankAccount(value: any){
+    this.$vxm.bankaccount.setbankAccountInfo(value);
+  }
 
   get user() {
     return this.$vxm.user.userInfo;

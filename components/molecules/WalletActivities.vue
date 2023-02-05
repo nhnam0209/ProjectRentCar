@@ -1,8 +1,7 @@
 <template>
   <div class="bg-white">
-    <div class="text-2xl font-bold pt-4 pl-5">Last Activities</div>
-    <div class="flex justify-between max-lg:block">
-      <div class="p-5 hidden max-lg:block">
+    <div class="block justify-between max-lg:block">
+      <div class="py-3 px-5 max-lg:block">
         <div class="grid grid-cols-3 gap-4 max-sm:grid-cols-2">
           <div class="text-white shadow rounded-xl px-6 py-5 bg-green-500">
             <div class="text-xl font-medium block mb-2">Total Balance</div>
@@ -14,16 +13,25 @@
             <div class="text-2xl font-bold">$552.95</div>
           </div>
 
-          <div class="bg-green-500 text-white shadow rounded-xl px-6 py-5">
-            <div class="text-xl font-medium block mb-2">Car Being Hired</div>
-            <div class="text-2xl font-bold">1</div>
+          <div
+            class="flex justify-around items-center border border-solid border-black rounded-xl"
+          >
+            <RButton
+              class="w-1/3 border border-solid rounded-xl border-black bg-black shadow"
+              name-btn="Deposit"
+              @btn-click="toogleIsActiveDeposit()"
+            ></RButton>
+            <RButton
+              class="w-1/3 border border-solid rounded-xl border-black bg-black shadow"
+              name-btn="Withdrawn"
+              @btn-click="toogleIsActiveWithdraw()"
+            ></RButton>
           </div>
-
         </div>
       </div>
 
-
-      <div class="p-5 w-full">
+      <div class="py-3 px-5 w-full">
+        <div class="text-2xl font-bold py-4">Last Activities</div>
         <table class="w-full border border-solid">
           <tr class="bg-green-500 text-2xl text-white max-lg:text-xl">
             <th class="py-2 px-4 max-md:px-2">ID</th>
@@ -53,31 +61,11 @@
           </tr>
         </table>
       </div>
-
-      <div class="p-5 max-lg:hidden">
-        <div class="grid grid-row-4 gap-4">
-          <div class="text-white shadow rounded-xl px-6 py-5 bg-green-500">
-            <div class="text-xl font-medium block mb-2">Total Balance</div>
-            <div class="text-2xl font-bold">${{ walletInfo.balance }}</div>
-          </div>
-
-          <div class="bg-red-500 text-white shadow rounded-xl px-6 py-5">
-            <div class="text-xl font-medium block mb-2">Expenses</div>
-            <div class="text-2xl font-bold">$552.95</div>
-          </div>
-
-          <div class="bg-green-500 text-white shadow rounded-xl px-6 py-5">
-            <div class="text-xl font-medium block mb-2">Car Being Hired</div>
-            <div class="text-2xl font-bold">1</div>
-          </div>
-
-          <div class="bg-yellow-400 text-white shadow rounded-xl px-6 py-5">
-            <div class="text-xl font-medium block mb-2">In Stock</div>
-            <div class="text-2xl font-bold">$552.95</div>
-          </div>
-        </div>
-      </div>
     </div>
+    <ModalDeposit v-if="isActiveDeposit" :wallet-transactions="walletTransactions" :wallet-info="walletInfo" :user-info="userInfo"
+    ></ModalDeposit>
+    <ModalWithdraw v-if="isActiveWithdraw" :wallet-transactions="walletTransactions" :wallet-info="walletInfo" :user-info="userInfo"
+    ></ModalWithdraw>
   </div>
 </template>
 <script lang="ts">
@@ -88,6 +76,25 @@ import { Component, Prop, Vue } from "nuxt-property-decorator";
 })
 export default class extends Vue {
   @Prop({}) walletInfo!: any;
+  @Prop({}) userInfo!: any;
   @Prop({}) walletTransactions!: any;
+  isActiveDeposit: boolean = false;
+  isActiveWithdraw: boolean = false;
+
+  toogleIsActiveDeposit() {
+    if (this.isActiveDeposit == true) {
+      this.isActiveDeposit = false;
+    } else {
+      this.isActiveDeposit = true;
+    }
+  }
+
+  toogleIsActiveWithdraw() {
+    if (this.isActiveWithdraw == true) {
+      this.isActiveWithdraw = false;
+    } else {
+      this.isActiveWithdraw = true;
+    }
+  }
 }
 </script>
