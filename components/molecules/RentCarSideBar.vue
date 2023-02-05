@@ -14,9 +14,7 @@
         <div class="mb-4 pt-8">
           <div class="mb-2 text-2xl font-bold">Filter</div>
           <select
-            class="text-lg w-full text-center py-1 border border-solid border-neutral-500 rounded-xl"
-            v-model="filterPrice" 
-          >
+            class="text-lg w-full text-center py-1 border border-solid border-neutral-500 rounded-xl"          >
             <option
               v-for="item in filterPrice"
               :key="item.id"
@@ -117,13 +115,6 @@
             nameBtn="Reset Default"
           ></RButton>
         </div>
-        <div class="btn-reset flex items-center justify-center">
-          <RButton
-            class="btn-assent"
-            nameBtn="Reset Default"
-            @btn-click="consoleFilterPrice()"
-          ></RButton>
-        </div>
       </div>
     </div>
   </div>
@@ -150,14 +141,6 @@ export default class extends Vue {
       value: "desc",
     },
   ];
-
-  filterPriceValue(){
-    return this.filterPrice;
-  }
-
-  consoleFilterPrice(){
-    console.log(this.filterPriceValue())
-  }
 
   /*handleFilterPrice(){
     if(this.filterPrice.values == 'asc'){

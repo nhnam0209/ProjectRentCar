@@ -41,9 +41,9 @@
               <div class="p-4 pb-0">
                 <div class="w-full flex items-center justify-between text-lg pb-2">
                     <label for="" class="text-gray-400">Balance in wallet</label>
-                    <label for="" class="font-medium">$32.17</label>
+                    <label for="" class="font-medium">${{ walletInfo.balance}}</label>
                 </div>
-                <input type="text" class="border border-solid border-black outline-none p-4 w-full" placeholder="Amount">
+                <input type="text" class="border border-solid border-black outline-none p-4 w-full" placeholder="Amount" v-model="walletTransactions.subtract">
               </div>
               <RButton class="btn-assent w-full" nameBtn="Withdraw" @btn-click="toogleIsActiveConfirm()"></RButton>
             </div>
@@ -56,7 +56,7 @@
               </div>
               <div class="w-full flex items-center justify-between text-lg mb-3">
                   <label for="" class="text-gray-400">Amount</label>
-                  <label for="" class="font-medium">$32.17</label>
+                  <label for="" class="font-medium">${{ walletTransactions.subtract}}</label>
               </div>
               <div class="w-full flex items-center justify-between text-lg mb-3">
                   <label for="" class="text-gray-400">Fee</label>
@@ -66,9 +66,9 @@
             <div class="my-4">
               <div class="w-full flex items-center justify-between text-xl mb-3">
                   <label for="" class="">Total Amount</label>
-                  <label for="" class="font-bold">$32.17</label>
+                  <label for="" class="font-bold">${{walletTransactions.subtract}}</label>
               </div>
-              <RButton class="btn-assent w-full my-0" nameBtn="Comfirm"></RButton>
+              <RButton class="btn-assent w-full my-0" nameBtn="Comfirm" @btn-click="handleWithdrawn()"></RButton>
             </div>
           </div>
         </div>
@@ -78,13 +78,44 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "nuxt-property-decorator";
+import { Component,Prop, Vue } from "nuxt-property-decorator";
+import axios from "axios";
+
 @Component({
   name: "ModalWithdraw",
 })
 export default class extends Vue {
+  @Prop({}) walletInfo!: any;
+  @Prop({}) userInfo!: any;
+  @Prop({}) walletTransactions!: any;
   isActive: boolean = false;
   isActiveConfirm: boolean = false;
+
+  async handleWithdrawn() {
+    try {
+      await axios.post(
+        "http://localhost:5000/api/wallet/withdrawn",
+        {
+          user_id: this.userInfo.id,
+          wallet_id: this.walletInfo.id,
+          adding: this.walletTransactions.subtract,
+          subtract: this.walletTransactions.subtract,
+          status: this.walletTransactions.status,
+          created_at: this.walletTransactions.created_at,
+        },
+        {
+          headers: {
+            Authorization: `${document.cookie}`,
+          },
+        }
+      );
+      alert(`The withdrawn is prossecing`);
+      // alert(JSON.stringify(this.car));
+    } catch (error: any) {
+      const errMessage = JSON.stringify(error.response.data.msg);
+      alert(errMessage);
+    }
+  }
 
   toogleIsActiveConfirm() {
     if (this.isActiveConfirm == true) {
