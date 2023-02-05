@@ -113,7 +113,7 @@ export default class extends Vue {
         );
         this.walletTransactions = walletTransactionRes.data.walletTransaction
 
-        const carsTransactionRes = await axios.get("http://localhost:5000/api/car/findallTransaction",
+        const carsTransactionRes = await axios.get("http://localhost:5000/api/cars/findallTransaction",
         {
             headers: {
               Authorization: `${document.cookie}`,

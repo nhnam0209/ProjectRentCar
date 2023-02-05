@@ -77,7 +77,7 @@ import axios from "axios";
   name: "AddBankAccount",
 })
 export default class extends Vue {
-  @Prop({}) bankAccountInfo: any;
+  @Prop({}) bankAccountInfo: any = [];
   @Prop({}) userInfo!: any;
   isActive: boolean = false;
 
