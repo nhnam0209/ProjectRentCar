@@ -37,18 +37,22 @@
           <tr class="bg-green-500 text-xl text-white">
             <th class="py-2 px-4 max-lg:px-2">ID</th>
             <th class="py-2 px-4 max-lg:px-2">Model</th>
+            <th class="py-2 px-4 max-lg:px-2">Model name</th>
             <th class="py-2 px-4 max-lg:px-2">Number plate</th>
+            <th class="py-2 px-4 max-lg:px-2">Destination pickup</th>
+            <th class="py-2 px-4 max-lg:px-2">Destination return</th>
             <th class="py-2 px-4 max-lg:px-2">Start date</th>
             <th class="py-2 px-4 max-lg:px-2">End date</th>
-            <th class="py-2 px-4 max-lg:px-2">Price</th>
           </tr>
-          <tr class="text-lg">
-            <td class="py-2 px-4 max-lg:px-2">1</td>
-            <td class="py-2 px-4 max-lg:px-2">Toyota Vios</td>
-            <td class="py-2 px-4 max-lg:px-2">51F73912</td>
-            <td class="py-2 px-4 max-lg:px-2">12/01/2023</td>
-            <td class="py-2 px-4 max-lg:px-2">23/01/2023</td>
-            <td class="py-2 px-4 max-lg:px-2">$70.32</td>
+          <tr class="text-lg" v-for="car in cars" :key="car.id && carsSchedule.car_id">  
+            <td class="py-2 px-4 max-lg:px-2">{{ car.id}}</td>
+            <td class="py-2 px-4 max-lg:px-2">{{ car.type_car}}</td>
+            <td class="py-2 px-4 max-lg:px-2">{{ car.name}}</td>
+            <td class="py-2 px-4 max-lg:px-2">{{ car.plate_number}}</td>
+            <td class="py-2 px-4 max-lg:px-2">{{ carsSchedule.destination_pickup}}</td>
+            <td class="py-2 px-4 max-lg:px-2">{{ carsSchedule.destination_return}}</td>
+            <td class="py-2 px-4 max-lg:px-2">{{ carsSchedule.pickup_date}}</td>
+            <td class="py-2 px-4 max-lg:px-2">{{ carsSchedule.return_date}}</td>
           </tr>
         </table>
       </div>
@@ -56,10 +60,13 @@
   </div>
 </template>
 <script lang="ts">
-import { Component, Vue } from "nuxt-property-decorator";
+import { Component, Prop, Vue } from "nuxt-property-decorator";
 
 @Component({
   name: "CarsSchedule",
 })
-export default class extends Vue {}
+export default class extends Vue {
+  @Prop({}) carsSchedule: any;
+  @Prop({}) cars: any;
+}
 </script>

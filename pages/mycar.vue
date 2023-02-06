@@ -44,17 +44,20 @@ export default class extends Vue {
           }
         );
         this.isLogin = true;
-        this.userInfo = res.data.data;
+        this.userInfo = res.data[0];
 
-        const myCarsRes = await axios.get(
+        const myCarsRes = await axios.post(
           "http://localhost:5000/api/cars/findbyId",
+          {
+            user_id: this.userInfo.id,
+          },
           {
             headers: {
               Authorization: `${document.cookie}`,
             },
           }
         );
-        this.myCars = myCarsRes.data.myCar;
+        this.myCars = myCarsRes.data.cars;
       } else {
         this.$router.push("/login");
         setTimeout("location.reload(true)", 100);

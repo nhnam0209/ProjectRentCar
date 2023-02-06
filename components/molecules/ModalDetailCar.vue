@@ -1,6 +1,6 @@
 <template>
-  <div class="background-modal justify-center items-center max-xl:overflow-auto py-5">
-    <div class="bg-white w-2/3 rounded-xl flex max-xl:block max-md:w-full h-full my-4 overflow-hidden">
+  <div class="background-modal justify-center items-center max-xl:overflow-auto py-5" >
+    <div class="bg-white w-2/3 rounded-xl flex max-xl:block max-md:w-full h-full my-4 overflow-auto" :class="{ 'modal-close': isActive }">
       <div class="content-left px-4 border border-solid border-neutral-500 max-xl:border-none max-xl:w-full w-2/3 overflow-auto bg-white">
         <div class="">
           <!-- <div class="img-car-detail bg-cover bg-no-repeat w-full"></div> -->
@@ -92,7 +92,7 @@
         </div>
       </div>
       <div
-        class="border border-solid border-neutral-500 overflow-hidden content-right max-xl:border-none w-1/3 max-xl:w-full bg-white" 
+        class="border border-solid border-neutral-500 overflow-auto content-right max-xl:border-none w-1/3 max-xl:w-full bg-white" 
       >
         <div class="booking-form-modal px-12 pb-3 max-md:py-4 max-md:px-4">
           <div
@@ -109,6 +109,7 @@
               <input
                 type="date"
                 class="w-full booking-input rounded-xl border border-solid p-2 border-neutral-500 outline-none"
+                v-model="carTransaction.pickup_date"
               />
             </div>
           </div>
@@ -119,21 +120,35 @@
               <input
                 type="date"
                 class="w-full booking-input rounded-xl border border-solid p-2 border-neutral-500 outline-none"
+                v-model="carTransaction.return_date"
               />
             </div>
           </div>
 
           <div class="place-of-receipt my-4">
             <span class="booking-title text-2xl max-xl:text-xl font-bold"
-              >Place of receipt</span
+              >Destination Pickup</span
             >
             <div class="flex items-center pt-2">
               <icon-location-pin class="w-6 h-6 icon-fill pr-2" />
               <input
                 typeInput="text"
                 class="w-full text-xl py-2 outline-none border-b border-gray-400"
-                placeholder="Place of receipt"
-              />
+                v-model="carTransaction.destination_pickup"
+              >
+            </div>
+          </div>
+          <div class="place-of-receipt my-4">
+            <span class="booking-title text-2xl max-xl:text-xl font-bold"
+              >Destination Return</span
+            >
+            <div class="flex items-center pt-2">
+              <icon-location-pin class="w-6 h-6 icon-fill pr-2" />
+              <input
+                typeInput="text"
+                class="w-full text-xl py-2 outline-none border-b border-gray-400"
+                v-model="carTransaction.destination_return"
+              >
             </div>
           </div>
 
@@ -184,6 +199,7 @@
         </div>
       </div>
     </div>
+    <ModalBill v-if="isActive" :user-info="userInfo" :total-price="totalPrice" :car-detail="carDetail" :protected-plan="protectedPlan" :car-transaction="carTransaction"></ModalBill>
   </div>
 </template>
 
@@ -201,6 +217,8 @@ export default class extends Vue {
   isClose: Boolean;
   totalPrice: any = 0;
   protectedPlan: any = 0;
+  isActive: any = false;
+  carTransaction: any = [];
   // mounted() {
   //   console.log(this.carDetail);
   //   console.log(this.isModalUp);
@@ -223,6 +241,14 @@ export default class extends Vue {
     },
   ];
 
+  toogleIsActive() {
+    if (this.isActive == true) {
+      this.isActive = false;
+    } else {
+      this.isActive = true;
+    }
+  }
+
   total() {
     return (this.totalPrice = this.carDetail.price + 2 + this.insurancePlan());
   }
@@ -241,6 +267,8 @@ export default class extends Vue {
   handleRentCarPage() {
     if (this.isLogin) {
       console.log("ok");
+      this.toogleIsActive();
+      console.log(this.totalPrice)
     } else {
       this.$router.push("/login");
     }

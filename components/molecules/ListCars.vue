@@ -40,7 +40,6 @@
             </tr>
           </table>
         </div>
-        <button class="btn-assent" @click="testValue()">Test</button>
       </div>
     </div>
   </div>
@@ -49,13 +48,9 @@
 import { Component,Prop, Vue } from "nuxt-property-decorator";
 
 @Component({
-  name: "ListCar",
+  name: "ListCars",
 })
 export default class extends Vue {
   @Prop({}) myCars: any;
-
-  testValue(){
-    console.log(this.myCars)
-  }
 }
 </script>

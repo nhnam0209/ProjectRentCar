@@ -90,8 +90,11 @@ export default class extends Vue {
         );
         this.walletTransactions = resWalletTransaction.data.walletTransaction;
 
-        const bankAccountRes = await axios.get(
-          "http://localhost:5000/api/bankaccount/findall",
+        const bankAccountRes = await axios.post(
+          "http://localhost:5000/api/bankaccount/find",
+          {
+            user_id: this.userInfo.id
+          },
           {
             headers: {
               Authorization: `${document.cookie}`,

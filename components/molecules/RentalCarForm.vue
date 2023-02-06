@@ -116,7 +116,7 @@ export default class extends Vue {
           user_id: this.userInfo.id,
           province: this.cars.province,
           available_date: this.cars.available_date,
-          image: this.image,
+          img: this.image,
           status: this.cars.status,
           created_at: this.cars.created_at,
           updated_at: this.cars.updated_at,
@@ -129,6 +129,7 @@ export default class extends Vue {
         }
       );
       alert(`The car has been added`);
+      location.reload();
       // alert(JSON.stringify(this.car));
     } catch (error: any) {
       const errMessage = JSON.stringify(error.response.data.msg);
@@ -171,9 +172,6 @@ export default class extends Vue {
     this.$vxm.car.setCar(value);
   }
 
-  testValue() {
-    console.log(this.cars)
-  }
   toogleIsActiveReturn() {
     if (this.isActiveReturn == true) {
       this.isActiveReturn = false;
