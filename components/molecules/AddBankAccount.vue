@@ -102,6 +102,7 @@ export default class extends Vue {
         }
       );
       alert(`The Bank account created successfully`);
+      location.reload();
       // alert(JSON.stringify(this.car));
     } catch (error: any) {
       const errMessage = JSON.stringify(error.response.data.msg);

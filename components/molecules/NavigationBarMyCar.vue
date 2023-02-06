@@ -2,7 +2,7 @@
     <div class="border-b border-solid border-black">
         <nav class="h-16 flex justify-center items-center shadow">
             <div class="border-r border-solid border-black px-5 py-1 max-md:w-1/3 max-md:max-md:h-full">
-                <a href="/managerlistcar" class="flex items-center font-medium text-xl max-md:h-full">
+                <a href="/mycar" class="flex items-center font-medium text-xl max-md:h-full">
                     <IconCars class="w-8 h-8 mx-3 max-sm:hidden"></IconCars>
                     <span class="max-sm:text-lg">
                         List Cars
@@ -29,10 +29,11 @@
     </div>
 </template>
 <script lang="ts">
-import { Component, Vue } from "nuxt-property-decorator";
+import { Component,Prop, Vue } from "nuxt-property-decorator";
 
 @Component({
   name: "NavigationBarMyCar",
 })
-export default class extends Vue {}
+export default class extends Vue {
+}
 </script>

@@ -36,7 +36,7 @@ export default class extends Vue {
         this.userInfo = res.data[0];
 
         const carsScheduleRes = await axios.post(
-          "http://localhost:5000/api/cars//findTransactionsbyId",
+          "http://localhost:5000/api/cars/findTransactionsbyId",
           {
             user_id: this.userInfo.id,
           },

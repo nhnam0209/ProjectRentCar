@@ -72,7 +72,7 @@
             <RButton
               class="btn-assent w-full"
               nameBtn="Complete"
-              @btn-click="handleDeposit()"
+              @btn-click="handleAddCarUser()"
             ></RButton>
           </div>
         </div>
@@ -96,14 +96,14 @@ export default class extends Vue {
   isActiveReturn = false;
   image: any = EMPTY;
 
-  async handleDeposit() {
+  async handleAddCarUser() {
     try {
       await axios.post(
         "http://localhost:5000/api/cars/add",
         {
           plate_number: this.cars.plate_number,
           type_car: this.cars.type_car,
-          name: this.cars.name,
+          name: this.cars.type_car + ' ' + this.cars.name,
           seat: this.cars.seat,
           fuel: this.cars.fuel,
           fuel_type: this.cars.fuel_type,

@@ -31,7 +31,7 @@
             </tr>
             <tr class="text-lg" v-for="myCar in myCars" :key="myCar.id">
               <td class="py-2 px-4 max-lg:px-2">{{ myCar.id }}</td>
-              <td class="py-2 px-4 max-lg:px-2">{{ myCar.type_car}}</td>
+              <td class="py-2 px-4 max-lg:px-2">{{ myCar.name}}</td>
               <td class="py-2 px-4 max-lg:px-2">{{ myCar.seat}}</td>
               <td class="py-2 px-4 max-lg:px-2">{{ myCar.transmission}}</td>
               <td class="py-2 px-4 max-lg:px-2">{{ myCar.fuel_type}}</td>
