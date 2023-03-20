@@ -6,6 +6,7 @@
       <ProductListCard
         :car-result="searchResult"
         :is-login="isLogin"
+        :user-info="userInfo"
       ></ProductListCard>
     </div>
     <div v-else class="h-[700px]">

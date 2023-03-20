@@ -25,10 +25,10 @@
             </div>
             <div class="absolute left-6 top-6">
               <span class="text-lg opacity-50 mb-1 uppercase block font-medium"
-                >Card Name</span
+                >Card Holder Name</span
               >
               <h1 class="title font-bold text-white text-xl mt-2">
-                ${{walletInfo.balance}}
+                {{ bankAccounts.full_name }}
               </h1>
             </div>
             <div class="">
@@ -37,22 +37,15 @@
                   class="text-lg opacity-50 mb-1 uppercase block font-medium"
                   >Card Number</span
                 >
-                •••• 9905
+                {{ bankAccounts.bank_account}}
               </div>
               <div class="bottom flex items-center mt-5">
                 <div class="card-expiry text-lg font-medium mr-5">
                   <span
                     class="text-lg opacity-50 mb-1 uppercase block font-medium"
-                    >Expiry</span
+                    >Expire</span
                   >
-                  12 / 25
-                </div>
-                <div class="card-ccv text-lg font-medium">
-                  <span
-                    class="text-lg opacity-50 mb-1 uppercase block font-medium"
-                    >CCV</span
-                  >
-                  553
+                  {{ bankAccounts.expire_date}}
                 </div>
               </div>
             </div>
@@ -73,6 +66,7 @@ export default class extends Vue {
   isActive: boolean = false;
   @Prop({}) walletInfo!: any;
   @Prop({}) userInfo!: any;
+  @Prop({}) bankAccounts!: any;
 
   toogleIsActive() {
     if (this.isActive == true) {

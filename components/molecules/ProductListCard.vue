@@ -94,6 +94,7 @@
         :car-detail="carDetail"
         :is-modal-up="isActive"
         :is-login="isLogin"
+        :user-info="userInfo"
         @isModalUp="getIsActive"
       />
     </div>
@@ -109,6 +110,7 @@ export default class extends Vue {
   carDetail: any;
   @Prop() carResult!: any;
   @Prop({ type: Boolean }) isLogin!: boolean;
+  @Prop({}) userInfo: any;
 
   toogleIsActive(car: any) {
     // this.img;

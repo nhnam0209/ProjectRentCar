@@ -110,6 +110,7 @@ export default class extends Vue {
         }
       );
       alert(`The withdrawn is prossecing`);
+      location.reload();
       // alert(JSON.stringify(this.car));
     } catch (error: any) {
       const errMessage = JSON.stringify(error.response.data.msg);

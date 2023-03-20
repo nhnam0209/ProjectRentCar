@@ -1,12 +1,13 @@
 <template>
   <Default>
     <template #content>
-      <list-credit-card :user-info="userInfo" :wallet-info="walletInfo" :bank-account-info="bankAccountInfo"></list-credit-card>
+      <list-credit-card :user-info="userInfo" :wallet-info="walletInfo" :bank-accounts="bankAccounts"></list-credit-card>
       <wallet-activities
         :wallet-info="walletInfo"
         :wallet-transactions="walletTransactions"
         :user-info="userInfo"
       ></wallet-activities>
+      <RButton class="btn-assent" name-btn="test" @btn-click="testValue()"></RButton>
     </template>
   </Default>
 </template>
@@ -24,17 +25,9 @@ export default class extends Vue {
   userInfo: any = {};
   walletInfo: any = {};
   walletTransactions: any = [];
-  bankAccountInfo: any = {};
+  bankAccounts: any = {};
 
   isManageCar: Boolean = false;
-
-  get bankAccount(){
-    return this.$vxm.bankaccount.bankAccountInfo;
-  }
-
-  set bankAccount(value: any){
-    this.$vxm.bankaccount.setbankAccountInfo(value);
-  }
 
   get user() {
     return this.$vxm.user.userInfo;
@@ -96,6 +89,20 @@ export default class extends Vue {
           }
         );
         this.walletTransactions = resWalletTransaction.data.walletTransaction;
+
+        const bankAccountRes = await axios.post(
+          "http://localhost:5000/api/bankaccount/find",
+          {
+            user_id: this.userInfo.id
+          },
+          {
+            headers: {
+              Authorization: `${document.cookie}`,
+            },
+          }
+        );
+        this.bankAccounts = bankAccountRes.data.bankAccount;
+
       } else {
         //this.$router.push("/login");
         //setTimeout("location.reload(true)", 100);
@@ -105,6 +112,10 @@ export default class extends Vue {
       //this.$router.push("/login");
       //setTimeout("location.reload(true)", 100);
     }
+  }
+
+  testValue(){
+    console.log(this.bankAccounts)
   }
 
   mounted() {

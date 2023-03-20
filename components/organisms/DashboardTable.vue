@@ -1,7 +1,8 @@
 <template>
-  <div class="w-full flex h-screen justify-center items-center bg-gray-200">
+  <div class="w-full flex justify-center items-center bg-gray-200">
     <div class="dashboard-table">
-      <div class="flex flex-col">
+      <div class="flex flex-col z-0" v-if="!isManageUser && !isManageCar" :class="{'flex': !isManageUser && !isManageCar}"
+>
         <div class="m-4">
           <wallet-transaction-table :wallet-transactions="walletTransactions"></wallet-transaction-table>
         </div>
@@ -47,7 +48,7 @@
           </RButton>
           <ModalAlert v-if="isActive_delete"></ModalAlert>
         </div> -->
-        <div class="flex flex-col w-full">
+        <div class="flex flex-col w-full h-screen">
           <UsersTable
             v-if="isManageUser"
             :class="isActive ? 'z-0' : 'z-auto'"
@@ -72,6 +73,7 @@ import axios from "axios";
 export default class extends Vue {
   @Prop({ type: Boolean, default: false }) isManageUser!: Boolean;
   @Prop({ type: Boolean, default: false }) isManageCar!: Boolean;
+  @Prop({ type: Boolean, default: false }) isDashboard!: Boolean;
   @Prop() userInfo!: any;
   bankAccounts:any = []
   walletTransactions:any = []
