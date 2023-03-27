@@ -69,8 +69,8 @@
                 </div>
               </div>
               <RButton
-                class="btn-assent w-full"
-                nameBtn="Deposit"
+                class="btn-success w-full"
+                label="Deposit"
                 @btn-click="toogleIsActiveConfirm()"
               ></RButton>
             </div>
@@ -114,8 +114,8 @@
                 >
               </div>
               <RButton
-                class="btn-assent w-full my-0"
-                nameBtn="Comfirm"
+                class="btn-success w-full my-0"
+                label="Comfirm"
                 @btn-click="handleDeposit()"
               ></RButton>
             </div>

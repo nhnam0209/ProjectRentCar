@@ -63,16 +63,6 @@ export class UserStore extends VuexModule {
   }
 
   @action async handleRegister() {
-    // function completed() {
-    //   alert("Your profile was registed!!");
-    // }
-    // const TIME_OUT_SUBMIT = 1000;
-    // this.loading = !false;
-    // setTimeout(() => {
-    //   this.loading = !true;
-    // }, TIME_OUT_SUBMIT);
-    // setTimeout(completed, TIME_OUT_SUBMIT);
-    // this.setUserInfo(this.userInfo);
     try {
       this.setFullName(
         this.userInfo.first_name + " " + this.userInfo.last_name
@@ -170,6 +160,7 @@ export class UserStore extends VuexModule {
         },
       });
       alert(`The user ${user.full_name} with id: ${user.id} is deleted!!!`);
+
       setTimeout("location.reload(true)", 100);
     } catch (error: any) {
       const errMessage = JSON.stringify(error.response.data.msg);

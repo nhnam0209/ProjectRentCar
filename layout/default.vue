@@ -2,7 +2,7 @@
   <div>
     <slot name="header">
       <navigation-bar-desktop v-if="!isMobile" />
-      <navigation-bar-mobile v-else/>
+      <navigation-bar-mobile v-else />
     </slot>
     <slot name="content">
       <Nuxt />
@@ -22,7 +22,7 @@ Vue.use(VueScreen);
 })
 export default class extends Vue {
   get isMobile() {
-      return this.$screen.width < 1024;
-    }
+    return this.$screen.width < 1024;
+  }
 }
 </script>

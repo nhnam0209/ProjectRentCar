@@ -1,14 +1,16 @@
 <template>
-    <label class="label-input top-2/4 absolute text-lg outline-none h-full">{{ nameLabel }}</label>
+  <label class="label-input top-2/4 absolute text-lg outline-none h-full">{{
+    nameLabel
+  }}</label>
 </template>
-  
+
 <script lang="ts">
-import {Component,Emit,Prop,Vue} from 'nuxt-property-decorator';
+import { Component, Emit, Prop, Vue } from "nuxt-property-decorator";
 @Component({
-    name: "RLabel"
+  name: "RLabel",
 })
 export default class extends Vue {
-    @Prop({type: String}) nameLabel !:string
+  @Prop({ type: String }) nameLabel!: string;
 }
 </script>
 
@@ -19,9 +21,8 @@ export default class extends Vue {
   color: #b2b2b2;
 }
 
-.sidebar-label{
-    position: initial!important;
-    color: black !important;
+.sidebar-label {
+  position: initial !important;
+  color: black !important;
 }
 </style>
-

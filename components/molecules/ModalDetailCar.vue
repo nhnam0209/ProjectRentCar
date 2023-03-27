@@ -1,7 +1,14 @@
 <template>
-  <div class="background-modal justify-center items-center max-xl:overflow-auto py-5" >
-    <div class="bg-white w-2/3 rounded-xl flex max-xl:block max-md:w-full h-full my-4 overflow-auto" :class="{ 'modal-close': isActive }">
-      <div class="content-left px-4 border border-solid border-neutral-500 max-xl:border-none max-xl:w-full w-2/3 overflow-auto bg-white">
+  <div
+    class="background-modal justify-center items-center max-xl:overflow-auto py-5"
+  >
+    <div
+      class="bg-white w-2/3 rounded-xl flex max-xl:block max-md:w-full h-full my-4 overflow-auto"
+      :class="{ 'modal-close': isActive }"
+    >
+      <div
+        class="content-left px-4 border border-solid border-neutral-500 max-xl:border-none max-xl:w-full w-2/3 overflow-auto bg-white"
+      >
         <div class="">
           <!-- <div class="img-car-detail bg-cover bg-no-repeat w-full"></div> -->
           <img
@@ -15,12 +22,17 @@
                 <span class="car-name text-3xl font-bold">{{
                   carDetail.name
                 }}</span>
-                 <span class="car-name text-2xl font-bold hidden max-md:block text-green-500">${{
-                  carDetail.price
-                }} / day</span>
+                <span
+                  class="car-name text-2xl font-bold hidden max-md:block text-green-500"
+                  >${{ carDetail.price }} / day</span
+                >
               </div>
               <div class="">
-                <div class="title-detail mb-4 text-2xl max-xl:text-xl font-bold ">Full vehicle details</div>
+                <div
+                  class="title-detail mb-4 text-2xl max-xl:text-xl font-bold"
+                >
+                  Full vehicle details
+                </div>
                 <div class="details grid grid-cols-2 font-medium">
                   <div class="flex text-xl max-xl:text-lg">
                     <IconPerson class="w-8 h-8"></IconPerson>
@@ -74,13 +86,19 @@
                 </div>
               </div>
               <div class="desc mt-4">
-                <div class="title-detail mb-4 text-2xl font-bold max-xl:text-xl">Feature</div>
+                <div
+                  class="title-detail mb-4 text-2xl font-bold max-xl:text-xl"
+                >
+                  Feature
+                </div>
                 <p class="text-xl max-xl:text-lg">
                   {{ carDetail.feature }}
                 </p>
               </div>
               <div class="desc mt-4">
-                <div class="title-detail mb-4 text-2xl font-bold max-xl:text-xl">
+                <div
+                  class="title-detail mb-4 text-2xl font-bold max-xl:text-xl"
+                >
                   Description
                 </div>
                 <p class="text-xl max-xl:text-lg">
@@ -92,7 +110,7 @@
         </div>
       </div>
       <div
-        class="border border-solid border-neutral-500 overflow-auto content-right max-xl:border-none w-1/3 max-xl:w-full bg-white" 
+        class="border border-solid border-neutral-500 overflow-auto content-right max-xl:border-none w-1/3 max-xl:w-full bg-white"
       >
         <div class="booking-form-modal px-12 pb-3 max-md:py-4 max-md:px-4">
           <div
@@ -115,7 +133,9 @@
           </div>
 
           <div class="booking-return-date my-4">
-            <span class="booking-title text-2xl max-xl:text-xl font-bold">Return date</span>
+            <span class="booking-title text-2xl max-xl:text-xl font-bold"
+              >Return date</span
+            >
             <div class="pt-2">
               <input
                 type="date"
@@ -135,7 +155,7 @@
                 typeInput="text"
                 class="w-full text-xl py-2 outline-none border-b border-gray-400"
                 v-model="carTransaction.destination_pickup"
-              >
+              />
             </div>
           </div>
           <div class="place-of-receipt my-4">
@@ -148,12 +168,14 @@
                 typeInput="text"
                 class="w-full text-xl py-2 outline-none border-b border-gray-400"
                 v-model="carTransaction.destination_return"
-              >
+              />
             </div>
           </div>
 
           <div class="protection-plans my-4">
-            <div class="title-sidebar text-2xl max-xl:text-xl font-bold">Protection plans</div>
+            <div class="title-sidebar text-2xl max-xl:text-xl font-bold">
+              Protection plans
+            </div>
             <select
               class="filter text-lg border border-solid p-2 border-neutral-500 outline-none text-center rounded-xl w-full mt-2"
               v-model="protectedPlan"
@@ -169,10 +191,14 @@
           </div>
 
           <div class="total-price">
-            <div class="title-sidebar text-2xl max-xl:text-xl font-bold">Total Price</div>
+            <div class="title-sidebar text-2xl max-xl:text-xl font-bold">
+              Total Price
+            </div>
             <div class="font-medium text-lg">
               <span>SubTotal: </span>
-              <span class="font-bold text-lg">{{ carDetail.price }}$ / day</span>
+              <span class="font-bold text-lg"
+                >{{ carDetail.price }}$ / day</span
+              >
             </div>
             <div class="font-medium text-lg">
               <span>Service Fee: </span>
@@ -190,8 +216,8 @@
 
           <div class="button flex items-center justify-around">
             <RButton
-              nameBtn="Rent Now"
-              class="btn-assent"
+              label="Rent Now"
+              class="btn-success"
               @click="handleRentCarPage"
             ></RButton>
             <RButton class="btn-close" @click="handleCancel">Cancel</RButton>
@@ -199,7 +225,14 @@
         </div>
       </div>
     </div>
-    <ModalBill v-if="isActive" :user-info="userInfo" :total-price="totalPrice" :car-detail="carDetail" :protected-plan="protectedPlan" :car-transaction="carTransaction"></ModalBill>
+    <ModalBill
+      v-if="isActive"
+      :user-info="userInfo"
+      :total-price="totalPrice"
+      :car-detail="carDetail"
+      :protected-plan="protectedPlan"
+      :car-transaction="carTransaction"
+    ></ModalBill>
   </div>
 </template>
 
@@ -268,7 +301,7 @@ export default class extends Vue {
     if (this.isLogin) {
       console.log("ok");
       this.toogleIsActive();
-      console.log(this.totalPrice)
+      console.log(this.totalPrice);
     } else {
       this.$router.push("/login");
     }

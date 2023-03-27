@@ -1,14 +1,24 @@
 <template>
-  <div class="background-home flex justify-center items-center h-screen bg-center bg-cover bg-no-repeat">
-    <form action="" class="booking-form bg-white p-10 rounded-xl overflow-hidden opacity-90 w" @submit.prevent="handleSearchCar()">
+  <div
+    class="background-home flex justify-center items-center h-screen bg-center bg-cover bg-no-repeat"
+  >
+    <form
+      action=""
+      class="booking-form bg-white p-10 rounded-xl overflow-hidden opacity-90 w"
+      @submit.prevent="handleSearchCar()"
+    >
       <div class="type-car flex justify-between items-center">
         <div class="vihecle">
           <div class="vihecle-filter">
             <div class="title-vihecle-filter py-2">
               <span class="font-bold text-lg">What type of vihecle?</span>
             </div>
-            <div class="vihecle-option flex justify-center items-center rounded-xl overflow-hidden h-12 border-solid border-neutral-500 border">
-              <div class="vihecle-type flex justify-center items-center py-1 px-5 cursor-pointer relative h-full w-full z-10">
+            <div
+              class="vihecle-option flex justify-center items-center rounded-xl overflow-hidden h-12 border-solid border-neutral-500 border"
+            >
+              <div
+                class="vihecle-type flex justify-center items-center py-1 px-5 cursor-pointer relative h-full w-full z-10"
+              >
                 <img
                   src="../../static/img/type-car/cars-filter.bdb1eda.png"
                   alt=""
@@ -43,8 +53,10 @@
             <div class="title-pickup-input py-2">
               <span class="font-bold text-lg">Pick up & Return location</span>
             </div>
-            <div class="rounded-xl overflow-hidden border border-solid border-neutral-500 h-12 flex">
-              <div class=" px-3 flex justify-center items-center">
+            <div
+              class="rounded-xl overflow-hidden border border-solid border-neutral-500 h-12 flex"
+            >
+              <div class="px-3 flex justify-center items-center">
                 <icon-location-pin class="icon-fill cursor-pointer h-5 w-5" />
               </div>
               <input
@@ -63,7 +75,9 @@
               <div class="title-pickup-input py-2">
                 <span class="font-bold text-lg">Pick up date & time</span>
               </div>
-              <div class="rounded-xl overflow-hidden border border-solid border-neutral-500 h-12 flex justify-center">
+              <div
+                class="rounded-xl overflow-hidden border border-solid border-neutral-500 h-12 flex justify-center"
+              >
                 <div class="px-3 flex justify-center items-center">
                   <icon-date-time class="icon-fill cursor-pointer h-5 w-5" />
                 </div>
@@ -89,7 +103,9 @@
               <div class="title-pickup-input py-2">
                 <span class="font-bold text-lg">Return date & time</span>
               </div>
-              <div class="rounded-xl overflow-hidden border border-solid border-neutral-500 h-12 flex justify-center">
+              <div
+                class="rounded-xl overflow-hidden border border-solid border-neutral-500 h-12 flex justify-center"
+              >
                 <div class="px-3 flex justify-center items-center">
                   <icon-date-time class="icon-fill cursor-pointer h-5 w-5" />
                 </div>
@@ -134,7 +150,7 @@
         </div>
         <div class="flex justify-center items-center">
           <div class="button-search flex justify-center items-center">
-            <RButton class="btn-search text-black" nameBtn="Search"></RButton>
+            <RButton class="btn-size text-black" label="Search"></RButton>
           </div>
         </div>
       </div>
@@ -178,7 +194,7 @@ export default class extends Vue {
   left: 0;
   height: 100%;
   width: 0%;
-  background: #00a550;
+  background: #5cdb95;
   opacity: 0.9;
   transition: all 0.5s ease;
   z-index: -1;
@@ -189,7 +205,7 @@ export default class extends Vue {
 }
 
 .icon-fill {
-  fill: #00a550;
+  fill: #5cdb95;
 }
 
 @keyframes slidein-Homepage {
@@ -210,7 +226,7 @@ export default class extends Vue {
   }
   .dateime-pickup-car,
   .input-datetime-pickup-and-return,
-  .info-customer{
+  .info-customer {
     display: block;
   }
   .station-input-pickup:last-child {

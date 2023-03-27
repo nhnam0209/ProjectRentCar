@@ -1,9 +1,7 @@
+import Vue from "vue";
 import { WalletStore } from "~/store/wallet";
-
-// import { ProductStore } from '~/store/product';
 import { UserStore } from "~/store/user";
 import { createProxy } from "vuex-class-component";
-import Vue from "vue";
 import { CarStore } from "~/store/car";
 declare module "vue/types/vue" {
   interface Vue {

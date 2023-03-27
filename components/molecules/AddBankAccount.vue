@@ -57,8 +57,8 @@
           <div class="my-4 mx-8">
             <div class="mb-2">
               <RButton
-                class="btn-assent w-full"
-                nameBtn="Add Bank Account"
+                class="btn-success w-full"
+                label="Add Bank Account"
                 @btn-click="handleWithdrawn()"
               ></RButton>
             </div>

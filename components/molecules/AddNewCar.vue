@@ -6,7 +6,7 @@
           class="w-1/2 flex items-center justify-between shadow border border-solid rounded-xl overflow-hidden border-black text-center max-sm:w-full max-md:w-2/3"
         >
           <div
-            class="p-2 border-r border-solid border-black text-xl font-bold w-1/2 text-white bg-green-500"
+            class="p-2 border-r border-solid border-black text-xl font-bold w-1/2 text-white bg-[#379683]"
           >
             Infomation
           </div>
@@ -110,8 +110,8 @@
           </div>
           <div class="m-4">
             <RButton
-              class="btn-assent w-full"
-              nameBtn="Next"
+              class="btn-success w-full"
+              label="Next"
               @btn-click="toogleIsActive()"
             ></RButton>
           </div>

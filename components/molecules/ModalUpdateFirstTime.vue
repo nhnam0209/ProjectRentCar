@@ -63,15 +63,10 @@
         </div>
       </div>
       <div class="button-group flex justify-between w-full px-7">
-        <button
-          type="submit"
-          class="btn btn-update text-lg text-white font-bold my-7 rounded-xl px-4"
-        >
-          Update
-        </button>
-        <!-- <button class="btn btn-close text-lg text-white font-bold my-7">
-          Close
-        </button> -->
+        <r-button
+          label="Update"
+          class="btn btn-success text-lg text-white font-bold my-7 rounded-xl px-4"
+        />
       </div>
     </form>
   </div>

@@ -6,12 +6,12 @@
           class="w-1/2 flex items-center justify-between shadow border border-solid rounded-xl overflow-hidden border-black text-center max-sm:w-full max-md:w-2/3"
         >
           <div
-            class="p-2 border-r border-solid border-black text-xl font-bold w-1/2 text-white bg-green-500"
+            class="p-2 border-r border-solid border-black text-xl font-bold w-1/2 text-white bg-[#379683]"
           >
             Infomation
           </div>
           <div
-            class="p-2 border-solid border-black text-xl font-bold w-1/2 text-white bg-green-500"
+            class="p-2 border-solid border-black text-xl font-bold w-1/2 text-white bg-[#379683]"
           >
             Rental
           </div>
@@ -29,22 +29,21 @@
             <input
               class="border border-solid border-black mr-2 rounded-xl p-1 h-full text-lg outline-none bg-none w-2/5"
               v-model="cars.price"
-            
-            >USD
+            />USD
           </div>
           <div class="m-4">
             <h6 class="text-xl font-bold mb-3">Distance</h6>
             <input
               class="border border-solid border-black mr-2 rounded-xl p-1 h-full text-lg outline-none bg-none w-2/5"
               v-model="cars.distance"
-            >
+            />
           </div>
           <div class="m-4">
             <h6 class="text-xl font-bold mb-3">Province</h6>
             <input
               class="border border-solid border-black mr-2 rounded-xl p-1 h-full text-lg outline-none bg-none w-2/5"
               v-model="cars.province"
-            >
+            />
           </div>
           <div class="m-4">
             <h6 class="text-xl font-bold mb-3">Available Date</h6>
@@ -52,7 +51,7 @@
               class="border border-solid border-black mr-2 rounded-xl p-1 h-full text-lg outline-none bg-none w-2/5"
               v-model="cars.available_date"
               type="date"
-            >
+            />
           </div>
           <div class="m-4">
             <h6 class="text-xl font-bold">Photos</h6>
@@ -60,18 +59,23 @@
               Post multiple pictures at different angles to increase your
               vehicle's information.
             </p>
-            <input type="file" class="p-3 my-3" @change="onFileChange" accept=".jpg, .jpeg, .png">
+            <input
+              type="file"
+              class="p-3 my-3"
+              @change="onFileChange"
+              accept=".jpg, .jpeg, .png"
+            />
           </div>
 
           <div class="m-4 flex justify-between items-center">
             <RButton
               class="bg-gray-400 w-full mr-4"
-              nameBtn="Return"
+              label="Return"
               @btn-click="toogleIsActiveReturn()"
             ></RButton>
             <RButton
-              class="btn-assent w-full"
-              nameBtn="Complete"
+              class="btn-success w-full"
+              label="Complete"
               @btn-click="handleAddCarUser()"
             ></RButton>
           </div>
@@ -103,7 +107,7 @@ export default class extends Vue {
         {
           plate_number: this.cars.plate_number,
           type_car: this.cars.type_car,
-          name: this.cars.type_car + ' ' + this.cars.name,
+          name: this.cars.type_car + " " + this.cars.name,
           seat: this.cars.seat,
           fuel: this.cars.fuel,
           fuel_type: this.cars.fuel_type,
@@ -120,7 +124,7 @@ export default class extends Vue {
           status: this.cars.status,
           created_at: this.cars.created_at,
           updated_at: this.cars.updated_at,
-          deleted_at: this.cars.deleted_at
+          deleted_at: this.cars.deleted_at,
         },
         {
           headers: {

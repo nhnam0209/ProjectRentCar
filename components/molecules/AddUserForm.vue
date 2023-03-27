@@ -1,49 +1,38 @@
 <template>
   <div class="background-modal block">
-    <form action="" class="signup-form justify-center items-center bg-white rounded-xl shadow-xl" :class="{'modal-close': isActive}">
+    <form
+      action=""
+      class="signup-form justify-center items-center bg-white rounded-xl shadow-xl"
+      :class="{ 'modal-close': isActive }"
+    >
       <div class="p-6">
         <header class="title-signup text-3xl font-bold mt-7 text-center">
           <span>Add More User</span>
         </header>
         <div class="relative border-bottom my-7">
-          <RInput
-            typeInput="text"
-            class="input-focus"
-          />
+          <RInput typeInput="text" class="input-focus" />
           <RLabel nameLabel="First Name:"></RLabel>
         </div>
         <div class="relative border-bottom my-7">
-          <RInput
-            typeInput="text"
-            class="input-focus"
-          />
+          <RInput typeInput="text" class="input-focus" />
           <RLabel nameLabel="Last Name:"></RLabel>
         </div>
         <div class="relative border-bottom my-7">
-          <RInput
-            typeInput="text"
-            class="input-focus"
-          />
+          <RInput typeInput="text" class="input-focus" />
           <RLabel nameLabel="Email:"></RLabel>
         </div>
         <div class="relative border-bottom my-7">
-          <RInput
-            typeInput="text"
-            class="input-focus"
-          />
+          <RInput typeInput="text" class="input-focus" />
           <RLabel nameLabel="Username:"></RLabel>
         </div>
         <div class="relative border-bottom my-7">
-          <RInput
-            typeInput="password"
-            class="input-focus"
-          />
+          <RInput typeInput="password" class="input-focus" />
           <RLabel nameLabel="Password:"></RLabel>
         </div>
       </div>
       <div class="button-group flex justify-between w-full px-7">
-          <RButton class="btn-assent" nameBtn="Update"></RButton>
-          <RButton class="btn-close" nameBtn="Close"></RButton>
+        <RButton class="btn-success" label="Update"></RButton>
+        <RButton class="btn-close" label="Close"></RButton>
       </div>
     </form>
   </div>
@@ -56,6 +45,5 @@ import { Component, Vue } from "nuxt-property-decorator";
 })
 export default class extends Vue {
   isActive: Boolean = false;
-  
 }
 </script>

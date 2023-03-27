@@ -72,11 +72,11 @@
       </div>
       <div class="button-group flex justify-between w-full px-7">
         <RButton
-          class="btn-assent"
-          nameBtn="Add"
+          class="btn-success"
+          label="Add"
           @click="handleAddUserAdmin()"
         ></RButton>
-        <RButton class="btn-close" nameBtn="Close"></RButton>
+        <RButton class="btn-close" label="Close"></RButton>
       </div>
     </form>
   </div>

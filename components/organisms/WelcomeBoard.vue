@@ -2,24 +2,22 @@
   <div class="background-home flex justify-center items-center h-screen">
     <div class="booking-form bg-white rounded-md">
       <div class="info-hire-car my-4 flex justify-center">
-        <div class="dateime-pickup-car inline-block">
-          <div class="station-input-pickup w-full flex justify-center">
-            <div class="title-pickup-input py-2 flex flex-col justify-center">
-              <span class="font-bold text-center text-5xl uppercase max-md:text-3xl"
-                >Welcome to Rental Car Service</span
-              >
-              <span class="font-bold text-xl text-center mt-2"
-                >We provide to you the best service about rental car</span
-              >
-              <div class="button-search flex justify-center self-center mt-7">
-                <r-button
-                  class="btn-search text-black self-center"
-                  @click="handleRentCarPage"
-                >
-                  Rent Car
-                </r-button>
-              </div>
-            </div>
+        <div
+          class="title-pickup-input w-full py-2 flex flex-col justify-center"
+        >
+          <span class="font-bold text-center text-xl uppercase lg:text-3xl"
+            >Welcome to Rental Car Service</span
+          >
+          <span class="font-bold text-md md:text-xl text-center mt-2"
+            >We provide to you the best service about rental car</span
+          >
+          <div class="button-search flex justify-center self-center mt-7">
+            <r-button
+              class="btn-size text-black self-center"
+              @click="handleRentCarPage"
+            >
+              Rent Car
+            </r-button>
           </div>
         </div>
       </div>
@@ -57,7 +55,7 @@ export default class extends Vue {
   left: 0;
   height: 100%;
   width: 0%;
-  background: #00a550;
+  background: #5cdb95;
   opacity: 0.9;
   transition: all 0.5s ease;
   z-index: -1;
@@ -68,7 +66,7 @@ export default class extends Vue {
 }
 
 .icon-fill {
-  fill: #00a550;
+  fill: #5cdb95;
 }
 
 @keyframes slidein-Homepage {

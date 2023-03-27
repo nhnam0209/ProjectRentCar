@@ -8,7 +8,9 @@
       <div v-if="isRegister">
         <h1>The account was created!!!</h1>
       </div>
-      <div class="signup-content text-3xl font-bold text-white text-center bg-cover bg-no-repeat bg-center relative z-10">
+      <div
+        class="signup-content text-3xl font-bold text-white text-center bg-cover bg-no-repeat bg-center relative z-10"
+      >
         <span class="top-0 left-0 p-5 absolute"
           >You have already signed up?
           <a href="/login" class="register-item"><br />Sign In Now</a>
@@ -99,7 +101,7 @@
           </div>
           <button
             type="submit"
-            class="w-full btn-assent text-white text-lg font-bold my-7 rounded-xl p-3 text-center"
+            class="w-full btn-success text-white text-lg font-bold my-7 rounded-xl p-3 text-center"
           >
             Get Start
           </button>
@@ -203,7 +205,7 @@ export default class extends Vue {
 .input-focus:focus ~ .label-input,
 .input-focus:valid ~ .label-input {
   top: -20px;
-  color: #00a550;
+  color: #5cdb95;
 }
 
 .station-input-pickup:first-child {

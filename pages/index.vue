@@ -3,6 +3,10 @@
     <template #content>
       <div class="h-full">
         <welcome-board />
+        <banner>
+          <template #leftContainer>fdsafbashf</template>
+          <template #rightContainer>asdad</template>
+        </banner>
       </div>
     </template>
   </Default>
@@ -15,6 +19,11 @@ import axios from "~/utils/myAxios";
 @Component({
   name: "HomePage",
   layout: "rentcar-layout",
+  head() {
+    return {
+      title: "Home - Rent Car",
+    };
+  },
 })
 export default class extends Vue {
   isLogin: Boolean = false;

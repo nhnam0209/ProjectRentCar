@@ -30,16 +30,17 @@
           />
           <label class="label-input top-2/4 absolute text-lg">Password:</label>
         </div>
-        <!-- 
-        <div class="forget-pass text-gray-400 cursor-pointer my-3">
-          Forgot Password?
-        </div> -->
-        <button type="submit" class="w-full btn text-lg text-white font-bold">
-          Sign In
-        </button>
+        <r-button
+          class="w-full btn text-lg text-white font-bold"
+          label="Sign In"
+        />
         <div class="register-link my-5 text-lg text-gray-500">
           No account yet?
-          <a href="/register" class="register-item text-black">Sign Up</a>
+          <span
+            class="register-item text-black cursor-pointer"
+            @click="handleDirectToSignUp()"
+            >Sign Up</span
+          >
         </div>
       </form>
     </div>
@@ -62,6 +63,11 @@ export default class extends Vue {
       alert(this.msg);
     }
   }
+
+  handleDirectToSignUp() {
+    this.$router.push("/register");
+  }
+
   get user() {
     return this.$vxm.user.userLogin;
   }
@@ -120,7 +126,7 @@ export default class extends Vue {
 .login-input:focus ~ .label-input,
 .login-input:valid ~ .label-input {
   top: -20px;
-  color: #00a550;
+  color: #5cdb95;
 }
 .forget-pass {
   width: 130px;
@@ -130,7 +136,7 @@ export default class extends Vue {
 }
 .btn {
   height: 50px;
-  background: #00a550;
+  background: #5cdb95;
 }
 .btn:hover {
   background: #009548;
@@ -138,7 +144,7 @@ export default class extends Vue {
 }
 .register-item:hover {
   text-decoration: underline;
-  color: #00a550;
+  color: #5cdb95;
 }
 @keyframes slidein {
   from {

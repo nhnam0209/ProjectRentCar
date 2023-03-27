@@ -20,7 +20,7 @@
       <div class="bg-white">
         <div class="">
           <table class="w-full border border-solid text-center">
-            <tr class="bg-green-500 text-xl text-white">
+            <tr class="bg-[#379683] text-xl text-white">
               <th class="py-2 px-4 max-lg:px-2">ID</th>
               <th class="py-2 px-4 max-lg:px-2">Model</th>
               <th class="py-2 px-4 max-lg:px-2">Seat</th>
@@ -31,12 +31,12 @@
             </tr>
             <tr class="text-lg" v-for="myCar in myCars" :key="myCar.id">
               <td class="py-2 px-4 max-lg:px-2">{{ myCar.id }}</td>
-              <td class="py-2 px-4 max-lg:px-2">{{ myCar.name}}</td>
-              <td class="py-2 px-4 max-lg:px-2">{{ myCar.seat}}</td>
-              <td class="py-2 px-4 max-lg:px-2">{{ myCar.transmission}}</td>
-              <td class="py-2 px-4 max-lg:px-2">{{ myCar.fuel_type}}</td>
-              <td class="py-2 px-4 max-lg:px-2">{{ myCar.plate_number}}</td>
-              <td class="py-2 px-4 max-lg:px-2">{{ myCar.status}}</td>
+              <td class="py-2 px-4 max-lg:px-2">{{ myCar.name }}</td>
+              <td class="py-2 px-4 max-lg:px-2">{{ myCar.seat }}</td>
+              <td class="py-2 px-4 max-lg:px-2">{{ myCar.transmission }}</td>
+              <td class="py-2 px-4 max-lg:px-2">{{ myCar.fuel_type }}</td>
+              <td class="py-2 px-4 max-lg:px-2">{{ myCar.plate_number }}</td>
+              <td class="py-2 px-4 max-lg:px-2">{{ myCar.status }}</td>
             </tr>
           </table>
         </div>
@@ -45,7 +45,7 @@
   </div>
 </template>
 <script lang="ts">
-import { Component,Prop, Vue } from "nuxt-property-decorator";
+import { Component, Prop, Vue } from "nuxt-property-decorator";
 
 @Component({
   name: "ListCars",

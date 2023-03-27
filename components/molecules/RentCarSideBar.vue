@@ -14,7 +14,8 @@
         <div class="mb-4 pt-8">
           <div class="mb-2 text-2xl font-bold">Filter</div>
           <select
-            class="text-lg w-full text-center py-1 border border-solid border-neutral-500 rounded-xl"          >
+            class="text-lg w-full text-center py-1 border border-solid border-neutral-500 rounded-xl"
+          >
             <option
               v-for="item in filterPrice"
               :key="item.id"
@@ -110,10 +111,7 @@
         </div>
 
         <div class="btn-reset flex items-center justify-center">
-          <RButton
-            class="btn-assent"
-            nameBtn="Reset Default"
-          ></RButton>
+          <RButton class="btn-success" label="Reset Default"></RButton>
         </div>
       </div>
     </div>

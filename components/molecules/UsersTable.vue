@@ -5,13 +5,13 @@
     </div>
     <table class="w-full text-center">
       <tr class="w-full">
-        <th class="bg-green-500 text-white py-2 px-3">ID</th>
-        <th class="bg-green-500 text-white py-2 px-3">First Name</th>
-        <th class="bg-green-500 text-white py-2 px-3">Last name</th>
-        <th class="bg-green-500 text-white py-2 px-3">Email</th>
-        <th class="bg-green-500 text-white py-2 px-3">Username</th>
-        <th class="bg-green-500 text-white py-2 px-3">Last Login</th>
-        <th class="bg-green-500 text-white py-2 px-3">Action</th>
+        <th class="bg-[#379683] text-white py-2 px-3">ID</th>
+        <th class="bg-[#379683] text-white py-2 px-3">First Name</th>
+        <th class="bg-[#379683] text-white py-2 px-3">Last name</th>
+        <th class="bg-[#379683] text-white py-2 px-3">Email</th>
+        <th class="bg-[#379683] text-white py-2 px-3">Username</th>
+        <th class="bg-[#379683] text-white py-2 px-3">Last Login</th>
+        <th class="bg-[#379683] text-white py-2 px-3">Action</th>
       </tr>
       <tr class="" v-for="user in users" :key="user.id">
         <td class="p-2">{{ user.id }}</td>

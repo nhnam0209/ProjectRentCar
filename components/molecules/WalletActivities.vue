@@ -3,7 +3,7 @@
     <div class="block justify-between max-lg:block">
       <div class="py-3 px-5 max-lg:block">
         <div class="grid grid-cols-3 gap-4 max-sm:grid-cols-2">
-          <div class="text-white shadow rounded-xl px-6 py-5 bg-green-500">
+          <div class="text-white shadow rounded-xl px-6 py-5 bg-[#379683]">
             <div class="text-xl font-medium block mb-2">Total Balance</div>
             <div class="text-2xl font-bold">${{ walletInfo.balance }}</div>
           </div>
@@ -18,12 +18,12 @@
           >
             <RButton
               class="w-1/3 border border-solid rounded-xl border-black bg-black shadow"
-              name-btn="Deposit"
+              label="Deposit"
               @btn-click="toogleIsActiveDeposit()"
             ></RButton>
             <RButton
               class="w-1/3 border border-solid rounded-xl border-black bg-black shadow"
-              name-btn="Withdrawn"
+              label="Withdrawn"
               @btn-click="toogleIsActiveWithdraw()"
             ></RButton>
           </div>
@@ -33,7 +33,7 @@
       <div class="py-3 px-5 w-full">
         <div class="text-2xl font-bold py-4">Last Activities</div>
         <table class="w-full border border-solid">
-          <tr class="bg-green-500 text-2xl text-white max-lg:text-xl">
+          <tr class="bg-[#379683] text-2xl text-white max-lg:text-xl">
             <th class="py-2 px-4 max-md:px-2">ID</th>
             <th class="py-2 px-4 max-md:px-2">Description</th>
             <th class="py-2 px-4 max-md:px-2">Transaction</th>
@@ -62,9 +62,17 @@
         </table>
       </div>
     </div>
-    <ModalDeposit v-if="isActiveDeposit" :wallet-transactions="walletTransactions" :wallet-info="walletInfo" :user-info="userInfo"
+    <ModalDeposit
+      v-if="isActiveDeposit"
+      :wallet-transactions="walletTransactions"
+      :wallet-info="walletInfo"
+      :user-info="userInfo"
     ></ModalDeposit>
-    <ModalWithdraw v-if="isActiveWithdraw" :wallet-transactions="walletTransactions" :wallet-info="walletInfo" :user-info="userInfo"
+    <ModalWithdraw
+      v-if="isActiveWithdraw"
+      :wallet-transactions="walletTransactions"
+      :wallet-info="walletInfo"
+      :user-info="userInfo"
     ></ModalWithdraw>
   </div>
 </template>

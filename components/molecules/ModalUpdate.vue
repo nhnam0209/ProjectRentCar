@@ -97,11 +97,11 @@
       </div>
       <div class="button-group flex justify-between w-full px-7">
         <RButton
-          class="btn-assent"
-          nameBtn="Update"
+          class="btn-success"
+          label="Update"
           @click="handleUpdateUserInfo(user)"
         ></RButton>
-        <RButton class="btn-close" nameBtn="Close"></RButton>
+        <RButton class="btn-close" label="Close"></RButton>
       </div>
     </form>
   </div>

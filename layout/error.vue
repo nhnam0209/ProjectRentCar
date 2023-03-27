@@ -1,27 +1,14 @@
-<!-- <template>
-  <div>
-    <slot name="header">
-      <navigation-bar-desktop />
-    </slot>
-    <div>
-      <div class="">
-        <h1 ></h1>
-      </div>
-    </div>
-    <slot name="footer">
-      <footer></footer>
-    </slot>
+<template>
+  <div class="container">
+    <h1 v-if="error.statusCode === 404">Page not found</h1>
+    <h1 v-else>An error occurred</h1>
+    <NuxtLink to="/">Home page</NuxtLink>
   </div>
 </template>
-<script lang="ts">
-import { Component, Vue, Prop } from "nuxt-property-decorator";
-import VueScreen from "vue-screen";
-Vue.use(VueScreen);
 
-@Component({
-  name: "RentCarLayout",
-})
-export default class extends Vue {
-  @Prop({ type: Object, default: null }) error!: Object;
-}
-</script> -->
+<script>
+export default {
+  props: ["error"],
+  layout: "blog", // you can set a custom layout for the error page
+};
+</script>

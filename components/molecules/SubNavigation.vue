@@ -1,43 +1,42 @@
 <template>
-  <div class="py-2 z-50 sub-navbar-items">
-    <div @click="handleHover()" class="cursor-pointer">
-      {{ username }}
+  <div
+    class="py-4 z-50 sub-navbar-items text-[12px] lg:text-xl"
+    :class="!isMobile && 'hover:bg-gray-300/50'"
+  >
+    <div
+      @click="handleHover()"
+      class="cursor-pointer flex text-center justify-center"
+    >
+      <div class="inline-flex self-center">
+        <span v-if="!isAdmin"><img src="" alt="" /></span>
+        <p class="text-xl">{{ username }}</p>
+      </div>
     </div>
     <div
       v-if="isHover"
-      class="bg-green-300 rounded-md h-fit absolute top-[50px] right-5"
+      class="bg-green-300 w-[200px] lg:w-[250px] rounded-md h-fit absolute top-[50px] mt-4 right-5"
+      :class="classes"
     >
       <div class="py-2">
-        <div class="flex flex-col" v-if="!isAdmin">
-          <NuxtLink class="navbar-items cursor-pointer z-50" to="/dashboard"
-            >My Profile</NuxtLink
-          >
-          <NuxtLink class="navbar-items cursor-pointer z-50" to="/wallet"
-            >My Wallet</NuxtLink
-          >
-          <!-- <NuxtLink class="navbar-items cursor-pointer z-50" to="/wallet"
-            >My Order</NuxtLink
-          > -->
-          <NuxtLink class="navbar-items cursor-pointer z-50" to="/mycar"
-            >My Car</NuxtLink
+        <div v-if="!isAdmin" class="flex flex-col">
+          <NuxtLink
+            v-for="item in userSubNavigation"
+            :key="item.id"
+            class="navbar-items cursor-pointer z-50"
+            :to="item.link"
+            >{{ item.label }}</NuxtLink
           >
         </div>
 
-        <div class="flex-col hidden max-lg:flex" v-else>
-          <NuxtLink class="navbar-items cursor-pointer z-50" to="/dashboardadmin"
-            >Dashboard</NuxtLink
-          >
-          <NuxtLink class="navbar-items cursor-pointer z-50" to="/manageuser"
-            >Manage User</NuxtLink
-          >
-          <!-- <NuxtLink class="navbar-items cursor-pointer z-50" to="/wallet"
-            >My Order</NuxtLink
-          > -->
-          <NuxtLink class="navbar-items cursor-pointer z-50" to="/managecar"
-            >Manage Car</NuxtLink
+        <div v-else class="flex-col hidden max-lg:flex">
+          <NuxtLink
+            v-for="item in adminSubNavigation"
+            :key="item.id"
+            class="navbar-items cursor-pointer z-50"
+            :to="item.link"
+            >{{ item.label }}</NuxtLink
           >
         </div>
-        <!-- <NuxtLink class="navbar-items" to="/">Home</NuxtLink> -->
         <div class="mt-3 navbar-items cursor-pointer" @click="handleLogOut">
           Logout
         </div>
@@ -47,6 +46,7 @@
 </template>
 <script lang="ts">
 import { Component, Vue, Prop } from "nuxt-property-decorator";
+import { type } from "os";
 import { EMPTY } from "~/utils/constant";
 @Component({
   name: "SubNavigation",
@@ -54,6 +54,44 @@ import { EMPTY } from "~/utils/constant";
 export default class extends Vue {
   @Prop() userInfo!: any;
   @Prop({ type: Boolean }) isAdmin!: Boolean;
+  @Prop({ type: String }) classes!: String;
+  @Prop({ type: Boolean, default: false }) isMobile!: Boolean;
+
+  userSubNavigation = [
+    {
+      id: 1,
+      label: "My Profile",
+      link: "/dashboard/" + this.userInfo.id,
+    },
+    {
+      id: 2,
+      label: "My Wallet",
+      link: "/wallet",
+    },
+    {
+      id: 3,
+      label: "My Car",
+      link: "/mycar",
+    },
+  ];
+
+  adminSubNavigation = [
+    {
+      id: 1,
+      label: "Dashboard",
+      link: "/dashboardadmin",
+    },
+    {
+      id: 2,
+      label: "Manage User",
+      link: "/manageuser",
+    },
+    {
+      id: 3,
+      label: "Manage Car",
+      link: "/managercar",
+    },
+  ];
   isHover: Boolean = false;
   username: String = EMPTY;
   res: Object = {};
@@ -62,16 +100,7 @@ export default class extends Vue {
     this.username = this.userInfo.username;
   }
   handleHover() {
-    if (this.isHover === false) {
-      this.isHover = true;
-    } else {
-      this.isHover = false;
-    }
-  }
-  handleMouseLeave() {
-    if (this.isHover) {
-      this.isHover = false;
-    }
+    !this.isHover ? (this.isHover = true) : (this.isHover = false);
   }
 
   handleLogOut() {
@@ -105,7 +134,6 @@ export default class extends Vue {
 }
 
 .sub-navbar-items {
-  font-size: 1.5rem;
   line-height: 2rem;
 }
 </style>

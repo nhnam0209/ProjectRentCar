@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-slate-100 pb-20">
+  <div class="bg-slate-100 pb-20 w-full overflow-x-hidden">
     <div class="w-full">
       <img
         src="../../static/img/car-profile.jpg"
@@ -7,16 +7,20 @@
         class="w-screen h-auto"
       />
     </div>
-    <div class="flex justify-center">
+    <div class="flex flex-col justify-center">
       <div class="w-full mx-40">
         <div class="grid grid-cols-2 md:grid-cols-3">
           <div class="flex justify-center drop-shadow-2xl -mt-6">
             <div
               class="bg-fuchsia-500 text-white rounded-full text-center flex flex-col justify-center text-3xl w-20 h-20 md:text-7xl md:w-40 md:h-40 sm:text-3xl sm:w-28 sm:h-28 relative"
             >
-            <div class="absolute w-10 h-10 bottom-1 right-1 rounded-full bg-gray-300/80 cursor-pointer">
-              <IconCamera class="w-6 h-6 absolute bottom-2 right-2"></IconCamera>
-            </div>
+              <div
+                class="absolute w-10 h-10 bottom-1 right-1 rounded-full bg-gray-300/80 cursor-pointer"
+              >
+                <IconCamera
+                  class="w-6 h-6 absolute bottom-2 right-2"
+                ></IconCamera>
+              </div>
               A
             </div>
           </div>
@@ -31,8 +35,6 @@
             </div>
             <div class="mt-4 flex text-sm md:text-lg">
               Created At: {{ createdAt }}
-              <!-- <div class="w-4 flex justify-center mr-8 md:mr-0">-</div> -->
-              <!-- <div class="font-semibold text-sm md:text-lg">Chưa có chuyến</div> -->
             </div>
             <div class="flex">
               <div
@@ -90,13 +92,17 @@
             </div>
           </div>
         </div>
-        <div class="grid grid-cols-3 bg-white rounded-lg pb-8 w-full">
+        <div
+          class="flex flex-col lg:grid lg:grid-cols-3 bg-white rounded-lg pb-8 w-4/5"
+        >
           <div
-            class="w-full flex-col h-16 justify-center mt-5 ml-5 text-sm md:text-lg"
+            v-for="item in userInformationDashboard"
+            :key="item.id"
+            class="w-full flex-col h-16 justify-center mt-5 ml-5 text-sm md:text-lg my-3 lg:my-0"
           >
             <div class="flex justify-center">
               <div class="mt-1 font-bold inline-flex text-xs sm:text-base">
-                <p>Phone Number</p>
+                <p>{{ item.label }}</p>
                 <div @click="handleEdit()">
                   <icon-edit
                     class="w-3 h-3 ml-2 cursor-pointer self-center md:w-5 md:h-5 md:ml-4"
@@ -104,78 +110,42 @@
                 </div>
               </div>
             </div>
-            <div v-if="user.phone_number" class="flex justify-center mt-2">
-              {{ userInfo.phone_number }}
+            <div
+              v-if="user.phone_number && item.label == 'Phone Number'"
+              class="flex justify-center mt-2"
+            >
+              {{ user.phone_number }}
               <icon-success
                 class="w-3 h-3 ml-2 cursor-pointer md:w-5 md:h-5 md:ml-4"
               />
             </div>
-            <div v-else class="flex justify-center">
-              <div class="flex-col self-center">
-                <icon-warning
-                  class="w-3 h-3 mt-2 ml-2 flex self-center cursor-pointer md:w-5 md:h-5 md:ml-3"
-                />
-                <div
-                  class="mt-3 font-medium text-center text-neutral-500 flex text-xs"
-                >
-                  Not Verify yet
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            class="w-full h-16 justify-center mt-5 rounded-lg ml-5 text-sm md:text-lg"
-          >
-            <div class="flex justify-center">
-              <div class="mt-1 font-bold inline-flex text-xs sm:text-base">
-                <p>Driving License</p>
-                <div @click="handleEdit()">
-                  <icon-edit
-                    class="w-3 h-3 ml-2 cursor-pointer self-center md:w-5 md:h-5 md:ml-4"
-                  />
-                </div>
-              </div>
-            </div>
-            <div v-if="user.driven_license" class="flex justify-center mt-2">
+            <div
+              v-else-if="user.driven_license && item.label == 'Driving License'"
+              class="flex justify-center mt-2"
+            >
               {{ user.driven_license }}
               <icon-success
-                class="w-3 h-3 ml-2 cursor-pointer self-center md:w-5 md:h-5 md:ml-4"
+                class="w-3 h-3 ml-2 cursor-pointer md:w-5 md:h-5 md:ml-4"
               />
             </div>
-            <div v-else class="flex justify-center">
-              <div class="flex-col self-center">
-                <icon-warning
-                  class="w-3 h-3 mt-2 ml-2 flex self-center cursor-pointer md:w-5 md:h-5 md:ml-3"
-                />
-                <div
-                  class="mt-3 font-medium text-center text-neutral-500 flex text-xs"
-                >
-                  Not Verify yet
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            class="w-full h-16 justify-center mt-5 rounded-lg ml-5 text-sm md:text-lg"
-          >
-            <div class="flex justify-center">
-              <div
-                class="mt-1 font-bold inline-flex text-xs sm:text-base"
-                @click="handleEdit()"
-              >
-                <p>Email</p>
-                <div @click="handleEdit()">
-                  <icon-edit
-                    class="w-3 h-3 ml-2 cursor-pointer self-center md:w-5 md:h-5 md:ml-4"
-                  />
-                </div>
-              </div>
-            </div>
-            <div class="flex justify-center mt-2">
+            <div
+              v-else-if="user.email && item.label == 'Email'"
+              class="flex justify-center mt-2"
+            >
               {{ user.email }}
               <icon-success
-                class="w-3 h-3 ml-2 cursor-pointer self-center md:w-5 md:h-5 md:ml-4"
+                class="w-3 h-3 ml-2 cursor-pointer md:w-5 md:h-5 md:ml-4"
               />
+            </div>
+            <div v-else class="flex flex-col justify-center items-center">
+              <icon-warning
+                class="w-3 h-3 mt-2 ml-4 flex self-center cursor-pointer md:w-5 md:h-5 md:ml-3 md:mr-4"
+              />
+              <span
+                class="mt-3 font-medium text-center text-neutral-500 flex text-xs"
+              >
+                Not Verify yet
+              </span>
             </div>
           </div>
         </div>
@@ -191,7 +161,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from "nuxt-property-decorator";
-import axios from "~/utils/myAxios";
+// import axios from "~/utils/myAxios";
 @Component({
   name: "ClientDashboard",
 })
@@ -200,6 +170,21 @@ export default class extends Vue {
   @Prop({ type: String }) createdAt!: any;
   @Prop({ type: String }) birthOfDate!: any;
   isActive: Boolean = false;
+
+  userInformationDashboard = [
+    {
+      id: 1,
+      label: "Phone Number",
+    },
+    {
+      id: 2,
+      label: "Driving License",
+    },
+    {
+      id: 3,
+      label: "Email",
+    },
+  ];
 
   handleEdit() {
     this.isActive ? (this.isActive = false) : (this.isActive = true);

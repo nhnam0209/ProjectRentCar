@@ -86,7 +86,7 @@
           </div>
         </div>
         <div class="mb-2 flex items-center justify-center">
-          <RButton class="btn-assent w-1/2" nameBtn="Select"></RButton>
+          <RButton class="btn-success w-1/2" label="Select"></RButton>
         </div>
       </div>
       <ModalDetailCar

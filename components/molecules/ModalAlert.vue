@@ -15,14 +15,14 @@
       <p class="text-lg">Are you sure to delete this User(Car)?</p>
       <div class="btns flex justify-between items-center p-4 w-full">
         <RButton
-          class="btn-assent"
-          nameBtn="Yes, Delete!"
+          class="btn-success"
+          label="Yes, Delete!"
           @click="handleDelete($event)"
         ></RButton>
         <RButton
           class="btn-close"
           @click="toogleIsActive()"
-          nameBtn="Cancel"
+          label="Cancel"
         ></RButton>
       </div>
     </form>

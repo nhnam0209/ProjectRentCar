@@ -1,7 +1,9 @@
 <template>
   <nav class="h-16 flex justify-between overflow-hidden">
     <div class="bg-no-repeat bg-cover bg-center w-24 h-full">
-      <NuxtLink to="/"><img src="../../static/img/logo.jpg" alt="" /></NuxtLink>
+      <NuxtLink to="/"
+        ><img src="../../static/img/logo.jpg" alt="company_logo"
+      /></NuxtLink>
     </div>
     <div class="navbar-list-items flex justify-center items-center">
       <div v-if="isAdmin">
@@ -125,7 +127,7 @@ export default class extends Vue {
   left: 0;
   height: 3px;
   width: 0%;
-  background: #00a550;
+  background: #5cdb95;
   border-radius: 12px;
   transition: all 0.6s ease;
 }

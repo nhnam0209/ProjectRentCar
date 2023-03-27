@@ -2,9 +2,11 @@
   <button
     @click="btnClick($event)"
     class="text-white text-lg font-bold my-7 rounded-xl p-3 text-center"
+    :class="[isDisabled ? 'bg-[#ebebe4] text-[#ccc]' : '']"
     type="submit"
+    :disabled="isDisabled"
   >
-    {{ nameBtn }}
+    {{ label }}
     <slot></slot>
   </button>
 </template>
@@ -15,7 +17,9 @@ import { Component, Emit, Prop, Vue } from "nuxt-property-decorator";
   name: "RButton",
 })
 export default class extends Vue {
-  @Prop({ type: String }) nameBtn!: string;
+  @Prop({ type: String }) label!: string;
+  @Prop({ type: Boolean, default: false }) isDisabled!: boolean;
+
   @Emit()
   btnClick(e: any) {
     return this.$emit("click", e);
@@ -28,21 +32,22 @@ export default class extends Vue {
   width: 300px;
 }
 .btn-close {
-  background-color: rgb(212, 41, 76) !important;
-  padding: 12px;
+  background-color: #fc4445;
+  border-radius: 10px;
 }
 .btn-close:hover {
   background-color: rgb(238, 8, 54);
   transition: 0.5s;
 }
-.btn-assent {
-  background: #00a550;
+.btn-success {
+  background: #5cdb95;
+  border-radius: 10px;
 }
-.btn-assent:hover {
+.btn-success:hover {
   background: #009548;
   transition: 0.5s;
 }
-.btn-search {
+.btn-size {
   width: 100%;
   height: 100%;
 }
@@ -50,7 +55,6 @@ export default class extends Vue {
   width: 260px;
   height: 50px;
   background: #ffdc00;
-  border: 1px solid rgb(107 114 128);
   border-radius: 10px;
   overflow: hidden;
 }

@@ -5,15 +5,15 @@
     </div>
     <table class="w-full text-center">
       <tr class="table-header">
-        <th class="bg-green-500 text-white py-2 px-3">ID</th>
-        <th class="bg-green-500 text-white py-2 px-3">Car Name</th>
-        <th class="bg-green-500 text-white py-2 px-3">Type Car</th>
-        <th class="bg-green-500 text-white py-2 px-3">Car Model</th>
-        <th class="bg-green-500 text-white py-2 px-3">Distance</th>
-        <th class="bg-green-500 text-white py-2 px-3">Price</th>
-        <th class="bg-green-500 text-white py-2 px-3">Owner</th>
-        <th class="bg-green-500 text-white py-2 px-3">User ID</th>
-        <th class="bg-green-500 text-white py-2 px-3">Action</th>
+        <th class="bg-[#379683] text-white py-2 px-3">ID</th>
+        <th class="bg-[#379683] text-white py-2 px-3">Car Name</th>
+        <th class="bg-[#379683] text-white py-2 px-3">Type Car</th>
+        <th class="bg-[#379683] text-white py-2 px-3">Car Model</th>
+        <th class="bg-[#379683] text-white py-2 px-3">Distance</th>
+        <th class="bg-[#379683] text-white py-2 px-3">Price</th>
+        <th class="bg-[#379683] text-white py-2 px-3">Owner</th>
+        <th class="bg-[#379683] text-white py-2 px-3">User ID</th>
+        <th class="bg-[#379683] text-white py-2 px-3">Action</th>
       </tr>
       <tr class="" v-for="car in cars" :key="car.id">
         <td class="p-2">{{ car.id }}</td>

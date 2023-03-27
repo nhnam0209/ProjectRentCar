@@ -2,7 +2,7 @@
   <div class="">
     <h1 class="text-xl font-bold">Bank Account</h1>
     <table class="w-full border border-solid text-center bg-white">
-      <tr class="bg-green-500 text-xl text-white">
+      <tr class="bg-[#379683] text-xl text-white">
         <th class="py-2 px-4 max-lg:px-2">ID</th>
         <th class="py-2 px-4 max-lg:px-2">User ID</th>
         <th class="py-2 px-4 max-lg:px-2">Username</th>
@@ -32,7 +32,7 @@
   </div>
 </template>
 <script lang="ts">
-import { Component,Prop, Vue } from "nuxt-property-decorator";
+import { Component, Prop, Vue } from "nuxt-property-decorator";
 
 @Component({
   name: "BankAccountTable",

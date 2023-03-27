@@ -103,15 +103,25 @@
         </div>
       </div>
       <div class="button-group flex justify-between w-full px-7">
-        <button
+        <!-- <button
           type="submit"
           class="rounded-xl py-2 text-lg text-white font-bold my-7"
         >
           Update
-        </button>
-        <button class="rounded-xl py-2 btn-close text-lg text-white font-bold my-7">
+        </button> -->
+        <r-button
+          label="Update"
+          class="rounded-xl py-2 text-lg text-white font-bold my-7"
+        />
+        <r-button
+          label="Close"
+          class="rounded-xl py-2 btn-close text-lg text-white font-bold my-7"
+        />
+        <!-- <button
+          class="rounded-xl py-2 btn-close text-lg text-white font-bold my-7"
+        >
           Close
-        </button>
+        </button> -->
       </div>
     </form>
   </div>

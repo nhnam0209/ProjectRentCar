@@ -10,8 +10,7 @@ export default class extends Vue {}
 </script>
 
 <style>
-.icon-check{
-    fill: #00a550;
+.icon-check {
+  fill: #5cdb95;
 }
 </style>
-

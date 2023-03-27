@@ -2,7 +2,7 @@
   <Default>
     <template #content>
       <div class="h-full">
-        <DashboardTable class="h-full"></DashboardTable>
+        <dashboard-table class="h-full"></dashboard-table>
       </div>
     </template>
   </Default>
@@ -16,6 +16,11 @@ import Auth from "../service/authentication";
 @Component({
   name: "DashboardAdmin",
   layout: "rentcar-layout",
+  head() {
+    return {
+      title: "Dashboard Admin",
+    };
+  },
 })
 export default class extends Vue {
   isLogin: Boolean = false;

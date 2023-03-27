@@ -30,31 +30,39 @@
                 class="w-full flex items-center justify-between text-lg mb-3 border-solid border-b border-gray-200 pb-1"
               >
                 <span for="" class="text-gray-400">Full name</span>
-                <span for="" class="font-medium">{{ userInfo.full_name}}</span>
+                <span for="" class="font-medium">{{ userInfo.full_name }}</span>
               </div>
               <div
                 class="w-full flex items-center justify-between text-lg mb-3 border-solid border-b border-gray-200 pb-1"
               >
                 <span for="" class="text-gray-400">Pickup Date</span>
-                <span for="" class="font-medium">{{ carTransaction.pickup_date}}</span>
+                <span for="" class="font-medium">{{
+                  carTransaction.pickup_date
+                }}</span>
               </div>
               <div
                 class="w-full flex items-center justify-between text-lg mb-3 border-solid border-b border-gray-200 pb-1"
               >
                 <span for="" class="text-gray-400">Return Date</span>
-                <span for="" class="font-medium">{{ carTransaction.return_date}}</span>
+                <span for="" class="font-medium">{{
+                  carTransaction.return_date
+                }}</span>
               </div>
               <div
                 class="w-full flex items-center justify-between text-lg mb-3 border-solid border-b border-gray-200 pb-1"
               >
                 <span for="" class="text-gray-400">Destination Pickup</span>
-                <span for="" class="font-medium">{{ carTransaction.destination_pickup}}</span>
+                <span for="" class="font-medium">{{
+                  carTransaction.destination_pickup
+                }}</span>
               </div>
               <div
                 class="w-full flex items-center justify-between text-lg mb-3 border-solid border-b border-gray-200 pb-1"
               >
                 <span for="" class="text-gray-400">Destination Return</span>
-                <span for="" class="font-medium">{{ carTransaction.destination_return}}</span>
+                <span for="" class="font-medium">{{
+                  carTransaction.destination_return
+                }}</span>
               </div>
               <div
                 class="w-full flex items-center justify-between text-lg mb-3 border-solid border-b border-gray-200 pb-1"
@@ -75,7 +83,11 @@
                 <span for="" class="font-medium">${{ totalPrice }}</span>
               </div>
             </div>
-            <RButton class="btn-assent w-full" name-btn="Confirm" @btn-click="handleAddCarAndBill()"></RButton>
+            <RButton
+              class="btn-success w-full"
+              label="Confirm"
+              @btn-click="handleAddCarAndBill()"
+            ></RButton>
           </div>
         </div>
       </div>
@@ -84,7 +96,7 @@
 </template>
 
 <script lang="ts">
-import { Component,Prop, Vue } from "nuxt-property-decorator";
+import { Component, Prop, Vue } from "nuxt-property-decorator";
 import axios from "axios";
 
 @Component({
@@ -95,12 +107,12 @@ export default class extends Vue {
   @Prop({}) userInfo: any;
   @Prop({}) carTransaction: any;
   @Prop({}) totalPrice: any;
-  @Prop({}) protectedPlan:any;
+  @Prop({}) protectedPlan: any;
   isDeposit: boolean = true;
   isActive: boolean = false;
   isSuccessful: boolean = true;
 
-  handleAddCarAndBill(){
+  handleAddCarAndBill() {
     this.handleAddCarTransaction();
     this.handleAddBill();
   }
@@ -117,7 +129,7 @@ export default class extends Vue {
           destination_return: this.carTransaction.destination_return,
           pickup_date: this.carTransaction.pickup_date,
           return_date: this.carTransaction.return_date,
-          protection_plan: this.protectedPlan
+          protection_plan: this.protectedPlan,
         },
         {
           headers: {
@@ -159,7 +171,7 @@ export default class extends Vue {
       alert(errMessage);
     }
   }
- 
+
   toogleIsActive() {
     if (this.isActive == true) {
       this.isActive = false;

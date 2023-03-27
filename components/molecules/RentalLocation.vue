@@ -76,7 +76,7 @@
         ></IconFilter>
       </div>
       <div class="button-search flex justify-center items-center">
-        <RButton class="btn-search text-black" @click="handleSearchCar()"
+        <RButton class="btn-size text-black" @click="handleSearchCar()"
           >Search</RButton
         >
       </div>

@@ -160,11 +160,11 @@
         <div class="grid grid-cols-1 w-full">
           <div class="button-group flex justify-between w-full px-7">
             <RButton
-              class="btn-assent"
-              nameBtn="Add"
+              class="btn-success"
+              label="Add"
               @click="handleAddCar()"
             ></RButton>
-            <RButton class="btn-close" nameBtn="Close"></RButton>
+            <RButton class="btn-close" label="Close"></RButton>
           </div>
         </div>
       </div>

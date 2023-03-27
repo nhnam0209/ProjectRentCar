@@ -2,34 +2,38 @@
   <nav class="h-16 flex justify-between overflow-hidden items-center">
     <div class="bg-no-repeat bg-cover bg-center w-24 h-full">
       <NuxtLink class="" to="/">
-        <img src="../../static/img/logo.jpg" alt="" />
+        <img src="../../static/img/logo.jpg" alt="company_logo" />
       </NuxtLink>
     </div>
-    <div class="px-4 cursor-pointer icon-hover relative right-0 z-50 " :class="{'hidden':isLogin}">
-      <IconBar class="w-6 h-6"></IconBar>
+    <div class="p-4 cursor-pointer icon-hover relative right-0 z-50">
+      <IconBar class="w-6 h-6" />
     </div>
     <div
-      class="text-xl absolute top-12 right-0 w-36 font-medium bg-white z-50 subnav-icon hover:block cursor-pointer"
+      class="text-xl py-4 absolute top-[54px] right-0 w-40 font-medium rounded-md border-2 bg-white z-50 subnav-icon hover:block cursor-pointer"
       v-if="!isLogin"
     >
+      <div
+        v-for="item in navigationBarData"
+        class="p-4 hover:bg-gray-300/50 w-full h-full"
+      >
+        <NuxtLink :key="item.id" :to="item.link">
+          {{ item.label }}
+        </NuxtLink>
+      </div>
+    </div>
+
+    <div
+      v-else
+      class="px-5 py-4 top-[52px] absolute right-0 w-40 font-medium rounded-md border-2 bg-white z-50 subnav-icon hover:block cursor-pointer"
+    >
+      <sub-navigation :user-info="userInfo" :is-admin="isAdmin" />
       <div class="p-4 hover:bg-gray-300/50 w-full h-full">
         <NuxtLink class="" to="/rentcar"> Rent Car </NuxtLink>
       </div>
       <div class="p-4 hover:bg-gray-300/50 w-full h-full">
         <NuxtLink class="" to="/aboutus"> About Us </NuxtLink>
       </div>
-      <div class="p-4 hover:bg-gray-300/50 w-full h-full">
-        <NuxtLink class="" to="/login"> Sign In </NuxtLink>
-      </div>
-      <div class="p-4 hover:bg-gray-300/50 w-full h-full">
-        <NuxtLink class="" to="/register"> Sign Up </NuxtLink>
-      </div>
     </div>
-
-    <div v-else class="px-5">
-      <sub-navigation :user-info="userInfo" :is-admin="isAdmin" />
-    </div>
-
   </nav>
 </template>
 
@@ -43,6 +47,28 @@ import axios from "../../utils/myAxios";
 export default class extends Vue {
   isLogin: Boolean = false;
   userInfo: any = {};
+  navigationBarData: any = [
+    {
+      id: 1,
+      label: "Rent Car",
+      link: "/rentcar",
+    },
+    {
+      id: 2,
+      label: "About Us",
+      link: "/aboutus",
+    },
+    {
+      id: 3,
+      label: "Sign In",
+      link: "/login",
+    },
+    {
+      id: 4,
+      label: "Sign Up",
+      link: "/register",
+    },
+  ];
 
   handleLogOut() {
     try {
@@ -50,6 +76,7 @@ export default class extends Vue {
       this.$router.push("/");
       setTimeout("location.reload(true)", 100);
     } catch (error) {
+      // Must do: Error handle for logout
       this.$router.push("/");
       setTimeout("location.reload(true)", 100);
     }

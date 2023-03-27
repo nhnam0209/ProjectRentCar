@@ -19,15 +19,15 @@ export default class extends Vue {
 
 <style>
 input[type="date"]::-webkit-inner-spin-button,
-input[type="date"]::-webkit-calendar-picker-indicator {
+/* input[type="date"]::-webkit-calendar-picker-indicator {
   display: none;
   -webkit-appearance: none;
-}
+} */
 
 .input-focus:focus ~ .label-input,
 .input-focus:valid ~ .label-input {
   top: -20px;
-  color: #00a550;
+  color: #5cdb95;
 }
 
 .station-input-pickup:first-child {
@@ -37,5 +37,4 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .station-input-pickup:last-child {
   margin-left: 20px;
 }
-
 </style>

@@ -13,9 +13,7 @@
       <div
         class="text-center text-xl md:text-5xl flex justify-center items-center"
       >
-        <p class="self-center">
-          Please enter the search box to have the car for rent
-        </p>
+        <p class="self-center">No Cars Are Available!!!</p>
       </div>
     </div>
   </div>

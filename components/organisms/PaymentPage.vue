@@ -88,7 +88,9 @@
               <span class="">Promos:</span>
               <RInput class="border-b"></RInput>
             </div>
-            <div class="flex justify-between items-center text-xl my-4 pb-4 border-b border-black">
+            <div
+              class="flex justify-between items-center text-xl my-4 pb-4 border-b border-black"
+            >
               <span class="font-bold">VAT 10%:</span>
               <span class="font-medium">$4.27</span>
             </div>
@@ -99,8 +101,13 @@
           </div>
         </div>
         <div class="">
-          <RButton class="btn-assent w-full flex items-center justify-center btn-purchase" nameBtn="Purchase">
-            <IconArrowRight class="h-6 w-6 fill-white pl-2 move-arrow-right"></IconArrowRight>
+          <RButton
+            class="btn-success w-full flex items-center justify-center btn-purchase"
+            label="Purchase"
+          >
+            <IconArrowRight
+              class="h-6 w-6 fill-white pl-2 move-arrow-right"
+            ></IconArrowRight>
           </RButton>
         </div>
       </div>
@@ -117,17 +124,16 @@ export default class extends Vue {}
 </script>
 
 <style>
-.btn-purchase:hover .move-arrow-right{
+.btn-purchase:hover .move-arrow-right {
   animation: leftToRight 1.5s ease;
 }
 
-@keyframes leftToRight{
-  from{
+@keyframes leftToRight {
+  from {
     transform: translateX(0px);
   }
-  to{
+  to {
     transform: translateX(30px);
   }
 }
 </style>
-

@@ -2,7 +2,7 @@
   <div class="">
     <h1 class="text-xl font-bold">Wallet</h1>
     <table class="w-full border border-solid text-center bg-white">
-      <tr class="bg-green-500 text-xl text-white">
+      <tr class="bg-[#379683] text-xl text-white">
         <th class="py-2 px-4 max-lg:px-2">ID</th>
         <th class="py-2 px-4 max-lg:px-2">User ID</th>
         <th class="py-2 px-4 max-lg:px-2">Balance</th>
@@ -11,7 +11,11 @@
         <th class="py-2 px-4 max-lg:px-2">Update At</th>
         <th class="py-2 px-4 max-lg:px-2">Delete At</th>
       </tr>
-      <tr class="text-lg" v-for="walletInfo in walletInfos" :key="walletInfo.id">
+      <tr
+        class="text-lg"
+        v-for="walletInfo in walletInfos"
+        :key="walletInfo.id"
+      >
         <td class="py-2 px-4 max-lg:px-2">{{ walletInfo.id }}</td>
         <td class="py-2 px-4 max-lg:px-2">{{ walletInfo.user_id }}</td>
         <td class="py-2 px-4 max-lg:px-2">{{ walletInfo.balance }}</td>

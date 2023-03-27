@@ -1,10 +1,15 @@
 <template>
   <div class="w-full flex justify-center items-center bg-gray-200">
     <div class="dashboard-table">
-      <div class="flex flex-col z-0" v-if="!isManageUser && !isManageCar" :class="{'flex': !isManageUser && !isManageCar}"
->
+      <div
+        class="flex flex-col z-0"
+        v-if="!isManageUser && !isManageCar"
+        :class="{ flex: !isManageUser && !isManageCar }"
+      >
         <div class="m-4">
-          <wallet-transaction-table :wallet-transactions="walletTransactions"></wallet-transaction-table>
+          <wallet-transaction-table
+            :wallet-transactions="walletTransactions"
+          ></wallet-transaction-table>
         </div>
 
         <div class="m-4">
@@ -12,21 +17,22 @@
         </div>
 
         <div class="m-4">
-          <CarTransactionTable :cars-transactions="carsTransactions"></CarTransactionTable>
+          <CarTransactionTable
+            :cars-transactions="carsTransactions"
+          ></CarTransactionTable>
         </div>
 
         <div class="m-4">
           <BankAccountTable :bank-accounts="bankAccounts"></BankAccountTable>
         </div>
-
       </div>
 
       <div class="button flex">
         <div class="">
           <RButton
-            nameBtn="Add"
+            label="Add"
             @btn-click="toogleIsActive()"
-            class="btn-assent m-6"
+            class="btn-success m-6"
           >
           </RButton>
           <modal-add-user-from-admin
@@ -39,15 +45,7 @@
             :user-info="userInfo"
           ></modal-add-car-from-admin>
         </div>
-        <!-- <div class="">
-          <RButton
-          nameBtn="Delete"
-            @btn-click="toogleIsActiveDelete()"
-            class="btn-close m-6"
-          >
-          </RButton>
-          <ModalAlert v-if="isActive_delete"></ModalAlert>
-        </div> -->
+
         <div class="flex flex-col w-full h-screen">
           <UsersTable
             v-if="isManageUser"
@@ -75,14 +73,13 @@ export default class extends Vue {
   @Prop({ type: Boolean, default: false }) isManageCar!: Boolean;
   @Prop({ type: Boolean, default: false }) isDashboard!: Boolean;
   @Prop() userInfo!: any;
-  bankAccounts:any = []
-  walletTransactions:any = []
-  walletInfos: any = []
-  carsTransactions: any = []
+  bankAccounts: any = [];
+  walletTransactions: any = [];
+  walletInfos: any = [];
+  carsTransactions: any = [];
 
   isActive = false;
   isActive_delete = false;
-
 
   async created() {
     try {
@@ -95,35 +92,38 @@ export default class extends Vue {
             },
           }
         );
-        this.bankAccounts = bankAccountRes.data.bankAccount;
+        this.bankAccounts = bankAccountRes.data.bank_accounts;
+        console.log(this.bankAccounts);
 
-        const walletRes = await axios.get("http://localhost:5000/api/wallet/findall",
-        {
+        const walletRes = await axios.get(
+          "http://localhost:5000/api/wallet/findall",
+          {
             headers: {
               Authorization: `${document.cookie}`,
             },
           }
         );
-        this.walletInfos = walletRes.data.wallet
+        this.walletInfos = walletRes.data.wallet;
 
-        const walletTransactionRes = await axios.get("http://localhost:5000/api/wallet/findallTransaction",
-        {
+        const walletTransactionRes = await axios.get(
+          "http://localhost:5000/api/wallet/findallTransaction",
+          {
             headers: {
               Authorization: `${document.cookie}`,
             },
           }
         );
-        this.walletTransactions = walletTransactionRes.data.walletTransaction
+        this.walletTransactions = walletTransactionRes.data.wallet_transactions;
 
-        const carsTransactionRes = await axios.get("http://localhost:5000/api/cars/findallTransaction",
-        {
+        const carsTransactionRes = await axios.get(
+          "http://localhost:5000/api/cars/findallTransaction",
+          {
             headers: {
               Authorization: `${document.cookie}`,
             },
           }
         );
-        this.carsTransactions = carsTransactionRes.data.carTransaction
-
+        this.carsTransactions = carsTransactionRes.data.cars_transactions;
       } else {
         this.$router.push("/login");
         setTimeout("location.reload(true)", 100);
