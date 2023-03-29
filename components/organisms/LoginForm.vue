@@ -57,7 +57,6 @@ export default class extends Vue {
   async submitLogin() {
     try {
       this.$vxm.user.handleLogin();
-      setTimeout("location.reload(true)", 100);
     } catch (error: any) {
       this.msg = error;
       alert(this.msg);

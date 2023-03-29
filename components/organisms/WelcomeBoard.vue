@@ -1,11 +1,12 @@
 <template>
+  <!-- Must Do: build a new welcome part -->
   <div class="background-home flex justify-center items-center h-screen">
-    <div class="booking-form bg-white rounded-md">
+    <div class="container-form bg-white rounded-md">
       <div class="info-hire-car my-4 flex justify-center">
         <div
           class="title-pickup-input w-full py-2 flex flex-col justify-center"
         >
-          <span class="font-bold text-center text-xl uppercase lg:text-3xl"
+          <span class="font-bold text-center text-xl uppercase lg:text-5xl"
             >Welcome to Rental Car Service</span
           >
           <span class="font-bold text-md md:text-xl text-center mt-2"
@@ -44,7 +45,7 @@ export default class extends Vue {
   background-size: cover;
 }
 
-.booking-form {
+.container-form {
   animation: slidein-Homepage 2s ease;
   width: 1000px;
 }
@@ -82,9 +83,9 @@ export default class extends Vue {
 }
 
 @media (max-width: 1190px) {
-  .booking-form {
-    width: 50%;
-  }
+  /* .container-form {
+    width: 70%;
+  } */
   .dateime-pickup-car,
   .input-datetime-pickup-and-return,
   .info-customer {

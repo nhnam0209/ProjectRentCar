@@ -1,31 +1,32 @@
 <template>
   <div class="bg-white">
-    <RentalLocation></RentalLocation>
+    <search-location />
     <div class="flex h-full" v-if="searchResult.length > 0">
-      <RentCarSideBar class="max-sm:hidden"></RentCarSideBar>
-      <ProductListCard
+      <rent-car-side-bar v-if="!isMobile"></rent-car-side-bar>
+      <product-list-card
         :car-result="searchResult"
         :is-login="isLogin"
         :user-info="userInfo"
-      ></ProductListCard>
+      ></product-list-card>
     </div>
     <div v-else class="h-[700px]">
       <div
         class="text-center text-xl md:text-5xl flex justify-center items-center"
       >
-        <p class="self-center">No Cars Are Available!!!</p>
+        <p class="flex self-center">No Cars Are Available!!!</p>
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "nuxt-property-decorator";
+import { Component, Prop, Vue } from "nuxt-property-decorator";
 import axios from "~/utils/myAxios";
 @Component({
   name: "Product",
 })
 export default class extends Vue {
+  @Prop({ type: Boolean, default: false }) isMobile!: Boolean;
   isLogin: Boolean = false;
   userInfo: any;
   result: any;

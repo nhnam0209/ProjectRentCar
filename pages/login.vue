@@ -1,7 +1,7 @@
 <template>
   <Default>
     <template #content>
-      <LoginForm />
+      <login-form />
     </template>
   </Default>
 </template>

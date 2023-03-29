@@ -59,6 +59,10 @@ export default {
       regular: true,
     },
   },
+
+  // generate: {
+  //   fallback: "404.html",
+  // },
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: ["@nuxtjs/axios", "@nuxtjs/toast"],
 

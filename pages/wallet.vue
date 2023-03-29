@@ -111,12 +111,15 @@ export default class extends Vue {
         );
         this.bankAccounts = bankAccountRes.data.bankAccount;
       } else {
+        // this.$nuxt.error({ statusCode: 500 });
         //this.$router.push("/login");
         //setTimeout("location.reload(true)", 100);
       }
     } catch (error) {
       this.isLogin = false;
-      //this.$router.push("/login");
+      // this.$nuxt.error({ statusCode: 500 });
+
+      this.$router.push("/login");
       //setTimeout("location.reload(true)", 100);
     }
   }

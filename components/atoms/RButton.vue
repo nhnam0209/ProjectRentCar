@@ -40,11 +40,11 @@ export default class extends Vue {
   transition: 0.5s;
 }
 .btn-success {
-  background: #5cdb95;
+  background: #009548;
   border-radius: 10px;
 }
 .btn-success:hover {
-  background: #009548;
+  background: #5cdb95;
   transition: 0.5s;
 }
 .btn-size {
@@ -57,5 +57,9 @@ export default class extends Vue {
   background: #ffdc00;
   border-radius: 10px;
   overflow: hidden;
+}
+
+.button-search:hover {
+  background: #eacb00;
 }
 </style>

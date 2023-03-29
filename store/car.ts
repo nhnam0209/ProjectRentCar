@@ -9,31 +9,31 @@ const VuexModule = createModule({
 });
 export class CarStore extends VuexModule {
   car: any = {
-    id: "",
-    img: "",
-    name: "",
-    seat: "",
-    fuel: "",
-    fuel_type: "",
-    fuel_consumption: "",
-    transmission: "",
-    distance: "",
-    description: "",
-    feature: "",
-    price: "",
-    type_car: "",
-    model: "",
-    owner: "",
-    user_id: "",
-    province: "",
-    plate_number: "",
+    id: EMPTY,
+    img: EMPTY,
+    name: EMPTY,
+    seat: EMPTY,
+    fuel: EMPTY,
+    fuel_type: EMPTY,
+    fuel_consumption: EMPTY,
+    transmission: EMPTY,
+    distance: EMPTY,
+    description: EMPTY,
+    feature: EMPTY,
+    price: EMPTY,
+    type_car: EMPTY,
+    model: EMPTY,
+    owner: EMPTY,
+    user_id: EMPTY,
+    province: EMPTY,
+    plate_number: EMPTY,
     available_date: Date,
   };
   loading: Boolean = false;
   searchingCar: any = {
     location: EMPTY,
-    pickupDate: Date,
-    returnDate: Date,
+    pickupDate: EMPTY,
+    returnDate: EMPTY,
   };
   carPricing: any = {};
   result: any = [] || null;
@@ -76,8 +76,12 @@ export class CarStore extends VuexModule {
           this.result.shift();
           localStorage.setItem("car_result", JSON.stringify(this.result));
         }
-      } else {
-        alert("Please enter location, pickup date and return date!!!");
+      } else if (car.location == EMPTY) {
+        alert("Please fill the location!!");
+      } else if (car.returnDate == EMPTY) {
+        alert("Please fill the return date!!");
+      } else if (car.pickupDate == EMPTY) {
+        alert("Please fill the pickup date!!");
       }
     } catch (error: any) {
       const errMessage = JSON.stringify(error.response.data.msg);

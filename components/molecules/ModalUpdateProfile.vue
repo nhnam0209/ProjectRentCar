@@ -4,7 +4,6 @@
       action=""
       class="signup-form justify-center items-center bg-white rounded-xl shadow-xl"
       :class="{ 'modal-close': isActive }"
-      @submit.prevent="handleUpdateUserInfo(user)"
     >
       <div class="p-6">
         <header class="title-signup text-3xl font-bold mt-7">
@@ -103,25 +102,15 @@
         </div>
       </div>
       <div class="button-group flex justify-between w-full px-7">
-        <!-- <button
-          type="submit"
-          class="rounded-xl py-2 text-lg text-white font-bold my-7"
-        >
-          Update
-        </button> -->
         <r-button
           label="Update"
-          class="rounded-xl py-2 text-lg text-white font-bold my-7"
+          class="btn-success rounded-xl py-2 text-lg text-white font-bold my-7"
+          @click="handleUpdateUserInfo(user)"
         />
         <r-button
           label="Close"
           class="rounded-xl py-2 btn-close text-lg text-white font-bold my-7"
         />
-        <!-- <button
-          class="rounded-xl py-2 btn-close text-lg text-white font-bold my-7"
-        >
-          Close
-        </button> -->
       </div>
     </form>
   </div>
@@ -165,10 +154,7 @@ export default class extends Vue {
   }
 
   handleClose() {
-    this.isActive = this.isClose;
-    this.isActive
-      ? (this.isActive = false && (this.isClose = this.isActive))
-      : (this.isActive = true && (this.isClose = this.isActive));
+    this.isActive ? (this.isActive = false) : (this.isActive = true);
   }
 
   get user() {

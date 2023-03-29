@@ -31,7 +31,7 @@
         <div class="">
           <RButton
             label="Add"
-            @btn-click="toogleIsActive()"
+            @click="toogleIsActive()"
             class="btn-success m-6"
           >
           </RButton>

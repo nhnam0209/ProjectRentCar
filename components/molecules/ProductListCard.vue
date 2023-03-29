@@ -11,78 +11,49 @@
         class="cursor-pointer p-4 bg-white rounded-xl border border-solid border-neutral-500"
         @click="toogleIsActive(car)"
       >
-        <div class="flex justify-center">
-          <img :src="car.img" alt="" class="w-3/4 h-3/4" />
-        </div>
+        <img
+          :src="car.img"
+          alt="image_car"
+          class="w-full h-auto rounded-md my-4"
+        />
+
         <div class="cars-details mb-2">
           <div class="pb-4 flex justify-between">
             <div class="">
               <span class="car-name text-2xl font-bold">{{ car.name }}</span>
               <br />
               <span class="price-car text-xl font-bold text-green-500"
-                >${{ car.price }} / day</span
+                >{{ car.price }}$/day</span
               >
             </div>
           </div>
           <div class="details grid grid-cols-2">
-            <div class="flex text-xl max-lg:col-span-2 max-lg:text-lg">
+            <div class="flex text-base max-lg:col-span-2 max-lg:text-lg my-2">
+              <icon-location-pin
+                class="w-5 h-5 max-lg:w-6 max-lg:h-6"
+              ></icon-location-pin>
+              <span class="capitalize ml-2 flex self-center">
+                {{ car.province }}
+              </span>
+            </div>
+            <div class="flex text-base max-lg:col-span-2 max-lg:text-lg">
               <IconPerson class="w-8 h-8 max-lg:w-6 max-lg:h-6"></IconPerson>
-              Seat:
-              {{ car.seat }}
+              <span class="capitalize ml-2 flex self-center">
+                {{ car.seat }} seats
+              </span>
             </div>
-            <!-- <div class="flex text-xl justify-center items-center">
-              <IconDoor class="w-8 h-8"></IconDoor>
-            </div> -->
-            <div class="flex text-xl max-lg:col-span-2 max-lg:text-lg">
-              <IconEngine class="w-8 h-8 max-lg:w-6 max-lg:h-6"></IconEngine>
-              Transmission:
-              {{ car.transmission }}
+            <div class="flex text-base max-lg:col-span-2 max-lg:text-base">
+              <IconEngine class="w-7 h-7 max-lg:w-6 max-lg:h-6"></IconEngine>
+              <span class="capitalize ml-2 flex self-center">
+                {{ car.transmission }}
+              </span>
             </div>
-            <div class="flex text-xl max-lg:col-span-2 max-lg:text-lg">
-              <IconFuel class="w-8 h-8 max-lg:w-6 max-lg:h-6"></IconFuel>
-              Fuel Type:
-              {{ car.fuel_type }}
+            <div class="flex text-base max-lg:col-span-2 max-lg:text-base">
+              <icon-car class="w-7 h-7 max-lg:w-6 max-lg:h-6"></icon-car>
+              <span class="capitalize ml-3 flex self-center">
+                {{ car.type_car }}
+              </span>
             </div>
-            <div class="flex text-xl max-lg:col-span-2 max-lg:text-lg">
-              <IconTank class="w-8 h-8 max-lg:w-6 max-lg:h-6"></IconTank>
-              Fuel Tank:
-              {{ car.fuel }}
-            </div>
-            <div class="flex text-xl col-span-2 max-lg:text-lg">
-              <IconTank class="w-8 h-8 max-lg:w-6 max-lg:h-6"></IconTank>
-              Fuel Consumption:
-              {{ car.fuel_consumption }} / 100km
-            </div>
-          </div>
-        </div>
-        <div class="mb-2">
-          <div class="flex items-center">
-            <IconCheck class="w-5 h-5"></IconCheck>
-            <RLabel
-              class="sidebar-label"
-              nameLabel="Full charge included"
-            ></RLabel>
-          </div>
-          <div class="flex items-center">
-            <IconCheck class="w-5 h-5"></IconCheck>
-            <RLabel
-              class="sidebar-label"
-              nameLabel="Average range: 320km"
-            ></RLabel>
-          </div>
-          <div class="flex items-center">
-            <IconCheck class="w-5 h-5"></IconCheck>
-            <RLabel
-              class="sidebar-label"
-              nameLabel="Basic protection included"
-            ></RLabel>
-          </div>
-          <div class="flex items-center">
-            <IconCheck class="w-5 h-5"></IconCheck>
-            <RLabel
-              class="sidebar-label"
-              nameLabel="Free cancellation up to 48h before pick up"
-            ></RLabel>
           </div>
         </div>
         <div class="mb-2 flex items-center justify-center">
@@ -90,7 +61,15 @@
         </div>
       </div>
       <ModalDetailCar
-        v-if="isActive"
+        v-if="isActive && !isMobile"
+        :car-detail="carDetail"
+        :is-modal-up="isActive"
+        :is-login="isLogin"
+        :user-info="userInfo"
+        @isModalUp="getIsActive"
+      />
+      <modal-detail-car-mobile
+        v-if="isActive && isMobile"
         :car-detail="carDetail"
         :is-modal-up="isActive"
         :is-login="isLogin"
@@ -113,8 +92,7 @@ export default class extends Vue {
   @Prop({}) userInfo: any;
 
   toogleIsActive(car: any) {
-    // this.img;
-    console.log(car.img);
+    console.log(car);
     if (this.isActive == true) {
       this.isActive = false;
     } else {
@@ -133,6 +111,10 @@ export default class extends Vue {
       img;
     };
     img.src = base64img;
+  }
+
+  get isMobile() {
+    return this.$screen.width < 1024;
   }
 }
 </script>

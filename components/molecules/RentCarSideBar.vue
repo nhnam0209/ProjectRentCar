@@ -66,14 +66,15 @@
           <select
             class="text-lg w-full text-center py-1 border border-solid border-neutral-500 rounded-xl"
           >
+            <option value="Mini">Mini</option>
             <option value="Sedan">Sedan</option>
-            <option value="Hyundai">SUV</option>
-            <option value="Kia">Van</option>
+            <option value="Suv">SUV</option>
+            <option value="Van">Van</option>
           </select>
         </div>
 
         <div class="mb-4">
-          <div class="mb-2 text-2xl font-bold">Auto Maker</div>
+          <div class="mb-2 text-2xl font-bold">Car Company</div>
           <select
             class="text-lg w-full text-center py-1 border border-solid border-neutral-500 rounded-xl"
           >
@@ -86,26 +87,20 @@
           </select>
         </div>
 
-        <div class="sidebar-transition mb-4">
-          <div class="mb-2 text-2xl font-bold">Transition</div>
+        <div class="mb-4">
+          <div class="mb-2 text-2xl font-bold">Transmission</div>
           <div class="combo-checkbox">
             <div class="flex">
               <div class="mr-2">
-                <input type="radio" name="transition" class="" checked />
+                <input type="radio" name="Transmission" class="flex mt-2" />
               </div>
-              <RLabel nameLabel="Both" class="sidebar-label"></RLabel>
+              <RLabel nameLabel="Automation" class="sidebar-label"></RLabel>
             </div>
-            <div class="flex">
+            <div class="flex mt-2">
               <div class="mr-2">
-                <input type="radio" name="transition" class="" />
+                <input type="radio" name="Transmission" class="flex mt-2" />
               </div>
-              <RLabel nameLabel="Automatic" class="sidebar-label"></RLabel>
-            </div>
-            <div class="flex">
-              <div class="mr-2">
-                <input type="radio" name="transition" class="" />
-              </div>
-              <RLabel nameLabel="Manual" class="sidebar-label"></RLabel>
+              <RLabel nameLabel="Gearbox" class="sidebar-label"></RLabel>
             </div>
           </div>
         </div>

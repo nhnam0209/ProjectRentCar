@@ -2,22 +2,25 @@
   <div
     class="py-4 z-50 sub-navbar-items text-[12px] lg:text-xl"
     :class="!isMobile && 'hover:bg-gray-300/50'"
+    @mouseleave="handleMouseBlur()"
+    @mouseover="handleMouseEnter()"
   >
     <div
-      @click="handleHover()"
-      class="cursor-pointer flex text-center justify-center"
+      @mouseover="handleMouseEnter()"
+      class="cursor-pointer p-6 flex text-center justify-center"
     >
       <div class="inline-flex self-center">
-        <span v-if="!isAdmin"><img src="" alt="" /></span>
+        <!-- <span v-if="!isAdmin"><img src="" alt="avatar" /></span> -->
         <p class="text-xl">{{ username }}</p>
       </div>
     </div>
     <div
       v-if="isHover"
-      class="bg-green-300 w-[200px] lg:w-[250px] rounded-md h-fit absolute top-[50px] mt-4 right-5"
+      @mouseover="handleMouseEnter()"
+      class="bg-green-300 p-4 lg:w-[250px] rounded-md h-fit absolute top-[50px] mt-3 right-5"
       :class="classes"
     >
-      <div class="py-2">
+      <div class="py-2" @mouseenter="handleMouseEnter()">
         <div v-if="!isAdmin" class="flex flex-col">
           <NuxtLink
             v-for="item in userSubNavigation"
@@ -99,8 +102,11 @@ export default class extends Vue {
   mounted() {
     this.username = this.userInfo.username;
   }
-  handleHover() {
-    !this.isHover ? (this.isHover = true) : (this.isHover = false);
+  handleMouseEnter() {
+    !this.isHover && (this.isHover = true);
+  }
+  handleMouseBlur() {
+    this.isHover && (this.isHover = false);
   }
 
   handleLogOut() {

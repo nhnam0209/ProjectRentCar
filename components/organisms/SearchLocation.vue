@@ -30,17 +30,19 @@
         class="flex w-1/2 max-sm:border max-sm:border-solid max-sm:border-neutral-900 max-sm:w-full max-sm:rounded-xl"
       >
         <div
-          class="w-full flex border-r border-solid border-neutral-900 h-full"
+          class="w-full flex justify-center border-r border-solid border-neutral-900 h-full"
         >
-          <div class="flex items-center justify-center px-1">
-            <IconDateTime class="icon-fill cursor-pointer h-5 w-5" />
-          </div>
-          <div class="h-full pb-1">
-            <span class="text-gray-500 text-center text-xl">Pick up time</span>
-            <div class="h-6">
+          <div class="h-full flex flex-col justify-center">
+            <div class="flex items-center justify-center px-1">
+              <IconDateTime class="icon-fill h-5 w-5 mr-2" />
+              <span class="text-gray-500 text-center text-base lg:text-lg"
+                >Pick up time</span
+              >
+            </div>
+            <div class="h-6 flex items-center">
               <input
                 type="date"
-                class="w-full outline-none"
+                class="w-full outline-none items-center"
                 placeholder="Pick up time"
                 v-model="car.pickupDate"
                 required
@@ -48,13 +50,14 @@
             </div>
           </div>
         </div>
-
-        <div class="w-full flex">
-          <div class="flex items-center justify-center h-full px-1">
-            <IconDateTime class="icon-fill cursor-pointer h-5 w-5" />
-          </div>
-          <div class="h-full pb-1">
-            <span class="text-gray-500 text-center text-xl">Return time</span>
+        <div class="w-full flex justify-center">
+          <div class="h-full pb-1 flex flex-col justify-center">
+            <div class="flex items-center justify-center h-full px-1">
+              <IconDateTime class="icon-fill h-5 w-5 mr-2" />
+              <span class="text-gray-500 text-center text-base lg:text-lg"
+                >Return time</span
+              >
+            </div>
             <div class="h-6">
               <input
                 type="date"

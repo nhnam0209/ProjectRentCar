@@ -1,7 +1,7 @@
 <template>
   <Default>
     <template #content>
-      <product-list class="h-full"></product-list>
+      <product-list class="h-full" :is-mobile="isMobile"></product-list>
     </template>
   </Default>
 </template>
@@ -13,5 +13,9 @@ import { Component, Vue } from "nuxt-property-decorator";
   name: "RentCarPage",
   layout: "rentcar-layout",
 })
-export default class extends Vue {}
+export default class extends Vue {
+  get isMobile() {
+    return this.$screen.width < 1024;
+  }
+}
 </script>

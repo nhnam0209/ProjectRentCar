@@ -1,14 +1,25 @@
 <template>
   <div class="container">
-    <h1 v-if="error.statusCode === 404">Page not found</h1>
-    <h1 v-else>An error occurred</h1>
+    <h1 v-if="error.statusCode === 404">
+      {{ error.statusCode }} - Page not found
+    </h1>
+    <h1 v-else>{{ error.statusCode }} - An error occurred</h1>
     <NuxtLink to="/">Home page</NuxtLink>
   </div>
 </template>
 
-<script>
-export default {
-  props: ["error"],
-  layout: "blog", // you can set a custom layout for the error page
-};
+<script lang="ts">
+import { Component, Prop, Vue } from "nuxt-property-decorator";
+import VueScreen from "vue-screen";
+Vue.use(VueScreen);
+
+@Component({
+  name: "RentCarLayout",
+})
+export default class extends Vue {
+  @Prop({}) error!: any;
+  get isMobile() {
+    return this.$screen.width < 1024;
+  }
+}
 </script>

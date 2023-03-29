@@ -11,6 +11,7 @@
       <div class="w-full mx-40">
         <div class="grid grid-cols-2 md:grid-cols-3">
           <div class="flex justify-center drop-shadow-2xl -mt-6">
+            <!-- Must do: Do the default avatar -->
             <div
               class="bg-fuchsia-500 text-white rounded-full text-center flex flex-col justify-center text-3xl w-20 h-20 md:text-7xl md:w-40 md:h-40 sm:text-3xl sm:w-28 sm:h-28 relative"
             >
@@ -93,7 +94,7 @@
           </div>
         </div>
         <div
-          class="flex flex-col lg:grid lg:grid-cols-3 bg-white rounded-lg pb-8 w-4/5"
+          class="flex flex-col lg:grid lg:grid-cols-3 bg-white rounded-lg py-4 w-4/5"
         >
           <div
             v-for="item in userInformationDashboard"
@@ -116,7 +117,7 @@
             >
               {{ user.phone_number }}
               <icon-success
-                class="w-3 h-3 ml-2 cursor-pointer md:w-5 md:h-5 md:ml-4"
+                class="w-3 h-3 ml-2 self-center cursor-pointer md:w-5 md:h-5 md:ml-4"
               />
             </div>
             <div
@@ -125,7 +126,7 @@
             >
               {{ user.driven_license }}
               <icon-success
-                class="w-3 h-3 ml-2 cursor-pointer md:w-5 md:h-5 md:ml-4"
+                class="w-3 h-3 ml-2 self-center cursor-pointer md:w-5 md:h-5 md:ml-4"
               />
             </div>
             <div
@@ -134,7 +135,7 @@
             >
               {{ user.email }}
               <icon-success
-                class="w-3 h-3 ml-2 cursor-pointer md:w-5 md:h-5 md:ml-4"
+                class="w-3 h-3 ml-2 cursor-pointer self-center md:w-5 md:h-5 md:ml-4"
               />
             </div>
             <div v-else class="flex flex-col justify-center items-center">

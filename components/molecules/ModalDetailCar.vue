@@ -3,20 +3,19 @@
     class="background-modal justify-center items-center max-xl:overflow-auto py-5"
   >
     <div
-      class="bg-white w-2/3 rounded-xl flex max-xl:block max-md:w-full h-full my-4 overflow-auto"
+      class="bg-white w-3/4 rounded-xl flex max-xl:block max-md:w-full h-full my-4 overflow-auto"
       :class="{ 'modal-close': isActive }"
     >
       <div
         class="content-left px-4 border border-solid border-neutral-500 max-xl:border-none max-xl:w-full w-2/3 overflow-auto bg-white"
       >
         <div class="">
-          <!-- <div class="img-car-detail bg-cover bg-no-repeat w-full"></div> -->
           <img
             :src="carDetail.img"
-            alt=""
-            class="bg-cover bg-no-repeat w-full"
+            alt="car_img"
+            class="bg-cover bg-no-repeat w-full my-4 rounded-md"
           />
-          <div class="info">
+          <div class="info overflow-auto">
             <div class="cars-details product-card-items">
               <div class="pb-4 flex justify-between">
                 <span class="car-name text-3xl font-bold">{{
@@ -29,54 +28,54 @@
               </div>
               <div class="">
                 <div
-                  class="title-detail mb-4 text-2xl max-xl:text-xl font-bold"
+                  class="title-detail mb-2 text-2xl max-xl:text-xl font-bold capitalize"
                 >
-                  Full vehicle details
+                  Vehicle Detail
                 </div>
                 <div class="details grid grid-cols-2 font-medium">
-                  <div class="flex text-xl max-xl:text-lg">
+                  <div class="flex text-base max-xl:text-lg my-1">
                     <IconPerson class="w-8 h-8"></IconPerson>
                     Seat:
                     <span class="font-normal ml-1">
                       {{ carDetail.seat }}
                     </span>
                   </div>
-                  <div class="flex text-xl max-xl:text-lg">
+                  <div class="flex text-base max-xl:text-lg my-1">
                     <IconDoor class="w-8 h-8"></IconDoor>
                     Model:
                     <span class="font-normal ml-1">
                       {{ carDetail.model }}
                     </span>
                   </div>
-                  <div class="flex text-xl max-xl:text-lg">
+                  <div class="flex text-base max-xl:text-lg my-1">
                     <IconEngine class="w-8 h-8"></IconEngine>
                     Transmission:
                     <span class="font-normal ml-1">
                       {{ carDetail.transmission }}
                     </span>
                   </div>
-                  <div class="flex text-xl max-xl:text-lg">
+                  <div class="flex text-base max-xl:text-lg my-1">
                     <IconFuel class="w-8 h-8"></IconFuel>
                     Fuel Type:
                     <span class="font-normal ml-1">
                       {{ carDetail.fuel_type }}
                     </span>
                   </div>
-                  <div class="flex text-xl max-xl:text-lg">
+                  <div class="flex text-base max-xl:text-lg my-1">
                     <IconTank class="w-8 h-8"></IconTank>
                     Fuel Tank:
                     <span class="font-normal ml-1">
-                      {{ carDetail.fuel }}
+                      {{ carDetail.fuel }} L
                     </span>
                   </div>
-                  <div class="flex text-xl max-xl:text-lg">
+                  <div class="flex text-base max-xl:text-lg my-1">
                     <IconTank class="w-8 h-8"></IconTank>
                     Owner:
                     <span class="font-normal ml-1">
                       {{ carDetail.owner }}
                     </span>
                   </div>
-                  <div class="flex text-xl max-xl:text-lg col-span-2">
+                  <div class="flex text-base max-xl:text-lg col-span-2 my-1">
                     <IconTank class="w-8 h-8"></IconTank>
                     Fuel Consumption:
                     <span class="font-normal ml-1">
@@ -116,65 +115,95 @@
           <div
             class="booking-price text-4xl font-bold text-green-500 text-center my-5 max-md:hidden"
           >
-            ${{ carDetail.price }} / day
+            {{ carDetail.price }}$/day
           </div>
 
-          <div class="booking-pick-up-date my-4">
-            <span class="booking-title text-2xl max-xl:text-xl font-bold pb-2"
-              >Pick up date</span
-            >
-            <div class="pt-2">
-              <input
-                type="date"
-                class="w-full booking-input rounded-xl border border-solid p-2 border-neutral-500 outline-none"
-                v-model="carTransaction.pickup_date"
-              />
+          <div class="total-price">
+            <div class="title-sidebar text-2xl max-xl:text-xl font-bold my-2">
+              Total Price
+            </div>
+            <div class="font-medium text-lg">
+              <span>SubTotal: </span>
+              <span class="font-bold text-lg">{{ carDetail.price }}$/day</span>
+            </div>
+            <div class="font-medium text-lg">
+              <span>Service Fee: </span>
+              <span class="font-bold">2$</span>
+            </div>
+            <div class="font-medium text-lg">
+              <span>Protection Plan: </span>
+              <span class="font-bold">{{ insurancePlan() }}$</span>
+            </div>
+            <hr class="my-1" />
+            <div class="font-medium text-lg">
+              <span class="font-bold">Total: </span>
+              <span class="font-bold">{{ total() }}$</span>
             </div>
           </div>
 
-          <div class="booking-return-date my-4">
-            <span class="booking-title text-2xl max-xl:text-xl font-bold"
-              >Return date</span
-            >
-            <div class="pt-2">
-              <input
-                type="date"
-                class="w-full booking-input rounded-xl border border-solid p-2 border-neutral-500 outline-none"
-                v-model="carTransaction.return_date"
-              />
+          <div class="py-2">
+            <div class="booking-pick-up-date my-4">
+              <span
+                class="booking-title text-2xl max-xl:text-xl font-bold pb-2 capitalize"
+                >Pick up date</span
+              >
+              <div class="pt-2">
+                <input
+                  type="date"
+                  class="w-full booking-input rounded-xl border border-solid p-2 border-neutral-500 outline-none"
+                  v-model="carTransaction.pickup_date"
+                />
+              </div>
+            </div>
+
+            <div class="booking-return-date my-4">
+              <span
+                class="booking-title text-2xl max-xl:text-xl font-bold capitalize"
+                >Return date</span
+              >
+              <div class="pt-2">
+                <input
+                  type="date"
+                  class="w-full booking-input rounded-xl border border-solid p-2 border-neutral-500 outline-none"
+                  v-model="carTransaction.return_date"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="py-2">
+            <div class="place-of-receipt my-4">
+              <span class="booking-title text-2xl max-xl:text-xl font-bold"
+                >Destination Pickup</span
+              >
+              <div class="flex items-center pt-2">
+                <icon-location-pin class="w-6 h-6 icon-fill pr-2" />
+                <input
+                  typeInput="text"
+                  class="w-full text-xl py-1 outline-none border-b border-gray-400"
+                  v-model="carTransaction.destination_pickup"
+                  placeholder="Please fill full address"
+                />
+              </div>
+            </div>
+            <div class="place-of-receipt my-4">
+              <span class="booking-title text-2xl max-xl:text-xl font-bold"
+                >Destination Return</span
+              >
+              <div class="flex items-center pt-2">
+                <icon-location-pin class="w-6 h-6 icon-fill pr-2" />
+                <input
+                  typeInput="text"
+                  class="w-full text-xl py-1 outline-none border-b border-gray-400"
+                  v-model="carTransaction.destination_return"
+                  placeholder="Please fill full address"
+                />
+              </div>
             </div>
           </div>
 
-          <div class="place-of-receipt my-4">
-            <span class="booking-title text-2xl max-xl:text-xl font-bold"
-              >Destination Pickup</span
-            >
-            <div class="flex items-center pt-2">
-              <icon-location-pin class="w-6 h-6 icon-fill pr-2" />
-              <input
-                typeInput="text"
-                class="w-full text-xl py-2 outline-none border-b border-gray-400"
-                v-model="carTransaction.destination_pickup"
-              />
-            </div>
-          </div>
-          <div class="place-of-receipt my-4">
-            <span class="booking-title text-2xl max-xl:text-xl font-bold"
-              >Destination Return</span
-            >
-            <div class="flex items-center pt-2">
-              <icon-location-pin class="w-6 h-6 icon-fill pr-2" />
-              <input
-                typeInput="text"
-                class="w-full text-xl py-2 outline-none border-b border-gray-400"
-                v-model="carTransaction.destination_return"
-              />
-            </div>
-          </div>
-
-          <div class="protection-plans my-4">
+          <div class="protection-plans my-3">
             <div class="title-sidebar text-2xl max-xl:text-xl font-bold">
-              Protection plans
+              Protection Plans
             </div>
             <select
               class="filter text-lg border border-solid p-2 border-neutral-500 outline-none text-center rounded-xl w-full mt-2"
@@ -188,30 +217,6 @@
                 {{ item.name }}
               </option>
             </select>
-          </div>
-
-          <div class="total-price">
-            <div class="title-sidebar text-2xl max-xl:text-xl font-bold">
-              Total Price
-            </div>
-            <div class="font-medium text-lg">
-              <span>SubTotal: </span>
-              <span class="font-bold text-lg"
-                >{{ carDetail.price }}$ / day</span
-              >
-            </div>
-            <div class="font-medium text-lg">
-              <span>Service Fee: </span>
-              <span class="font-bold">2$</span>
-            </div>
-            <div class="font-medium text-lg">
-              <span>Protection Plan: </span>
-              <span class="font-bold">{{ insurancePlan() }}$</span>
-            </div>
-            <div class="font-medium text-lg">
-              <span>Total: </span>
-              <span class="font-bold">{{ total() }}$</span>
-            </div>
           </div>
 
           <div class="button flex items-center justify-around">
@@ -254,7 +259,7 @@ export default class extends Vue {
   carTransaction: any = [];
   // mounted() {
   //   console.log(this.carDetail);
-  //   console.log(this.isModalUp);
+  //   console.log(this.$route.fullPath);
   // }
   protectionPlan = [
     {
@@ -299,9 +304,7 @@ export default class extends Vue {
 
   handleRentCarPage() {
     if (this.isLogin) {
-      console.log("ok");
       this.toogleIsActive();
-      console.log(this.totalPrice);
     } else {
       this.$router.push("/login");
     }
