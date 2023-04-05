@@ -34,6 +34,7 @@ import { Component, Vue } from "nuxt-property-decorator";
 export default class extends Vue {
   handleRentCarPage() {
     this.$router.push("/rentcar");
+    
   }
 }
 </script>

@@ -66,7 +66,7 @@ export class CarStore extends VuexModule {
     try {
       if (car.location != "" && car.returnDate != "" && car.pickupDate != "") {
         const req = await axios.post(
-          "http://localhost:5000/api/cars/find",
+          "http://localhost:5000/api/cars/search",
           car
         );
         this.result.push(req.data.cars);

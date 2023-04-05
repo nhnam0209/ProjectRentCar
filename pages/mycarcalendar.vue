@@ -19,7 +19,7 @@ export default class extends Vue {
   carsSchedule: any = [];
   isLogin: Boolean = false;
   userInfo: any = {};
-  cars: any =[];
+  cars: any = [];
 
   async created() {
     try {
@@ -36,7 +36,7 @@ export default class extends Vue {
         this.userInfo = res.data[0];
 
         const carsScheduleRes = await axios.post(
-          "http://localhost:5000/api/cars/findTransactionsbyId",
+          "http://localhost:5000/api/car_transactions/findTransactionsbyId",
           {
             user_id: this.userInfo.id,
           },
@@ -49,7 +49,7 @@ export default class extends Vue {
         this.carsSchedule = carsScheduleRes.data.carTransaction;
 
         const carsRes = await axios.post(
-          "http://localhost:5000/api/cars//findbyId",
+          "http://localhost:5000/api/cars/findbyId",
           {
             user_id: this.userInfo.id,
           },
@@ -71,12 +71,12 @@ export default class extends Vue {
     }
   }
 
-  get car(){
-    return this.$vxm.car.carInfo
+  get car() {
+    return this.$vxm.car.carInfo;
   }
 
-  set car(value: any){
-    this.$vxm.car.setCar(value)
+  set car(value: any) {
+    this.$vxm.car.setCar(value);
   }
 }
 </script>

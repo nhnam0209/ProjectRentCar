@@ -22,10 +22,6 @@
                   <span class="car-name text-3xl font-bold">{{
                     carDetail.name
                   }}</span>
-                  <!-- <span
-                  class="car-name text-2xl font-bold hidden max-md:block text-green-500"
-                  >${{ carDetail.price }}/day</span
-                > -->
                 </div>
                 <div class="booking-price text-2xl font-bold text-green-500">
                   {{ carDetail.price }}$/day
@@ -45,7 +41,7 @@
                       Total Price
                     </div>
                     <div class="font-medium text-lg">
-                      <span>SubTotal: </span>
+                      <span>Rental Fee: </span>
                       <span class="font-bold text-lg"
                         >{{ carDetail.price }}$/day</span
                       >
@@ -154,7 +150,7 @@
                 >
                   Vehicle Detail
                 </div>
-                <div class="details grid grid-cols-2 font-medium">
+                <div class="details font-medium">
                   <div class="flex text-base max-xl:text-lg my-1">
                     <IconPerson class="w-8 h-8"></IconPerson>
                     Seat:
@@ -163,45 +159,45 @@
                     </span>
                   </div>
                   <div class="flex text-base max-xl:text-lg my-1">
-                    <IconDoor class="w-8 h-8"></IconDoor>
+                    <IconDoor class="w-8 h-8" />
                     Model:
                     <span class="font-normal ml-1">
                       {{ carDetail.model }}
                     </span>
                   </div>
                   <div class="flex text-base max-xl:text-lg my-1">
-                    <IconEngine class="w-8 h-8"></IconEngine>
+                    <IconEngine class="w-8 h-8" />
                     Transmission:
                     <span class="font-normal ml-1">
                       {{ carDetail.transmission }}
                     </span>
                   </div>
                   <div class="flex text-base max-xl:text-lg my-1">
-                    <IconFuel class="w-8 h-8"></IconFuel>
+                    <IconFuel class="w-8 h-8" />
                     Fuel Type:
                     <span class="font-normal ml-1">
                       {{ carDetail.fuel_type }}
                     </span>
                   </div>
                   <div class="flex text-base max-xl:text-lg my-1">
-                    <IconTank class="w-8 h-8"></IconTank>
+                    <IconTank class="w-8 h-8" />
                     Fuel Tank:
                     <span class="font-normal ml-1">
-                      {{ carDetail.fuel }} L
-                    </span>
-                  </div>
-                  <div class="flex text-base max-xl:text-lg my-1">
-                    <IconTank class="w-8 h-8"></IconTank>
-                    Owner:
-                    <span class="font-normal ml-1">
-                      {{ carDetail.owner }}
+                      {{ carDetail.fuel }} Litre
                     </span>
                   </div>
                   <div class="flex text-base max-xl:text-lg col-span-2 my-1">
                     <IconTank class="w-8 h-8"></IconTank>
                     Fuel Consumption:
                     <span class="font-normal ml-1">
-                      {{ carDetail.fuel_consumption }} / 100km
+                      {{ carDetail.fuel_consumption }} Litre/ 100km
+                    </span>
+                  </div>
+                  <div class="flex text-base max-xl:text-lg my-1">
+                    <IconPerson class="w-8 h-8" />
+                    Owner:
+                    <span class="font-normal ml-1">
+                      {{ carDetail.owner }}
                     </span>
                   </div>
                 </div>
@@ -289,11 +285,7 @@ export default class extends Vue {
   ];
 
   toogleIsActive() {
-    if (this.isActive == true) {
-      this.isActive = false;
-    } else {
-      this.isActive = true;
-    }
+    this.isActive ? (this.isActive = false) : (this.isActive = true);
   }
 
   total() {
@@ -306,17 +298,11 @@ export default class extends Vue {
 
   @Emit()
   handleCancel() {
-    if (this.isModalUp) {
-      this.$emit("isModalUp", false);
-    }
+    this.isModalUp && this.$emit("isModalUp", false);
   }
 
   handleRentCarPage() {
-    if (this.isLogin) {
-      this.toogleIsActive();
-    } else {
-      this.$router.push("/login");
-    }
+    this.isLogin ? this.toogleIsActive() : this.$router.push("/login");
   }
 }
 </script>

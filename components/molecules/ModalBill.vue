@@ -22,65 +22,77 @@
               <!-- <div
                 class="w-full flex items-center justify-between text-lg mb-3 border-solid border-b border-gray-200 pb-1"
               >
-                <span for="" class="text-gray-400">Status</span>
-                <span for="" class="font-medium text-green-600" v-if="isSuccessful">Successful</span>
-                <span for="" class="font-medium text-red-600" v-else>Fail</span>
+                <span   class="text-gray-400">Status</span>
+                <span   class="font-medium text-green-600" v-if="isSuccessful">Successful</span>
+                <span   class="font-medium text-red-600" v-else>Fail</span>
               </div> -->
               <div
                 class="w-full flex items-center justify-between text-lg mb-3 border-solid border-b border-gray-200 pb-1"
               >
-                <span for="" class="text-gray-400">Full name</span>
-                <span for="" class="font-medium">{{ userInfo.full_name }}</span>
+                <span class="text-gray-400">Full name</span>
+                <span class="font-medium">{{ userInfo.full_name }}</span>
               </div>
               <div
                 class="w-full flex items-center justify-between text-lg mb-3 border-solid border-b border-gray-200 pb-1"
               >
-                <span for="" class="text-gray-400">Pickup Date</span>
-                <span for="" class="font-medium">{{
+                <span class="text-gray-400">Pickup Date</span>
+                <span class="font-medium">{{
                   carTransaction.pickup_date
                 }}</span>
               </div>
               <div
                 class="w-full flex items-center justify-between text-lg mb-3 border-solid border-b border-gray-200 pb-1"
               >
-                <span for="" class="text-gray-400">Return Date</span>
-                <span for="" class="font-medium">{{
+                <span class="text-gray-400">Return Date</span>
+                <span class="font-medium">{{
                   carTransaction.return_date
                 }}</span>
               </div>
               <div
                 class="w-full flex items-center justify-between text-lg mb-3 border-solid border-b border-gray-200 pb-1"
               >
-                <span for="" class="text-gray-400">Destination Pickup</span>
-                <span for="" class="font-medium">{{
+                <span class="text-gray-400">Destination Pickup</span>
+                <span class="font-medium">{{
                   carTransaction.destination_pickup
                 }}</span>
               </div>
               <div
                 class="w-full flex items-center justify-between text-lg mb-3 border-solid border-b border-gray-200 pb-1"
               >
-                <span for="" class="text-gray-400">Destination Return</span>
-                <span for="" class="font-medium">{{
+                <span class="text-gray-400">Destination Return</span>
+                <span class="font-medium">{{
                   carTransaction.destination_return
                 }}</span>
               </div>
               <div
                 class="w-full flex items-center justify-between text-lg mb-3 border-solid border-b border-gray-200 pb-1"
               >
-                <span for="" class="text-gray-400">Protection Plan</span>
-                <span for="" class="font-medium">${{ protectedPlan }}</span>
+                <span class="text-gray-400">Owner</span>
+                <span class="font-medium">{{ carDetail.owner }}</span>
               </div>
               <div
                 class="w-full flex items-center justify-between text-lg mb-3 border-solid border-b border-gray-200 pb-1"
               >
-                <span for="" class="text-gray-400">Service Fee</span>
-                <span for="" class="font-medium">$2</span>
+                <span class="text-gray-400">Protection Plan</span>
+                <span class="font-medium">${{ protectedPlan }}</span>
               </div>
               <div
                 class="w-full flex items-center justify-between text-lg mb-3 border-solid border-b border-gray-200 pb-1"
               >
-                <span for="" class="text-gray-400">Total</span>
-                <span for="" class="font-medium">${{ totalPrice }}</span>
+                <span class="text-gray-400">Service Fee</span>
+                <span class="font-medium">$2</span>
+              </div>
+              <div
+                class="w-full flex items-center justify-between text-lg mb-3 border-solid border-b border-gray-200 pb-1"
+              >
+                <span class="text-gray-400">Rental Fee</span>
+                <span class="font-medium">{{ carDetail.price }}$</span>
+              </div>
+              <div
+                class="w-full flex items-center justify-between text-lg mb-3 border-solid border-b border-gray-200 pb-1"
+              >
+                <span class="text-gray-400">Total</span>
+                <span class="font-medium">${{ totalPrice }}</span>
               </div>
             </div>
             <RButton
@@ -108,7 +120,6 @@ export default class extends Vue {
   @Prop({}) carTransaction: any;
   @Prop({}) totalPrice: any;
   @Prop({}) protectedPlan: any;
-  isDeposit: boolean = true;
   isActive: boolean = false;
   isSuccessful: boolean = true;
 
@@ -123,7 +134,9 @@ export default class extends Vue {
         "http://localhost:5000/api/cars/addCarsTransactions",
         {
           user_id: this.userInfo.id,
+          user_full_name: this.userInfo.full_name,
           owner_id: this.carDetail.user_id,
+          owner_full_name: this.carDetail.owner,
           car_id: this.carDetail.id,
           destination_pickup: this.carTransaction.destination_pickup,
           destination_return: this.carTransaction.destination_return,
@@ -138,7 +151,6 @@ export default class extends Vue {
         }
       );
       alert(`Car rental success`);
-      // alert(JSON.stringify(this.car));
     } catch (error: any) {
       const errMessage = JSON.stringify(error.response.data.msg);
       alert(errMessage);
@@ -154,7 +166,7 @@ export default class extends Vue {
           full_name_user: this.userInfo.full_name,
           total: this.totalPrice,
           service_fee: 2,
-          rental_fee: 0,
+          rental_fee: this.carDetail.price,
           pickup_date: this.carTransaction.pickup_date,
           return_date: this.carTransaction.return_date,
         },

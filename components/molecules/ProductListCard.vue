@@ -60,7 +60,7 @@
           <RButton class="btn-success w-1/2" label="Select"></RButton>
         </div>
       </div>
-      <ModalDetailCar
+      <modal-detail-car
         v-if="isActive && !isMobile"
         :car-detail="carDetail"
         :is-modal-up="isActive"

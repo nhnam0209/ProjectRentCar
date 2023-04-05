@@ -7,26 +7,40 @@
         class="w-screen h-auto"
       />
     </div>
-    <div class="flex flex-col justify-center">
-      <div class="w-full mx-40">
-        <div class="grid grid-cols-2 md:grid-cols-3">
+    <div class="flex flex-col justify-center w-full">
+      <div class="w-full lg:mx-40">
+        <div
+          class="flex flex-col justify-center items-center lg:grid md:grid-cols-2 lg:grid-cols-3 w-full"
+        >
           <div class="flex justify-center drop-shadow-2xl -mt-6">
-            <!-- Must do: Do the default avatar -->
-            <div
-              class="bg-fuchsia-500 text-white rounded-full text-center flex flex-col justify-center text-3xl w-20 h-20 md:text-7xl md:w-40 md:h-40 sm:text-3xl sm:w-28 sm:h-28 relative"
-            >
-              <div
-                class="absolute w-10 h-10 bottom-1 right-1 rounded-full bg-gray-300/80 cursor-pointer"
-              >
-                <IconCamera
-                  class="w-6 h-6 absolute bottom-2 right-2"
-                ></IconCamera>
-              </div>
-              A
+            <img
+              v-if="userInfo.img"
+              :src="userInfo.img"
+              alt="avatar"
+              class="rounded-full w-32 h-32 md:w-40 md:h-40 relative"
+            />
+            <img
+              v-else
+              src="../../static/img/default_avatar.png"
+              alt="avatar"
+              class="rounded-full w-32 h-32 md:w-40 md:h-40 relative"
+            />
+            <div class="">
+              <IconCamera
+                class="w-6 h-6 bg-white rounded-md absolute bottom-2 right-2"
+              />
+              <input
+                type="file"
+                class=""
+                @change="onFileChange"
+                accept=".jpg, .jpeg, .png"
+              />
             </div>
           </div>
           <div class="md:col-span-2 py-4 md:py-6">
-            <div class="font-bold text-xl leading-5 flex md:text-3xl">
+            <div
+              class="font-bold justify-center lg:justify-start text-xl leading-5 flex md:text-3xl"
+            >
               {{ userInfo.full_name }}
               <div class="flex justify-center" @click="handleEdit()">
                 <icon-edit
@@ -34,7 +48,9 @@
                 />
               </div>
             </div>
-            <div class="mt-4 flex text-sm md:text-lg">
+            <div
+              class="mt-4 flex justify-center lg:justify-start text-sm md:text-lg"
+            >
               Created At: {{ createdAt }}
             </div>
             <div class="flex">
@@ -66,10 +82,10 @@
                 </div>
               </div>
               <div
-                class="w-32 h-16 bg-white flex justify-center mt-5 rounded-lg ml-5 text-sm md:text-lg"
+                class="w-32 h-16 bg-white flex justify-center flex-col mt-5 rounded-lg ml-5 text-sm md:text-lg"
               >
-                <div class="mt-1 font-bold text-neutral-500">
-                  Gender
+                <div class="mt-1 flex flex-col font-bold text-neutral-500">
+                  <span class="flex self-center">Gender</span>
                   <div
                     v-if="user.gender"
                     class="flex justify-center font-normal text-black"
@@ -94,19 +110,19 @@
           </div>
         </div>
         <div
-          class="flex flex-col lg:grid lg:grid-cols-3 bg-white rounded-lg py-4 w-4/5"
+          class="flex flex-col justify-center items-center lg:grid lg:grid-cols-3 bg-white rounded-lg py-4 lg:w-4/5 w-full"
         >
           <div
             v-for="item in userInformationDashboard"
             :key="item.id"
-            class="w-full flex-col h-16 justify-center mt-5 ml-5 text-sm md:text-lg my-3 lg:my-0"
+            class="w-full flex-col h-16 justify-center mt-5 ml-5 text-sm md:text-lg my-3 lg:my-0 mx-auto lg:mx-0"
           >
             <div class="flex justify-center">
               <div class="mt-1 font-bold inline-flex text-xs sm:text-base">
                 <p>{{ item.label }}</p>
                 <div @click="handleEdit()">
                   <icon-edit
-                    class="w-3 h-3 ml-2 cursor-pointer self-center md:w-5 md:h-5 md:ml-4"
+                    class="w-3 h-3 ml-2 cursor-pointer flex self-center md:w-5 md:h-5 md:ml-4"
                   />
                 </div>
               </div>
@@ -162,6 +178,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from "nuxt-property-decorator";
+import { EMPTY } from "~/utils/constant";
 // import axios from "~/utils/myAxios";
 @Component({
   name: "ClientDashboard",
@@ -170,6 +187,8 @@ export default class extends Vue {
   @Prop() userInfo!: any;
   @Prop({ type: String }) createdAt!: any;
   @Prop({ type: String }) birthOfDate!: any;
+  image: any = EMPTY;
+
   isActive: Boolean = false;
 
   userInformationDashboard = [
@@ -189,6 +208,33 @@ export default class extends Vue {
 
   handleEdit() {
     this.isActive ? (this.isActive = false) : (this.isActive = true);
+  }
+
+  async convertBase64(file: any) {
+    return new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+
+      fileReader.onload = () => {
+        resolve(fileReader.result);
+      };
+
+      fileReader.onerror = (error) => {
+        reject(error);
+      };
+    });
+  }
+
+  async onFileChange(e: any) {
+    var files = e.target.files[0] || e.dataTransfer.files[0];
+    if (files.size >= 1024 && files.size < 1048576) {
+      const base64 = await this.convertBase64(files);
+      this.image = base64;
+      // this.$vxm.car.setImgCar(this.image);
+    } else {
+      alert("This file is too big");
+      files = "";
+    }
   }
 
   get user() {

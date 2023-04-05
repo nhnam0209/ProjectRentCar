@@ -7,7 +7,7 @@
       :class="{ 'modal-close': isActive }"
     >
       <div
-        class="content-left px-4 border border-solid border-neutral-500 max-xl:border-none max-xl:w-full w-2/3 overflow-auto bg-white"
+        class="content-left py-2 px-4 border border-solid border-neutral-500 max-xl:border-none max-xl:w-full w-2/3 overflow-auto bg-white"
       >
         <div class="">
           <img
@@ -65,7 +65,7 @@
                     <IconTank class="w-8 h-8"></IconTank>
                     Fuel Tank:
                     <span class="font-normal ml-1">
-                      {{ carDetail.fuel }} L
+                      {{ carDetail.fuel }} Litre
                     </span>
                   </div>
                   <div class="flex text-base max-xl:text-lg my-1">
@@ -79,7 +79,7 @@
                     <IconTank class="w-8 h-8"></IconTank>
                     Fuel Consumption:
                     <span class="font-normal ml-1">
-                      {{ carDetail.fuel_consumption }} / 100km
+                      {{ carDetail.fuel_consumption }} Litre/ 100km
                     </span>
                   </div>
                 </div>
@@ -123,7 +123,7 @@
               Total Price
             </div>
             <div class="font-medium text-lg">
-              <span>SubTotal: </span>
+              <span>Rental Fee: </span>
               <span class="font-bold text-lg">{{ carDetail.price }}$/day</span>
             </div>
             <div class="font-medium text-lg">
@@ -134,7 +134,7 @@
               <span>Protection Plan: </span>
               <span class="font-bold">{{ insurancePlan() }}$</span>
             </div>
-            <hr class="my-1" />
+            <hr class="my-1 w-1/3" />
             <div class="font-medium text-lg">
               <span class="font-bold">Total: </span>
               <span class="font-bold">{{ total() }}$</span>
@@ -178,7 +178,7 @@
               <div class="flex items-center pt-2">
                 <icon-location-pin class="w-6 h-6 icon-fill pr-2" />
                 <input
-                  typeInput="text"
+                  type="text"
                   class="w-full text-xl py-1 outline-none border-b border-gray-400"
                   v-model="carTransaction.destination_pickup"
                   placeholder="Please fill full address"
@@ -192,7 +192,7 @@
               <div class="flex items-center pt-2">
                 <icon-location-pin class="w-6 h-6 icon-fill pr-2" />
                 <input
-                  typeInput="text"
+                  type="text"
                   class="w-full text-xl py-1 outline-none border-b border-gray-400"
                   v-model="carTransaction.destination_return"
                   placeholder="Please fill full address"
@@ -224,20 +224,20 @@
               label="Rent Now"
               class="btn-success"
               @click="handleRentCarPage"
-            ></RButton>
+            />
             <RButton class="btn-close" @click="handleCancel">Cancel</RButton>
           </div>
         </div>
       </div>
     </div>
-    <ModalBill
+    <modal-bill
       v-if="isActive"
       :user-info="userInfo"
       :total-price="totalPrice"
       :car-detail="carDetail"
       :protected-plan="protectedPlan"
       :car-transaction="carTransaction"
-    ></ModalBill>
+    />
   </div>
 </template>
 
@@ -280,11 +280,7 @@ export default class extends Vue {
   ];
 
   toogleIsActive() {
-    if (this.isActive == true) {
-      this.isActive = false;
-    } else {
-      this.isActive = true;
-    }
+    this.isActive ? (this.isActive = false) : (this.isActive = true);
   }
 
   total() {
@@ -297,17 +293,11 @@ export default class extends Vue {
 
   @Emit()
   handleCancel() {
-    if (this.isModalUp) {
-      this.$emit("isModalUp", false);
-    }
+    this.isModalUp && this.$emit("isModalUp", false);
   }
 
   handleRentCarPage() {
-    if (this.isLogin) {
-      this.toogleIsActive();
-    } else {
-      this.$router.push("/login");
-    }
+    this.isLogin ? this.toogleIsActive : this.$router.push("/login");
   }
 }
 </script>

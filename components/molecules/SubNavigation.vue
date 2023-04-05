@@ -17,30 +17,37 @@
     <div
       v-if="isHover"
       @mouseover="handleMouseEnter()"
-      class="bg-green-300 p-4 lg:w-[250px] rounded-md h-fit absolute top-[50px] mt-3 right-5"
+      class="bg-green-300 p-4 lg:w-[250px] rounded-md h-fit absolute top-[50px] mt-3 right-7 mr-[105px] lg:mr-0"
       :class="classes"
     >
-      <div class="py-2" @mouseenter="handleMouseEnter()">
+      <div class="p-2" @mouseenter="handleMouseEnter()">
         <div v-if="!isAdmin" class="flex flex-col">
           <NuxtLink
             v-for="item in userSubNavigation"
             :key="item.id"
-            class="navbar-items cursor-pointer z-50"
+            class="lg:text-2xl text-xl my-1 w-full font-semibold cursor-pointer z-50 inline-flex"
             :to="item.link"
-            >{{ item.label }}</NuxtLink
-          >
+            ><component :is="item.icon" class="w-6 mr-2 flex self-center" />
+            <span class="flex self-center">
+              {{ item.label }}
+            </span>
+          </NuxtLink>
         </div>
 
         <div v-else class="flex-col hidden max-lg:flex">
           <NuxtLink
             v-for="item in adminSubNavigation"
             :key="item.id"
-            class="navbar-items cursor-pointer z-50"
+            class="lg:text-2xl text-xl my-auto font-semibold cursor-pointer z-50"
             :to="item.link"
             >{{ item.label }}</NuxtLink
           >
         </div>
-        <div class="mt-3 navbar-items cursor-pointer" @click="handleLogOut">
+        <hr class="my-4" />
+        <div
+          class="navbar-items my-2 cursor-pointer text-center mx-auto"
+          @click="handleLogOut"
+        >
           Logout
         </div>
       </div>
@@ -49,7 +56,6 @@
 </template>
 <script lang="ts">
 import { Component, Vue, Prop } from "nuxt-property-decorator";
-import { type } from "os";
 import { EMPTY } from "~/utils/constant";
 @Component({
   name: "SubNavigation",
@@ -65,16 +71,19 @@ export default class extends Vue {
       id: 1,
       label: "My Profile",
       link: "/dashboard/" + this.userInfo.id,
+      icon: "icon-person",
     },
     {
       id: 2,
       label: "My Wallet",
       link: "/wallet",
+      icon: "icon-wallet",
     },
     {
       id: 3,
       label: "My Car",
       link: "/mycar",
+      icon: "icon-car",
     },
   ];
 
@@ -97,7 +106,6 @@ export default class extends Vue {
   ];
   isHover: Boolean = false;
   username: String = EMPTY;
-  res: Object = {};
 
   mounted() {
     this.username = this.userInfo.username;

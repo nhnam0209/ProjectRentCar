@@ -40,6 +40,7 @@ export default class extends Vue {
   get isAdmin() {
     return this.$vxm.user.isAdmin;
   }
+
   async created() {
     try {
       if (document.cookie) {
