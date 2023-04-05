@@ -12,6 +12,7 @@ export class UserStore extends VuexModule {
   userInfo: any =
     {
       id: EMPTY,
+      image: EMPTY,
       first_name: EMPTY,
       last_name: EMPTY,
       full_name: EMPTY,
@@ -35,6 +36,12 @@ export class UserStore extends VuexModule {
   loading: boolean = false;
   @mutation setFullName(fullName: any) {
     this.userInfo.full_name = fullName;
+  }
+  @mutation setUserId(id: any) {
+    this.userInfo.id = id;
+  }
+  @mutation setImage(image: any) {
+    this.userInfo.image = image;
   }
   @mutation setUserInfo(userInfo: any) {
     this.userInfo = userInfo;
@@ -242,6 +249,28 @@ export class UserStore extends VuexModule {
       alert(errMessage);
     }
   }
+
+  @action async addAvatar(avatar:any) {
+    try {
+      var userAvatar = avatar;
+      await axios.put("http://localhost:5000/api/user/updateImage",
+      { 
+        user_id: this.userInfo.id, 
+        image: userAvatar
+      },
+      {
+        headers: {
+          Authorization: `${document.cookie}`,
+        },
+      })
+      alert(`Your avatar is updated!!!`);
+      setTimeout("location.reload(true)", 100);
+    } catch (error) {
+      console.log(error)
+      
+    }
+  }
+
   get gotUserInfo() {
     return this.userInfo;
   }

@@ -8,7 +8,7 @@
       <Nuxt />
     </slot>
     <slot name="footer">
-      <Footer></Footer>
+      <Footer />
     </slot>
   </div>
 </template>

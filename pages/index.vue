@@ -67,9 +67,16 @@ export default class extends Vue {
           this.isLogin = true;
           this.userInfo = res.data.data;
         }
+      } else {
+        this.isLogin = false;
       }
     } catch (error) {
       this.isLogin = false;
+      // this.$router.error({
+      //       statusCode: 404,
+      //       message: 'Failed to receive content from api',
+      //     })
+      
     }
   }
 }

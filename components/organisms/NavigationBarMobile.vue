@@ -24,9 +24,13 @@
 
     <div
       v-else
-      class="px-5 py-4 top-[52px] absolute right-0 w-40 font-medium rounded-md border-2 bg-white z-50 subnav-icon hover:block cursor-pointer"
+      class="px-5 py-4 top-[52px] absolute right-0 w-44 font-medium rounded-md border-2 bg-white z-50 subnav-icon hover:block cursor-pointer"
     >
-      <sub-navigation :user-info="userInfo" :is-admin="isAdmin" />
+      <sub-navigation
+        :user-info="userInfo"
+        :is-admin="isAdmin"
+        class="flex justify-center self-center"
+      />
       <div class="p-4 hover:bg-gray-300/50 w-full h-full">
         <NuxtLink class="" to="/rentcar"> Rent Car </NuxtLink>
       </div>

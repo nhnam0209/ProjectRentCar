@@ -46,6 +46,8 @@ import axios from "../../utils/myAxios";
 export default class extends Vue {
   isLogin: Boolean = false;
   userInfo: any = {};
+  walletInfo: any = {};
+
   get user() {
     return this.$vxm.user.userInfo;
   }
@@ -73,6 +75,19 @@ export default class extends Vue {
             },
           }
         );
+        // const resWallet = await axios.post(
+        //   "http://localhost:5000/api/wallet/find",
+        //   {
+        //     user_id: this.userInfo.id,
+        //   },
+        //   {
+        //     headers: {
+        //       Authorization: `${document.cookie}`,
+        //     },
+        //   }
+        // );
+        // this.walletInfo = resWallet.data.wallet;
+        // console.log(this.walletInfo);
         if (res.data[0].is_admin == 1) {
           const resAdmin = await axios.get(
             "http://localhost:5000/api/auth/verifyloginAdmin",

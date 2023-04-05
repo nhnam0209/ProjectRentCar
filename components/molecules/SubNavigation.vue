@@ -7,17 +7,22 @@
   >
     <div
       @mouseover="handleMouseEnter()"
-      class="cursor-pointer p-6 flex text-center justify-center"
+      class="cursor-pointer lg:p-6 flex text-center justify-center"
     >
       <div class="inline-flex self-center">
-        <!-- <span v-if="!isAdmin"><img src="" alt="avatar" /></span> -->
+        <img
+          v-if="!isAdmin"
+          :src="userInfo.image"
+          alt="avatar"
+          class="rounded-full w-8 h-8 flex self-center mr-2"
+        />
         <p class="text-xl">{{ username }}</p>
       </div>
     </div>
     <div
       v-if="isHover"
       @mouseover="handleMouseEnter()"
-      class="bg-green-300 p-4 lg:w-[250px] rounded-md h-fit absolute top-[50px] mt-3 right-7 mr-[105px] lg:mr-0"
+      class="bg-green-300 p-5 lg:w-[250px] rounded-md h-fit absolute top-[50px] mt-3 right-7 mr-[105px] lg:mr-0"
       :class="classes"
     >
       <div class="p-2" @mouseenter="handleMouseEnter()">
@@ -62,6 +67,7 @@ import { EMPTY } from "~/utils/constant";
 })
 export default class extends Vue {
   @Prop() userInfo!: any;
+  @Prop() walletInfo!: any;
   @Prop({ type: Boolean }) isAdmin!: Boolean;
   @Prop({ type: String }) classes!: String;
   @Prop({ type: Boolean, default: false }) isMobile!: Boolean;

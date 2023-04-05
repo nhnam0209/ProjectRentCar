@@ -14,7 +14,8 @@ import VueScreen from "vue-screen";
 Vue.use(VueScreen);
 
 @Component({
-  name: "RentCarLayout",
+  name: "error-layout",
+  layout: "error-layout",
 })
 export default class extends Vue {
   @Prop({}) error!: any;

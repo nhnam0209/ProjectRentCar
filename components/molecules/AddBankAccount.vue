@@ -88,7 +88,7 @@ export default class extends Vue {
         {
           user_id: this.userInfo.id,
           username: this.userInfo.username,
-          full_name: this.bankAccountInfo.full_name,
+          full_name: this.userInfo.full_name,
           bank_account: this.bankAccountInfo.bank_account,
           expire_date: this.bankAccountInfo.expire_date,
           status: this.bankAccountInfo.status,

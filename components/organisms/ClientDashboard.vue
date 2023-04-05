@@ -14,10 +14,10 @@
         >
           <div class="flex justify-center drop-shadow-2xl -mt-6">
             <img
-              v-if="userInfo.img"
-              :src="userInfo.img"
+              v-if="userInfo.image"
+              :src="userInfo.image"
               alt="avatar"
-              class="rounded-full w-32 h-32 md:w-40 md:h-40 relative"
+              class="w-36 h-36 align-middle rounded-[50%]"
             />
             <img
               v-else
@@ -25,15 +25,19 @@
               alt="avatar"
               class="rounded-full w-32 h-32 md:w-40 md:h-40 relative"
             />
-            <div class="">
+            <div @click="handleChangeAvatar()">
               <IconCamera
-                class="w-6 h-6 bg-white rounded-md absolute bottom-2 right-2"
+                :class="[
+                  'w-6 h-6 bg-white rounded-md absolute bottom-2 right-2 lg:right-[9.5rem] cursor-pointer',
+                  userInfo.image && 'lg:right-[6.5rem]',
+                ]"
               />
               <input
+                ref="fileInput"
                 type="file"
-                class=""
+                class="hidden"
                 @change="onFileChange"
-                accept=".jpg, .jpeg, .png"
+                accept="image/*"
               />
             </div>
           </div>
@@ -179,7 +183,7 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "nuxt-property-decorator";
 import { EMPTY } from "~/utils/constant";
-// import axios from "~/utils/myAxios";
+import axios from "~/utils/myAxios";
 @Component({
   name: "ClientDashboard",
 })
@@ -210,6 +214,10 @@ export default class extends Vue {
     this.isActive ? (this.isActive = false) : (this.isActive = true);
   }
 
+  handleChangeAvatar(): any {
+    return this.$refs?.fileInput?.click();
+  }
+
   async convertBase64(file: any) {
     return new Promise((resolve, reject) => {
       const fileReader = new FileReader();
@@ -230,7 +238,9 @@ export default class extends Vue {
     if (files.size >= 1024 && files.size < 1048576) {
       const base64 = await this.convertBase64(files);
       this.image = base64;
-      // this.$vxm.car.setImgCar(this.image);
+      console.log(this.image);
+      this.$vxm.user.setUserId(this.userInfo.id);
+      this.$vxm.user.addAvatar(this.image, this.userInfo.id);
     } else {
       alert("This file is too big");
       files = "";

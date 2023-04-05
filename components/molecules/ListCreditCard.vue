@@ -1,13 +1,13 @@
 <template>
   <div class="p-4 border-t border-b border-black overflow-auto">
     <div class="px-4 flex items-center">
-      <span class="font-bold text-2xl mr-5">My Card</span>
+      <span class="font-bold text-2xl mr-5">My Bank Account</span>
       <IconAdd
         class="w-5 h-5 cursor-pointer"
         @icon-add-click="toogleIsActive()"
       ></IconAdd>
     </div>
-    <div class="mx-2 flex items-center">
+    <div class="mx-2 flex items-center" v-if="bankAccounts">
       <div class="m-4">
         <div
           class="text-white relative rounded-xl bg-gray-400 shadow-md h-64 w-96 cursor-pointer"
@@ -19,9 +19,11 @@
               <button type="button" class="bg-transparent">
                 <icon-ellipsis class="fill-white h-6 w-6"></icon-ellipsis>
               </button>
-                <div class="subnav-removecard absolute top-6 right-0 text-black bg-gray-200 px-2">
-                  Remove
-                </div>
+              <div
+                class="subnav-removecard absolute top-6 right-0 text-black bg-gray-200 px-2"
+              >
+                Remove
+              </div>
             </div>
             <div class="absolute left-6 top-6">
               <span class="text-lg opacity-50 mb-1 uppercase block font-medium"
@@ -37,7 +39,7 @@
                   class="text-lg opacity-50 mb-1 uppercase block font-medium"
                   >Card Number</span
                 >
-                {{ bankAccounts.bank_account}}
+                {{ bankAccounts.bank_account }}
               </div>
               <div class="bottom flex items-center mt-5">
                 <div class="card-expiry text-lg font-medium mr-5">
@@ -45,7 +47,7 @@
                     class="text-lg opacity-50 mb-1 uppercase block font-medium"
                     >Expire</span
                   >
-                  {{ bankAccounts.expire_date}}
+                  {{ bankAccounts.expire_date }}
                 </div>
               </div>
             </div>
@@ -57,7 +59,7 @@
   </div>
 </template>
 <script lang="ts">
-import { Component,Prop, Vue } from "nuxt-property-decorator";
+import { Component, Prop, Vue } from "nuxt-property-decorator";
 
 @Component({
   name: "ListCreditCard",
@@ -69,19 +71,15 @@ export default class extends Vue {
   @Prop({}) bankAccounts!: any;
 
   toogleIsActive() {
-    if (this.isActive == true) {
-      this.isActive = false;
-    } else {
-      this.isActive = true;
-    }
+    this.isActive ? (this.isActive = false) : (this.isActive = true);
   }
 }
 </script>
 <style>
-.subnav-removecard{
+.subnav-removecard {
   display: none;
 }
-.icon-card:hover .subnav-removecard{
+.icon-card:hover .subnav-removecard {
   display: block !important;
 }
 </style>
