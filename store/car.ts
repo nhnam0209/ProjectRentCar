@@ -78,10 +78,10 @@ export class CarStore extends VuexModule {
         }
       } else if (car.location == EMPTY) {
         alert("Please fill the location!!");
-      } else if (car.returnDate == EMPTY) {
-        alert("Please fill the return date!!");
       } else if (car.pickupDate == EMPTY) {
         alert("Please fill the pickup date!!");
+      } else if (car.returnDate == EMPTY) {
+        alert("Please fill the return date!!");
       }
     } catch (error: any) {
       const errMessage = JSON.stringify(error.response.data.msg);

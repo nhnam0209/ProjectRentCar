@@ -1,8 +1,10 @@
 <template>
   <nav class="h-16 flex justify-between overflow-hidden items-center">
-    <div class="bg-no-repeat bg-cover bg-center w-24 h-full">
-      <NuxtLink class="" to="/">
-        <img src="../../static/img/logo.jpg" alt="company_logo" />
+    <div
+      class="bg-no-repeat bg-cover bg-center w-24 h-full flex justify-center mx-3"
+    >
+      <NuxtLink class="flex self-center" to="/">
+        <img src="../../static/img/logo.png" alt="company_logo" />
       </NuxtLink>
     </div>
     <div class="p-4 cursor-pointer icon-hover relative right-0 z-50">

@@ -27,17 +27,15 @@
               >
             </div>
           </div>
-          <div class="details grid grid-cols-2">
+          <div class="details grid grid-cols-2 gap-3">
             <div class="flex text-base max-lg:col-span-2 max-lg:text-lg my-2">
-              <icon-location-pin
-                class="w-5 h-5 max-lg:w-6 max-lg:h-6"
-              ></icon-location-pin>
+              <icon-location class="w-5 h-5 max-lg:w-6 max-lg:h-6" />
               <span class="capitalize ml-2 flex self-center">
                 {{ car.province }}
               </span>
             </div>
             <div class="flex text-base max-lg:col-span-2 max-lg:text-lg">
-              <IconPerson class="w-8 h-8 max-lg:w-6 max-lg:h-6"></IconPerson>
+              <icon-people class="w-8 h-8 max-lg:w-6 max-lg:h-6" />
               <span class="capitalize ml-2 flex self-center">
                 {{ car.seat }} seats
               </span>
@@ -49,7 +47,7 @@
               </span>
             </div>
             <div class="flex text-base max-lg:col-span-2 max-lg:text-base">
-              <icon-car class="w-7 h-7 max-lg:w-6 max-lg:h-6"></icon-car>
+              <icon-car-side class="w-7 h-7 max-lg:w-6 max-lg:h-6" />
               <span class="capitalize ml-3 flex self-center">
                 {{ car.type_car }}
               </span>
@@ -89,7 +87,7 @@ export default class extends Vue {
   carDetail: any;
   @Prop() carResult!: any;
   @Prop({ type: Boolean }) isLogin!: boolean;
-  @Prop({}) userInfo: any;
+  @Prop({ default: [] }) userInfo: any;
 
   toogleIsActive(car: any) {
     console.log(car);

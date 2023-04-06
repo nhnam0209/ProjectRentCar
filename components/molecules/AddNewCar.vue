@@ -8,7 +8,7 @@
           <div
             class="p-2 border-r border-solid border-black text-xl font-bold w-1/2 text-white bg-[#379683]"
           >
-            Infomation
+            Information
           </div>
           <div
             class="p-2 border-solid border-black text-xl font-bold w-1/2 bg-white"

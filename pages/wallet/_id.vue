@@ -1,21 +1,18 @@
 <template>
   <Default>
     <template #content>
-      <list-credit-card
-        :user-info="userInfo"
-        :wallet-info="walletInfo"
-        :bank-accounts="bankAccounts"
-      ></list-credit-card>
-      <wallet-activities
-        :wallet-info="walletInfo"
-        :wallet-transactions="walletTransactions"
-        :user-info="userInfo"
-      ></wallet-activities>
-      <RButton
-        class="btn-success"
-        label="test"
-        @btn-click="testValue()"
-      ></RButton>
+      <div class="h-screen">
+        <list-credit-card
+          :user-info="userInfo"
+          :wallet-info="walletInfo"
+          :bank-accounts="bankAccounts"
+        ></list-credit-card>
+        <wallet-activities
+          :wallet-info="walletInfo"
+          :wallet-transactions="walletTransactions"
+          :user-info="userInfo"
+        ></wallet-activities>
+      </div>
     </template>
   </Default>
 </template>
@@ -111,16 +108,16 @@ export default class extends Vue {
         );
         this.bankAccounts = bankAccountRes.data.bankAccount;
       } else {
-        // this.$nuxt.error({ statusCode: 500 });
-        //this.$router.push("/login");
-        //setTimeout("location.reload(true)", 100);
+        this.$nuxt.error({ statusCode: 500 });
+        this.$router.push("/login");
+        setTimeout("location.reload(true)", 100);
       }
     } catch (error) {
       this.isLogin = false;
       // this.$nuxt.error({ statusCode: 500 });
 
       this.$router.push("/login");
-      //setTimeout("location.reload(true)", 100);
+      setTimeout("location.reload(true)", 100);
     }
   }
 

@@ -29,15 +29,22 @@
               <th class="py-2 px-4 max-lg:px-2">Number plate</th>
               <th class="py-2 px-4 max-lg:px-2">Status</th>
             </tr>
-            <tr class="text-lg" v-for="myCar in myCars" :key="myCar.id">
-              <td class="py-2 px-4 max-lg:px-2">{{ myCar.id }}</td>
-              <td class="py-2 px-4 max-lg:px-2">{{ myCar.name }}</td>
-              <td class="py-2 px-4 max-lg:px-2">{{ myCar.seat }}</td>
-              <td class="py-2 px-4 max-lg:px-2">{{ myCar.transmission }}</td>
-              <td class="py-2 px-4 max-lg:px-2">{{ myCar.fuel_type }}</td>
-              <td class="py-2 px-4 max-lg:px-2">{{ myCar.plate_number }}</td>
-              <td class="py-2 px-4 max-lg:px-2">{{ myCar.status }}</td>
-            </tr>
+            <div v-if="myCars.length > 0">
+              <tr class="text-lg" v-for="myCar in myCars" :key="myCar.id">
+                <td class="py-2 px-4 max-lg:px-2">{{ myCar.id }}</td>
+                <td class="py-2 px-4 max-lg:px-2">{{ myCar.name }}</td>
+                <td class="py-2 px-4 max-lg:px-2">{{ myCar.seat }}</td>
+                <td class="py-2 px-4 max-lg:px-2">{{ myCar.transmission }}</td>
+                <td class="py-2 px-4 max-lg:px-2">{{ myCar.fuel_type }}</td>
+                <td class="py-2 px-4 max-lg:px-2">{{ myCar.plate_number }}</td>
+                <td class="py-2 px-4 max-lg:px-2">{{ myCar.status }}</td>
+              </tr>
+            </div>
+            <div v-else class="w-full">
+              <span class="text-center flex w-full self-center">
+                There is no car available!!
+              </span>
+            </div>
           </table>
         </div>
       </div>

@@ -34,7 +34,7 @@
                 </div>
                 <div class="details grid grid-cols-2 font-medium">
                   <div class="flex text-base max-xl:text-lg my-1">
-                    <IconPerson class="w-8 h-8"></IconPerson>
+                    <icon-people class="w-8 h-8" />
                     Seat:
                     <span class="font-normal ml-1">
                       {{ carDetail.seat }}
@@ -69,7 +69,7 @@
                     </span>
                   </div>
                   <div class="flex text-base max-xl:text-lg my-1">
-                    <IconTank class="w-8 h-8"></IconTank>
+                    <icon-person class="w-7 h-7 mr-1" />
                     Owner:
                     <span class="font-normal ml-1">
                       {{ carDetail.owner }}

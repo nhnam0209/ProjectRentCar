@@ -1,6 +1,11 @@
 <template>
-  <div :class="[containerClass, 'h-full mx-4 py-4']">
-    <div :class="[wrapperClass, 'grid grid-cols-1 lg:grid-cols-2']">
+  <div :class="[containerClass, 'mx-4 py-4']">
+    <div
+      :class="[
+        wrapperClass,
+        'grid grid-cols-1 lg:grid-cols-2  space-y-14 lg:space-y-0 lg:space-x-10 items-center relative text-center lg:text-left',
+      ]"
+    >
       <div>
         <slot name="leftContainer"></slot>
       </div>

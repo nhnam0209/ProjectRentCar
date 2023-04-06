@@ -1,8 +1,10 @@
 <template>
   <Default>
     <template #content>
-      <NavigationBarMyCar></NavigationBarMyCar>
-      <ListCars :my-cars="myCars"></ListCars>
+      <div class="h-screen">
+        <NavigationBarMyCar></NavigationBarMyCar>
+        <ListCars :my-cars="myCars"></ListCars>
+      </div>
     </template>
   </Default>
 </template>

@@ -3,7 +3,7 @@
     <div class="w-full">
       <img
         src="../../static/img/car-profile.jpg"
-        alt="RentCar"
+        alt="wallpaper"
         class="w-screen h-auto"
       />
     </div>
@@ -12,26 +12,39 @@
         <div
           class="flex flex-col justify-center items-center lg:grid md:grid-cols-2 lg:grid-cols-3 w-full"
         >
-          <div class="flex justify-center drop-shadow-2xl -mt-6">
+          <div class="flex justify-center drop-shadow-2xl py-4 relative">
             <img
               v-if="userInfo.image"
               :src="userInfo.image"
               alt="avatar"
-              class="w-36 h-36 align-middle rounded-[50%]"
+              class="w-40 h-40 md:w-48 md:h-48 align-middle rounded-[50%] cursor-pointer"
+              @click="handleChangeAvatar()"
+              @mouseenter="handleHover"
+              @mouseout="handleHover"
             />
             <img
               v-else
               src="../../static/img/default_avatar.png"
               alt="avatar"
-              class="rounded-full w-32 h-32 md:w-40 md:h-40 relative"
+              class="rounded-full w-32 h-32 md:w-40 md:h-40 relative cursor-pointer"
+              @click="handleChangeAvatar()"
             />
-            <div @click="handleChangeAvatar()">
-              <IconCamera
-                :class="[
-                  'w-6 h-6 bg-white rounded-md absolute bottom-2 right-2 lg:right-[9.5rem] cursor-pointer',
-                  userInfo.image && 'lg:right-[6.5rem]',
-                ]"
-              />
+            <r-tooltip
+              v-if="isHover"
+              class="z-50 absolute"
+              tooltip-content="Click to change avatar"
+            />
+
+            <div
+              v-if="isMobile"
+              @click="handleChangeAvatar()"
+              class="absolute bottom-2 right-2 lg:right-[9.5rem]"
+              :class="[
+                'w-6 h-6 bg-white rounded-md  cursor-pointer',
+                userInfo.image && 'lg:right-36',
+              ]"
+            >
+              <IconCamera class="w-6 h-6 bg-white rounded-md cursor-pointer" />
               <input
                 ref="fileInput"
                 type="file"
@@ -57,6 +70,7 @@
             >
               Created At: {{ createdAt }}
             </div>
+
             <div class="flex">
               <div
                 class="w-32 h-16 bg-white flex justify-center flex-col mt-5 rounded-lg text-sm md:text-lg"
@@ -119,7 +133,7 @@
           <div
             v-for="item in userInformationDashboard"
             :key="item.id"
-            class="w-full flex-col h-16 justify-center mt-5 ml-5 text-sm md:text-lg my-3 lg:my-0 mx-auto lg:mx-0"
+            class="w-full flex-col h-16 justify-center mt-5 ml-0 lg:ml-5 text-sm md:text-lg my-3 lg:my-0 mx-auto lg:mx-0"
           >
             <div class="flex justify-center">
               <div class="mt-1 font-bold inline-flex text-xs sm:text-base">
@@ -183,7 +197,6 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "nuxt-property-decorator";
 import { EMPTY } from "~/utils/constant";
-import axios from "~/utils/myAxios";
 @Component({
   name: "ClientDashboard",
 })
@@ -194,7 +207,7 @@ export default class extends Vue {
   image: any = EMPTY;
 
   isActive: Boolean = false;
-
+  isHover: Boolean = false;
   userInformationDashboard = [
     {
       id: 1,
@@ -211,11 +224,15 @@ export default class extends Vue {
   ];
 
   handleEdit() {
-    this.isActive ? (this.isActive = false) : (this.isActive = true);
+    this.isActive = !this.isActive;
   }
 
   handleChangeAvatar(): any {
     return this.$refs?.fileInput?.click();
+  }
+
+  handleHover() {
+    this.isHover = !this.isHover;
   }
 
   async convertBase64(file: any) {
@@ -238,7 +255,6 @@ export default class extends Vue {
     if (files.size >= 1024 && files.size < 1048576) {
       const base64 = await this.convertBase64(files);
       this.image = base64;
-      console.log(this.image);
       this.$vxm.user.setUserId(this.userInfo.id);
       this.$vxm.user.addAvatar(this.image, this.userInfo.id);
     } else {
@@ -249,6 +265,10 @@ export default class extends Vue {
 
   get user() {
     return this.userInfo;
+  }
+
+  get isMobile() {
+    return this.$screen.width < 1024;
   }
 }
 </script>

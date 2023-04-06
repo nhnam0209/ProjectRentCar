@@ -22,10 +22,10 @@
     <div
       v-if="isHover"
       @mouseover="handleMouseEnter()"
-      class="bg-green-300 p-5 lg:w-[250px] rounded-md h-fit absolute top-[50px] mt-3 right-7 mr-[105px] lg:mr-0"
+      class="bg-green-300 p-5 lg:w-[250px] rounded-md h-fit absolute z-50 top-[70px] mt-3 right-7 mr-[105px] lg:mr-0"
       :class="classes"
     >
-      <div class="p-2" @mouseenter="handleMouseEnter()">
+      <div class="p-3 my-2" @mouseenter="handleMouseEnter()">
         <div v-if="!isAdmin" class="flex flex-col">
           <NuxtLink
             v-for="item in userSubNavigation"
@@ -76,19 +76,19 @@ export default class extends Vue {
     {
       id: 1,
       label: "My Profile",
-      link: "/dashboard/" + this.userInfo.id,
+      link: "/dashboard/" + this.userInfo.id + "_" + this.userInfo.username,
       icon: "icon-person",
     },
     {
       id: 2,
       label: "My Wallet",
-      link: "/wallet",
+      link: "/wallet/" + this.userInfo.id + "_" + this.userInfo.username,
       icon: "icon-wallet",
     },
     {
       id: 3,
       label: "My Car",
-      link: "/mycar",
+      link: "/mycar/" + this.userInfo.id + "_" + this.userInfo.username,
       icon: "icon-car",
     },
   ];

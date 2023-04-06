@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex justify-center items-center py-4 my-1 bg-white border-solid border-b border-neutral-500 max-lg:block max-lg:mx-4"
+    class="flex justify-center items-center py-10 my-1 bg-white border-solid border-b border-neutral-500 max-lg:block max-lg:mx-4"
   >
     <div
       class="flex border-solid border border-neutral-900 rounded-xl w-1/2 max-lg:w-full max-sm:block max-sm:border-none"

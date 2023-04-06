@@ -9,7 +9,7 @@
         :user-info="userInfo"
       ></product-list-card>
     </div>
-    <div v-else class="h-[700px]">
+    <div v-else class="h-[700px] flex justify-center text-slate-400">
       <div
         class="text-center text-xl md:text-5xl flex justify-center items-center"
       >
@@ -28,7 +28,7 @@ import axios from "~/utils/myAxios";
 export default class extends Vue {
   @Prop({ type: Boolean, default: false }) isMobile!: Boolean;
   isLogin: Boolean = false;
-  userInfo: any;
+  userInfo: any = [];
   result: any;
 
   get searchResult() {

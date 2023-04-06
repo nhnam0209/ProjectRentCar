@@ -20,6 +20,11 @@ import { EMPTY } from "~/utils/constant";
 @Component({
   name: "Dashboard",
   layout: "rentcar-layout",
+  head() {
+    return {
+      title: "My Profile",
+    };
+  },
 })
 export default class extends Vue {
   userInfo: any = [];

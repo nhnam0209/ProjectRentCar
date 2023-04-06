@@ -1,9 +1,15 @@
 <template>
-  <nav class="h-16 flex justify-between overflow-hidden">
-    <div class="bg-no-repeat bg-cover bg-center w-24 h-full">
-      <NuxtLink to="/"
-        ><img src="../../static/img/logo.jpg" alt="company_logo"
-      /></NuxtLink>
+  <nav class="h-16 lg:h-24 flex justify-between overflow-hidden">
+    <div
+      class="bg-no-repeat bg-cover bg-center w-32 h-full mx-5 my-auto flex justify-center"
+    >
+      <NuxtLink to="/" class="flex justify-center">
+        <img
+          src="../../static/img/logo.png"
+          alt="company_logo"
+          class="flex self-center"
+        />
+      </NuxtLink>
     </div>
     <div class="navbar-list-items flex justify-center items-center">
       <div v-if="isAdmin">

@@ -33,6 +33,7 @@
             label="Add"
             @click="toogleIsActive()"
             class="btn-success m-6"
+            v-if="isManageUser || isManageCar"
           >
           </RButton>
           <modal-add-user-from-admin
@@ -106,14 +107,14 @@ export default class extends Vue {
         this.walletInfos = walletRes.data.wallet;
 
         const walletTransactionRes = await axios.get(
-          "http://localhost:5000/api/wallet/findallTransaction",
+          "http://localhost:5000/api/wallet_transactions/findallTransaction",
           {
             headers: {
               Authorization: `${document.cookie}`,
             },
           }
         );
-        this.walletTransactions = walletTransactionRes.data.wallet_transactions;
+        this.walletTransactions = walletTransactionRes.data.walletTransaction;
 
         const carsTransactionRes = await axios.get(
           "http://localhost:5000/api/car_transactions/findallTransaction",
