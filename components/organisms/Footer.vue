@@ -30,7 +30,7 @@
               href="#"
               class="flex items-center text-2xl text-neutral-700 hover:text-black dark:text-neutral-300 dark:hover:text-white leading-none space-x-2 group"
               ><div class="flex-shrink-0 w-5">
-                <img
+                <!-- <img
                   alt=""
                   loading="lazy"
                   width="136"
@@ -39,14 +39,14 @@
                   data-nimg="1"
                   style="color: transparent"
                   src="/_next/static/media/facebook.b22e79d5.svg"
-                />
+                /> -->
               </div>
               <span class="hidden lg:block text-sm">Facebook</span></a
             ><a
               href="#"
               class="flex items-center text-2xl text-neutral-700 hover:text-black dark:text-neutral-300 dark:hover:text-white leading-none space-x-2 group"
               ><div class="flex-shrink-0 w-5">
-                <img
+                <!-- <img
                   alt=""
                   loading="lazy"
                   width="136"
@@ -55,14 +55,14 @@
                   data-nimg="1"
                   style="color: transparent"
                   src="/_next/static/media/youtube.bcae2a7a.svg"
-                />
+                /> -->
               </div>
               <span class="hidden lg:block text-sm">Youtube</span></a
             ><a
               href="#"
               class="flex items-center text-2xl text-neutral-700 hover:text-black dark:text-neutral-300 dark:hover:text-white leading-none space-x-2 group"
               ><div class="flex-shrink-0 w-5">
-                <img
+                <!-- <img
                   alt=""
                   loading="lazy"
                   width="136"
@@ -71,14 +71,14 @@
                   data-nimg="1"
                   style="color: transparent"
                   src="/_next/static/media/telegram.a3c75624.svg"
-                />
+                /> -->
               </div>
               <span class="hidden lg:block text-sm">Telegram</span></a
             ><a
               href="#"
               class="flex items-center text-2xl text-neutral-700 hover:text-black dark:text-neutral-300 dark:hover:text-white leading-none space-x-2 group"
               ><div class="flex-shrink-0 w-5">
-                <img
+                <!-- <img
                   alt=""
                   loading="lazy"
                   width="136"
@@ -87,7 +87,7 @@
                   data-nimg="1"
                   style="color: transparent"
                   src="/_next/static/media/twitter.d12eec73.svg"
-                />
+                /> -->
               </div>
               <span class="hidden lg:block text-sm">Twitter</span></a
             >

@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div class="overflow-x-auto">
     <h1 class="text-xl font-bold">Wallet</h1>
     <table class="w-full border border-solid text-center bg-white">
       <tr class="bg-[#379683] text-xl text-white">

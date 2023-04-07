@@ -1,8 +1,8 @@
 <template>
-  <div class="rounded-md">
+  <div class="rounded-md overflow-x-auto">
     <h1 class="text-xl font-bold">Wallet Transaction</h1>
     <table class="w-full border border-solid text-center bg-white rounded-md">
-      <tr class="bg-[#379683] text-xl text-white">
+      <tr class="bg-[#379683] text-white">
         <th class="py-2 px-4 max-lg:px-2">ID</th>
         <th class="py-2 px-4 max-lg:px-2">User ID</th>
         <th class="py-2 px-4 max-lg:px-2">Wallet ID</th>

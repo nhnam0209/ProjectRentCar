@@ -2,12 +2,12 @@
   <div class="bg-white">
     <search-location />
     <div class="flex h-full" v-if="searchResult.length > 0">
-      <rent-car-side-bar v-if="!isMobile"></rent-car-side-bar>
+      <rent-car-side-bar v-if="!isMobile" />
       <product-list-card
         :car-result="searchResult"
         :is-login="isLogin"
         :user-info="userInfo"
-      ></product-list-card>
+      />
     </div>
     <div v-else class="h-[700px] flex justify-center text-slate-400">
       <div

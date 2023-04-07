@@ -1,7 +1,7 @@
 <template>
   <div class="ml-1 w-full">
     <div
-      class="grid gap-4 grid-cols-2 m-4 max-md:grid-cols-1"
+      class="grid gap-5 grid-cols-3 m-4 max-md:grid-cols-1"
       v-for="cars in carResult"
       :key="cars.id"
     >

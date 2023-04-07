@@ -228,6 +228,7 @@ export default class extends Vue {
   }
 
   handleChangeAvatar(): any {
+    // @ts-ignore
     return this.$refs?.fileInput?.click();
   }
 

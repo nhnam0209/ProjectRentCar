@@ -1,7 +1,7 @@
 <template>
   <button
     @click="btnClick($event)"
-    class="text-white text-lg font-bold my-7 rounded-xl p-3 text-center"
+    class="text-white font-bold my-7 rounded-xl p-3 text-center"
     :class="[isDisabled ? 'bg-[#ebebe4] text-[#ccc]' : '']"
     type="submit"
     :disabled="isDisabled"
@@ -47,6 +47,12 @@ export default class extends Vue {
   background: #5cdb95;
   transition: 0.5s;
 }
+
+.btn-success:disabled {
+  background: #ebebe4;
+  transition: 0.5s;
+}
+
 .btn-size {
   width: 100%;
   height: 100%;

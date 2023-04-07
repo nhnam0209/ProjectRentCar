@@ -1,6 +1,6 @@
 <template>
   <div class="w-full flex justify-center items-center bg-gray-200">
-    <div class="dashboard-table">
+    <div class="dashboard-table overflow-x-auto">
       <div
         class="flex flex-col z-0"
         v-if="!isManageUser && !isManageCar"
@@ -17,17 +17,11 @@
         </div>
 
         <div class="m-4">
-          <CarTransactionTable
-            :cars-transactions="carsTransactions"
-          ></CarTransactionTable>
-        </div>
-
-        <div class="m-4">
           <BankAccountTable :bank-accounts="bankAccounts"></BankAccountTable>
         </div>
       </div>
 
-      <div class="button flex">
+      <div class="button flex flex-col lg:flex-row">
         <div class="">
           <RButton
             label="Add"
@@ -56,6 +50,10 @@
             v-if="isManageCar"
             :class="isActive ? 'z-0' : 'z-auto'"
           ></CarsTable>
+          <CarTransactionTable
+            v-if="isManageCar"
+            :cars-transactions="carsTransactions"
+          ></CarTransactionTable>
         </div>
       </div>
     </div>
@@ -65,6 +63,16 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "nuxt-property-decorator";
 import axios from "axios";
+import { Bar } from "vue-chartjs";
+import {
+  Chart as ChartJS,
+  Title,
+  Tooltip,
+  Legend,
+  BarElement,
+  CategoryScale,
+  LinearScale,
+} from "chart.js";
 
 @Component({
   name: "DashboardTable",

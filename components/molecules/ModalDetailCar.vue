@@ -223,6 +223,7 @@
             <RButton
               label="Rent Now"
               class="btn-success"
+              :is-disabled="isDisabled"
               @click="handleRentCarPage"
             />
             <RButton class="btn-close" @click="handleCancel">Cancel</RButton>
@@ -253,10 +254,11 @@ export default class extends Vue {
   @Prop({ type: Boolean }) isLogin: any;
   @Prop({ type: Boolean }) isModalUp!: any;
   isClose: Boolean;
-  totalPrice: any = 0;
-  protectedPlan: any = 0;
+  totalPrice: Number = 0;
+  protectedPlan: Number = 0;
   isActive: any = false;
   carTransaction: any = [];
+  isDisabled: any = false;
   // mounted() {
   //   console.log(this.carDetail);
   //   console.log(this.$route.fullPath);
@@ -289,6 +291,10 @@ export default class extends Vue {
 
   insurancePlan() {
     return this.protectedPlan;
+  }
+
+  destinationReturn() {
+    return this.carTransaction.destination_return;
   }
 
   @Emit()

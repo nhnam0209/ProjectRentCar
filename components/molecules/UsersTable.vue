@@ -1,5 +1,7 @@
 <template>
-  <div class="shadow-xl rounded-xl z-10 pb-4 w-full bg-white px-4 my-6">
+  <div
+    class="shadow-xl rounded-xl z-10 pb-4 w-full bg-white px-4 my-6 overflow-x-auto"
+  >
     <div class="m-4 text-xl font-bold">
       <span>User Detail</span>
     </div>
