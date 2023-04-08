@@ -16,6 +16,7 @@
     >
       <div
         v-for="item in navigationBarData"
+        :key="item.id"
         class="p-4 hover:bg-gray-300/50 w-full h-full"
       >
         <NuxtLink :key="item.id" :to="item.link">
