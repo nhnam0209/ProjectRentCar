@@ -1,5 +1,5 @@
 <template>
-  <div class="p-4 border-t border-b border-black overflow-auto">
+  <div class="p-4 border-t border-b border-black">
     <div class="px-4 flex items-center">
       <span class="font-bold text-2xl mr-5">My Bank Account</span>
       <IconAdd

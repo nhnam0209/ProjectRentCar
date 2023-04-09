@@ -2,7 +2,7 @@
   <div>
     <slot name="header">
       <navigation-bar-desktop v-if="!isMobile" />
-      <navigation-bar-mobile v-else />
+      <side-bar-mobile v-else />
     </slot>
     <slot name="content">
       <Nuxt />
