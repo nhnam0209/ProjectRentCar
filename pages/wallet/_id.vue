@@ -62,6 +62,7 @@ export default class extends Vue {
           {
             headers: {
               Authorization: `${document.cookie}`,
+              path: "/",
             },
           }
         );
@@ -82,7 +83,7 @@ export default class extends Vue {
         console.log(resWallet.data);
 
         const resWalletTransaction = await axios.post(
-          "http://localhost:5000/api/wallet/findTransaction",
+          "http://localhost:5000/api/wallet_transactions/findTransaction",
           {
             user_id: this.userInfo.id,
             wallet_id: this.walletInfo.id,
