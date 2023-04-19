@@ -1,11 +1,16 @@
 <template>
-  <div class="background-modal bg-gray-200/50 block">
+  <div class="background-modal bg-gray-200/50 block" :class="{'!hidden': isActive}">
     <form
       action=""
-      class="signup-form justify-center items-center bg-white rounded-xl shadow-xl"
-      :class="{ 'modal-close': isActive }"
+      class="signup-form justify-center items-center bg-white rounded-xl shadow-xl relative"
       @submit.prevent="handleUpdateUserInfo(user)"
     >
+      <span
+        class="absolute top-1 right-1 cursor-pointer"
+        @click="toogleIsActive()"
+      >
+        <icon-x class="w-6 h-6"></icon-x>
+      </span>
       <div class="p-6">
         <header class="title-signup text-3xl font-bold mt-7">
           <span>Please Update Your Information</span>
@@ -97,6 +102,10 @@ export default class extends Vue {
       value: "Others",
     },
   ];
+
+  toogleIsActive() {
+    this.isActive ? (this.isActive = false) : (this.isActive = true);
+  }
 
   handleUpdateUserInfo(user: any) {
     try {

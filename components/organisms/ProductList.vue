@@ -2,7 +2,7 @@
   <div class="bg-white">
     <search-location />
     <div class="flex h-full" v-if="searchResult.length > 0">
-      <rent-car-side-bar v-if="!isMobile" />
+      <rent-car-side-bar v-if="!isMobile" @click="sortCarbyPrice"/>
       <product-list-card
         :car-result="searchResult"
         :is-login="isLogin"
@@ -30,13 +30,25 @@ export default class extends Vue {
   isLogin: Boolean = false;
   userInfo: any = [];
   result: any;
-
+  typeSort: any = '';
+  
   get searchResult() {
     return this.$vxm.car.result;
   }
 
   set searchResult(value: any) {
     this.$vxm.car.result = value;
+  }
+  
+  sortCarbyPrice(typeFilter: any){
+    this.typeSort = typeFilter;
+
+    if(this.typeSort === 'asc'){
+      return this.searchResult[0].sort((a: any, b: any) => a.price - b.price);
+    }
+    if(this.typeSort === 'desc'){
+      return this.searchResult[0].sort((a: any, b: any) => b.price - a.price);
+    }
   }
 
   async created() {

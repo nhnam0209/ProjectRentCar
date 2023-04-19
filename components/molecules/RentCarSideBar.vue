@@ -15,7 +15,12 @@
           <div class="mb-2 text-2xl font-bold">Filter</div>
           <select
             class="text-lg w-full text-center py-1 border border-solid border-neutral-500 rounded-xl"
+            v-model="typeFilter"
+            @click="selectFilterClick(typeFilter)"
           >
+            <option value="default" disabled>
+              Choose type you want
+            </option>
             <option
               v-for="item in filterPrice"
               :key="item.id"
@@ -114,39 +119,34 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "nuxt-property-decorator";
+import { Component,Emit, Vue } from "nuxt-property-decorator";
 @Component({
-  name: "RentalLocation",
+  name: "RentalSideBar",
 })
 export default class extends Vue {
   isActive: boolean = false;
   carDemo: any = [];
+  typeFilter: any = "";
+
+  @Emit() 
+  selectFilterClick(typeFilter: any){
+    //console.log(typeFilter)
+    return this.$emit("click", typeFilter);
+  }
+
 
   filterPrice = [
     {
-      id: 0,
+      id: 1,
       name: "Lower Price",
       value: "asc",
     },
     {
-      id: 1,
+      id: 2,
       name: "Higher Price",
       value: "desc",
     },
   ];
-
-  /*handleFilterPrice(){
-    if(this.filterPrice.values == 'asc'){
-      this.car.sort(function (a: any, b: any) {
-      return parseFloat(a.price) - parseFloat(b.price);
-    });
-    }
-    else{
-      this.car.sort(function (a: any, b: any) {
-      return parseFloat(b.price) - parseFloat(a.price);
-    });
-    }
-  }*/
 
   toogleIsActive() {
     if (this.isActive == true) {

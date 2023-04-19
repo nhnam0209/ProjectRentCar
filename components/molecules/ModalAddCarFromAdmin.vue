@@ -1,5 +1,5 @@
 <template>
-  <div class="background-modal block">
+  <div class="fixed right-0 left-0 top-0 bottom-0 block">
     <form
       action=""
       class="signup-form justify-center items-center bg-white rounded-xl shadow"
