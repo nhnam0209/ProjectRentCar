@@ -92,7 +92,7 @@ export class UserStore extends VuexModule {
         this.userInfo.first_name + " " + this.userInfo.last_name
       );
       const res = await axios.post(
-        "http://localhost:5000/api/user/addUser",
+        "http://localhost:5000/api/user/admin_add_user",
         this.userInfo,
         {
           headers: {
@@ -185,7 +185,7 @@ export class UserStore extends VuexModule {
         newDate = user.birth_of_date;
       }
       await axios.put(
-        "http://localhost:5000/api/user/updateUserAdmin",
+        "http://localhost:5000/api/user/admin_update_user",
         {
           id: this.userInfo.id,
           first_name: user.first_name,
@@ -222,7 +222,7 @@ export class UserStore extends VuexModule {
         newDate = user.birth_of_date;
       }
       await axios.put(
-        "http://localhost:5000/api/user/updateUser",
+        "http://localhost:5000/api/user/update_user",
         {
           id: this.userInfo.id,
           first_name: this.userInfo.first_name,
@@ -253,7 +253,7 @@ export class UserStore extends VuexModule {
   @action async addAvatar(avatar:any) {
     try {
       var userAvatar = avatar;
-      await axios.put("http://localhost:5000/api/user/updateImage",
+      await axios.put("http://localhost:5000/api/user/update_image",
       { 
         user_id: this.userInfo.id, 
         image: userAvatar

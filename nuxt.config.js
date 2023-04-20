@@ -15,7 +15,7 @@ export default {
   },
 
   env: {
-    baseURL: process.env.BASE_URL || "http://locahost:5000/api/",
+    baseURL: process.env.LOCAL_BASE_URL || "http://locahost:5000/api/",
   },
 
   loading: {
@@ -39,6 +39,8 @@ export default {
     "../ProjectRentCar/components/",
     "../ProjectRentCar/components/logos/",
     "../ProjectRentCar/components/molecules/",
+    "../ProjectRentCar/components/molecules/table",
+    "../ProjectRentCar/components/molecules/modal",
     "../ProjectRentCar/components/organisms/",
     "../ProjectRentCar/layout/",
   ],
@@ -71,12 +73,12 @@ export default {
   build: {},
 
   axios: {
-    baseURL: process.env.BASE_URL || "http://locahost:5000/api/",
+    baseURL: process.env.LOCAL_BASE_URL || "http://locahost:5000/api/",
   },
 
   publicRuntimeConfig: {
     axios: {
-      baseURL: process.env.BASE_URL || "http://locahost:5000/api/",
+      baseURL: process.env.LOCAL_BASE_URL || "http://locahost:5000/api/",
     },
   },
 };

@@ -6,7 +6,7 @@ export default {
   async checkAdmin(isLogin, userInfo) {
     try {
       if (document.cookie) {
-        const res = await axios.get(BASE_URL + "auth/verifyloginAdmin", {
+        const res = await axios.get(`${BASE_URL}auth/verify_login_admin`, {
           headers: {
             Authorization: `${document.cookie}`,
           },
