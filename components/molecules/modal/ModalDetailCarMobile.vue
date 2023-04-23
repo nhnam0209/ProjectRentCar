@@ -1,13 +1,20 @@
 <template>
   <div
-    class="background-modal justify-center items-center max-xl:overflow-auto py-5"
+    class="fixed right-0 bottom-0 left-0 top-0 bg-stone-500/50 flex justify-center items-center max-md:py-0 z-40"
+    :class="{ '!hidden': isClose }"
   >
     <div
-      class="bg-white w-3/4 rounded-xl flex max-xl:block max-md:w-full h-full my-4 overflow-auto"
+      class="bg-white w-3/4 rounded-xl flex max-xl:block max-md:w-full h-full my-4 py-4 overflow-auto relative select-none"
       :class="{ 'modal-close': isActive }"
     >
+      <span
+        class="absolute top-1 right-1 cursor-pointer"
+        @click="toogleIsClose()"
+      >
+        <icon-x class="w-6 h-6"></icon-x>
+      </span>
       <div
-        class="content-left px-4 border border-solid border-neutral-500 max-xl:border-none max-xl:w-full w-2/3 overflow-auto bg-white"
+        class="content-left px-4 border border-solid border-neutral-500 max-xl:border-none max-xl:w-full w-2/3 max-md:overflow-hidden bg-white"
       >
         <div class="">
           <img
@@ -257,7 +264,7 @@ export default class extends Vue {
   @Prop({}) userInfo: any;
   @Prop({ type: Boolean }) isLogin: any;
   @Prop({ type: Boolean }) isModalUp!: any;
-  isClose: Boolean;
+  isClose: Boolean = false;
   totalPrice: any = 0;
   protectedPlan: any = 0;
   isActive: any = false;
@@ -283,6 +290,10 @@ export default class extends Vue {
       value: 32.68,
     },
   ];
+
+  toogleIsClose() {
+    this.isClose ? (this.isClose = false) : (this.isClose = true);
+  }
 
   toogleIsActive() {
     this.isActive ? (this.isActive = false) : (this.isActive = true);

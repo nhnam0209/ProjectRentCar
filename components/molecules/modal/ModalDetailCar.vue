@@ -1,9 +1,9 @@
 <template>
   <div
-    class="background-modal justify-center items-center max-xl:overflow-auto py-5"
+    class="fixed right-0 left-0 top-0 bottom-0 flex justify-center items-center bg-slate-500/40 max-xl:overflow-auto max-md:py-0 py-5" :class="{'!hidden': isClose}"
   >
     <div
-      class="bg-white w-3/4 rounded-xl flex max-xl:block max-md:w-full h-full my-4 overflow-auto"
+      class="bg-white w-3/4 rounded-xl flex max-xl:block max-md:p-0 max-md:w-full h-full max-md:my-0 overflow-auto z-40"
       :class="{ 'modal-close': isActive }"
     >
       <div
@@ -109,9 +109,12 @@
         </div>
       </div>
       <div
-        class="border border-solid border-neutral-500 overflow-auto content-right max-xl:border-none w-1/3 max-xl:w-full bg-white"
+        class="border border-solid border-neutral-500 overflow-auto content-right max-xl:border-none w-1/3 max-xl:w-full bg-white relative"
       >
-        <div class="booking-form-modal px-12 pb-3 max-md:py-4 max-md:px-4">
+        <span class="absolute top-1 right-1 cursor-pointer max-md:hidden" @click="toogleIsClose()">
+          <icon-x class=" w-6 h-6"></icon-x>
+        </span>
+        <div class="booking-form-modal px-12 pb-3 max-md:py-4 max-md:px-4 select-none">
           <div
             class="booking-price text-4xl font-bold text-green-500 text-center my-5 max-md:hidden"
           >
@@ -253,7 +256,7 @@ export default class extends Vue {
   @Prop({}) userInfo: any;
   @Prop({ type: Boolean }) isLogin: any;
   @Prop({ type: Boolean }) isModalUp!: any;
-  isClose: Boolean;
+  isClose: Boolean = false;
   totalPrice: Number = 0;
   protectedPlan: Number = 0;
   isActive: any = false;
@@ -283,6 +286,10 @@ export default class extends Vue {
 
   toogleIsActive() {
     this.isActive ? (this.isActive = false) : (this.isActive = true);
+  }
+
+  toogleIsClose() {
+    !this.isClose && (this.isClose = true);
   }
 
   total() {

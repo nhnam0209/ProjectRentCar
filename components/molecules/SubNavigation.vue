@@ -22,7 +22,7 @@
     <div
       v-if="isHover"
       @mouseover="handleMouseEnter()"
-      class="bg-green-300 p-5 lg:w-[250px] rounded-md h-fit absolute z-50 top-[70px] mt-3 right-7 mr-[105px] lg:mr-0"
+      class="bg-green-300 p-5 lg:w-[250px] rounded-md h-fit absolute z-50 top-[84px] mt-3 right-[18px] mr-[105px] lg:mr-0"
       :class="classes"
     >
       <div class="p-3 my-2" @mouseenter="handleMouseEnter()">
