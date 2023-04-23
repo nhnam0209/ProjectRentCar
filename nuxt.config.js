@@ -39,6 +39,8 @@ export default {
     "../ProjectRentCar/components/",
     "../ProjectRentCar/components/logos/",
     "../ProjectRentCar/components/molecules/",
+    "../ProjectRentCar/components/molecules/table",
+    "../ProjectRentCar/components/molecules/modal",
     "../ProjectRentCar/components/organisms/",
     "../ProjectRentCar/layout/",
   ],

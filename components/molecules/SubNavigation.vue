@@ -107,7 +107,7 @@ export default class extends Vue {
     {
       id: 3,
       label: "Manage Car",
-      link: "/managercar",
+      link: "/managecar",
     },
   ];
   isHover: Boolean = false;

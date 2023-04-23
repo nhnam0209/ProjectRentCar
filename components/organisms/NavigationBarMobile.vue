@@ -109,7 +109,7 @@ export default class extends Vue {
     try {
       if (document.cookie) {
         const res = await axios.get(
-          "http://localhost:5000/api/auth/verifylogin",
+          "http://localhost:5000/api/auth/verify_login",
           {
             headers: {
               Authorization: `${document.cookie}`,
@@ -118,7 +118,7 @@ export default class extends Vue {
         );
         if (res.data[0].is_admin == 1) {
           const resAdmin = await axios.get(
-            "http://localhost:5000/api/auth/verifyloginAdmin",
+            "http://localhost:5000/api/auth/verify_login_admin",
             {
               headers: {
                 Authorization: `${document.cookie}`,

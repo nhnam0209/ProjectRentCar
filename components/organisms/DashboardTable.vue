@@ -102,7 +102,6 @@ export default class extends Vue {
           }
         );
         this.bankAccounts = bankAccountRes.data.bank_accounts;
-        console.log(this.bankAccounts);
 
         const walletRes = await axios.get(
           "http://localhost:5000/api/wallet/findall",
@@ -125,7 +124,7 @@ export default class extends Vue {
         this.walletTransactions = walletTransactionRes.data.walletTransaction;
 
         const carsTransactionRes = await axios.get(
-          "http://localhost:5000/api/car_transactions/findallTransaction",
+          "http://localhost:5000/api/cars_transactions/findallTransaction",
           {
             headers: {
               Authorization: `${document.cookie}`,
@@ -139,7 +138,7 @@ export default class extends Vue {
       }
     } catch (error) {
       this.$router.push("/dashboardadmin");
-      setTimeout("location.reload(true)", 100);
+      // setTimeout("location.reload(true)", 100);
     }
   }
 

@@ -49,6 +49,7 @@
 
 <script lang="ts">
 import { Component, Vue } from "nuxt-property-decorator";
+import { API } from "~/utils/constant";
 import axios from "~/utils/myAxios";
 
 @Component({
@@ -81,7 +82,7 @@ export default class extends Vue {
       if (document.cookie) {
         if (this.isAdmin) {
           const res = await axios.get(
-            "http://localhost:5000/api/auth/verifyloginAdmin",
+            `${process.env.BASE_URL + API.auth.verify_login_admin}`,
             {
               headers: {
                 Authorization: `${document.cookie}`,
@@ -93,10 +94,11 @@ export default class extends Vue {
           this.userInfo = res.data.data;
         } else {
           const res = await axios.get(
-            "http://localhost:5000/api/auth/verifylogin",
+            `${process.env.BASE_URL + API.auth.verify_login}`,
             {
               headers: {
                 Authorization: `${document.cookie}`,
+                path: "/",
               },
             }
           );
@@ -108,6 +110,7 @@ export default class extends Vue {
       }
     } catch (error) {
       this.isLogin = false;
+      console.log(error);
       // this.$router.error({
       //       statusCode: 404,
       //       message: 'Failed to receive content from api',

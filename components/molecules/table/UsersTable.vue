@@ -78,7 +78,7 @@ export default class extends Vue {
     try {
       if (document.cookie) {
         const userRes = await axios.get(
-          "http://localhost:5000/api/user/findall",
+          "http://localhost:5000/api/user/find_all",
           {
             headers: {
               Authorization: `${document.cookie}`,

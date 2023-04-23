@@ -42,7 +42,7 @@ export default class extends Vue {
       // Auth.checkAdmin(this.isLogin, this.userInfo);
       if (document.cookie) {
         const res = await axios.get(
-          "http://localhost:5000/api/auth/verifyloginAdmin",
+          "http://localhost:5000/api/auth/verify_login_admin",
           {
             headers: {
               Authorization: `${document.cookie}`,
