@@ -2,7 +2,7 @@
   <div class="bg-white">
     <search-location />
     <div class="flex h-full" v-if="searchResult.length > 0">
-      <rent-car-side-bar v-if="!isMobile" @click="sortCarbyPrice"/>
+      <rent-car-side-bar v-if="!isMobile" @click="sortCarbyPrice" />
       <product-list-card
         :car-result="searchResult"
         :is-login="isLogin"
@@ -21,6 +21,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from "nuxt-property-decorator";
+import { API } from "~/utils/constant";
 import axios from "~/utils/myAxios";
 @Component({
   name: "Product",
@@ -30,8 +31,8 @@ export default class extends Vue {
   isLogin: Boolean = false;
   userInfo: any = [];
   result: any;
-  typeSort: any = '';
-  
+  typeSort: any = "";
+
   get searchResult() {
     return this.$vxm.car.result;
   }
@@ -39,14 +40,14 @@ export default class extends Vue {
   set searchResult(value: any) {
     this.$vxm.car.result = value;
   }
-  
-  sortCarbyPrice(typeFilter: any){
+
+  sortCarbyPrice(typeFilter: any) {
     this.typeSort = typeFilter;
 
-    if(this.typeSort === 'asc'){
+    if (this.typeSort === "asc") {
       return this.searchResult[0].sort((a: any, b: any) => a.price - b.price);
     }
-    if(this.typeSort === 'desc'){
+    if (this.typeSort === "desc") {
       return this.searchResult[0].sort((a: any, b: any) => b.price - a.price);
     }
   }
@@ -55,10 +56,11 @@ export default class extends Vue {
     try {
       if (document.cookie) {
         const res = await axios.get(
-          "http://localhost:5000/api/auth/verify_login",
+          `${process.env.BASE_URL + API.auth.verify_login}`,
           {
             headers: {
               Authorization: `${document.cookie}`,
+              path: "/",
             },
           }
         );

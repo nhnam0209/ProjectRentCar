@@ -1,4 +1,4 @@
-import { EMPTY } from "./../utils/constant";
+import { API, EMPTY } from "./../utils/constant";
 import axios from "axios";
 import { action, createModule, mutation } from "vuex-class-component";
 const VuexModule = createModule({
@@ -70,6 +70,7 @@ export class CarStore extends VuexModule {
           car
         );
         this.result.push(req.data.cars);
+        console.log(req.data.cars)
         if (this.result.length === 1) {
           localStorage.setItem("car_result", JSON.stringify(this.result));
         } else {

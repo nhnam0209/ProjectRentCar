@@ -30,7 +30,10 @@ export const API = {
     verify_login_admin: 'auth/verify_login_admin'
   },
   cars:{
-
+    search_car: 'cars/search',
+    admin_add_car: 'cars/addCarAdmin',
+    admin_update_car: 'cars/updateCarAdmin',
+    admin_delete_car: 'cars/deleteAdmin',
   },
   cars_transactions:{
 

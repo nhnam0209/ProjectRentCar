@@ -34,7 +34,13 @@
               class="z-50 absolute"
               tooltip-content="Click to change avatar"
             />
-
+            <input
+              ref="fileInput"
+              type="file"
+              class="hidden"
+              @change="onFileChange"
+              accept="image/*"
+            />
             <div
               v-if="isMobile"
               @click="handleChangeAvatar()"
