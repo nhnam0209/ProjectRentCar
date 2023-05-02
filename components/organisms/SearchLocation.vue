@@ -6,7 +6,7 @@
       class="flex border-solid border border-neutral-900 rounded-xl w-1/2 max-lg:w-full max-sm:block max-sm:border-none"
     >
       <div
-        class="flex w-1/2 max-lg:w-3/4 border-r border-solid border-neutral-900 max-sm:border max-sm:border-solid max-sm:border-neutral-900 max-sm:w-full max-sm:rounded-xl max-sm:mb-3"
+        class="flex w-1/2 max-2xl:w-2/3 max-lg:w-3/4 border-r border-solid border-neutral-900 max-sm:border max-sm:border-solid max-sm:border-neutral-900 max-sm:w-full max-sm:rounded-xl max-sm:mb-3"
       >
         <div class="flex items-center justify-center px-1">
           <icon-location-pin class="icon-fill cursor-pointer h-5 w-5" />
@@ -78,7 +78,7 @@
           @icon-filter-click="toogleIsActive()"
         ></IconFilter>
       </div>
-      <div class="button-search flex justify-center items-center">
+      <div class="button-search w-[260px] flex justify-center items-center">
         <RButton class="btn-size text-black" @click="handleSearchCar()"
           >Search</RButton
         >

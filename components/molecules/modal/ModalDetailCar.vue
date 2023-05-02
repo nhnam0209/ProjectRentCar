@@ -1,6 +1,6 @@
 <template>
   <div
-    class="fixed right-0 left-0 top-0 bottom-0 flex justify-center items-center bg-slate-500/40 max-xl:overflow-auto max-md:py-0 py-5" :class="{'!hidden': isClose}"
+    class="fixed right-0 left-0 top-0 bottom-0 flex justify-center items-center bg-slate-500/40 max-xl:overflow-auto max-md:py-0 py-5 z-[99]" :class="{'!hidden': isClose}"
   >
     <div
       class="bg-white w-3/4 rounded-xl flex max-xl:block max-md:p-0 max-md:w-full h-full max-md:my-0 overflow-auto z-40"

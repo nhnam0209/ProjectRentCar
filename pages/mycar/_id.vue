@@ -1,7 +1,7 @@
 <template>
   <Default>
     <template #content>
-      <div class="h-screen">
+      <div class="h-screen mt-32 max-lg:mt-0">
         <NavigationBarMyCar></NavigationBarMyCar>
         <ListCars :my-cars="myCars"></ListCars>
       </div>

@@ -1,7 +1,7 @@
 <template>
   <Default>
     <template #content>
-      <NavigationBarMyCar></NavigationBarMyCar>
+      <NavigationBarMyCar class="mt-16 max-lg:mt-0"></NavigationBarMyCar>
       <AddNewCar class="bg-gray-200" :user-info="userInfo"></AddNewCar>
     </template>
   </Default>

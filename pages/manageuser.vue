@@ -2,7 +2,7 @@
   <Default>
     <template #content>
       <DashboardTable
-        class="h-full"
+        class="h-full mt-16 max-lg:mt-0"
         :is-manage-user="isManageUser"
       ></DashboardTable>
     </template>

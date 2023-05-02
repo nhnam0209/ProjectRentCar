@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed right-0 top-0 bottom-0 left-0 block z-10">
+  <div class="fixed right-0 top-0 bottom-0 left-0 z-[99] bg-black/70 flex justify-center items-center">
     <form
       action=""
       class="signup-form justify-center items-center bg-white rounded-xl shadow"

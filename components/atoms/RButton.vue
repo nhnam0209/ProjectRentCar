@@ -58,7 +58,6 @@ export default class extends Vue {
   height: 100%;
 }
 .button-search {
-  width: 260px;
   height: 50px;
   background: #ffdc00;
   border-radius: 10px;

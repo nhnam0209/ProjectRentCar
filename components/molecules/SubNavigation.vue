@@ -1,59 +1,69 @@
 <template>
   <div
-    class="py-4 z-50 sub-navbar-items text-[12px] lg:text-xl"
-    :class="!isMobile && 'hover:bg-gray-300/50'"
-    @mouseleave="handleMouseBlur()"
-    @mouseover="handleMouseEnter()"
+    class="py-8 px-14 fixed top-16 right-0 font-medium rounded-lg border-2 bg-white z-50 cursor-pointer"
   >
-    <div
-      @mouseover="handleMouseEnter()"
-      class="cursor-pointer lg:p-6 flex text-center justify-center"
-    >
-      <div class="inline-flex self-center">
-        <img
+    <div class="">
+      <div class="my-5">
+        <div class="inline-flex self-center">
+          <img
+            v-if="!isAdmin"
+            :src="userInfo.image"
+            alt="avatar"
+            class="rounded-full w-9 h-9 flex self-center mr-2"
+          />
+          <p class="text-2xl">{{ userInfo.username }}</p>
+        </div>
+        <div
           v-if="!isAdmin"
-          :src="userInfo.image"
-          alt="avatar"
-          class="rounded-full w-8 h-8 flex self-center mr-2"
-        />
-        <p class="text-xl">{{ username }}</p>
-      </div>
-    </div>
-    <div
-      v-if="isHover"
-      @mouseover="handleMouseEnter()"
-      class="bg-green-300 p-5 lg:w-[250px] rounded-md h-fit absolute z-50 top-[84px] mt-3 right-[18px] mr-[105px] lg:mr-0"
-      :class="classes"
-    >
-      <div class="p-3 my-2" @mouseenter="handleMouseEnter()">
-        <div v-if="!isAdmin" class="flex flex-col">
+          class="flex flex-col border-t border-gray-500 my-2 py-2"
+        >
           <NuxtLink
             v-for="item in userSubNavigation"
             :key="item.id"
-            class="lg:text-2xl text-xl my-1 w-full font-semibold cursor-pointer z-50 inline-flex"
+            class="lg:text-2xl text-xl my-2 w-full font-semibold cursor-pointer z-50 inline-flex rounded-full hover:bg-slate-200 p-2"
             :to="item.link"
-            ><component :is="item.icon" class="w-6 mr-2 flex self-center" />
+            ><component :is="item.icon" class="w-6 mr-2 flex self-center icon-fill" />
             <span class="flex self-center">
               {{ item.label }}
             </span>
           </NuxtLink>
         </div>
-
-        <div v-else class="flex-col hidden max-lg:flex">
+        <div
+          v-else
+          class="flex-col hidden max-lg:flex border-t border-gray-500 my-2 py-2"
+        >
           <NuxtLink
             v-for="item in adminSubNavigation"
             :key="item.id"
-            class="lg:text-2xl text-xl my-auto font-semibold cursor-pointer z-50"
+            class="lg:text-2xl text-xl my-auto font-semibold cursor-pointer z-50 rounded-full hover:bg-slate-200 p-2"
             :to="item.link"
             >{{ item.label }}</NuxtLink
           >
         </div>
-        <hr class="my-4" />
-        <div
-          class="navbar-items my-2 cursor-pointer text-center mx-auto"
-          @click="handleLogOut"
-        >
-          Logout
+        <div class="flex flex-col border-t border-gray-500 my-2 py-2">
+          <NuxtLink
+            class="lg:text-2xl text-xl my-2 w-full font-semibold cursor-pointer z-50 inline-flex rounded-full hover:bg-slate-200 p-2"
+            to="/rentcar"
+          >
+            <icon-location-pin
+              class="w-6 mr-2 flex self-center icon-fill"
+            ></icon-location-pin>
+            <span class="flex self-center">Rent Car</span>
+          </NuxtLink>
+          <NuxtLink
+            class="lg:text-2xl text-xl my-2 w-full font-semibold cursor-pointer z-50 inline-flex rounded-full hover:bg-slate-200 p-2"
+            to="/aboutus"
+          >
+            <icon-users class="w-6 mr-2 flex self-center icon-fill"></icon-users>
+            <span class="flex self-center">About Us</span>
+          </NuxtLink>
+          <div
+            class="lg:text-2xl text-xl my-2 w-full font-semibold cursor-pointer z-50 inline-flex rounded-full hover:bg-slate-200 p-2"
+            @click="handleLogOut"
+          >
+            <icon-login class="w-6 mr-2 flex self-center icon-fill"></icon-login>
+            <span class="flex self-center">Logout</span>
+          </div>
         </div>
       </div>
     </div>
