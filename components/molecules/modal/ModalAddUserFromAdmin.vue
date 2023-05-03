@@ -1,5 +1,5 @@
 <template>
-  <div class="background-modal block">
+  <div class="fixed right-0 top-0 bottom-0 left-0 z-[99] bg-black/70 flex justify-center items-center">
     <form
       action=""
       class="signup-form justify-center items-center bg-white rounded-xl shadow"
@@ -120,18 +120,3 @@ export default class extends Vue {
   }
 }
 </script>
-
-<style>
-.background-modal {
-  position: fixed;
-  right: 0;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.9);
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  z-index: 2;
-}
-</style>

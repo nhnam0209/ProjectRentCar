@@ -1,5 +1,5 @@
 <template>
-  <nav class="h-16 lg:h-24 flex justify-between overflow-hidden">
+  <nav class="h-16 lg:h-24 flex justify-between overflow-hidden fixed bg-white w-full z-10 top-0 border-b border-solid border-gray-200">
     <div
       class="bg-no-repeat bg-cover bg-center w-32 h-full mx-5 my-auto flex justify-center"
     >
@@ -14,30 +14,66 @@
     <div class="navbar-list-items flex justify-center items-center">
       <div v-if="isAdmin">
         <div class="inline-flex">
-          <NuxtLink class="navbar-items" to="/dashboardadmin"
+          <NuxtLink
+            class="navbar-items mx-4 p-4 text-xl rounded-full hover:bg-slate-100"
+            to="/dashboardadmin"
             >Dashboard</NuxtLink
           >
-          <NuxtLink class="navbar-items" to="/manageuser">Manage User</NuxtLink>
-          <NuxtLink class="navbar-items" to="/managecar">Manage Car</NuxtLink>
+          <NuxtLink
+            class="navbar-items mx-4 p-4 text-xl rounded-full hover:bg-slate-100"
+            to="/manageuser"
+            >Manage User</NuxtLink
+          >
+          <NuxtLink class="navbar-items mx-4 p-4 text-xl" to="/managecar"
+            >Manage Car</NuxtLink
+          >
         </div>
       </div>
       <div v-else>
         <div class="inline-flex">
-          <NuxtLink class="navbar-items" to="/">Home</NuxtLink>
-          <NuxtLink class="navbar-items" to="/aboutus">About Us</NuxtLink>
-          <NuxtLink class="navbar-items" to="/rentcar">Rent Car</NuxtLink>
+          <NuxtLink
+            class="navbar-items mx-4 p-4 text-xl rounded-full hover:bg-slate-100"
+            to="/"
+            >Home</NuxtLink
+          >
+          <NuxtLink
+            class="navbar-items mx-4 p-4 text-xl rounded-full hover:bg-slate-100"
+            to="/aboutus"
+            >About Us</NuxtLink
+          >
+          <NuxtLink
+            class="navbar-items mx-4 p-4 text-xl rounded-full hover:bg-slate-100"
+            to="/rentcar"
+            >Rent Car</NuxtLink
+          >
         </div>
       </div>
+    </div>
+    <div class="flex justify-center items-center">
       <div v-if="!isLogin">
         <button class="buttons split-bar relative">
-          <NuxtLink class="navbar-items" to="/login">Sign In</NuxtLink>
+          <NuxtLink
+            class="navbar-items mx-4 p-4 text-xl rounded-full hover:bg-slate-100"
+            to="/login"
+            >Sign In</NuxtLink
+          >
         </button>
         <button class="buttons">
-          <NuxtLink class="navbar-items" to="/register">Sign Up</NuxtLink>
+          <NuxtLink
+            class="navbar-items mx-4 p-4 text-xl rounded-full hover:bg-slate-100"
+            to="/register"
+            >Sign Up</NuxtLink
+          >
         </button>
       </div>
-      <div v-else class="px-5">
-        <sub-navigation :user-info="userInfo" :is-admin="isAdmin" />
+      <div v-else class="px-5 flex justify-center items-center">
+        <span class="relative px-5 split-bar cursor-pointer" @click="handleRentCarPage()">
+          <icon-search class="w-6 h-6 "></icon-search>
+        </span>
+        <span class="px-5 navigation-subnav" @mouseover="handleMouseHover()" @mouseout="handleMouseOut()">
+          <icon-user class="w-6 h-6 cursor-pointer"></icon-user>
+          <sub-navigation class="fixed top-24 right-0 z-[99] hidden" :user-info="userInfo" :is-admin="isAdmin" :class="{'!block' : isHover}" />
+        </span>
       </div>
     </div>
   </nav>
@@ -53,6 +89,18 @@ export default class extends Vue {
   isLogin: Boolean = false;
   userInfo: any = {};
   walletInfo: any = {};
+  isHover: any = false
+
+  handleMouseHover() {
+    !this.isHover && (this.isHover = true);
+  }
+  handleMouseOut() {
+    this.isHover && (this.isHover = false);
+  }
+
+  handleRentCarPage() {
+    this.$router.push("/rentcar");
+  }
 
   get user() {
     return this.$vxm.user.userInfo;
@@ -133,24 +181,18 @@ export default class extends Vue {
   right: 0;
 }
 
-.navbar-items {
-  margin-left: 26px;
-  margin-right: 26px;
-  font-size: 1.5rem;
-  line-height: 2rem;
+.navigation-subnav{
   position: relative;
 }
 
-.navbar-items::before {
+.navigation-subnav::before {
   content: "";
   position: absolute;
-  bottom: 0;
+  top: 20px;
+  width: 200px;
+  right: 0;
   left: 0;
-  height: 3px;
-  width: 0%;
-  background: #5cdb95;
-  border-radius: 12px;
-  transition: all 0.6s ease;
+  height: 64px;
 }
 
 .navbar-items:hover::before {

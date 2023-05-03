@@ -1,6 +1,6 @@
 <template>
   <div
-    class="fixed top-0 bottom-0 right-0 left-0 items-center flex justify-center h-screen z-10 bg-black/70"
+    class="fixed right-0 top-0 bottom-0 left-0 z-[99] bg-black/70 flex justify-center items-center"
     :class="{ 'modal-close': isActive }"
   >
     <div

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="fixed right-0 bottom-0 left-0 top-0 bg-stone-500/50 flex justify-center items-center max-md:py-0 z-40"
+    class="fixed right-0 bottom-0 left-0 top-0 bg-stone-500/50 flex justify-center items-center max-md:py-0 z-[99]"
     :class="{ '!hidden': isClose }"
   >
     <div

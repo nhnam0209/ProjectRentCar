@@ -62,7 +62,7 @@
                 :key="item.id"
                 class="lg:text-2xl text-xl my-2 w-full font-semibold cursor-pointer z-50 inline-flex"
                 :to="item.link"
-                ><component :is="item.icon" class="w-6 mr-2 flex self-center" />
+                ><component :is="item.icon" class="w-6 mr-2 flex self-center icon-fill" />
                 <span class="flex self-center">
                   {{ item.label }}
                 </span>
@@ -86,7 +86,7 @@
                 to="/rentcar"
               >
                 <icon-location-pin
-                  class="w-6 mr-2 flex self-center"
+                  class="w-6 mr-2 flex self-center icon-fill"
                 ></icon-location-pin>
                 <span class="flex self-center">Rent Car</span>
               </NuxtLink>
@@ -94,14 +94,14 @@
                 class="lg:text-2xl text-xl my-2 w-full font-semibold cursor-pointer z-50 inline-flex"
                 to="/aboutus"
               >
-                <icon-users class="w-6 mr-2 flex self-center"></icon-users>
+                <icon-users class="w-6 mr-2 flex self-center icon-fill"></icon-users>
                 <span class="flex self-center">About Us</span>
               </NuxtLink>
               <div
                 class="lg:text-2xl text-xl my-2 w-full font-semibold cursor-pointer z-50 inline-flex"
                 @click="handleLogOut"
               >
-                <icon-login class="w-6 mr-2 flex self-center"></icon-login>
+                <icon-login class="w-6 mr-2 flex self-center icon-fill"></icon-login>
                 <span class="flex self-center">Logout</span>
               </div>
             </div>
