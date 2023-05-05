@@ -62,7 +62,10 @@
                 :key="item.id"
                 class="lg:text-2xl text-xl my-2 w-full font-semibold cursor-pointer z-50 inline-flex"
                 :to="item.link"
-                ><component :is="item.icon" class="w-6 mr-2 flex self-center icon-fill" />
+                ><component
+                  :is="item.icon"
+                  class="w-6 mr-2 flex self-center icon-fill"
+                />
                 <span class="flex self-center">
                   {{ item.label }}
                 </span>
@@ -94,14 +97,18 @@
                 class="lg:text-2xl text-xl my-2 w-full font-semibold cursor-pointer z-50 inline-flex"
                 to="/aboutus"
               >
-                <icon-users class="w-6 mr-2 flex self-center icon-fill"></icon-users>
+                <icon-users
+                  class="w-6 mr-2 flex self-center icon-fill"
+                ></icon-users>
                 <span class="flex self-center">About Us</span>
               </NuxtLink>
               <div
                 class="lg:text-2xl text-xl my-2 w-full font-semibold cursor-pointer z-50 inline-flex"
                 @click="handleLogOut"
               >
-                <icon-login class="w-6 mr-2 flex self-center icon-fill"></icon-login>
+                <icon-login
+                  class="w-6 mr-2 flex self-center icon-fill"
+                ></icon-login>
                 <span class="flex self-center">Logout</span>
               </div>
             </div>
@@ -115,6 +122,7 @@
 <script lang="ts">
 import { Component, Vue } from "nuxt-property-decorator";
 import axios from "../../utils/myAxios";
+import { API } from "~/utils/constant";
 
 @Component({
   name: "SideBarMobile",
@@ -224,7 +232,7 @@ export default class extends Vue {
     try {
       if (document.cookie) {
         const res = await axios.get(
-          "http://localhost:5000/api/auth/verify_login",
+          `${process.env.baseURL + API.auth.verify_login}`,
           {
             headers: {
               Authorization: `${document.cookie}`,
@@ -233,7 +241,7 @@ export default class extends Vue {
         );
         if (res.data[0].is_admin == 1) {
           const resAdmin = await axios.get(
-            "http://localhost:5000/api/auth/verify_login_admin",
+            `${process.env.baseURL + API.auth.verify_login_admin}`,
             {
               headers: {
                 Authorization: `${document.cookie}`,

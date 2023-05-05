@@ -11,6 +11,7 @@
 
 <script lang="ts">
 import { Component, Vue } from "nuxt-property-decorator";
+import { API } from "~/utils/constant";
 import axios from "~/utils/myAxios";
 
 @Component({
@@ -38,7 +39,7 @@ export default class extends Vue {
     try {
       if (document.cookie) {
         const res = await axios.get(
-          "http://localhost:5000/api/auth/verify_login",
+          `${process.env.baseURL + API.auth.verify_login}`,
           {
             headers: {
               Authorization: `${document.cookie}`,
@@ -50,7 +51,7 @@ export default class extends Vue {
         this.userInfo = res.data[0];
 
         const myCarsRes = await axios.post(
-          "http://localhost:5000/api/cars/findbyId",
+          `${process.env.baseURL + API.cars.query_car}`,
           {
             user_id: this.userInfo.id,
           },

@@ -1,6 +1,8 @@
-import { EMPTY } from "./../utils/constant";
+import { API, EMPTY } from "./../utils/constant";
 import axios from "axios";
 import { action, createModule, mutation } from "vuex-class-component";
+
+const Local_Base_URL = "http://localhost:5000/api/"
 
 const VuexModule = createModule({
   namespaced: "bankAccountInfo",
@@ -38,7 +40,7 @@ export class UserStore extends VuexModule {
   @action async handleAddBankAccount() {
     try {
       const res = await axios.post(
-        process.env.baseURL + "/bankaccount/add",
+         `${Local_Base_URL + API.bank_account.add_bank_account} `,
         this.bankAccountInfo,
         {
           headers: {

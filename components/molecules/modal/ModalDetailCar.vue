@@ -1,6 +1,7 @@
 <template>
   <div
-    class="fixed right-0 left-0 top-0 bottom-0 flex justify-center items-center bg-slate-500/40 max-xl:overflow-auto max-md:py-0 py-5 z-[99]" :class="{'!hidden': isClose}"
+    class="fixed right-0 left-0 top-0 bottom-0 flex justify-center items-center bg-slate-500/40 max-xl:overflow-auto max-md:py-0 py-5 z-[99]"
+    :class="{ '!hidden': isClose }"
   >
     <div
       class="bg-white w-3/4 rounded-xl flex max-xl:block max-md:p-0 max-md:w-full h-full max-md:my-0 overflow-auto z-40"
@@ -111,10 +112,15 @@
       <div
         class="border border-solid border-neutral-500 overflow-auto content-right max-xl:border-none w-1/3 max-xl:w-full bg-white relative"
       >
-        <span class="absolute top-1 right-1 cursor-pointer max-md:hidden" @click="toogleIsClose()">
-          <icon-x class=" w-6 h-6"></icon-x>
+        <span
+          class="absolute top-1 right-1 cursor-pointer max-md:hidden"
+          @click="toogleIsClose()"
+        >
+          <icon-x class="w-6 h-6"></icon-x>
         </span>
-        <div class="booking-form-modal px-12 pb-3 max-md:py-4 max-md:px-4 select-none">
+        <div
+          class="booking-form-modal px-12 pb-3 max-md:py-4 max-md:px-4 select-none"
+        >
           <div
             class="booking-price text-4xl font-bold text-green-500 text-center my-5 max-md:hidden"
           >
@@ -246,7 +252,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Emit, Prop, Vue } from "nuxt-property-decorator";
+import { Component, Emit, Prop, Vue, Watch } from "nuxt-property-decorator";
 
 @Component({
   name: "ModalDetailCar",
@@ -260,12 +266,19 @@ export default class extends Vue {
   totalPrice: Number = 0;
   protectedPlan: Number = 0;
   isActive: any = false;
-  carTransaction: any = [];
-  isDisabled: any = false;
+  carTransaction: any = [{}];
+  isDisabled: any = true;
   // mounted() {
   //   console.log(this.carDetail);
   //   console.log(this.$route.fullPath);
   // }
+
+  @Watch("carTransaction")
+  handler(val: any) {
+    if (val.destination_return != "") {
+      this.isDisabled = !this.isDisabled;
+    }
+  }
   protectionPlan = [
     {
       id: 1,
@@ -310,6 +323,7 @@ export default class extends Vue {
   }
 
   handleRentCarPage() {
+    console.log(this.carTransaction);
     this.isLogin ? this.toogleIsActive : this.$router.push("/login");
   }
 }

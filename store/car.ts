@@ -1,6 +1,8 @@
 import { API, EMPTY } from "./../utils/constant";
 import axios from "axios";
 import { action, createModule, mutation } from "vuex-class-component";
+
+const Local_Base_URL = "http://localhost:5000/api/"
 const VuexModule = createModule({
   namespaced: "carInfo",
   strict: false,
@@ -65,12 +67,11 @@ export class CarStore extends VuexModule {
   @action async handleSearchCar(car: any) {
     try {
       if (car.location != "" && car.returnDate != "" && car.pickupDate != "") {
-        const req = await axios.post(
-          "http://localhost:5000/api/cars/search",
+        const res = await axios.post(
+          `${Local_Base_URL + API.cars.search_car} `,
           car
         );
-        this.result.push(req.data.cars);
-        console.log(req.data.cars)
+        this.result.push(res.data.cars);
         if (this.result.length === 1) {
           localStorage.setItem("car_result", JSON.stringify(this.result));
         } else {
@@ -91,7 +92,7 @@ export class CarStore extends VuexModule {
   }
   @action async removeCar(car: any) {
     try {
-      await axios.delete("http://localhost:5000/api/cars/deleteAdmin", {
+      await axios.delete(`${Local_Base_URL + API.cars.admin_delete_car}`, {
         headers: {
           Authorization: `${document.cookie}`,
         },
@@ -117,7 +118,7 @@ export class CarStore extends VuexModule {
     }
     try {
       await axios.put(
-        "http://localhost:5000/api/cars/updateCarAdmin",
+        `${Local_Base_URL + API.cars.admin_update_car}`,
         {
           id: this.car.id,
           img: car.img,
@@ -154,7 +155,7 @@ export class CarStore extends VuexModule {
 
   @action async addCarAdmin() {
     try {
-      await axios.post("http://localhost:5000/api/cars/addCarAdmin", this.car, {
+      await axios.post(`${Local_Base_URL + API.cars.admin_add_car}`, this.car, {
         headers: {
           Authorization: `${document.cookie}`,
         },

@@ -1,6 +1,8 @@
-import { EMPTY } from "./../utils/constant";
+import { API, EMPTY } from "./../utils/constant";
 import axios from "axios";
 import { action, createModule, mutation } from "vuex-class-component";
+
+const Local_Base_URL = "http://localhost:5000/api/"
 
 const VuexModule = createModule({
   namespaced: "userInfo",
@@ -75,7 +77,7 @@ export class UserStore extends VuexModule {
         this.userInfo.first_name + " " + this.userInfo.last_name
       );
       const res = await axios.post(
-        "http://localhost:5000/api/auth/register",
+       `${Local_Base_URL + API.auth.register}`,
         this.userInfo
       );
       alert(res.data.msg);
@@ -92,7 +94,7 @@ export class UserStore extends VuexModule {
         this.userInfo.first_name + " " + this.userInfo.last_name
       );
       const res = await axios.post(
-        "http://localhost:5000/api/user/admin_add_user",
+        `${Local_Base_URL + API.user.admin_add_user}`,
         this.userInfo,
         {
           headers: {
@@ -110,7 +112,7 @@ export class UserStore extends VuexModule {
   @action async handleLogin() {
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/auth/login",
+        `${process.env.baseURL + API.auth.login}`,
         this.userLogin
       );
       alert(res.data.msg);
@@ -158,7 +160,7 @@ export class UserStore extends VuexModule {
   }
   @action async removeUser(user: any) {
     try {
-      await axios.delete("http://localhost:5000/api/user/deleteAdmin", {
+      await axios.delete(`${Local_Base_URL + API.user.admin_delete_user}`, {
         headers: {
           Authorization: `${document.cookie}`,
         },
@@ -185,7 +187,7 @@ export class UserStore extends VuexModule {
         newDate = user.birth_of_date;
       }
       await axios.put(
-        "http://localhost:5000/api/user/admin_update_user",
+        `${Local_Base_URL + API.user.admin_update_user}`,
         {
           id: this.userInfo.id,
           first_name: user.first_name,
@@ -222,7 +224,7 @@ export class UserStore extends VuexModule {
         newDate = user.birth_of_date;
       }
       await axios.put(
-        "http://localhost:5000/api/user/update_user",
+        `${Local_Base_URL + API.user.update_user}`,
         {
           id: this.userInfo.id,
           first_name: this.userInfo.first_name,
@@ -253,7 +255,7 @@ export class UserStore extends VuexModule {
   @action async addAvatar(avatar:any) {
     try {
       var userAvatar = avatar;
-      await axios.put("http://localhost:5000/api/user/update_image",
+      await axios.put(`${Local_Base_URL + API.user.update_image}`,
       { 
         user_id: this.userInfo.id, 
         image: userAvatar

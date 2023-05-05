@@ -73,6 +73,7 @@ import {
   CategoryScale,
   LinearScale,
 } from "chart.js";
+import { API } from "~/utils/constant";
 
 @Component({
   name: "DashboardTable",
@@ -94,7 +95,7 @@ export default class extends Vue {
     try {
       if (document.cookie) {
         const bankAccountRes = await axios.get(
-          "http://localhost:5000/api/bankaccount/findall",
+          `${process.env.BASE_URL + API.bank_account.admin_query_bank_account}`,
           {
             headers: {
               Authorization: `${document.cookie}`,
@@ -104,7 +105,7 @@ export default class extends Vue {
         this.bankAccounts = bankAccountRes.data.bank_accounts;
 
         const walletRes = await axios.get(
-          "http://localhost:5000/api/wallet/findall",
+          `${process.env.BASE_URL + API.wallet.admin_query_wallet}`,
           {
             headers: {
               Authorization: `${document.cookie}`,
@@ -114,7 +115,10 @@ export default class extends Vue {
         this.walletInfos = walletRes.data.wallet;
 
         const walletTransactionRes = await axios.get(
-          "http://localhost:5000/api/wallet_transactions/findallTransaction",
+          `${
+            process.env.BASE_URL +
+            API.wallet_transactions.admin_query_wallet_transactions
+          }`,
           {
             headers: {
               Authorization: `${document.cookie}`,
@@ -124,7 +128,10 @@ export default class extends Vue {
         this.walletTransactions = walletTransactionRes.data.walletTransaction;
 
         const carsTransactionRes = await axios.get(
-          "http://localhost:5000/api/cars_transactions/findallTransaction",
+          `${
+            process.env.BASE_URL +
+            API.cars_transactions.admin_query_cars_transactions
+          }`,
           {
             headers: {
               Authorization: `${document.cookie}`,

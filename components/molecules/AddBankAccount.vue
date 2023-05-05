@@ -34,7 +34,7 @@
             <div class="">
               <input
                 class="outline-none border border-solid border-black rounded-lg w-full text-lg p-1"
-                v-model="bankAccountInfo.full_name"
+                v-model="userInfo.full_name"
               />
             </div>
           </div>
@@ -59,7 +59,7 @@
               <RButton
                 class="btn-success w-full"
                 label="Add Bank Account"
-                @btn-click="handleWithdrawn()"
+                @btn-click="handleAddBankAccount()"
               ></RButton>
             </div>
           </div>
@@ -72,6 +72,7 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "nuxt-property-decorator";
 import axios from "axios";
+import { API } from "~/utils/constant";
 
 @Component({
   name: "AddBankAccount",
@@ -81,19 +82,16 @@ export default class extends Vue {
   @Prop({}) userInfo!: any;
   isActive: boolean = false;
 
-  async handleWithdrawn() {
+  async handleAddBankAccount() {
     try {
-      await axios.post(
-        "http://localhost:5000/api/bankaccount/add",
+      const res = await axios.post(
+        `${process.env.BASE_URL + API.bank_account.add_bank_account}`,
         {
           user_id: this.userInfo.id,
           username: this.userInfo.username,
           full_name: this.userInfo.full_name,
           bank_account: this.bankAccountInfo.bank_account,
           expire_date: this.bankAccountInfo.expire_date,
-          status: this.bankAccountInfo.status,
-          create_at: this.bankAccountInfo.create_at,
-          update_at: this.bankAccountInfo.update_at,
         },
         {
           headers: {
@@ -101,6 +99,7 @@ export default class extends Vue {
           },
         }
       );
+      console.log(res);
       alert(`The Bank account created successfully`);
       location.reload();
       // alert(JSON.stringify(this.car));
@@ -111,11 +110,7 @@ export default class extends Vue {
   }
 
   toogleIsActive() {
-    if (this.isActive == true) {
-      this.isActive = false;
-    } else {
-      this.isActive = true;
-    }
+    this.isActive = !this.isActive;
   }
 }
 </script>

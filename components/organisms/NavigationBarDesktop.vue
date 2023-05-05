@@ -1,5 +1,7 @@
 <template>
-  <nav class="h-16 lg:h-24 flex justify-between overflow-hidden fixed bg-white w-full z-10 top-0 border-b border-solid border-gray-200">
+  <nav
+    class="h-16 lg:h-24 flex justify-between overflow-hidden fixed bg-white w-full z-10 top-0 border-b border-solid border-gray-200"
+  >
     <div
       class="bg-no-repeat bg-cover bg-center w-32 h-full mx-5 my-auto flex justify-center"
     >
@@ -67,12 +69,24 @@
         </button>
       </div>
       <div v-else class="px-5 flex justify-center items-center">
-        <span class="relative px-5 split-bar cursor-pointer" @click="handleRentCarPage()">
-          <icon-search class="w-6 h-6 "></icon-search>
+        <span
+          class="relative px-5 split-bar cursor-pointer"
+          @click="handleRentCarPage()"
+        >
+          <icon-search class="w-6 h-6"></icon-search>
         </span>
-        <span class="px-5 navigation-subnav" @mouseover="handleMouseHover()" @mouseout="handleMouseOut()">
+        <span
+          class="px-5 navigation-subnav"
+          @mouseover="handleMouseHover()"
+          @mouseout="handleMouseOut()"
+        >
           <icon-user class="w-6 h-6 cursor-pointer"></icon-user>
-          <sub-navigation class="fixed top-24 right-0 z-[99] hidden" :user-info="userInfo" :is-admin="isAdmin" :class="{'!block' : isHover}" />
+          <sub-navigation
+            class="fixed top-24 right-0 z-[99] hidden"
+            :user-info="userInfo"
+            :is-admin="isAdmin"
+            :class="{ '!block': isHover }"
+          />
         </span>
       </div>
     </div>
@@ -81,6 +95,7 @@
 <script lang="ts">
 import { Component, Vue } from "nuxt-property-decorator";
 import axios from "../../utils/myAxios";
+import { API } from "~/utils/constant";
 
 @Component({
   name: "NavigationBarDesktop",
@@ -89,7 +104,7 @@ export default class extends Vue {
   isLogin: Boolean = false;
   userInfo: any = {};
   walletInfo: any = {};
-  isHover: any = false
+  isHover: any = false;
 
   handleMouseHover() {
     !this.isHover && (this.isHover = true);
@@ -122,7 +137,7 @@ export default class extends Vue {
     try {
       if (document.cookie) {
         const res = await axios.get(
-          "http://localhost:5000/api/auth/verify_login",
+          `${process.env.baseURL + API.auth.verify_login}`,
           {
             headers: {
               Authorization: `${document.cookie}`,
@@ -144,7 +159,7 @@ export default class extends Vue {
         // console.log(this.walletInfo);
         if (res.data[0].is_admin == 1) {
           const resAdmin = await axios.get(
-            "http://localhost:5000/api/auth/verify_login_admin",
+            `${process.env.baseURL + API.auth.verify_login_admin}`,
             {
               headers: {
                 Authorization: `${document.cookie}`,
@@ -181,7 +196,7 @@ export default class extends Vue {
   right: 0;
 }
 
-.navigation-subnav{
+.navigation-subnav {
   position: relative;
 }
 

@@ -71,7 +71,7 @@ export default class extends Vue {
     try {
       if (document.cookie) {
         const carRes = await axios.get(
-          "http://localhost:5000/api/cars/findallAdmin",
+          "http://localhost:5000/api/cars/admin_find_all",
           {
             headers: {
               Authorization: `${document.cookie}`,

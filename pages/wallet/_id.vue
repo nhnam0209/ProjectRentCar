@@ -19,6 +19,7 @@
 
 <script lang="ts">
 import { Component, Vue } from "nuxt-property-decorator";
+import { API } from "~/utils/constant";
 import axios from "~/utils/myAxios";
 
 @Component({
@@ -58,7 +59,7 @@ export default class extends Vue {
     try {
       if (document.cookie) {
         const res = await axios.get(
-          "http://localhost:5000/api/auth/verify_login",
+          `${process.env.baseURL + API.auth.verify_login}`,
           {
             headers: {
               Authorization: `${document.cookie}`,
@@ -69,7 +70,7 @@ export default class extends Vue {
         this.isLogin = true;
         this.userInfo = res.data[0];
         const resWallet = await axios.post(
-          "http://localhost:5000/api/wallet/find",
+          `${process.env.baseURL + API.wallet.query_wallet}`,
           {
             user_id: this.userInfo.id,
           },
@@ -83,7 +84,10 @@ export default class extends Vue {
         console.log(resWallet.data);
 
         const resWalletTransaction = await axios.post(
-          "http://localhost:5000/api/wallet_transactions/findTransaction",
+          `${
+            process.env.baseURL +
+            API.wallet_transactions.query_wallet_transactions
+          }`,
           {
             user_id: this.userInfo.id,
             wallet_id: this.walletInfo.id,
@@ -97,7 +101,7 @@ export default class extends Vue {
         this.walletTransactions = resWalletTransaction.data.walletTransaction;
 
         const bankAccountRes = await axios.post(
-          "http://localhost:5000/api/bankaccount/find",
+          `${process.env.baseURL + API.bank_account.query_bank_account}`,
           {
             user_id: this.userInfo.id,
           },

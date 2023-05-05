@@ -56,7 +56,7 @@ export default class extends Vue {
     try {
       if (document.cookie) {
         const res = await axios.get(
-          `${process.env.BASE_URL + API.auth.verify_login}`,
+          `${process.env.baseURL + API.auth.verify_login}`,
           {
             headers: {
               Authorization: `${document.cookie}`,
