@@ -15,6 +15,11 @@ import axios from "~/utils/myAxios";
 @Component({
   name: "MyCarPage",
   layout: "rentcar-layout",
+  head() {
+    return {
+      title: "Register Car",
+    };
+  },
 })
 export default class extends Vue {
   isLogin: Boolean = false;

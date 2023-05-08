@@ -18,6 +18,11 @@ import axios from "~/utils/myAxios";
 @Component({
   name: "DashboardAdmin",
   layout: "rentcar-layout",
+  head() {
+    return {
+      title: "Manage User",
+    };
+  },
 })
 export default class extends Vue {
   isLogin: Boolean = false;

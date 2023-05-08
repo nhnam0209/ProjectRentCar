@@ -15,7 +15,7 @@ export default {
   },
 
   env: {
-    baseURL: process.env.BASE_URL || "http://locahost:5000/api/",
+    baseURL: process.env.BASE_URL || "http://localhost:5000/api/",
   },
 
   loading: {
@@ -74,12 +74,12 @@ export default {
   build: {},
 
   axios: {
-    baseURL: process.env.BASE_URL || "http://locahost:5000/api/",
+    baseURL: process.env.BASE_URL || "http://localhost:5000/api/",
   },
 
   publicRuntimeConfig: {
     axios: {
-      baseURL: process.env.BASE_URL || "http://locahost:5000/api/",
+      baseURL: process.env.BASE_URL || "http://localhost:5000/api/",
     },
   },
 };

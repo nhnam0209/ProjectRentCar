@@ -16,7 +16,7 @@ import axios from "~/utils/myAxios";
   layout: "rentcar-layout",
   head() {
     return {
-      title: "Sign In - Rent Car",
+      title: "Sign In",
     };
   },
 })

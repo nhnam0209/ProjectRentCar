@@ -19,6 +19,11 @@ import { API } from "~/utils/constant";
 @Component({
   name: "DashboardAdmin",
   layout: "rentcar-layout",
+  head() {
+    return {
+      title: "Manage Car",
+    };
+  },
 })
 export default class extends Vue {
   isLogin: Boolean = false;
