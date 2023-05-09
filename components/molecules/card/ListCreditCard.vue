@@ -71,7 +71,7 @@ export default class extends Vue {
   @Prop({}) bankAccounts!: any;
 
   toogleIsActive() {
-    this.isActive ? (this.isActive = false) : (this.isActive = true);
+    this.isActive = !this.isActive;
   }
 }
 </script>

@@ -55,11 +55,6 @@ import axios from "~/utils/myAxios";
 @Component({
   name: "HomePage",
   layout: "rentcar-layout",
-  head() {
-    return {
-      title: "Home - Rent Car",
-    };
-  },
 })
 export default class extends Vue {
   isLogin: Boolean = false;
@@ -82,7 +77,7 @@ export default class extends Vue {
       if (document.cookie) {
         if (this.isAdmin) {
           const res = await axios.get(
-            `${process.env.BASE_URL + API.auth.verify_login_admin}`,
+            `${process.env.baseURL + API.auth.verify_login_admin}`,
             {
               headers: {
                 Authorization: `${document.cookie}`,
@@ -94,7 +89,7 @@ export default class extends Vue {
           this.userInfo = res.data.data;
         } else {
           const res = await axios.get(
-            `${process.env.BASE_URL + API.auth.verify_login}`,
+            `${process.env.baseURL + API.auth.verify_login}`,
             {
               headers: {
                 Authorization: `${document.cookie}`,

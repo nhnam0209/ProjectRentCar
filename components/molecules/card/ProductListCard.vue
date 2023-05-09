@@ -90,13 +90,8 @@ export default class extends Vue {
   @Prop({ default: [] }) userInfo: any;
 
   toogleIsActive(car: any) {
-    console.log(car);
-    if (this.isActive == true) {
-      this.isActive = false;
-    } else {
-      this.isActive = true;
-      this.carDetail = car;
-    }
+    this.isActive = !this.isActive;
+    this.isActive ? (this.carDetail = car) : "";
   }
 
   getIsActive(value: any) {

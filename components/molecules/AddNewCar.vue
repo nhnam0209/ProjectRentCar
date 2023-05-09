@@ -137,11 +137,7 @@ export default class extends Vue {
   cars: any = {};
 
   toogleIsActive() {
-    if (this.isActive == true) {
-      this.isActive = false;
-    } else {
-      this.isActive = true;
-    }
+    this.isActive = !this.isActive;
   }
 }
 </script>

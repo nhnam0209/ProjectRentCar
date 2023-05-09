@@ -12,6 +12,7 @@
 import { Component, Vue } from "nuxt-property-decorator";
 import axios from "~/utils/myAxios";
 import Auth from "../service/authentication";
+import { API } from "~/utils/constant";
 
 @Component({
   name: "DashboardAdmin",
@@ -42,7 +43,7 @@ export default class extends Vue {
       // Auth.checkAdmin(this.isLogin, this.userInfo);
       if (document.cookie) {
         const res = await axios.get(
-          "http://localhost:5000/api/auth/verify_login_admin",
+          `${process.env.baseURL + API.auth.verify_login}`,
           {
             headers: {
               Authorization: `${document.cookie}`,

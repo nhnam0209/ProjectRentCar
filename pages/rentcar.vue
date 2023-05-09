@@ -1,7 +1,10 @@
 <template>
   <Default>
     <template #content>
-      <product-list class="h-full mt-16 max-lg:mt-0" :is-mobile="isMobile"></product-list>
+      <product-list
+        class="h-full mt-16 max-lg:mt-0"
+        :is-mobile="isMobile"
+      ></product-list>
     </template>
   </Default>
 </template>

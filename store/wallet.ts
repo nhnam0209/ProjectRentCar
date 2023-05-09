@@ -57,35 +57,36 @@ export class WalletStore extends VuexModule {
   //   }
   // }
 
-  @action async handleSearchCar(car: any) {
-    try {
-      const req = await axios.post("http://localhost:5000/api/cars/find", car);
-      this.result.append(req);
-      console.log(this.result);
-    } catch (error: any) {
-      const errMessage = JSON.stringify(error.response.data.msg);
-      alert(errMessage);
-    }
-  }
-  @action async removeCar(car: any) {
-    try {
-      await axios.delete("http://localhost:5000/api/cars/deleteAdmin", {
-        headers: {
-          Authorization: `${document.cookie}`,
-        },
-        data: {
-          id: car.id,
-          userId: car.user_id,
-        },
-      });
-      alert(`The car ${car.name} with id: ${car.id} is deleted!!!`);
-      setTimeout("location.reload(true)", 100);
-    } catch (error: any) {
-      const errMessage = JSON.stringify(error.response.data.msg);
-      alert(errMessage);
-    }
-  }
-  @action async updateCar(car: any) {
-    console.log(car);
-  }
+  // @action async handleSearchCar(car: any) {
+  //   try {
+  //     const req = await axios.post("http://localhost:5000/api/cars/find", car);
+  //     this.result.append(req);
+  //     console.log(this.result);
+  //   } catch (error: any) {
+  //     const errMessage = JSON.stringify(error.response.data.msg);
+  //     alert(errMessage);
+  //   }
+  // }
+
+  // @action async removeCar(car: any) {
+  //   try {
+  //     await axios.delete("http://localhost:5000/api/cars/deleteAdmin", {
+  //       headers: {
+  //         Authorization: `${document.cookie}`,
+  //       },
+  //       data: {
+  //         id: car.id,
+  //         userId: car.user_id,
+  //       },
+  //     });
+  //     alert(`The car ${car.name} with id: ${car.id} is deleted!!!`);
+  //     setTimeout("location.reload(true)", 100);
+  //   } catch (error: any) {
+  //     const errMessage = JSON.stringify(error.response.data.msg);
+  //     alert(errMessage);
+  //   }
+  // }
+  // @action async updateCar(car: any) {
+  //   console.log(car);
+  // }
 }

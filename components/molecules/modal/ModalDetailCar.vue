@@ -1,7 +1,8 @@
 <template>
   <div class="">
     <div
-      class="fixed right-0 left-0 top-0 bottom-0 flex justify-center items-center bg-black/70 max-xl:overflow-auto max-md:py-0 py-5 z-[99]" :class="{'!hidden': isClose|| isActive === true}"
+      class="fixed right-0 left-0 top-0 bottom-0 flex justify-center items-center bg-black/70 max-xl:overflow-auto max-md:py-0 py-5 z-[99]"
+      :class="{ '!hidden': isClose || isActive === true }"
     >
       <div
         class="bg-white w-3/4 rounded-xl flex max-xl:block max-md:p-0 max-md:w-full h-full max-md:my-0 overflow-auto z-40"
@@ -111,23 +112,30 @@
         <div
           class="border border-solid border-neutral-500 overflow-auto content-right max-xl:border-none w-1/3 max-xl:w-full bg-white relative"
         >
-          <span class="absolute top-1 right-1 cursor-pointer max-md:hidden" @click="toogleIsClose()">
-            <icon-x class=" w-6 h-6"></icon-x>
+          <span
+            class="absolute top-1 right-1 cursor-pointer max-md:hidden"
+            @click="toogleIsClose()"
+          >
+            <icon-x class="w-6 h-6"></icon-x>
           </span>
-          <div class="booking-form-modal px-12 pb-3 max-md:py-4 max-md:px-4 select-none">
+          <div
+            class="booking-form-modal px-12 pb-3 max-md:py-4 max-md:px-4 select-none"
+          >
             <div
               class="booking-price text-4xl font-bold text-green-500 text-center my-5 max-md:hidden"
             >
               ${{ carDetail.price }}/day
             </div>
-  
+
             <div class="total-price">
               <div class="title-sidebar text-2xl max-xl:text-xl font-bold my-2">
                 Total Price
               </div>
               <div class="font-medium text-lg">
                 <span>Rental Fee: </span>
-                <span class="font-bold text-lg">${{ carDetail.price }}/day</span>
+                <span class="font-bold text-lg"
+                  >${{ carDetail.price }}/day</span
+                >
               </div>
               <div class="font-medium text-lg">
                 <span>Service Fee: </span>
@@ -143,7 +151,7 @@
                 <span class="font-bold">${{ total() }}</span>
               </div>
             </div>
-  
+
             <div class="py-2">
               <div class="booking-pick-up-date my-4">
                 <span
@@ -158,7 +166,7 @@
                   />
                 </div>
               </div>
-  
+
               <div class="booking-return-date my-4">
                 <span
                   class="booking-title text-2xl max-xl:text-xl font-bold capitalize"
@@ -203,7 +211,7 @@
                 </div>
               </div>
             </div>
-  
+
             <div class="protection-plans my-3">
               <div class="title-sidebar text-2xl max-xl:text-xl font-bold">
                 Protection Plans
@@ -221,7 +229,7 @@
                 </option>
               </select>
             </div>
-  
+
             <div class="button flex items-center justify-around my-5">
               <RButton
                 label="Rent Now"
