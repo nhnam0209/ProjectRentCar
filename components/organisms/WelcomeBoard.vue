@@ -38,7 +38,7 @@
       >
         <img
           :src="getImgUrl(carouselImage)"
-          class="h-[75vh] "
+          class="w-2/3"
         />
       </div>
     </div>

@@ -1,9 +1,9 @@
 <template>
   <div
-    class="py-8 px-14 fixed top-16 right-0 font-medium rounded-lg border-2 bg-white z-50 cursor-pointer"
+    class="py-4 px-8 fixed top-[90px] right-0 font-medium rounded-lg border-2 bg-white z-50 cursor-pointer"
   >
     <div class="">
-      <div class="my-5">
+      <div class="">
         <div class="inline-flex self-center">
           <img
             v-if="!isAdmin"
@@ -20,7 +20,7 @@
           <NuxtLink
             v-for="item in userSubNavigation"
             :key="item.id"
-            class="lg:text-2xl text-xl my-2 w-full font-semibold cursor-pointer z-50 inline-flex rounded-full hover:bg-slate-200 p-2"
+            class="text-lg w-full font-semibold cursor-pointer z-50 inline-flex rounded-full hover:bg-slate-200 p-2"
             :to="item.link"
             ><component :is="item.icon" class="w-6 mr-2 flex self-center icon-fill" />
             <span class="flex self-center">
@@ -35,14 +35,14 @@
           <NuxtLink
             v-for="item in adminSubNavigation"
             :key="item.id"
-            class="lg:text-2xl text-xl my-auto font-semibold cursor-pointer z-50 rounded-full hover:bg-slate-200 p-2"
+            class="text-lg my-auto font-semibold cursor-pointer z-50 rounded-full hover:bg-slate-200 p-2"
             :to="item.link"
             >{{ item.label }}</NuxtLink
           >
         </div>
         <div class="flex flex-col border-t border-gray-500 my-2 py-2">
           <NuxtLink
-            class="lg:text-2xl text-xl my-2 w-full font-semibold cursor-pointer z-50 inline-flex rounded-full hover:bg-slate-200 p-2"
+            class="text-lg w-full font-semibold cursor-pointer z-50 inline-flex rounded-full hover:bg-slate-200 p-2"
             to="/rentcar"
           >
             <icon-location-pin
@@ -51,14 +51,14 @@
             <span class="flex self-center">Rent Car</span>
           </NuxtLink>
           <NuxtLink
-            class="lg:text-2xl text-xl my-2 w-full font-semibold cursor-pointer z-50 inline-flex rounded-full hover:bg-slate-200 p-2"
+            class="text-lg w-full font-semibold cursor-pointer z-50 inline-flex rounded-full hover:bg-slate-200 p-2"
             to="/aboutus"
           >
             <icon-users class="w-6 mr-2 flex self-center icon-fill"></icon-users>
             <span class="flex self-center">About Us</span>
           </NuxtLink>
           <div
-            class="lg:text-2xl text-xl my-2 w-full font-semibold cursor-pointer z-50 inline-flex rounded-full hover:bg-slate-200 p-2"
+            class="text-lg w-full font-semibold cursor-pointer z-50 inline-flex rounded-full hover:bg-slate-200 p-2"
             @click="handleLogOut"
           >
             <icon-login class="w-6 mr-2 flex self-center icon-fill"></icon-login>

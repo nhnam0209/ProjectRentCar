@@ -1,7 +1,7 @@
 <template>
   <button
     @click="btnClick($event)"
-    class="text-white font-bold my-7 rounded-xl p-3 text-center"
+    class="text-white font-bold rounded-xl p-3 text-center"
     :class="[isDisabled ? 'bg-[#ebebe4] text-[#ccc]' : '']"
     type="submit"
     :disabled="isDisabled"

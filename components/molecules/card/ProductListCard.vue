@@ -23,7 +23,7 @@
               <span class="car-name text-2xl font-bold">{{ car.name }}</span>
               <br />
               <span class="price-car text-xl font-bold text-green-500"
-                >{{ car.price }}$/day</span
+                >${{ car.price }}/day</span
               >
             </div>
           </div>
@@ -55,7 +55,7 @@
           </div>
         </div>
         <div class="mb-2 flex items-center justify-center">
-          <RButton class="btn-success w-1/2" label="Select"></RButton>
+          <RButton class="btn-success w-1/2 my-5" label="Select"></RButton>
         </div>
       </div>
       <modal-detail-car
