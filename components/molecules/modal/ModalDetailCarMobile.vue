@@ -4,15 +4,9 @@
     :class="{ '!hidden': isClose }"
   >
     <div
-      class="bg-white w-3/4 rounded-xl flex max-xl:block max-md:w-full h-full my-4 py-4 overflow-auto relative select-none"
+      class="bg-white w-3/4 rounded-xl flex max-xl:block max-md:w-full max-md:rounded-none h-full my-4 py-4 overflow-auto relative select-none"
       :class="{ 'modal-close': isActive }"
     >
-      <span
-        class="absolute top-1 right-1 cursor-pointer"
-        @click="toogleIsClose()"
-      >
-        <icon-x class="w-6 h-6"></icon-x>
-      </span>
       <div
         class="content-left px-4 border border-solid border-neutral-500 max-xl:border-none max-xl:w-full w-2/3 max-md:overflow-hidden bg-white"
       >
@@ -230,7 +224,7 @@
                 </p>
               </div>
             </div>
-            <div class="button flex items-center justify-around">
+            <div class="button flex items-center justify-around my-5">
               <RButton
                 label="Rent Now"
                 class="btn-success"

@@ -1,15 +1,13 @@
 <template>
   <div
     class="fixed top-0 bottom-0 right-0 left-0 items-center flex justify-center h-screen z-[99] bg-black/70"
-    :class="{ 'modal-close': isActive }"
+    :class="{ '!hidden': isActive }"
   >
     <div
-      class="flex justify-center items-center bg-white w-1/3 rounded-lg shadow overflow-hidden relative max-md:w-full max-md:h-full max-xl:w-2/3"
+      class="flex justify-center items-center bg-white w-1/3 rounded-lg shadow relative max-md:w-full max-md:h-full max-md:rounded-none max-xl:w-2/3 box-content overflow-auto"
     >
       <div class="w-full py-6">
-        <h1 class="text-3xl text-center px-6 pb-3 font-bold">Confirm</h1>
-
-        <div class="">
+        <div class=" max-md:hidden">
           <IconX
             class="w-6 h-6 absolute top-2 right-3 cursor-pointer"
             @icon-x-click="toogleIsActive()"
@@ -18,14 +16,10 @@
 
         <div class="">
           <div class="px-8">
-            <div class="p-4">
-              <!-- <div
-                class="w-full flex items-center justify-between text-lg mb-3 border-solid border-b border-gray-200 pb-1"
-              >
-                <span   class="text-gray-400">Status</span>
-                <span   class="font-medium text-green-600" v-if="isSuccessful">Successful</span>
-                <span   class="font-medium text-red-600" v-else>Fail</span>
-              </div> -->
+            <div class="p-4 select-none">
+              <h2 class="text-left text-2xl font-medium mb-2">
+                Review Ordered Service
+              </h2>
               <div
                 class="w-full flex items-center justify-between text-lg mb-3 border-solid border-b border-gray-200 pb-1"
               >
@@ -86,20 +80,84 @@
                 class="w-full flex items-center justify-between text-lg mb-3 border-solid border-b border-gray-200 pb-1"
               >
                 <span class="text-gray-400">Rental Fee</span>
-                <span class="font-medium">{{ carDetail.price }}$</span>
+                <span class="font-medium">${{ carDetail.price }}</span>
               </div>
               <div
-                class="w-full flex items-center justify-between text-lg mb-3 border-solid border-b border-gray-200 pb-1"
+                class="w-full flex items-center justify-between text-lg border-solid border-b border-gray-200 pb-1"
               >
                 <span class="text-gray-400">Total</span>
                 <span class="font-medium">${{ totalPrice }}</span>
               </div>
             </div>
-            <RButton
-              class="btn-success w-full"
-              label="Confirm"
-              @btn-click="handleAddCarAndBill()"
-            ></RButton>
+            <div class="p-4">
+              <h2 class="text-left text-2xl font-medium mb-2">
+                Payment Method
+              </h2>
+              <div class="py-2">
+                <input
+                  id="wallet"
+                  type="radio"
+                  name="paymentMethod"
+                  class="hidden peer"
+                />
+                <label
+                  for="wallet"
+                  class="peer-checked:border-[#5cdb95] peer-checked:fill-[#5cdb95] peer-checked:text-[#5cdb95] peer-checked:border-2 w-full flex items-center justify-between text-lg border-solid border-2 border-gray-400 rounded-xl p-2 cursor-pointer"
+                >
+                  <icon-wallet class="w-6 h-6"></icon-wallet>
+                  <div class="">
+                    <span class="text-lg font-medium select-none">Wallet</span>
+                  </div>
+                </label>
+                <div
+                    class="flex w-full opacity-0 peer-checked:!opacity-100 items-center justify-between text-base mb-3 border-solid border-b border-gray-200 pb-1"
+                  >
+                    <span class="text-gray-400">Money in wallet:</span>
+                    <span class="font-medium">$70.32</span>
+                  </div>
+              </div>
+              <div class="mb-5">
+                <input
+                  id="transfer"
+                  type="radio"
+                  name="paymentMethod"
+                  class="hidden peer"
+                />
+                <label
+                  for="transfer"
+                  class="peer-checked:border-[#5cdb95] peer-checked:fill-[#5cdb95] peer-checked:text-[#5cdb95] peer-checked:border-2 w-full flex items-center justify-between text-lg border-solid border-2 border-gray-400 rounded-xl p-2 cursor-pointer"
+                >
+                  <icon-credit-card class="w-6 h-6"></icon-credit-card>
+                  <span class="text-lg font-medium select-none">Transfer</span>
+                </label>
+                <div
+                  class="block opacity-0 peer-checked:!opacity-100 text-base font-medium select-none text-right mr-2"
+                >
+                  <div
+                    class="w-full flex items-center justify-between text-base mb-3 border-solid border-b border-gray-200 pb-1"
+                  >
+                    <span class="text-gray-400">Card Number</span>
+                    <span class="font-medium">1234 5678 9012 3456</span>
+                  </div>
+                  <div
+                    class="w-full flex items-center justify-between text-base mb-3 border-solid border-b border-gray-200 pb-1"
+                  >
+                    <span class="text-gray-400">Card Holder Name</span>
+                    <span class="font-medium">Rental Cars Company</span>
+                  </div>
+                </div>
+              </div>
+              <r-button
+                class="btn-success my-2 w-full"
+                label="Confirm"
+                @btn-click="handleAddCarAndBill()"
+              ></r-button>
+              <r-button
+                class="btn-close w-full hidden max-md:block my-2"
+                label="Cancel"
+                @btn-click="toogleIsActive()"
+              ></r-button>
+            </div>
           </div>
         </div>
       </div>

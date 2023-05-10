@@ -17,6 +17,17 @@
         <div class="">
           <div class="my-4 mx-8">
             <div class="mb-2">
+              <span class="text-xl font-medium">Bank Name:</span>
+            </div>
+            <div class="">
+              <input
+                class="outline-none border border-solid border-black rounded-lg w-full text-lg p-1"
+                v-model="bankAccountInfo.name_bank"
+              />
+            </div>
+          </div>
+          <div class="my-4 mx-8">
+            <div class="mb-2">
               <span class="text-xl font-medium">Card Number:</span>
             </div>
             <div class="">
@@ -89,6 +100,7 @@ export default class extends Vue {
         {
           user_id: this.userInfo.id,
           username: this.userInfo.username,
+          nameBank: this.bankAccountInfo.name_bank,
           full_name: this.userInfo.full_name,
           bank_account: this.bankAccountInfo.bank_account,
           expire_date: this.bankAccountInfo.expire_date,

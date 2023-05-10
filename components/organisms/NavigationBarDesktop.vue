@@ -55,14 +55,14 @@
       <div v-if="!isLogin">
         <button class="buttons split-bar relative">
           <NuxtLink
-            class="navbar-items mx-4 p-4 text-xl rounded-full hover:bg-slate-100"
+            class="navbar-items text-xl mx-4 rounded-full hover:bg-slate-100 p-4"
             to="/login"
             >Sign In</NuxtLink
           >
         </button>
         <button class="buttons">
           <NuxtLink
-            class="navbar-items mx-4 p-4 text-xl rounded-full hover:bg-slate-100"
+            class="navbar-items text-xl mx-4 rounded-full hover:bg-slate-100 p-4"
             to="/register"
             >Sign Up</NuxtLink
           >
@@ -194,6 +194,10 @@ export default class extends Vue {
   height: 100%;
   top: 0;
   right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  z-index: -1;
 }
 
 .navigation-subnav {
@@ -203,11 +207,10 @@ export default class extends Vue {
 .navigation-subnav::before {
   content: "";
   position: absolute;
-  top: 20px;
-  width: 200px;
+  top: 25px;
+  width: 100px;
   right: 0;
-  left: 0;
-  height: 64px;
+  height: 30px;
 }
 
 .navbar-items:hover::before {
