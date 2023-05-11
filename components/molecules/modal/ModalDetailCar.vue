@@ -256,7 +256,8 @@
 </template>
 
 <script lang="ts">
-import { Component, Emit, Prop, Vue } from "nuxt-property-decorator";
+import { Component, Emit, Prop, Vue, Watch } from "nuxt-property-decorator";
+// import { EMPTY } from "~/utils/constant";
 
 @Component({
   name: "ModalDetailCar",
@@ -269,13 +270,23 @@ export default class extends Vue {
   isClose: Boolean = false;
   totalPrice: Number = 0;
   protectedPlan: Number = 0;
-  isActive: any = false;
+  isActive: Boolean = false;
   carTransaction: any = [];
-  isDisabled: any = false;
+  isDisabled: Boolean = true;
   // mounted() {
   //   console.log(this.carDetail);
   //   console.log(this.$route.fullPath);
   // }
+
+  @Watch("carTransaction")
+  handler(val: any) {
+    console.log(val);
+    console.log(this.carTransaction.length);
+
+    if (val.destination_return != "") {
+      this.isDisabled = false;
+    }
+  }
   protectionPlan = [
     {
       id: 1,
@@ -295,7 +306,7 @@ export default class extends Vue {
   ];
 
   toogleIsActive() {
-    this.isActive ? (this.isActive = false) : (this.isActive = true);
+    this.isActive = !this.isActive;
   }
 
   toogleIsClose() {

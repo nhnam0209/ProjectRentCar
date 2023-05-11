@@ -25,13 +25,18 @@ import axios from "~/utils/myAxios";
 @Component({
   name: "MyWalletPage",
   layout: "rentcar-layout",
+  head() {
+    return {
+      title: "My Wallet",
+    };
+  },
 })
 export default class extends Vue {
   isLogin: Boolean = false;
   userInfo: any = {};
   walletInfo: any = {};
   walletTransactions: any = [];
-  bankAccounts: any = {};
+  bankAccounts: any = [];
 
   isManageCar: Boolean = false;
 
@@ -57,13 +62,13 @@ export default class extends Vue {
 
   async created() {
     try {
+      console.log(document.cookie);
       if (document.cookie) {
         const res = await axios.get(
           `${process.env.baseURL + API.auth.verify_login}`,
           {
             headers: {
               Authorization: `${document.cookie}`,
-              path: "/",
             },
           }
         );
@@ -81,8 +86,6 @@ export default class extends Vue {
           }
         );
         this.walletInfo = resWallet.data.wallet;
-        console.log(resWallet.data);
-
         const resWalletTransaction = await axios.post(
           `${
             process.env.baseURL +
@@ -111,16 +114,15 @@ export default class extends Vue {
             },
           }
         );
-        this.bankAccounts = bankAccountRes.data.bankAccount;
+        this.bankAccounts.push(bankAccountRes.data.bank_account);
+        console.log(this.bankAccounts);
       } else {
-        this.$nuxt.error({ statusCode: 500 });
+        // this.$nuxt.error({ statusCode: 500 });
         this.$router.push("/login");
-        setTimeout("location.reload(true)", 100);
       }
     } catch (error) {
       this.isLogin = false;
       // this.$nuxt.error({ statusCode: 500 });
-
       this.$router.push("/login");
       setTimeout("location.reload(true)", 100);
     }

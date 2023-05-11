@@ -2,15 +2,13 @@ import { API, EMPTY } from "./../utils/constant";
 import axios from "axios";
 import { action, createModule, mutation } from "vuex-class-component";
 
-const Local_Base_URL = "http://localhost:5000/api/"
-
 const VuexModule = createModule({
   namespaced: "bankAccountInfo",
   strict: false,
   target: "nuxt",
   enableLocalWatchers: true,
 });
-export class UserStore extends VuexModule {
+export class BankAccountStore extends VuexModule {
   bankAccountInfo: any =
     {
       id: EMPTY,
@@ -18,6 +16,7 @@ export class UserStore extends VuexModule {
       username: EMPTY,
       full_name: EMPTY,
       bank_account: EMPTY,
+      bank_name: EMPTY,
       expire_date: EMPTY,
     } || null;
   loading: boolean = false;
@@ -40,7 +39,7 @@ export class UserStore extends VuexModule {
   @action async handleAddBankAccount() {
     try {
       const res = await axios.post(
-         `${Local_Base_URL + API.bank_account.add_bank_account} `,
+         `${process.env.baseURL + API.bank_account.add_bank_account} `,
         this.bankAccountInfo,
         {
           headers: {

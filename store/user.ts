@@ -2,8 +2,6 @@ import { API, EMPTY } from "./../utils/constant";
 import axios from "axios";
 import { action, createModule, mutation } from "vuex-class-component";
 
-const Local_Base_URL = "http://localhost:5000/api/"
-
 const VuexModule = createModule({
   namespaced: "userInfo",
   strict: false,
@@ -61,6 +59,7 @@ export class UserStore extends VuexModule {
     this.userLogin = userLogin;
   }
   @mutation setToken(token: any) {
+    console.log('token', token)
     this.token = token;
   }
   @mutation resetUserLogin(userLogin: any) {
@@ -77,7 +76,7 @@ export class UserStore extends VuexModule {
         this.userInfo.first_name + " " + this.userInfo.last_name
       );
       const res = await axios.post(
-       `${Local_Base_URL + API.auth.register}`,
+       `${process.env.baseURL + API.auth.register}`,
         this.userInfo
       );
       alert(res.data.msg);
@@ -94,7 +93,7 @@ export class UserStore extends VuexModule {
         this.userInfo.first_name + " " + this.userInfo.last_name
       );
       const res = await axios.post(
-        `${Local_Base_URL + API.user.admin_add_user}`,
+        `${process.env.baseURL + API.user.admin_add_user}`,
         this.userInfo,
         {
           headers: {
@@ -124,13 +123,13 @@ export class UserStore extends VuexModule {
           const token = (axios.defaults.headers.common[
             "Authorization"
           ] = `Bearer ${this.token}`);
-          document.cookie = `Authorization = ${token}`;
+          document.cookie = `Authorization = ${token};path=/`;
         } else {
           this.setToken(res.data.token);
           const token = (axios.defaults.headers.common[
             "Authorization"
           ] = `Bearer ${this.token}`);
-          document.cookie = `Authorization = ${token}`;
+          document.cookie = `Authorization = ${token};path=/`;
           this.setUserInfo(res.data.user);
           this.setIsAdmin(false);
         }
@@ -151,7 +150,7 @@ export class UserStore extends VuexModule {
       const token = (axios.defaults.headers.common[
         "Authorization"
       ] = `Bearer ${this.token}`);
-      document.cookie = `Authorization = ${token}`;
+      document.cookie = `Authorization = ${token};path=/`;
       this.setIsAdmin(false);
     } catch (error: any) {
       const errMessage = JSON.stringify(error.response.data.msg);
@@ -160,7 +159,7 @@ export class UserStore extends VuexModule {
   }
   @action async removeUser(user: any) {
     try {
-      await axios.delete(`${Local_Base_URL + API.user.admin_delete_user}`, {
+      await axios.delete(`${process.env.baseURL + API.user.admin_delete_user}`, {
         headers: {
           Authorization: `${document.cookie}`,
         },
@@ -187,7 +186,7 @@ export class UserStore extends VuexModule {
         newDate = user.birth_of_date;
       }
       await axios.put(
-        `${Local_Base_URL + API.user.admin_update_user}`,
+        `${process.env.baseURL + API.user.admin_update_user}`,
         {
           id: this.userInfo.id,
           first_name: user.first_name,
@@ -224,7 +223,7 @@ export class UserStore extends VuexModule {
         newDate = user.birth_of_date;
       }
       await axios.put(
-        `${Local_Base_URL + API.user.update_user}`,
+        `${process.env.baseURL + API.user.update_user}`,
         {
           id: this.userInfo.id,
           first_name: this.userInfo.first_name,
@@ -255,7 +254,7 @@ export class UserStore extends VuexModule {
   @action async addAvatar(avatar:any) {
     try {
       var userAvatar = avatar;
-      await axios.put(`${Local_Base_URL + API.user.update_image}`,
+      await axios.put(`${process.env.baseURL + API.user.update_image}`,
       { 
         user_id: this.userInfo.id, 
         image: userAvatar

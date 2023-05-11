@@ -52,10 +52,10 @@ export const API = {
 
   },
   bank_account:{
-    add_bank_account: 'back_account/add',
+    add_bank_account: 'bank_account/add',
     delete_bank_account: 'bank_account/delete',
     update_bank_account: 'bank_account/update',
-    query_bank_account: 'back_account/find',
+    query_bank_account: 'bank_account/find',
     admin_query_bank_account: 'bank_account/find_all'
 
   },

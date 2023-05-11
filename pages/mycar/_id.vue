@@ -43,7 +43,6 @@ export default class extends Vue {
           {
             headers: {
               Authorization: `${document.cookie}`,
-              path: "/",
             },
           }
         );

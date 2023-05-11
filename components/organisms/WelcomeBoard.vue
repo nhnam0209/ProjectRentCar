@@ -17,29 +17,30 @@
     </div>
 
     <div
-      class="grid-cols-3 w-full overflow-hidden after:clear-both after:block after:content-[''] hidden h-[75vh] max-lg:h-full max-lg:pt-32 max-lg:grid-cols-1"
+      class="grid-cols-4 w-full overflow-hidden after:clear-both after:block after:content-[''] hidden h-[75vh] max-lg:h-full max-lg:pt-32 max-lg:grid-cols-1"
       v-for="(carouselImage, index) in carouselImages"
-        :key="index"
-        :class="{ '!grid': index === currentSlide }"
+      :key="index"
+      :class="{ '!grid': index === currentSlide }"
     >
-      <div class="flex justify-center items-center h-full px-5 slide-content">
-        <div class="text-right text-black">
+      <div
+        class="flex justify-center items-center h-full px-5 col-span-2 slide-content"
+      >
+        <div class="text-black">
           <h5 class="text-3xl font-bold">Car Hire – Search, Compare & Save</h5>
-          <p class="text-2xl font-medium">Free cancellations on most bookings</p>
+          <p class="text-2xl font-medium">
+            Free cancellations on most bookings
+          </p>
           <r-button
-            class="bg-black text-2xl font-bold transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-green-500 duration-300"
+            class="bg-black text-2xl my-5 font-bold transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-green-500 duration-300"
             label="Rent Car Now!"
             @click="handleRentCarPage()"
           ></r-button>
         </div>
       </div>
       <div
-        class="relative flex justify-center items-center w-full opacity-90 col-span-2 slide-img "
+        class="relative flex justify-center items-center w-full opacity-90 col-span-2 slide-img"
       >
-        <img
-          :src="getImgUrl(carouselImage)"
-          class="w-2/3"
-        />
+        <img :src="getImgUrl(carouselImage)" class="w-2/3" />
       </div>
     </div>
 
@@ -71,16 +72,12 @@ import { Component, Vue } from "nuxt-property-decorator";
 export default class extends Vue {
   autoSlideInterval: any = null;
   currentSlide: any = 0;
-  carouselImages: any = [
-    "carousel1.png",
-    "carousel2.png",
-    "carousel3.png",
-  ];
+  carouselImages: any = ["carousel1.png", "carousel2.png", "carousel3.png"];
 
-  getImgUrl(pic:any) {
-    return require('../../static/img/carousel/'+ pic)
+  getImgUrl(pic: any) {
+    return require("../../static/img/carousel/" + pic);
   }
-  
+
   handleRentCarPage() {
     this.$router.push("/rentcar");
   }

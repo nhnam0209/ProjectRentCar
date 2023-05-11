@@ -7,7 +7,7 @@
       class="flex justify-center items-center bg-white w-1/3 rounded-lg shadow overflow-hidden relative max-lg:w-1/2 max-md:w-2/3 max-sm:w-full max-sm:h-full"
     >
       <div class="w-full">
-        <div class="text-2xl text-center p-8 font-bold">Bank Account</div>
+        <div class="text-2xl text-center p-8 font-bold">Add Bank Account</div>
         <div class="">
           <IconX
             class="w-6 h-6 absolute top-2 right-3 cursor-pointer"
@@ -22,7 +22,7 @@
             <div class="">
               <input
                 class="outline-none border border-solid border-black rounded-lg w-full text-lg p-1"
-                v-model="bankAccountInfo.name_bank"
+                v-model="bankAccountInfo.bank_name"
               />
             </div>
           </div>
@@ -96,13 +96,13 @@ export default class extends Vue {
   async handleAddBankAccount() {
     try {
       const res = await axios.post(
-        `${process.env.BASE_URL + API.bank_account.add_bank_account}`,
+        `${process.env.baseURL + API.bank_account.add_bank_account}`,
         {
           user_id: this.userInfo.id,
           username: this.userInfo.username,
-          nameBank: this.bankAccountInfo.name_bank,
           full_name: this.userInfo.full_name,
           bank_account: this.bankAccountInfo.bank_account,
+          bank_name: this.bankAccountInfo.bank_name,
           expire_date: this.bankAccountInfo.expire_date,
         },
         {
@@ -112,9 +112,8 @@ export default class extends Vue {
         }
       );
       console.log(res);
-      alert(`The Bank account created successfully`);
-      location.reload();
-      // alert(JSON.stringify(this.car));
+      alert(res.data.msg);
+      // location.reload();
     } catch (error: any) {
       const errMessage = JSON.stringify(error.response.data.msg);
       alert(errMessage);

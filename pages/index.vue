@@ -81,7 +81,6 @@ export default class extends Vue {
             {
               headers: {
                 Authorization: `${document.cookie}`,
-                path: "/",
               },
             }
           );
@@ -93,7 +92,6 @@ export default class extends Vue {
             {
               headers: {
                 Authorization: `${document.cookie}`,
-                path: "/",
               },
             }
           );
@@ -105,11 +103,7 @@ export default class extends Vue {
       }
     } catch (error) {
       this.isLogin = false;
-      console.log(error);
-      // this.$router.error({
-      //       statusCode: 404,
-      //       message: 'Failed to receive content from api',
-      //     })
+      // console.log(error);
     }
   }
 }

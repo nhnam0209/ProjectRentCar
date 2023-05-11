@@ -82,7 +82,7 @@
         >
           <icon-user class="w-6 h-6 cursor-pointer"></icon-user>
           <sub-navigation
-            class="fixed top-24 right-0 z-[99] hidden"
+            class="fixed top-20 right-0 z-[99] hidden"
             :user-info="userInfo"
             :is-admin="isAdmin"
             :class="{ '!block': isHover }"

@@ -95,17 +95,17 @@ export default class extends Vue {
     try {
       if (document.cookie) {
         const bankAccountRes = await axios.get(
-          `${process.env.BASE_URL + API.bank_account.admin_query_bank_account}`,
+          `${process.env.baseURL + API.bank_account.admin_query_bank_account}`,
           {
             headers: {
               Authorization: `${document.cookie}`,
             },
           }
         );
-        this.bankAccounts = bankAccountRes.data.bank_accounts;
+        this.bankAccounts = bankAccountRes.data.bank_account;
 
         const walletRes = await axios.get(
-          `${process.env.BASE_URL + API.wallet.admin_query_wallet}`,
+          `${process.env.baseURL + API.wallet.admin_query_wallet}`,
           {
             headers: {
               Authorization: `${document.cookie}`,
@@ -116,7 +116,7 @@ export default class extends Vue {
 
         const walletTransactionRes = await axios.get(
           `${
-            process.env.BASE_URL +
+            process.env.baseURL +
             API.wallet_transactions.admin_query_wallet_transactions
           }`,
           {
@@ -129,7 +129,7 @@ export default class extends Vue {
 
         const carsTransactionRes = await axios.get(
           `${
-            process.env.BASE_URL +
+            process.env.baseURL +
             API.cars_transactions.admin_query_cars_transactions
           }`,
           {

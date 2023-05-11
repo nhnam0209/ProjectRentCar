@@ -90,19 +90,11 @@ export default class extends Vue {
   isActiveWithdraw: boolean = false;
 
   toogleIsActiveDeposit() {
-    if (this.isActiveDeposit == true) {
-      this.isActiveDeposit = false;
-    } else {
-      this.isActiveDeposit = true;
-    }
+    this.isActiveDeposit = !this.isActiveDeposit;
   }
 
   toogleIsActiveWithdraw() {
-    if (this.isActiveWithdraw == true) {
-      this.isActiveWithdraw = false;
-    } else {
-      this.isActiveWithdraw = true;
-    }
+    this.isActiveWithdraw = !this.isActiveWithdraw;
   }
 }
 </script>
