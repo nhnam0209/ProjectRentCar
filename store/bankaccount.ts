@@ -18,6 +18,8 @@ export class BankAccountStore extends VuexModule {
       bank_account: EMPTY,
       bank_name: EMPTY,
       expire_date: EMPTY,
+      created_at: EMPTY,
+      update_at: EMPTY,
     } || null;
   loading: boolean = false;
   bankAccountTransactions: any =
@@ -36,21 +38,21 @@ export class BankAccountStore extends VuexModule {
     this.bankAccountTransactions = bankAccountTransactions;
   }
 
-  @action async handleAddBankAccount() {
+  @action async handleDeleteBankAccount(bankAccountInfo: any) {
+    this.bankAccountInfo = bankAccountInfo;
     try {
-      const res = await axios.post(
-         `${process.env.baseURL + API.bank_account.add_bank_account} `,
-        this.bankAccountInfo,
+      axios.delete(
+        `${process.env.baseURL + API.bank_account.delete_bank_account}`,
         {
           headers: {
             Authorization: `${document.cookie}`,
           },
+          data: {
+            id: this.bankAccountInfo.id,
+            user_id: this.bankAccountInfo.user_id,
+          },
         }
       );
-      alert(res.data.msg);
-    } catch (error: any) {
-      const errMessage = JSON.stringify(error.response.data.msg);
-      alert(errMessage);
-    }
+    } catch (error: any) {}
   }
 }

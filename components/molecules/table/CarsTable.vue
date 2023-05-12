@@ -90,19 +90,11 @@ export default class extends Vue {
   }
 
   toogleIsActive() {
-    if (this.isActive == true) {
-      this.isActive = false;
-    } else {
-      this.isActive = true;
-    }
+    this.isActive = !this.isActive;
   }
 
   toogleIsActiveDelete() {
-    if (this.isActive_delete == true) {
-      this.isActive_delete = false;
-    } else {
-      this.isActive_delete = true;
-    }
+    this.isActive_delete = !this.isActive_delete;
   }
 
   async handleDeleteCar(car: any) {

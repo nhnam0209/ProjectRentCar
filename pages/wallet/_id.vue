@@ -114,7 +114,7 @@ export default class extends Vue {
             },
           }
         );
-        this.bankAccounts.push(bankAccountRes.data.bank_account);
+        this.bankAccounts = bankAccountRes.data.bank_account;
         console.log(this.bankAccounts);
       } else {
         // this.$nuxt.error({ statusCode: 500 });

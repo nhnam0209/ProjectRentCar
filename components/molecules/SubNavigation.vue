@@ -22,7 +22,10 @@
             :key="item.id"
             class="text-lg w-full font-semibold cursor-pointer z-50 inline-flex rounded-full hover:bg-slate-200 p-2"
             :to="item.link"
-            ><component :is="item.icon" class="w-6 mr-2 flex self-center icon-fill" />
+            ><component
+              :is="item.icon"
+              class="w-6 mr-2 flex self-center icon-fill"
+            />
             <span class="flex self-center">
               {{ item.label }}
             </span>
@@ -54,14 +57,18 @@
             class="text-lg w-full font-semibold cursor-pointer z-50 inline-flex rounded-full hover:bg-slate-200 p-2"
             to="/aboutus"
           >
-            <icon-users class="w-6 mr-2 flex self-center icon-fill"></icon-users>
+            <icon-users
+              class="w-6 mr-2 flex self-center icon-fill"
+            ></icon-users>
             <span class="flex self-center">About Us</span>
           </NuxtLink>
           <div
             class="text-lg w-full font-semibold cursor-pointer z-50 inline-flex rounded-full hover:bg-slate-200 p-2"
             @click="handleLogOut"
           >
-            <icon-login class="w-6 mr-2 flex self-center icon-fill"></icon-login>
+            <icon-login
+              class="w-6 mr-2 flex self-center icon-fill"
+            ></icon-login>
             <span class="flex self-center">Logout</span>
           </div>
         </div>
@@ -86,19 +93,19 @@ export default class extends Vue {
     {
       id: 1,
       label: "My Profile",
-      link: "/dashboard/" + this.userInfo.id + "_" + this.userInfo.username,
+      link: "/dashboard/" + this.userInfo.id,
       icon: "icon-person",
     },
     {
       id: 2,
       label: "My Wallet",
-      link: "/wallet/" + this.userInfo.id + "_" + this.userInfo.username,
+      link: "/wallet/" + this.userInfo.id,
       icon: "icon-wallet",
     },
     {
       id: 3,
       label: "My Car",
-      link: "/mycar/" + this.userInfo.id + "_" + this.userInfo.username,
+      link: "/mycar/" + this.userInfo.id,
       icon: "icon-car",
     },
   ];

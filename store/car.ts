@@ -101,7 +101,6 @@ export class CarStore extends VuexModule {
         },
       });
       alert(`The car ${car.name} with id: ${car.id} is deleted!!!`);
-      setTimeout("location.reload(true)", 100);
     } catch (error: any) {
       const errMessage = JSON.stringify(error.response.data.msg);
       alert(errMessage);
