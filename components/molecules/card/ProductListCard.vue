@@ -13,7 +13,9 @@
       >
         <img
           :src="car.img"
+          loading="lazy"
           alt="image_car"
+          type="image/avif"
           class="w-full h-auto rounded-md my-4"
         />
 

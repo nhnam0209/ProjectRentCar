@@ -12,7 +12,7 @@
           ></IconX>
         </div>
         <div class="mb-4 pt-8">
-          <div class="mb-2 text-2xl font-bold">Filter</div>
+          <div class="mb-2 text-2xl font-bold">Sort by price</div>
           <select
             class="text-lg w-full text-center py-1 border border-solid border-neutral-500 rounded-xl"
             v-model="typeFilter"
