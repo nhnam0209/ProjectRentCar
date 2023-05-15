@@ -111,7 +111,6 @@ export default class extends Vue {
           },
         }
       );
-      console.log(res);
       alert(res.data.msg);
       // location.reload();
     } catch (error: any) {

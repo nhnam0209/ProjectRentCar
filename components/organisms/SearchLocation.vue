@@ -1,12 +1,12 @@
 <template>
   <div
-    class="flex justify-center items-center py-10 my-1 bg-white border-solid border-b border-neutral-500 max-lg:block max-lg:mx-4"
+    class="flex-col justify-center py-10 my-1 bg-white border-solid border-b border-neutral-500 max-lg:block max-lg:mx-4"
   >
     <div
-      class="flex border-solid border border-neutral-900 rounded-xl w-1/2 max-lg:w-full max-sm:block max-sm:border-none"
+      class="flex self-center border-solid border border-neutral-900 rounded-xl max-lg:w-full max-md:block max-md:border-none xl:mx-60 lg:mx-20 lg:my-5"
     >
       <div
-        class="flex w-1/2 max-2xl:w-2/3 max-lg:w-3/4 border-r border-solid border-neutral-900 max-sm:border max-sm:border-solid max-sm:border-neutral-900 max-sm:w-full max-sm:rounded-xl max-sm:mb-3"
+        class="flex w-1/2 max-2xl:w-2/3 max-lg:w-3/4 border-r border-solid border-neutral-900 max-md:border max-md:border-solid max-md:border-neutral-900 max-md:w-full max-md:rounded-xl max-md:mb-3"
       >
         <div class="flex items-center justify-center px-1">
           <icon-location-pin class="icon-fill cursor-pointer h-5 w-5" />
@@ -27,7 +27,7 @@
         </div>
       </div>
       <div
-        class="flex w-1/2 max-sm:border max-sm:border-solid max-sm:border-neutral-900 max-sm:w-full max-sm:rounded-xl"
+        class="flex w-1/2 max-md:border max-md:border-solid max-md:border-neutral-900 max-md:w-full max-md:rounded-xl"
       >
         <div
           class="w-full flex justify-center border-r border-solid border-neutral-900 h-full"
@@ -41,10 +41,10 @@
             </div>
             <div class="h-6 flex items-center">
               <input
-                type="date"
+                type="datetime-local"
                 class="w-full outline-none items-center"
                 placeholder="Pick up time"
-                v-model="car.pickupDate"
+                v-model="car.pickup_date"
                 required
               />
             </div>
@@ -60,10 +60,10 @@
             </div>
             <div class="h-6">
               <input
-                type="date"
+                type="datetime-local"
                 class="w-full outline-none"
                 placeholder="Return Time"
-                v-model="car.returnDate"
+                v-model="car.return_date"
                 required
               />
             </div>
@@ -72,13 +72,13 @@
       </div>
     </div>
     <div class="flex justify-around items-center ml-5 max-lg:mt-4">
-      <div class="hidden max-sm:block">
-        <IconFilter
+      <div class="hidden max-md:block">
+        <icon-filter
           class="w-6 h-6 cursor-pointer"
           @icon-filter-click="toogleIsActive()"
-        ></IconFilter>
+        />
       </div>
-      <div class="button-search w-[260px] flex justify-center items-center">
+      <div class="button-search w-52 flex justify-center items-center">
         <RButton class="btn-size text-black" @click="handleSearchCar()"
           >Search</RButton
         >

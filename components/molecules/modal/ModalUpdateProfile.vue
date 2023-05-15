@@ -1,5 +1,8 @@
 <template>
-  <div class="fixed right-0 top-0 bottom-0 left-0 z-[99] bg-black/70 flex justify-center items-center" :class="{ '!hidden': isActive }">
+  <div
+    class="fixed right-0 top-0 bottom-0 left-0 z-[99] bg-black/70 flex justify-center items-center"
+    :class="{ '!hidden': isActive }"
+  >
     <form
       action=""
       class="signup-form justify-center items-center bg-white rounded-xl shadow-xl relative"
@@ -154,7 +157,6 @@ export default class extends Vue {
   handleUpdateUserInfo(user: any) {
     try {
       this.$vxm.user.setUser(this.userInfo);
-      console.log(this.userInfo);
       this.$vxm.user.updateUser(user);
     } catch (error) {
       throw error;

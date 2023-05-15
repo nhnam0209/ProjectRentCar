@@ -65,7 +65,7 @@ export class CarStore extends VuexModule {
 
   @action async handleSearchCar(car: any) {
     try {
-      if (car.location != "" && car.returnDate != "" && car.pickupDate != "") {
+      if (car.location != "" && car.return_date != "" && car.pickup_date != "") {
         const res = await axios.post(
           `${process.env.baseURL + API.cars.search_car} `,
           car
@@ -79,9 +79,9 @@ export class CarStore extends VuexModule {
         }
       } else if (car.location == EMPTY) {
         alert("Please fill the location!!");
-      } else if (car.pickupDate == EMPTY) {
+      } else if (car.pickup_date == EMPTY) {
         alert("Please fill the pickup date!!");
-      } else if (car.returnDate == EMPTY) {
+      } else if (car.return_date == EMPTY) {
         alert("Please fill the return date!!");
       }
     } catch (error: any) {

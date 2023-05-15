@@ -160,7 +160,7 @@
                 >
                 <div class="pt-2">
                   <input
-                    type="date"
+                    type="datetime-local"
                     class="w-full booking-input rounded-xl border border-solid p-2 border-neutral-500 outline-none"
                     v-model="carTransaction.pickup_date"
                   />
@@ -174,7 +174,7 @@
                 >
                 <div class="pt-2">
                   <input
-                    type="date"
+                    type="datetime-local"
                     class="w-full booking-input rounded-xl border border-solid p-2 border-neutral-500 outline-none"
                     v-model="carTransaction.return_date"
                   />
@@ -257,7 +257,7 @@
 
 <script lang="ts">
 import { Component, Emit, Prop, Vue, Watch } from "nuxt-property-decorator";
-// import { EMPTY } from "~/utils/constant";
+import { EMPTY } from "~/utils/constant";
 
 @Component({
   name: "ModalDetailCar",
@@ -271,19 +271,19 @@ export default class extends Vue {
   totalPrice: Number = 0;
   protectedPlan: Number = 0;
   isActive: Boolean = false;
-  carTransaction: any = [];
+  carTransaction: any = [
+    {
+      pickup_date: EMPTY,
+      return_date: EMPTY,
+      destination_pickup: EMPTY,
+      destination_return: EMPTY,
+    },
+  ];
   isDisabled: Boolean = true;
-  // mounted() {
-  //   console.log(this.carDetail);
-  //   console.log(this.$route.fullPath);
-  // }
 
   @Watch("carTransaction")
   handler(val: any) {
-    console.log(val);
-    console.log(this.carTransaction.length);
-
-    if (val.destination_return != "") {
+    if (val.destination_return != EMPTY) {
       this.isDisabled = false;
     }
   }
@@ -331,6 +331,7 @@ export default class extends Vue {
   }
 
   handleRentCarPage() {
+    this.isDisabled = false;
     this.isLogin ? this.toogleIsActive : this.$router.push("/login");
   }
 }

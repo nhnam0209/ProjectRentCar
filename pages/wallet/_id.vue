@@ -62,7 +62,6 @@ export default class extends Vue {
 
   async created() {
     try {
-      console.log(document.cookie);
       if (document.cookie) {
         const res = await axios.get(
           `${process.env.baseURL + API.auth.verify_login}`,
@@ -115,7 +114,6 @@ export default class extends Vue {
           }
         );
         this.bankAccounts = bankAccountRes.data.bank_account;
-        console.log(this.bankAccounts);
       } else {
         // this.$nuxt.error({ statusCode: 500 });
         this.$router.push("/login");
@@ -126,10 +124,6 @@ export default class extends Vue {
       this.$router.push("/login");
       setTimeout("location.reload(true)", 100);
     }
-  }
-
-  testValue() {
-    console.log(this.bankAccounts);
   }
 
   mounted() {
