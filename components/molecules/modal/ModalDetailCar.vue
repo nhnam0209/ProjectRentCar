@@ -218,7 +218,7 @@
               </div>
               <select
                 class="filter text-lg border border-solid p-2 border-neutral-500 outline-none text-center rounded-xl w-full mt-2"
-                v-model="protectedPlan"
+                v-model="insurancePlanItem"
               >
                 <option
                   v-for="item in protectionPlan"
@@ -248,7 +248,7 @@
         :user-info="userInfo"
         :total-price="totalPrice"
         :car-detail="carDetail"
-        :protected-plan="protectedPlan"
+        :protected-plan="insurancePlanItem"
         :car-transaction="carTransaction"
       />
     </div>
@@ -269,21 +269,24 @@ export default class extends Vue {
   @Prop({ type: Boolean }) isModalUp!: any;
   isClose: Boolean = false;
   totalPrice: Number = 0;
-  protectedPlan: Number = 0;
+  insurancePlanItem: Number = 0;
   isActive: Boolean = false;
-  carTransaction: any = [
-    {
-      pickup_date: EMPTY,
-      return_date: EMPTY,
-      destination_pickup: EMPTY,
-      destination_return: EMPTY,
-    },
-  ];
+  carTransaction: any = {
+    pickup_date: EMPTY,
+    return_date: EMPTY,
+    destination_pickup: EMPTY,
+    destination_return: EMPTY,
+  };
   isDisabled: Boolean = true;
 
-  @Watch("carTransaction")
+  @Watch("carTransaction", { deep: true })
   handler(val: any) {
-    if (val.destination_return != EMPTY) {
+    if (
+      val.destination_return != EMPTY &&
+      val.destination_pickup != EMPTY &&
+      val.pickup_date != EMPTY &&
+      val.return_date != EMPTY
+    ) {
       this.isDisabled = false;
     }
   }
@@ -318,7 +321,7 @@ export default class extends Vue {
   }
 
   insurancePlan() {
-    return this.protectedPlan;
+    return this.insurancePlanItem;
   }
 
   destinationReturn() {
@@ -331,7 +334,6 @@ export default class extends Vue {
   }
 
   handleRentCarPage() {
-    this.isDisabled = false;
     this.isLogin ? this.toogleIsActive : this.$router.push("/login");
   }
 }

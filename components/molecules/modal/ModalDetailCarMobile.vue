@@ -228,6 +228,7 @@
               <RButton
                 label="Rent Now"
                 class="btn-success"
+                :is-disabled="isDisabled"
                 @click="handleRentCarPage"
               ></RButton>
               <RButton class="btn-close" @click="handleCancel">Cancel</RButton>
@@ -248,7 +249,8 @@
 </template>
 
 <script lang="ts">
-import { Component, Emit, Prop, Vue } from "nuxt-property-decorator";
+import { Component, Emit, Prop, Vue, Watch } from "nuxt-property-decorator";
+import { EMPTY } from "~/utils/constant";
 
 @Component({
   name: "ModalDetailCar",
@@ -262,11 +264,25 @@ export default class extends Vue {
   totalPrice: any = 0;
   protectedPlan: any = 0;
   isActive: any = false;
-  carTransaction: any = [];
-  // mounted() {
-  //   console.log(this.carDetail);
-  //   console.log(this.$route.fullPath);
-  // }
+  carTransaction: any = {
+    pickup_date: EMPTY,
+    return_date: EMPTY,
+    destination_pickup: EMPTY,
+    destination_return: EMPTY,
+  };
+  isDisabled: Boolean = true;
+
+  @Watch("carTransaction", { deep: true })
+  handler(val: any) {
+    if (
+      val.destination_return != EMPTY &&
+      val.destination_pickup != EMPTY &&
+      val.pickup_date != EMPTY &&
+      val.return_date != EMPTY
+    ) {
+      this.isDisabled = false;
+    }
+  }
   protectionPlan = [
     {
       id: 1,

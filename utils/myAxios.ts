@@ -28,7 +28,7 @@ axios.interceptors.response.use(
 );
 
 axios.create({
-  baseURL: process.env.baseUrl,
+  baseURL: process.env.baseURL,
 });
 
 export default axios;

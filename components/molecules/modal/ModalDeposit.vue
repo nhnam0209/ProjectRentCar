@@ -110,7 +110,7 @@
               >
                 <span for="" class="">Total Amount</span>
                 <span for="" class="font-bold"
-                  >${{ walletTransactions.adding }}}</span
+                  >${{ walletTransactions.adding }}</span
                 >
               </div>
               <RButton
@@ -168,18 +168,10 @@ export default class extends Vue {
   }
 
   toogleIsActiveConfirm() {
-    if (this.isActiveConfirm == true) {
-      this.isActiveConfirm = false;
-    } else {
-      this.isActiveConfirm = true;
-    }
+    this.isActiveConfirm = !this.isActiveConfirm;
   }
   toogleIsActive() {
-    if (this.isActive == true) {
-      this.isActive = false;
-    } else {
-      this.isActive = true;
-    }
+    this.isActive = !this.isActive;
   }
 }
 </script>

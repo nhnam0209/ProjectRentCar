@@ -1,5 +1,7 @@
 <template>
-  <div class="fixed right-0 top-0 bottom-0 left-0 z-[99] bg-black/70 flex justify-center items-center">
+  <div
+    class="fixed right-0 top-0 bottom-0 left-0 z-[99] bg-black/70 flex justify-center items-center"
+  >
     <form
       class="alert_box p-8 flex justify-center items-center flex-col bg-white rounded-xl shadow-xl"
       :class="{ 'modal-close': isActive }"
@@ -37,11 +39,7 @@ import { Component, Emit, Vue } from "nuxt-property-decorator";
 export default class extends Vue {
   isActive: Boolean = false;
   toogleIsActive() {
-    if (this.isActive == true) {
-      this.isActive = false;
-    } else {
-      this.isActive = true;
-    }
+    this.isActive = !this.isActive;
   }
   @Emit()
   handleDelete(e: any) {

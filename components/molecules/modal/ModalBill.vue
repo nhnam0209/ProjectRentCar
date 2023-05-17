@@ -7,7 +7,7 @@
       class="flex justify-center items-center bg-white w-1/3 rounded-lg shadow relative max-md:w-full max-md:h-full max-md:rounded-none max-xl:w-2/3 box-content overflow-auto"
     >
       <div class="w-full py-6">
-        <div class=" max-md:hidden">
+        <div class="max-md:hidden">
           <IconX
             class="w-6 h-6 absolute top-2 right-3 cursor-pointer"
             @icon-x-click="toogleIsActive()"
@@ -110,11 +110,11 @@
                   </div>
                 </label>
                 <div
-                    class="flex w-full opacity-0 peer-checked:!opacity-100 items-center justify-between text-base mb-3 border-solid border-b border-gray-200 pb-1"
-                  >
-                    <span class="text-gray-400">Money in wallet:</span>
-                    <span class="font-medium">$70.32</span>
-                  </div>
+                  class="flex w-full opacity-0 peer-checked:!opacity-100 items-center justify-between text-base mb-3 border-solid border-b border-gray-200 pb-1"
+                >
+                  <span class="text-gray-400">Money in wallet:</span>
+                  <span class="font-medium">$70.32</span>
+                </div>
               </div>
               <div class="mb-5">
                 <input
@@ -243,11 +243,7 @@ export default class extends Vue {
   }
 
   toogleIsActive() {
-    if (this.isActive == true) {
-      this.isActive = false;
-    } else {
-      this.isActive = true;
-    }
+    this.isActive = !this.isActive;
   }
 }
 </script>
