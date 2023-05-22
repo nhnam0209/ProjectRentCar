@@ -144,19 +144,6 @@ export default class extends Vue {
             },
           }
         );
-        // const resWallet = await axios.post(
-        //   "http://localhost:5000/api/wallet/find",
-        //   {
-        //     user_id: this.userInfo.id,
-        //   },
-        //   {
-        //     headers: {
-        //       Authorization: `${document.cookie}`,
-        //     },
-        //   }
-        // );
-        // this.walletInfo = resWallet.data.wallet;
-        // console.log(this.walletInfo);
         if (res.data[0].is_admin == 1) {
           const resAdmin = await axios.get(
             `${process.env.baseURL + API.auth.verify_login_admin}`,

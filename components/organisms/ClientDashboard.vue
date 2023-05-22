@@ -203,8 +203,12 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "nuxt-property-decorator";
 import { EMPTY } from "~/utils/constant";
+import {ImageMixins} from "~/utils/imageService"
+
 @Component({
   name: "ClientDashboard",
+    mixins:[ImageMixins]
+
 })
 export default class extends Vue {
   @Prop() userInfo!: any;
@@ -260,13 +264,13 @@ export default class extends Vue {
   async onFileChange(e: any) {
     var files = e.target.files[0] || e.dataTransfer.files[0];
     if (files.size >= 1024 && files.size < 1048576) {
-      const base64 = await this.convertBase64(files);
+      const base64 = await ImageMixins.convertBase64(files);
       this.image = base64;
       this.$vxm.user.setUserId(this.userInfo.id);
       this.$vxm.user.addAvatar(this.image, this.userInfo.id);
     } else {
       alert("This file is too big");
-      files = "";
+      files = "";  
     }
   }
 

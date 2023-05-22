@@ -145,7 +145,6 @@ export default class extends Vue {
       }
     } catch (error) {
       this.$router.push("/dashboardadmin");
-      // setTimeout("location.reload(true)", 100);
     }
   }
 

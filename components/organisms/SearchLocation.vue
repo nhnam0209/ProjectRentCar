@@ -34,7 +34,7 @@
         >
           <div class="h-full flex flex-col justify-center">
             <div class="flex items-center justify-center px-1">
-              <IconDateTime class="icon-fill h-5 w-5 mr-2" />
+              <icon-date-time class="icon-fill h-5 w-5 mr-2" />
               <span class="text-gray-500 text-center text-base lg:text-lg"
                 >Pick up time</span
               >
@@ -42,7 +42,7 @@
             <div class="h-6 flex items-center">
               <input
                 type="datetime-local"
-                class="w-full outline-none items-center"
+                class="w-full outline-none items-center px-3" 
                 placeholder="Pick up time"
                 v-model="car.pickup_date"
                 required
@@ -53,15 +53,15 @@
         <div class="w-full flex justify-center">
           <div class="h-full pb-1 flex flex-col justify-center">
             <div class="flex items-center justify-center h-full px-1">
-              <IconDateTime class="icon-fill h-5 w-5 mr-2" />
+              <icon-date-time class="icon-fill h-5 w-5 mr-2" />
               <span class="text-gray-500 text-center text-base lg:text-lg"
                 >Return time</span
               >
             </div>
-            <div class="h-6">
+            <div class="h-6 flex items-center">
               <input
                 type="datetime-local"
-                class="w-full outline-none"
+                class="w-full outline-none items-center px-3"
                 placeholder="Return Time"
                 v-model="car.return_date"
                 required

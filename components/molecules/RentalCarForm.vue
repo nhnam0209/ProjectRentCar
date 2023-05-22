@@ -88,10 +88,12 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "nuxt-property-decorator";
 import axios from "axios";
-import { EMPTY } from "~/utils/constant";
+import { API, EMPTY } from "~/utils/constant";
+import {ImageMixins} from "~/utils/imageService"
 
 @Component({
   name: "RentalCarForm",
+  mixins:[ImageMixins]
 })
 export default class extends Vue {
   @Prop({}) cars: any;
@@ -100,10 +102,11 @@ export default class extends Vue {
   isActiveReturn = false;
   image: any = EMPTY;
 
+
   async handleAddCarUser() {
     try {
       await axios.post(
-        "http://localhost:5000/api/cars/add",
+        `${process.env.baseURL + API.cars.add_car }`,
         {
           plate_number: this.cars.plate_number,
           type_car: this.cars.type_car,
@@ -159,7 +162,7 @@ export default class extends Vue {
   async onFileChange(e: any) {
     var files = e.target.files[0] || e.dataTransfer.files[0];
     if (files.size >= 1024 && files.size < 1048576) {
-      const base64 = await this.convertBase64(files);
+      const base64 = await ImageMixins.convertBase64(files);
       this.image = base64;
       this.$vxm.car.setImgCar(this.image);
     } else {

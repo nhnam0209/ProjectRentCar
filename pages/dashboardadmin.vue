@@ -11,7 +11,6 @@
 <script lang="ts">
 import { Component, Vue } from "nuxt-property-decorator";
 import axios from "~/utils/myAxios";
-import Auth from "../service/authentication";
 import { API } from "~/utils/constant";
 
 @Component({

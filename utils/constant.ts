@@ -32,6 +32,9 @@ export const API = {
   cars:{
     search_car: 'cars/search',
     query_car: 'cars/find_by_Id',
+    add_car: 'cars/add',
+    update_car: 'cars/update',
+    delete_car: 'cars/delete',
     admin_add_car: 'cars/admin_add_car',
     admin_query_all_car: 'cars/admin_find_all',
     admin_update_car: 'cars/admin_update_car',
@@ -59,7 +62,7 @@ export const API = {
     admin_query_bank_account: 'bank_account/find_all'
 
   },
-  bank_account_tranasactions:{
+  bank_account_transactions:{
 
   }
 }
