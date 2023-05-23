@@ -1,6 +1,9 @@
 import { API, EMPTY } from "./../utils/constant";
 import axios from "axios";
 import { action, createModule, mutation } from "vuex-class-component";
+import Toasted from 'vue-toasted';
+import Vue from 'vue'
+Vue.use(Toasted)
 
 const VuexModule = createModule({
   namespaced: "userInfo",
@@ -114,7 +117,7 @@ export class UserStore extends VuexModule {
         `${process.env.baseURL + API.auth.login}`,
         this.userLogin
       );
-      alert(res.data.msg);
+      Vue.toasted.success(res.data.msg)
       if (res.status === 200) {
         if (res.data.user.is_admin == 1) {
           this.setIsAdmin(true);
@@ -133,13 +136,14 @@ export class UserStore extends VuexModule {
           this.setUserInfo(res.data.user);
           this.setIsAdmin(false);
         }
-        setTimeout("location.reload(true)", 100);
       } else {
         this.setMessage(res.data.message);
+        Vue.toasted.show(res.data.message)
+
       }
     } catch (error: any) {
       const errMessage = JSON.stringify(error.response.data.msg);
-      alert(errMessage);
+      Vue.toasted.error(errMessage)
     }
   }
 
@@ -154,7 +158,8 @@ export class UserStore extends VuexModule {
       this.setIsAdmin(false);
     } catch (error: any) {
       const errMessage = JSON.stringify(error.response.data.msg);
-      alert(errMessage);
+      Vue.toasted.error(errMessage)
+
     }
   }
   @action async removeUser(user: any) {

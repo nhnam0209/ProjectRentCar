@@ -105,8 +105,9 @@ export default class extends Vue {
 
   async handleAddCarUser() {
     try {
+      this.$toasted.show("Car is adding....")
       await axios.post(
-        `${process.env.baseURL + API.cars.add_car }`,
+        `${process.env.baseURL + API.cars.add_car}`,
         {
           plate_number: this.cars.plate_number,
           type_car: this.cars.type_car,
@@ -135,8 +136,7 @@ export default class extends Vue {
           },
         }
       );
-      alert(`The car has been added`);
-      location.reload();
+      this.$toasted.success("Car is added successfully")
       // alert(JSON.stringify(this.car));
     } catch (error: any) {
       const errMessage = JSON.stringify(error.response.data.msg);

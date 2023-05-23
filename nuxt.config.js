@@ -17,11 +17,8 @@ export default {
   env: {
     baseURL: process.env.BASE_URL || "http://localhost:5000/api/",
   },
-
-  loading: {
-    color: "blue",
-    height: "5px",
-  },
+  loading: true,
+  loading: '~/components/atoms/RLoading.vue',
 
   ssr: false,
   generate: { fallback: "404.html" },
@@ -53,6 +50,7 @@ export default {
     // https://go.nuxtjs.dev/tailwindcss
     "@nuxtjs/tailwindcss",
     "@nuxtjs/axios",
+    "@nuxtjs/toast",
     "@nuxtjs/fontawesome",
   ],
   fontawesome: {

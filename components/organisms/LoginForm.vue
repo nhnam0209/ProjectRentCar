@@ -53,17 +53,17 @@ import { Component, Vue } from "nuxt-property-decorator";
   name: "LoginForm",
 })
 export default class extends Vue {
-  msg = "";
   async submitLogin() {
     try {
       this.$vxm.user.handleLogin();
+      setTimeout("location.reload(true)", 3000);
     } catch (error: any) {
-      this.msg = error;
-      alert(this.msg);
+      this.$toasted.error(error)
     }
   }
 
   handleDirectToSignUp() {
+    
     this.$router.push("/register");
   }
 

@@ -2,45 +2,48 @@
   <Default>
     <template #content>
       <div class="h-full">
-        <welcome-board />
-        <div class="py-10 px-14 h-full">
-          <banner>
-            <template #leftContainer>
-              <div class="">
-                <div
-                  class="relative flex-shrink-0 mb-16 lg:mb-0 lg:mr-10 lg:w-full"
-                >
-                  <h2
-                    class="font-semibold text-3xl sm:text-4xl xl:text-5xl 2xl:text-6xl mt-6 sm:mt-10 !leading-[1.2] tracking-tight"
+        <r-loading />
+        <div>
+          <welcome-board />
+          <div class="py-10 px-14 h-full">
+            <banner>
+              <template #leftContainer>
+                <div class="">
+                  <div
+                    class="relative flex-shrink-0 mb-16 lg:mb-0 lg:mr-10 lg:w-full"
                   >
-                    Earn money <br />
-                    with Rental Car Service
-                  </h2>
-                  <span class="block mt-6 text-slate-500 dark:text-slate-400"
-                    >With Rental Car Service you will get freeship &amp; savings
-                    combo...</span
-                  >
-                  <div class="flex space-x-2 sm:space-x-5 mt-6 sm:mt-12">
-                    <a
-                      class="nc-Button relative h-auto inline-flex items-center justify-center rounded-full transition-colors text-sm sm:text-base font-medium py-3 px-4 sm:py-3.5 sm:px-6 ttnc-ButtonPrimary disabled:bg-opacity-90 bg-slate-900 dark:bg-slate-100 hover:bg-slate-800 text-slate-50 dark:text-slate-800 shadow-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-6000 dark:focus:ring-offset-0"
-                      href="/aboutus"
-                      >Savings combo</a
-                    ><a
-                      class="nc-Button relative h-auto inline-flex items-center justify-center rounded-full transition-colors text-sm sm:text-base font-medium py-3 px-4 sm:py-3.5 sm:px-6 ttnc-ButtonSecondary bg-white text-slate-700 dark:bg-slate-900 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-slate-800 border border-slate-100 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-6000 dark:focus:ring-offset-0"
-                      href="/aboutus"
-                      >Discover more</a
+                    <h2
+                      class="font-semibold text-3xl sm:text-4xl xl:text-5xl 2xl:text-6xl mt-6 sm:mt-10 !leading-[1.2] tracking-tight"
                     >
+                      Earn money <br />
+                      with Rental Car Service
+                    </h2>
+                    <span class="block mt-6 text-slate-500 dark:text-slate-400"
+                      >With Rental Car Service you will get freeship &amp;
+                      savings combo...</span
+                    >
+                    <div class="flex space-x-2 sm:space-x-5 mt-6 sm:mt-12">
+                      <a
+                        class="nc-Button relative h-auto inline-flex items-center justify-center rounded-full transition-colors text-sm sm:text-base font-medium py-3 px-4 sm:py-3.5 sm:px-6 ttnc-ButtonPrimary disabled:bg-opacity-90 bg-slate-900 dark:bg-slate-100 hover:bg-slate-800 text-slate-50 dark:text-slate-800 shadow-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-6000 dark:focus:ring-offset-0"
+                        href="/aboutus"
+                        >Savings combo</a
+                      ><a
+                        class="nc-Button relative h-auto inline-flex items-center justify-center rounded-full transition-colors text-sm sm:text-base font-medium py-3 px-4 sm:py-3.5 sm:px-6 ttnc-ButtonSecondary bg-white text-slate-700 dark:bg-slate-900 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-slate-800 border border-slate-100 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-6000 dark:focus:ring-offset-0"
+                        href="/aboutus"
+                        >Discover more</a
+                      >
+                    </div>
                   </div>
                 </div>
-              </div>
-            </template>
-            <template #rightContainer>
-              <img
-                src="../static/img/Trading.png"
-                alt="illustrate earn money"
-              />
-            </template>
-          </banner>
+              </template>
+              <template #rightContainer>
+                <img
+                  src="../static/img/Trading.png"
+                  alt="illustrate earn money"
+                />
+              </template>
+            </banner>
+          </div>
         </div>
       </div>
     </template>
@@ -73,6 +76,7 @@ export default class extends Vue {
   }
 
   async created() {
+    this.$nuxt.$loading.start;
     try {
       if (document.cookie) {
         if (this.isAdmin) {
@@ -104,6 +108,8 @@ export default class extends Vue {
     } catch (error) {
       this.isLogin = false;
       // console.log(error);
+    } finally {
+      this.$nuxt.$loading.finish();
     }
   }
 }
