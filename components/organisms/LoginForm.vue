@@ -56,14 +56,12 @@ export default class extends Vue {
   async submitLogin() {
     try {
       this.$vxm.user.handleLogin();
-      setTimeout("location.reload(true)", 3000);
     } catch (error: any) {
-      this.$toasted.error(error)
+      this.$toasted.error(error);
     }
   }
 
   handleDirectToSignUp() {
-    
     this.$router.push("/register");
   }
 

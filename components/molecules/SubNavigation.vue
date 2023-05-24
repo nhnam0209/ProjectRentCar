@@ -9,6 +9,7 @@
             v-if="!isAdmin"
             :src="userInfo.image"
             alt="avatar"
+            loading="lazy"
             class="rounded-full w-9 h-9 flex self-center mr-2"
           />
           <p class="text-2xl">{{ userInfo.username }}</p>
@@ -143,11 +144,8 @@ export default class extends Vue {
   handleLogOut() {
     try {
       this.$vxm.user.handleLogOut();
-      this.$router.push("/");
-      setTimeout("location.reload(true)", 100);
     } catch (error) {
-      this.$router.push("/");
-      setTimeout("location.reload(true)", 100);
+      Vue.toasted.error("Something wrong!!").goAway(1000);
     }
   }
 }

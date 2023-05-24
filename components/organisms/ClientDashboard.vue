@@ -16,6 +16,7 @@
             <img
               v-if="userInfo.image"
               :src="userInfo.image"
+              loading="lazy"
               alt="avatar"
               class="w-40 h-40 md:w-48 md:h-48 align-middle rounded-[50%] cursor-pointer"
               @click="handleChangeAvatar()"
@@ -26,6 +27,7 @@
               v-else
               src="../../static/img/default_avatar.png"
               alt="avatar"
+              loading="lazy"
               class="rounded-full w-32 h-32 md:w-40 md:h-40 relative cursor-pointer"
               @click="handleChangeAvatar()"
             />
@@ -203,12 +205,11 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "nuxt-property-decorator";
 import { EMPTY } from "~/utils/constant";
-import {ImageMixins} from "~/utils/imageService"
+import { ImageMixins } from "~/utils/imageService";
 
 @Component({
   name: "ClientDashboard",
-    mixins:[ImageMixins]
-
+  mixins: [ImageMixins],
 })
 export default class extends Vue {
   @Prop() userInfo!: any;
@@ -270,7 +271,7 @@ export default class extends Vue {
       this.$vxm.user.addAvatar(this.image, this.userInfo.id);
     } else {
       alert("This file is too big");
-      files = "";  
+      files = "";
     }
   }
 

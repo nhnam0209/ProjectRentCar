@@ -25,6 +25,7 @@
           </template>
           <template #rightContainer>
             <img
+              loading="lazy"
               class="aspect-w-1 rounded-xl"
               src="../static/img/aboutus_img_1.jpg"
               alt="about us image"

@@ -9,11 +9,16 @@
         :user-info="userInfo"
       />
     </div>
-    <div v-else class="h-[700px] flex justify-center text-slate-400">
+    <div
+      v-else
+      class="h-[200px] md:h-[700px] flex justify-center text-slate-400"
+    >
       <div
         class="text-center text-xl md:text-5xl flex justify-center items-center"
       >
-        <p class="flex self-center">No Cars Are Available!!!</p>
+        <span class="flex self-center text-[20px] font-bold">
+          Start a searching cars
+        </span>
       </div>
     </div>
   </div>

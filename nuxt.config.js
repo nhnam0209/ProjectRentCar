@@ -11,14 +11,19 @@ export default {
       { hid: "description", name: "description", content: "" },
       { name: "format-detection", content: "telephone=no" },
     ],
-    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
+    link: [
+      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+      {
+        href: "https://fonts.googleapis.com/icon?family=Material+Icons",
+        rel: "stylesheet",
+      },
+    ],
   },
-
+  css: ["@mdi/font/css/materialdesignicons.css"],
   env: {
     baseURL: process.env.BASE_URL || "http://localhost:5000/api/",
   },
-  loading: true,
-  loading: '~/components/atoms/RLoading.vue',
+  loading: false,
 
   ssr: false,
   generate: { fallback: "404.html" },

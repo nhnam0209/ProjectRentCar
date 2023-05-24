@@ -2,7 +2,7 @@
   <Default>
     <template #content>
       <div class="h-full">
-        <r-loading />
+        <r-loading :is-loading="isLoading" />
         <div>
           <welcome-board />
           <div class="py-10 px-14 h-full">
@@ -38,6 +38,7 @@
               </template>
               <template #rightContainer>
                 <img
+                  loading="lazy"
                   src="../static/img/Trading.png"
                   alt="illustrate earn money"
                 />
@@ -62,6 +63,7 @@ import axios from "~/utils/myAxios";
 export default class extends Vue {
   isLogin: Boolean = false;
   userInfo: any = {};
+  isLoading: Boolean = false;
 
   get user() {
     return this.$vxm.user.userInfo;
@@ -76,7 +78,7 @@ export default class extends Vue {
   }
 
   async created() {
-    this.$nuxt.$loading.start;
+    this.isLoading = true;
     try {
       if (document.cookie) {
         if (this.isAdmin) {
@@ -101,15 +103,16 @@ export default class extends Vue {
           );
           this.isLogin = true;
           this.userInfo = res.data.data;
+          this.isLoading = false;
         }
       } else {
         this.isLogin = false;
+        this.isLoading = false;
       }
     } catch (error) {
       this.isLogin = false;
+      this.isLoading = false;
       // console.log(error);
-    } finally {
-      this.$nuxt.$loading.finish();
     }
   }
 }

@@ -8,7 +8,7 @@
       <div
         v-for="car in cars"
         :key="car.id"
-        class="cursor-pointer p-4 bg-white rounded-xl border border-solid border-neutral-500"
+        class="cursor-pointer p-4 bg-white hover:bg-[#f9f9f9] rounded-xl border border-solid border-neutral-500"
         @click="toogleIsActive(car)"
       >
         <img

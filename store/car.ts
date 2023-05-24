@@ -1,6 +1,11 @@
 import { API, EMPTY } from "./../utils/constant";
 import axios from "axios";
 import { action, createModule, mutation } from "vuex-class-component";
+import Toasted from "vue-toasted";
+import Vue from "vue";
+Vue.use(Toasted, {
+  iconPack: "material",
+});
 
 const VuexModule = createModule({
   namespaced: "carInfo",
@@ -64,8 +69,14 @@ export class CarStore extends VuexModule {
   }
 
   @action async handleSearchCar(car: any) {
+    const expirationMs = 60 * 60 * 1000;
+    const expirationTime = new Date().getTime() + expirationMs;
     try {
-      if (car.location != "" && car.return_date != "" && car.pickup_date != "") {
+      if (
+        car.location != EMPTY &&
+        car.returnDate != EMPTY &&
+        car.pickupDate != EMPTY
+      ) {
         const res = await axios.post(
           `${process.env.baseURL + API.cars.search_car} `,
           car
@@ -73,20 +84,44 @@ export class CarStore extends VuexModule {
         this.result.push(res.data.cars);
         if (this.result.length === 1) {
           localStorage.setItem("car_result", JSON.stringify(this.result));
+          Vue.toasted
+            .success("Founded", {
+              icon: "check",
+            })
+            .goAway(2000);
         } else {
           this.result.shift();
           localStorage.setItem("car_result", JSON.stringify(this.result));
         }
-      } else if (car.location == EMPTY) {
-        alert("Please fill the location!!");
-      } else if (car.pickup_date == EMPTY) {
-        alert("Please fill the pickup date!!");
-      } else if (car.return_date == EMPTY) {
-        alert("Please fill the return date!!");
+      }
+      if (car.location == EMPTY) {
+        Vue.toasted
+          .error("Please enter the location!!", {
+            icon: "error_outline",
+          })
+          .goAway(3000);
+      }
+      if (car.pickupDate == EMPTY) {
+        Vue.toasted
+          .error("Please enter the pickup date!!", {
+            icon: "error_outline",
+          })
+          .goAway(3000);
+      }
+      if (car.returnDate == EMPTY) {
+        Vue.toasted
+          .error("Please enter the return date!!", {
+            icon: "error_outline",
+          })
+          .goAway(3000);
       }
     } catch (error: any) {
       const errMessage = JSON.stringify(error.response.data.msg);
-      alert(errMessage);
+      Vue.toasted
+        .error(errMessage, {
+          icon: "error_outline",
+        })
+        .goAway(3000);
     }
   }
   @action async removeCar(car: any) {
@@ -153,11 +188,15 @@ export class CarStore extends VuexModule {
 
   @action async addCarAdmin() {
     try {
-      await axios.post(`${process.env.baseURL + API.cars.admin_add_car}`, this.car, {
-        headers: {
-          Authorization: `${document.cookie}`,
-        },
-      });
+      await axios.post(
+        `${process.env.baseURL + API.cars.admin_add_car}`,
+        this.car,
+        {
+          headers: {
+            Authorization: `${document.cookie}`,
+          },
+        }
+      );
       alert(`The Car ${this.car.name} is added`);
       // alert(JSON.stringify(this.car));
     } catch (error: any) {

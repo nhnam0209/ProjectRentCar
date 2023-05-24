@@ -1,9 +1,9 @@
 import { API, EMPTY } from "./../utils/constant";
 import axios from "axios";
 import { action, createModule, mutation } from "vuex-class-component";
-import Toasted from 'vue-toasted';
-import Vue from 'vue'
-Vue.use(Toasted)
+import Toasted from "vue-toasted";
+import Vue from "vue";
+Vue.use(Toasted);
 
 const VuexModule = createModule({
   namespaced: "userInfo",
@@ -62,7 +62,7 @@ export class UserStore extends VuexModule {
     this.userLogin = userLogin;
   }
   @mutation setToken(token: any) {
-    console.log('token', token)
+    console.log("token", token);
     this.token = token;
   }
   @mutation resetUserLogin(userLogin: any) {
@@ -79,7 +79,7 @@ export class UserStore extends VuexModule {
         this.userInfo.first_name + " " + this.userInfo.last_name
       );
       const res = await axios.post(
-       `${process.env.baseURL + API.auth.register}`,
+        `${process.env.baseURL + API.auth.register}`,
         this.userInfo
       );
       alert(res.data.msg);
@@ -117,7 +117,7 @@ export class UserStore extends VuexModule {
         `${process.env.baseURL + API.auth.login}`,
         this.userLogin
       );
-      Vue.toasted.success(res.data.msg)
+      Vue.toasted.success(res.data.msg).goAway(1000);
       if (res.status === 200) {
         if (res.data.user.is_admin == 1) {
           this.setIsAdmin(true);
@@ -136,14 +136,14 @@ export class UserStore extends VuexModule {
           this.setUserInfo(res.data.user);
           this.setIsAdmin(false);
         }
+        setTimeout("location.reload(true)", 2000);
       } else {
-        this.setMessage(res.data.message);
-        Vue.toasted.show(res.data.message)
-
+        this.setMessage(res.data.msg);
+        Vue.toasted.show(res.data.msg).goAway(1000);
       }
     } catch (error: any) {
       const errMessage = JSON.stringify(error.response.data.msg);
-      Vue.toasted.error(errMessage)
+      Vue.toasted.error(errMessage).goAway(1000);
     }
   }
 
@@ -156,28 +156,33 @@ export class UserStore extends VuexModule {
       ] = `Bearer ${this.token}`);
       document.cookie = `Authorization = ${token};path=/`;
       this.setIsAdmin(false);
+      Vue.toasted.success("Logout successfully").goAway(1000);
+      setTimeout("location.reload(true)", 2000);
     } catch (error: any) {
-      const errMessage = JSON.stringify(error.response.data.msg);
-      Vue.toasted.error(errMessage)
-
+      Vue.toasted.error("Something wrong!!").goAway(1000);
     }
   }
   @action async removeUser(user: any) {
     try {
-      await axios.delete(`${process.env.baseURL + API.user.admin_delete_user}`, {
-        headers: {
-          Authorization: `${document.cookie}`,
-        },
-        data: {
-          id: user.id,
-        },
-      });
-      alert(`The user ${user.full_name} with id: ${user.id} is deleted!!!`);
+      await axios.delete(
+        `${process.env.baseURL + API.user.admin_delete_user}`,
+        {
+          headers: {
+            Authorization: `${document.cookie}`,
+          },
+          data: {
+            id: user.id,
+          },
+        }
+      );
+      Vue.toasted
+        .success(`The user ${user.full_name} with id: ${user.id} is deleted!!!`)
+        .goAway(2000);
 
       setTimeout("location.reload(true)", 100);
     } catch (error: any) {
       const errMessage = JSON.stringify(error.response.data.msg);
-      alert(errMessage);
+      Vue.toasted.error(errMessage).goAway(2000);
     }
   }
 
@@ -210,12 +215,14 @@ export class UserStore extends VuexModule {
           },
         }
       );
-      alert(`Your information is updated!!!`);
+      Vue.toasted
+        .success(`The user ${user.full_name} with id: ${user.id} is deleted!!!`)
+        .goAway(2000);
       setTimeout("location.reload(true)", 100);
     } catch (error: any) {
       console.log(error);
       const errMessage = JSON.stringify(error.response.data.msg);
-      alert(errMessage);
+      Vue.toasted.error(errMessage).goAway(2000);
     }
   }
   @action async updateUser(user: any) {
@@ -256,24 +263,25 @@ export class UserStore extends VuexModule {
     }
   }
 
-  @action async addAvatar(avatar:any) {
+  @action async addAvatar(avatar: any) {
     try {
       var userAvatar = avatar;
-      await axios.put(`${process.env.baseURL + API.user.update_image}`,
-      { 
-        user_id: this.userInfo.id, 
-        image: userAvatar
-      },
-      {
-        headers: {
-          Authorization: `${document.cookie}`,
+      await axios.put(
+        `${process.env.baseURL + API.user.update_image}`,
+        {
+          user_id: this.userInfo.id,
+          image: userAvatar,
         },
-      })
+        {
+          headers: {
+            Authorization: `${document.cookie}`,
+          },
+        }
+      );
       alert(`Your avatar is updated!!!`);
       setTimeout("location.reload(true)", 100);
     } catch (error) {
-      console.log(error)
-      
+      console.log(error);
     }
   }
 

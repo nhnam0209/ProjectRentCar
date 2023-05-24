@@ -14,6 +14,7 @@
           <img
             :src="carDetail.img"
             alt="car_img"
+            loading="lazy"
             class="bg-cover bg-no-repeat w-full my-4 rounded-md"
           />
           <div class="info overflow-auto">

@@ -13,6 +13,7 @@
           <div class="">
             <img
               :src="carDetail.img"
+              loading="lazy"
               alt="car_img"
               class="bg-cover bg-no-repeat w-full my-4 rounded-md"
             />
