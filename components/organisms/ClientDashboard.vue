@@ -219,6 +219,8 @@ export default class extends Vue {
   image: any = EMPTY;
   isActive: Boolean = false;
   isHover: Boolean = false;
+  compressedImage: any;
+
   userInformationDashboard = [
     {
       id: 1,
@@ -253,22 +255,39 @@ export default class extends Vue {
 
   async onFileChange(e: any) {
     var file = e.target.files[0] || e.dataTransfer.files[0];
-    file = sharp(file);
+    const inputImage = new Image();
 
-    if (file.size >= 1024 && file.size < 100576) {
-      const base64 = await ImageMixins.convertBase64(file);
-      this.image = base64;
-      this.$vxm.user.setUserId(this.userInfo.id);
-      this.$vxm.user.addAvatar(this.image, this.userInfo.id);
-    } else {
-      alert("This file is too big");
-      this.$toasted
-        .error("This file is too big", {
-          icon: "error_outline",
-        })
-        .goAway(3000);
-      file = "";
-    }
+    inputImage.onload = () => {
+      const canvas = document.createElement("canvas");
+      const context = canvas.getContext("2d");
+
+      canvas.width = inputImage.width;
+      canvas.height = inputImage.height;
+
+      context.drawImage(inputImage, 0, 0, inputImage.width, inputImage.height);
+
+      const compressedImage = canvas.toDataURL("image/jpeg", 0.5); // 0.5 represents the compression quality, where 0 is the lowest quality and 1 is the highest
+
+      this.compressedImage = compressedImage;
+    };
+
+    // inputImage.src = URL.createObjectURL(file);
+
+    console.log(file);
+
+    // if (file.size >= 1024 && file.size < 100576) {
+    //   const base64 = await ImageMixins.convertBase64(file);
+    //   this.image = base64;
+    //   this.$vxm.user.setUserId(this.userInfo.id);
+    //   this.$vxm.user.addAvatar(this.image, this.userInfo.id);
+    // } else {
+    //   this.$toasted
+    //     .error("This file is too big", {
+    //       icon: "error_outline",
+    //     })
+    //     .goAway(3000);
+    //   file = "";
+    // }
   }
 
   get user() {
