@@ -3,7 +3,9 @@ import axios from "axios";
 import { action, createModule, mutation } from "vuex-class-component";
 import Toasted from "vue-toasted";
 import Vue from "vue";
-Vue.use(Toasted);
+Vue.use(Toasted, {
+  iconPack: "material",
+});
 
 const VuexModule = createModule({
   namespaced: "userInfo",
@@ -82,11 +84,19 @@ export class UserStore extends VuexModule {
         `${process.env.baseURL + API.auth.register}`,
         this.userInfo
       );
-      alert(res.data.msg);
+      Vue.toasted
+        .success(res.data.msg, {
+          icon: "check",
+        })
+        .goAway(2000);
       window.location.href = "/login";
     } catch (error: any) {
       const errMessage = JSON.stringify(error.response.data.msg);
-      alert(errMessage);
+      Vue.toasted
+        .error(errMessage, {
+          icon: "error_outline",
+        })
+        .goAway(2000);
     }
   }
 
@@ -104,10 +114,18 @@ export class UserStore extends VuexModule {
           },
         }
       );
-      alert(res.data.msg);
+      Vue.toasted
+        .success(res.data.msg, {
+          icon: "check",
+        })
+        .goAway(2000);
     } catch (error: any) {
       const errMessage = JSON.stringify(error.response.data.msg);
-      alert(errMessage);
+      Vue.toasted
+        .error(errMessage, {
+          icon: "error_outline",
+        })
+        .goAway(2000);
     }
   }
 
@@ -117,7 +135,11 @@ export class UserStore extends VuexModule {
         `${process.env.baseURL + API.auth.login}`,
         this.userLogin
       );
-      Vue.toasted.success(res.data.msg).goAway(1000);
+      Vue.toasted
+        .success(res.data.msg, {
+          icon: "check",
+        })
+        .goAway(1500);
       if (res.status === 200) {
         if (res.data.user.is_admin == 1) {
           this.setIsAdmin(true);
@@ -139,11 +161,19 @@ export class UserStore extends VuexModule {
         setTimeout("location.reload(true)", 2000);
       } else {
         this.setMessage(res.data.msg);
-        Vue.toasted.show(res.data.msg).goAway(1000);
+        Vue.toasted
+          .show(res.data.msg, {
+            icon: "info_outline",
+          })
+          .goAway(1500);
       }
     } catch (error: any) {
       const errMessage = JSON.stringify(error.response.data.msg);
-      Vue.toasted.error(errMessage).goAway(1000);
+      Vue.toasted
+        .error(errMessage, {
+          icon: "error_outline",
+        })
+        .goAway(3000);
     }
   }
 
@@ -156,10 +186,18 @@ export class UserStore extends VuexModule {
       ] = `Bearer ${this.token}`);
       document.cookie = `Authorization = ${token};path=/`;
       this.setIsAdmin(false);
-      Vue.toasted.success("Logout successfully").goAway(1000);
+      Vue.toasted
+        .success("Logout successfully", {
+          icon: "check",
+        })
+        .goAway(1000);
       setTimeout("location.reload(true)", 2000);
     } catch (error: any) {
-      Vue.toasted.error("Something wrong!!").goAway(1000);
+      Vue.toasted
+        .error("Something wrong!!", {
+          icon: "error_outline",
+        })
+        .goAway(3000);
     }
   }
   @action async removeUser(user: any) {
@@ -176,13 +214,21 @@ export class UserStore extends VuexModule {
         }
       );
       Vue.toasted
-        .success(`The user ${user.full_name} with id: ${user.id} is deleted!!!`)
+        .success(
+          `The user ${user.full_name} with id: ${user.id} is deleted!!!`,
+          {
+            icon: "check",
+          }
+        )
         .goAway(2000);
-
-      setTimeout("location.reload(true)", 100);
+      setTimeout("location.reload(true)", 2500);
     } catch (error: any) {
       const errMessage = JSON.stringify(error.response.data.msg);
-      Vue.toasted.error(errMessage).goAway(2000);
+      Vue.toasted
+        .error("Something wrong!!", {
+          icon: "error_outline",
+        })
+        .goAway(3000);
     }
   }
 
@@ -216,13 +262,22 @@ export class UserStore extends VuexModule {
         }
       );
       Vue.toasted
-        .success(`The user ${user.full_name} with id: ${user.id} is deleted!!!`)
+        .success(
+          `The user ${user.full_name} with id: ${user.id} is deleted!!!`,
+          {
+            icon: "check",
+          }
+        )
         .goAway(2000);
-      setTimeout("location.reload(true)", 100);
+      setTimeout("location.reload(true)", 3000);
     } catch (error: any) {
       console.log(error);
       const errMessage = JSON.stringify(error.response.data.msg);
-      Vue.toasted.error(errMessage).goAway(2000);
+      Vue.toasted
+        .error(errMessage, {
+          icon: "error_outline",
+        })
+        .goAway(3000);
     }
   }
   @action async updateUser(user: any) {
@@ -254,12 +309,23 @@ export class UserStore extends VuexModule {
           },
         }
       );
-      alert(`Your information is updated!!!`);
-      setTimeout("location.reload(true)", 100);
+      Vue.toasted
+        .success(
+          `The user ${user.full_name} with id: ${user.id} is updated!!!`,
+          {
+            icon: "check",
+          }
+        )
+        .goAway(2000);
+      setTimeout("location.reload(true)", 2500);
     } catch (error: any) {
       console.log(error);
       const errMessage = JSON.stringify(error.response.data.msg);
-      alert(errMessage);
+      Vue.toasted
+        .error(errMessage, {
+          icon: "error_outline",
+        })
+        .goAway(3000);
     }
   }
 
@@ -278,10 +344,19 @@ export class UserStore extends VuexModule {
           },
         }
       );
-      alert(`Your avatar is updated!!!`);
-      setTimeout("location.reload(true)", 100);
+      Vue.toasted
+        .success(`Your avatar is updated!!!`, {
+          icon: "check",
+        })
+        .goAway(2000);
+      setTimeout("location.reload(true)", 2500);
     } catch (error) {
       console.log(error);
+      Vue.toasted
+        .error("Something wrong!", {
+          icon: "error_outline",
+        })
+        .goAway(3000);
     }
   }
 

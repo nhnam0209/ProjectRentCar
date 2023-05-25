@@ -2,8 +2,8 @@
   <Default>
     <template #content>
       <div class="h-full">
-        <r-loading :is-loading="isLoading" />
-        <div>
+        <r-loading :is-loading="isLoading" class="z-10" />
+        <div class="z-0">
           <welcome-board />
           <div class="py-10 px-14 h-full">
             <banner>
@@ -92,6 +92,7 @@ export default class extends Vue {
           );
           this.isLogin = true;
           this.userInfo = res.data.data;
+          this.isLoading = false;
         } else {
           const res = await axios.get(
             `${process.env.baseURL + API.auth.verify_login}`,
@@ -112,7 +113,6 @@ export default class extends Vue {
     } catch (error) {
       this.isLogin = false;
       this.isLoading = false;
-      // console.log(error);
     }
   }
 }

@@ -21,7 +21,7 @@
               class="w-40 h-40 md:w-48 md:h-48 align-middle rounded-[50%] cursor-pointer"
               @click="handleChangeAvatar()"
               @mouseenter="handleHover"
-              @mouseout="handleHover"
+              @mouseout="handleUnHover"
             />
             <img
               v-else
@@ -206,6 +206,7 @@
 import { Component, Prop, Vue } from "nuxt-property-decorator";
 import { EMPTY } from "~/utils/constant";
 import { ImageMixins } from "~/utils/imageService";
+import sharp from "sharp";
 
 @Component({
   name: "ClientDashboard",
@@ -216,7 +217,6 @@ export default class extends Vue {
   @Prop({ type: String }) createdAt!: any;
   @Prop({ type: String }) birthOfDate!: any;
   image: any = EMPTY;
-
   isActive: Boolean = false;
   isHover: Boolean = false;
   userInformationDashboard = [
@@ -244,34 +244,30 @@ export default class extends Vue {
   }
 
   handleHover() {
-    this.isHover = !this.isHover;
+    this.isHover = true;
   }
 
-  async convertBase64(file: any) {
-    return new Promise((resolve, reject) => {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
-
-      fileReader.onload = () => {
-        resolve(fileReader.result);
-      };
-
-      fileReader.onerror = (error) => {
-        reject(error);
-      };
-    });
+  handleUnHover() {
+    this.isHover = false;
   }
 
   async onFileChange(e: any) {
-    var files = e.target.files[0] || e.dataTransfer.files[0];
-    if (files.size >= 1024 && files.size < 1048576) {
-      const base64 = await ImageMixins.convertBase64(files);
+    var file = e.target.files[0] || e.dataTransfer.files[0];
+    file = sharp(file);
+
+    if (file.size >= 1024 && file.size < 100576) {
+      const base64 = await ImageMixins.convertBase64(file);
       this.image = base64;
       this.$vxm.user.setUserId(this.userInfo.id);
       this.$vxm.user.addAvatar(this.image, this.userInfo.id);
     } else {
       alert("This file is too big");
-      files = "";
+      this.$toasted
+        .error("This file is too big", {
+          icon: "error_outline",
+        })
+        .goAway(3000);
+      file = "";
     }
   }
 

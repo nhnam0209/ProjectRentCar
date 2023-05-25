@@ -6,16 +6,16 @@
       class="flex self-center border-solid border border-neutral-900 rounded-xl max-lg:w-full max-lg:block max-lg:border-none lg:mx-20 lg:my-5"
     >
       <div
-        class="flex w-1/2 max-2xl:w-2/3 border-r border-solid border-neutral-900 max-lg:border max-lg:border-solid max-lg:border-neutral-900 max-lg:w-full max-lg:rounded-xl max-lg:mb-3"
+        class="flex w-1/2 max-2xl:w-2/3 border-r border-solid border-neutral-900 max-lg:border max-lg:border-solid max-lg:border-neutral-900 max-lg:w-full max-lg:rounded-xl max-lg:mb-3 lg:py-2"
       >
         <div class="flex items-center justify-center px-1">
-          <icon-location-pin class="icon-fill cursor-pointer h-5 w-5" />
+          <icon-location-pin class="icon-fill h-5 w-5" />
         </div>
         <div class="h-full pb-1 w-full">
           <span class="text-gray-500 text-center text-xl"
             >Pick up Location</span
           >
-          <div class="h-6">
+          <div class="h-6" @onFocus="" @onBlur="">
             <input
               type="text"
               class="w-full outline-none"
@@ -31,7 +31,7 @@
         class="md:flex w-1/2 max-lg:border max-lg:border-solid max-lg:border-neutral-900 max-lg:w-full max-lg:rounded-xl"
       >
         <div
-          class="w-full flex justify-center md:border-r md:border-solid md:border-neutral-900 h-full my-3"
+          class="w-full flex justify-center md:border-r md:border-solid md:border-neutral-900 h-full my-3 lg:my-0 lg:py-2"
         >
           <div class="h-full flex flex-col justify-center">
             <div class="flex items-center justify-center px-1">
@@ -52,9 +52,9 @@
           </div>
         </div>
         <div
-          class="w-full flex justify-center border-t border-solid border-neutral-900 md:border-0"
+          class="w-full flex justify-center border-t border-solid border-neutral-900 md:border-0 lg:py-2"
         >
-          <div class="h-full pb-1 flex flex-col justify-center my-3">
+          <div class="h-full pb-1 flex flex-col justify-center my-3 lg:my-0">
             <div class="flex items-center justify-center h-full px-1">
               <icon-date-time class="icon-fill h-5 w-5 mr-2" />
               <span class="text-gray-500 text-center text-base lg:text-lg"
@@ -95,24 +95,24 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "nuxt-property-decorator";
+import { Component, Vue, Prop, Emit } from "nuxt-property-decorator";
 @Component({
   name: "RentalLocation",
 })
 export default class extends Vue {
+  @Prop({ type: Boolean, default: false }) isLoading!: Boolean;
   isActive: Boolean = false;
   isFocus: Boolean = false;
 
   handleSearchCar() {
+    this.$emit("isLoading", true);
     try {
-      console.log(this.car);
       this.$vxm.car.handleSearchCar(this.car);
+      this.$emit("isLoading", false);
     } catch (error) {
       alert("Please try again!!");
+      this.$emit("isLoading", false);
     }
-  }
-  mounted() {
-    console.log(this.$refs.searchLocation);
   }
 
   handleFocus() {

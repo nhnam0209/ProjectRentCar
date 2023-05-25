@@ -1,7 +1,9 @@
 <template>
   <div class="bg-white">
-    <search-location />
+    <search-location @isLoading="getIsLoading" />
+    <r-loading :is-loading="isLoading" class="z-10" />
     <div class="flex h-full" v-if="searchResult.length > 0">
+      <r-loading :is-loading="isLoading" class="z-10" />
       <rent-car-side-bar v-if="!isMobile" @click="sortCarbyPrice" />
       <product-list-card
         :car-result="searchResult"
@@ -17,7 +19,7 @@
         class="text-center text-xl md:text-5xl flex justify-center items-center"
       >
         <span class="flex self-center text-[20px] font-bold">
-          Start a searching cars
+          Start searching cars
         </span>
       </div>
     </div>
@@ -37,6 +39,7 @@ export default class extends Vue {
   userInfo: any = [];
   result: any;
   typeSort: any = "";
+  isLoading: Boolean = false;
 
   get searchResult() {
     return this.$vxm.car.result;
@@ -44,6 +47,10 @@ export default class extends Vue {
 
   set searchResult(value: any) {
     this.$vxm.car.result = value;
+  }
+
+  getIsLoading(value: any) {
+    this.isLoading = value;
   }
 
   sortCarbyPrice(typeFilter: any) {
@@ -58,6 +65,7 @@ export default class extends Vue {
   }
 
   async created() {
+    this.isLoading = true;
     try {
       if (document.cookie) {
         const res = await axios.get(
@@ -73,17 +81,20 @@ export default class extends Vue {
         if (localStorage.getItem("car_result")) {
           this.searchResult = JSON.parse(localStorage.car_result);
         }
+        this.isLoading = false;
       } else {
         this.isLogin = false;
         if (localStorage.getItem("car_result")) {
           this.searchResult = JSON.parse(localStorage.car_result);
         }
+        this.isLoading = false;
       }
     } catch (error) {
       this.isLogin = false;
       if (localStorage.getItem("car_result")) {
         this.searchResult = JSON.parse(localStorage.car_result);
       }
+      this.isLoading = false;
     }
   }
 }

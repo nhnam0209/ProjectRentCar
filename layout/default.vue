@@ -17,7 +17,7 @@ import { Component, Vue } from "nuxt-property-decorator";
 import Toasted from "vue-toasted";
 import VueScreen from "vue-screen";
 Vue.use(VueScreen);
-Vue.use(Toasted, { iconPack: "fontawesome" });
+Vue.use(Toasted, { iconPack: "material" });
 
 @Component({
   name: "RentCarLayout",

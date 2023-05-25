@@ -85,7 +85,7 @@ export class CarStore extends VuexModule {
         if (this.result.length === 1) {
           localStorage.setItem("car_result", JSON.stringify(this.result));
           Vue.toasted
-            .success("Founded", {
+            .success("Found!!", {
               icon: "check",
             })
             .goAway(2000);
