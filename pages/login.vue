@@ -2,7 +2,6 @@
   <Default>
     <template #content>
       <r-loading :is-loading="isLoading" class="z-10" />
-
       <login-form />
     </template>
   </Default>
@@ -53,6 +52,8 @@ export default class extends Vue {
             this.isLoading = false;
           }
         }
+      } else {
+        this.isLoading = false;
       }
     } catch (error: any) {
       this.$router.push("/login");

@@ -25,18 +25,19 @@
             <span>Register Here!</span>
           </header>
           <div class="relative border-bottom my-7">
-            <!-- <r-input
-              typeInput="text"
-              :VModel="user.first_name"
+            <r-input
+              type-input="text"
+              :v-model="user.first_name"
               class="input-focus"
               required
-            /> -->
-            <input
+            />
+            <!-- <input
               type="text"
               v-model="user.first_name"
               class="input-focus w-full px-1.5 h-10 text-lg border-none outline-none bg-none"
               required
-            />
+            /> -->
+            <span></span>
             <RLabel nameLabel="First name:"></RLabel>
           </div>
           <div class="relative border-bottom my-7">
@@ -133,7 +134,11 @@ export default class extends Vue {
       this.$vxm.user.handleRegister();
     } catch (error: any) {
       this.msg = error;
-      alert(this.msg);
+      this.$toasted
+        .error(this.msg, {
+          icon: "error_outline",
+        })
+        .goAway(3000);
     }
   }
 }
@@ -150,6 +155,7 @@ export default class extends Vue {
 
 .signup-content {
   background: url(../../static/img/signup-cover1.jpg);
+
   width: 500px;
   background-size: cover;
 }
