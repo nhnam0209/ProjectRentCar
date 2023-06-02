@@ -25,18 +25,18 @@
             <span>Register Here!</span>
           </header>
           <div class="relative border-bottom my-7">
-            <r-input
+            <!-- <r-input
               type-input="text"
-              :v-model="user.first_name"
+              v-model="user.first_name"
               class="input-focus"
               required
-            />
-            <!-- <input
+            /> -->
+            <input
               type="text"
               v-model="user.first_name"
               class="input-focus w-full px-1.5 h-10 text-lg border-none outline-none bg-none"
               required
-            /> -->
+            />
             <span></span>
             <RLabel nameLabel="First name:"></RLabel>
           </div>

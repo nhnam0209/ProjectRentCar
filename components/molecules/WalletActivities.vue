@@ -14,7 +14,7 @@
           </div>
 
           <div
-            class="flex justify-around items-center border border-solid border-black rounded-xl max-lg:col-span-2"
+            class="flex justify-around items-center border border-solid border-black rounded-xl max-lg:col-span-2 py-5 lg:py-0"
           >
             <RButton
               class="w-1/3 border border-solid rounded-xl border-black bg-black shadow"
@@ -30,9 +30,9 @@
         </div>
       </div>
 
-      <div class="py-3 px-5 w-full">
+      <div class="py-3 px-5 w-full overflow-x-auto">
         <div class="text-2xl font-bold py-4">Last Activities</div>
-        <table class="w-full border border-solid overflow-auto">
+        <table class="w-full border border-solid">
           <tr class="bg-[#379683] text-2xl text-white max-lg:text-xl">
             <th class="py-2 px-4 max-md:px-2">ID</th>
             <th class="py-2 px-4 max-md:px-2">Description</th>

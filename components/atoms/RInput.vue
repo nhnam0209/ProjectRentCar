@@ -2,18 +2,35 @@
   <input
     class="h-full text-lg outline-none bg-none"
     :placeholder="placeholderInput"
+    :type="typeInput"
     :name="nameInput"
+    v-bind="$attrs"
+    v-bind:value="localValue"
+    v-on="inputListeners"
   />
 </template>
 
 <script lang="ts">
-import { Component, Emit, Prop, Vue } from "nuxt-property-decorator";
+import { Component, Prop, Vue } from "nuxt-property-decorator";
 @Component({
   name: "RInput",
 })
 export default class extends Vue {
   @Prop({ type: String }) placeholderInput!: string;
   @Prop({ type: String }) nameInput!: string;
+  @Prop({ type: String }) typeInput!: string;
+  @Prop({ type: String }) value!: string;
+
+  localValue = this.value;
+
+  inputListeners() {
+    const vm = this;
+    return Object.assign({}, this.$listeners, {
+      input(event: any) {
+        vm.$emit("input", event.target.value);
+      },
+    });
+  }
 }
 </script>
 

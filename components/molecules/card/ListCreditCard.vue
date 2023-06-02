@@ -7,11 +7,11 @@
         @icon-add-click="toogleIsActive()"
       />
     </div>
-    <div class="mx-2 flex items-center" v-if="bankAccounts">
+    <div class="mx-2 flex items-center overflow-x-auto" v-if="bankAccounts">
       <div v-for="bankAccount in bankAccounts">
         <div class="m-4">
           <div
-            class="text-white relative rounded-xl bg-gray-400 shadow-md h-64 w-96 cursor-pointer"
+            class="text-white relative rounded-xl bg-gray-400 shadow-md h-[21rem] w-96 cursor-pointer"
           >
             <div
               class="absolute rounded-xl left-0 right-0 top-0 bottom-0 flex items-end py-5 px-6"

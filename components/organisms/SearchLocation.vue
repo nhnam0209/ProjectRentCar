@@ -52,9 +52,9 @@
           </div>
         </div>
         <div
-          class="w-full flex justify-center border-t border-solid border-neutral-900 md:border-0 lg:py-2"
+          class="w-full flex justify-center border-t border-solid border-neutral-900 md:border-0 md:py-2"
         >
-          <div class="h-full pb-1 flex flex-col justify-center my-3 lg:my-0">
+          <div class="h-full pb-1 flex flex-col justify-center my-3 md:my-0">
             <div class="flex items-center justify-center h-full px-1">
               <icon-date-time class="icon-fill h-5 w-5 mr-2" />
               <span class="text-gray-500 text-center text-base lg:text-lg"
