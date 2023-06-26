@@ -1,6 +1,6 @@
 <template>
   <nav
-    class="h-16 lg:h-24 flex justify-between overflow-hidden fixed bg-white w-full z-10 top-0 border-b border-solid border-gray-200"
+    class="h-16 lg:h-24 flex justify-between bg-white w-full z-10 border-b border-solid border-gray-200"
   >
     <div
       class="bg-no-repeat bg-cover bg-center w-32 h-full mx-5 my-auto flex justify-center"

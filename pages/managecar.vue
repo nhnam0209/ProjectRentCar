@@ -2,7 +2,7 @@
   <Default>
     <template #content>
       <DashboardTable
-        class="h-full mt-16 max-lg:mt-0"
+        class="h-full max-lg:mt-0"
         :is-manage-car="isManageCar"
         :user-info="userInfo"
       ></DashboardTable>

@@ -1,7 +1,7 @@
 <template>
   <Default>
     <template #content>
-      <div class="py-10 px-14 h-full mt-16 max-lg:mt-0">
+      <div class="py-10 px-14 h-full max-lg:mt-0">
         <banner container-class="mb-4">
           <template #leftContainer>
             <div class="w-screen max-w-full xl:max-w-lg space-y-5 lg:space-y-7">

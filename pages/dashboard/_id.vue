@@ -6,7 +6,7 @@
           :user-info="userInfo"
           :created-at="createdAt"
           :birth-of-date="birthOfDate"
-          class="mt-16 max-lg:mt-0"
+          class="max-lg:mt-0"
         />
         <modal-update-first-time v-if="isEdit" :user-info="userInfo" />
       </div>

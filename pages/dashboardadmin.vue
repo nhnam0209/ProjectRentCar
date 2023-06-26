@@ -1,9 +1,7 @@
 <template>
   <Default>
     <template #content>
-      <div class="h-full mt-16 max-lg:mt-0">
-        <dashboard-table class="h-full"></dashboard-table>
-      </div>
+      <dashboard-table class="h-full"></dashboard-table>
     </template>
   </Default>
 </template>

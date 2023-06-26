@@ -87,7 +87,6 @@ export default class extends Vue {
   walletTransactions: any = [];
   walletInfos: any = [];
   carsTransactions: any = [];
-
   isActive = false;
   isActive_delete = false;
 

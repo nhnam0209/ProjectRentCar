@@ -1,6 +1,6 @@
 <template>
   <div
-    class="relative bg-gradient-to-r from-[#78ffd6] to-[#FFFB7D] mt-16 max-lg:mt-0"
+    class="relative bg-gradient-to-r from-[#78ffd6] to-[#FFFB7D] max-lg:mt-0"
     @mouseout="autoSlide()"
     @mouseover="stopAutoSlide()"
   >

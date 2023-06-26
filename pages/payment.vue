@@ -1,7 +1,7 @@
 <template>
   <Default>
     <template #content>
-      <PaymentPage class="mt-16 max-lg:mt-0"></PaymentPage>
+      <PaymentPage class="max-lg:mt-0"></PaymentPage>
     </template>
   </Default>
 </template>

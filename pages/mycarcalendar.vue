@@ -1,7 +1,7 @@
 <template>
   <Default>
     <template #content>
-      <NavigationBarMyCar class="mt-16 max-lg:mt-0"></NavigationBarMyCar>
+      <NavigationBarMyCar class="max-lg:mt-0"></NavigationBarMyCar>
       <CarsSchedule :cars-schedule="carsSchedule" :cars="cars"></CarsSchedule>
     </template>
   </Default>
